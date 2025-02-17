@@ -34,20 +34,20 @@
             // 
             // btnKullaniciYonetimi
             // 
-            this.btnKullaniciYonetimi.Location = new System.Drawing.Point(721, 13);
-            this.btnKullaniciYonetimi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnKullaniciYonetimi.Location = new System.Drawing.Point(702, 13);
+            this.btnKullaniciYonetimi.Margin = new System.Windows.Forms.Padding(4);
             this.btnKullaniciYonetimi.Name = "btnKullaniciYonetimi";
-            this.btnKullaniciYonetimi.Size = new System.Drawing.Size(150, 39);
+            this.btnKullaniciYonetimi.Size = new System.Drawing.Size(169, 39);
             this.btnKullaniciYonetimi.TabIndex = 0;
             this.btnKullaniciYonetimi.Text = "Kullanıcı Yönetimi";
             this.btnKullaniciYonetimi.UseVisualStyleBackColor = true;
             // 
             // btnKasaHareketleri
             // 
-            this.btnKasaHareketleri.Location = new System.Drawing.Point(563, 13);
+            this.btnKasaHareketleri.Location = new System.Drawing.Point(519, 13);
             this.btnKasaHareketleri.Margin = new System.Windows.Forms.Padding(4);
             this.btnKasaHareketleri.Name = "btnKasaHareketleri";
-            this.btnKasaHareketleri.Size = new System.Drawing.Size(150, 39);
+            this.btnKasaHareketleri.Size = new System.Drawing.Size(175, 39);
             this.btnKasaHareketleri.TabIndex = 0;
             this.btnKasaHareketleri.Text = "Kasa Hareketleri";
             this.btnKasaHareketleri.UseVisualStyleBackColor = true;
@@ -55,13 +55,13 @@
             // 
             // FrmAnaMenu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 561);
             this.Controls.Add(this.btnKasaHareketleri);
             this.Controls.Add(this.btnKullaniciYonetimi);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmAnaMenu";
             this.Text = "FrmAnaMenu";
             this.ResumeLayout(false);
