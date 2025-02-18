@@ -174,7 +174,7 @@ namespace Kobi_v1
 
         private void btnListele_Click(object sender, EventArgs e)
         {
-
+            Listele();
         }
     }
     
