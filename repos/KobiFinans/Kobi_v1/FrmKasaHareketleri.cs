@@ -23,7 +23,7 @@ namespace Kobi_v1
         }
         static string laptopConStr = "Data Source=DESKTOP-NFG00P8\\SQLEXPRESS;Initial Catalog=KobiFinans;Integrated Security=True";
         static string dukkanConStr = "Data Source=EDESSASERDAR\\SQLEXPRESS;Initial Catalog=KobiFinans;Integrated Security=True";
-        SqlConnection baglanti = new SqlConnection(laptopConStr);
+        SqlConnection baglanti = new SqlConnection(dukkanConStr);
         private void KasaListele()
         {
             if(baglanti.State == ConnectionState.Closed)baglanti.Open();

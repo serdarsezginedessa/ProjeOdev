@@ -18,7 +18,9 @@ namespace Kobi_v1
             InitializeComponent();
             Listele();
         }
-        SqlConnection baglanti = new SqlConnection("Data Source=DESKTOP-NFG00P8\\SQLEXPRESS;Initial Catalog=KobiFinans;Integrated Security=True");
+        static string laptopConStr = "Data Source=DESKTOP-NFG00P8\\SQLEXPRESS;Initial Catalog=KobiFinans;Integrated Security=True";
+        static string dukkanConStr = "Data Source=EDESSASERDAR\\SQLEXPRESS;Initial Catalog=KobiFinans;Integrated Security=True";
+        SqlConnection baglanti = new SqlConnection(dukkanConStr);
         string sorguEkle = "INSERT INTO Cari (CariAdi, Telefon, Email, Adres, VergiNo, Borc, Alacak)  VALUES (@CariAdi, @Telefon, @Email, @Adres, @VergiNo, @Borc, @Alacak)";
         string sorguGuncelle = "UPDATE Cari SET CariAdi=@CariAdi, Telefon=@Telefon, Email=@Email, Adres=@Adres, VergiNo=@VergiNo, Borc=@Borc, Alacak=@Alacak WHERE CariID=@CariId";
         string sorguSil = "DELETE FROM Cari WHERE CariID=@CariId";
