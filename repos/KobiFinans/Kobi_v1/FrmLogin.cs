@@ -20,7 +20,7 @@ namespace Kobi_v1
         string rol;
         static string laptopConStr = "Data Source=DESKTOP-NFG00P8\\SQLEXPRESS;Initial Catalog=KobiFinans;Integrated Security=True";
         static string dukkanConStr = "Data Source=EDESSASERDAR\\SQLEXPRESS;Initial Catalog=KobiFinans;Integrated Security=True";
-        SqlConnection baglanti = new SqlConnection(dukkanConStr);
+        SqlConnection baglanti = new SqlConnection(laptopConStr);
 
         private void btnGiris_Click(object sender, EventArgs e)
         {
@@ -48,6 +48,11 @@ namespace Kobi_v1
             {
                 MessageBox.Show("Kullanıcı Adı veya Şifre Yanlış", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btn_iptal_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -31,5 +31,25 @@ namespace Kobi_v1
             FrmKasaHareketleri frmKasaHareketleri = new FrmKasaHareketleri();
             frmKasaHareketleri.ShowDialog();
         }
+
+        private void btnKullaniciYonetimi_Click(object sender, EventArgs e)
+        {
+            FrmKullanicilar frmKullanicilar = new FrmKullanicilar();
+            frmKullanicilar.ShowDialog();
+            
+        }
+
+        private void btnCariListe_Click(object sender, EventArgs e)
+        {
+            FrmCariListele frmCariListele = new FrmCariListele();
+            frmCariListele.ShowDialog();
+
+        }
+
+        private void BtnAyarlar_Click(object sender, EventArgs e)
+        {
+            FrmAyarlar frmAyarlar = new FrmAyarlar();
+            frmAyarlar.ShowDialog();
+        }
     }
 }

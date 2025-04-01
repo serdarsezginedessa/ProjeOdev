@@ -34,7 +34,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -58,17 +64,95 @@
     <Compile Include="FrmAnaMenu.Designer.cs">
       <DependentUpon>FrmAnaMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmAyarlar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAyarlar.Designer.cs">
+      <DependentUpon>FrmAyarlar.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmCariEkle.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmCariEkle.Designer.cs">
       <DependentUpon>FrmCariEkle.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmCariHareketleri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCariHareketleri.Designer.cs">
+      <DependentUpon>FrmCariHareketleri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCariIslemler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCariIslemler.Designer.cs">
+      <DependentUpon>FrmCariIslemler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCariListele.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCariListele.Designer.cs">
+      <DependentUpon>FrmCariListele.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCariTur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCariTur.Designer.cs">
+      <DependentUpon>FrmCariTur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCariTurEkle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCariTurEkle.Designer.cs">
+      <DependentUpon>FrmCariTurEkle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmGelirGiderTipEkle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGelirGiderTipEkle.Designer.cs">
+      <DependentUpon>FrmGelirGiderTipEkle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmGelirGiderTipi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGelirGiderTipi.Designer.cs">
+      <DependentUpon>FrmGelirGiderTipi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmKasa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmKasa.Designer.cs">
+      <DependentUpon>FrmKasa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmKasaEkle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmKasaEkle.Designer.cs">
+      <DependentUpon>FrmKasaEkle.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmKasaHareketleri.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmKasaHareketleri.Designer.cs">
       <DependentUpon>FrmKasaHareketleri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmKullaniciEkle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmKullaniciEkle.Designer.cs">
+      <DependentUpon>FrmKullaniciEkle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmKullaniciGuncelle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmKullaniciGuncelle.Designer.cs">
+      <DependentUpon>FrmKullaniciGuncelle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmKullanicilar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmKullanicilar.Designer.cs">
+      <DependentUpon>FrmKullanicilar.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
@@ -84,11 +168,50 @@
     <EmbeddedResource Include="FrmAnaMenu.resx">
       <DependentUpon>FrmAnaMenu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmAyarlar.resx">
+      <DependentUpon>FrmAyarlar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmCariEkle.resx">
       <DependentUpon>FrmCariEkle.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmCariHareketleri.resx">
+      <DependentUpon>FrmCariHareketleri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCariIslemler.resx">
+      <DependentUpon>FrmCariIslemler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCariListele.resx">
+      <DependentUpon>FrmCariListele.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCariTur.resx">
+      <DependentUpon>FrmCariTur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCariTurEkle.resx">
+      <DependentUpon>FrmCariTurEkle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmGelirGiderTipEkle.resx">
+      <DependentUpon>FrmGelirGiderTipEkle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmGelirGiderTipi.resx">
+      <DependentUpon>FrmGelirGiderTipi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmKasa.resx">
+      <DependentUpon>FrmKasa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmKasaEkle.resx">
+      <DependentUpon>FrmKasaEkle.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmKasaHareketleri.resx">
       <DependentUpon>FrmKasaHareketleri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmKullaniciEkle.resx">
+      <DependentUpon>FrmKullaniciEkle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmKullaniciGuncelle.resx">
+      <DependentUpon>FrmKullaniciGuncelle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmKullanicilar.resx">
+      <DependentUpon>FrmKullanicilar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
@@ -101,6 +224,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -117,6 +241,54 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DataBase\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add User Male.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DeleteUser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editUser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Exchange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Print.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Find User Male.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\User Groups.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kasa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bank Building.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Bank.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
