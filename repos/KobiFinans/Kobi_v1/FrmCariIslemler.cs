@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -33,9 +34,8 @@ namespace Kobi_v1
         {
             set { label9.Text = value; }
         }
-        static string laptopConStr = "Data Source=DESKTOP-NFG00P8\\SQLEXPRESS;Initial Catalog=KobiFinans;Integrated Security=True";
-        static string dukkanConStr = "Data Source=EDESSASERDAR\\SQLEXPRESS;Initial Catalog=KobiFinans;Integrated Security=True";
-        SqlConnection baglanti = new SqlConnection(laptopConStr);
+        static string connectionString = ConfigurationManager.ConnectionStrings["KobiFinans"].ConnectionString;
+        SqlConnection baglanti = new SqlConnection(connectionString);
         public void SetCariInfolabel(string cariBilgi)
         {
             label13.Text = cariBilgi; // Seçilen cariyi label'a yaz

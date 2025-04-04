@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace Kobi_v1
 {
@@ -17,10 +18,29 @@ namespace Kobi_v1
         {
             InitializeComponent();
         }
-        SqlConnection baglanti = new SqlConnection("Data Source=EDESSASERDAR\\SQLEXPRESS;Initial Catalog=Kobi;Integrated Security=True");
+        static string connectionString = ConfigurationManager.ConnectionStrings["KobiFinans"].ConnectionString;
+        SqlConnection baglanti = new SqlConnection(connectionString);
+
         private void Form1_Load(object sender, EventArgs e)
         {
+            try
+            {
+                if (baglanti.State == ConnectionState.Closed)
+                {
+                    baglanti.Open();
+                    MessageBox.Show("Bağlantı Başarılı");
 
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hata: " + ex.Message);
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+            
         }
     }
 }

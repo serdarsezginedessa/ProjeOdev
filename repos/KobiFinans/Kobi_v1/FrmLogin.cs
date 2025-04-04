@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace Kobi_v1
 {
@@ -17,10 +18,9 @@ namespace Kobi_v1
         {
             InitializeComponent();
         }
+        static string connectionString=ConfigurationManager.ConnectionStrings["KobiFinans"].ConnectionString;
+        SqlConnection baglanti = new SqlConnection(connectionString);
         string rol;
-        static string laptopConStr = "Data Source=DESKTOP-NFG00P8\\SQLEXPRESS;Initial Catalog=KobiFinans;Integrated Security=True";
-        static string dukkanConStr = "Data Source=EDESSASERDAR\\SQLEXPRESS;Initial Catalog=KobiFinans;Integrated Security=True";
-        SqlConnection baglanti = new SqlConnection(laptopConStr);
 
         private void btnGiris_Click(object sender, EventArgs e)
         {

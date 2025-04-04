@@ -67,7 +67,8 @@ namespace Kobi_v1
             Form frm3 = new FrmKasa(); // Yüklemek istediğiniz form
             LoadFormIntoPanel(frm3, splitContainer1);
         }
-        private void FormOlustur()//Yeni Banka Ekleme Formu
+
+        private void FormOlustur()
         {
             Form frmBanka = new Form(); // Yüklemek istediğiniz form
             int r = 252;
@@ -82,7 +83,7 @@ namespace Kobi_v1
             frmBanka.MinimizeBox = false;
             frmBanka.ShowInTaskbar = false;
             frmBanka.Font = new Font("Microsoft Sans Serif", 11, FontStyle.Bold);
-            frmBanka.Icon = new Icon("C:\\Users\\edessa\\source\\repos\\ProjeOdev\\repos\\KobiFinans\\Kobi_v1\\Resources\\Bank.ico");
+            frmBanka.Icon = new Icon(Application.StartupPath + "\\Bank.ico");
 
             Label lbl = new Label();
             lbl.Text = "Banka Adı: ";
