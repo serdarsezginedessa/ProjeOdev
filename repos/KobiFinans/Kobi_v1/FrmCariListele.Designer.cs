@@ -31,18 +31,18 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnUpdate = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.btnBorcAlacak = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.btndelete = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnCariAdd = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.btnBorcAlacak = new System.Windows.Forms.Button();
+            this.btndelete = new System.Windows.Forms.Button();
+            this.btnCariAdd = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -90,9 +90,65 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(120, 59);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 24);
+            this.label3.Size = new System.Drawing.Size(81, 18);
             this.label3.TabIndex = 0;
             this.label3.Text = "Cari Düzelt";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(513, 59);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(49, 18);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Yazdır";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(344, 59);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(127, 18);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Borç/Alacak İşlem";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(246, 59);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(55, 18);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Cari Sil";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(14, 59);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(68, 18);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Cari Ekle";
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Controls.Add(this.dataGridView1);
+            this.panel2.Location = new System.Drawing.Point(12, 112);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(975, 495);
+            this.panel2.TabIndex = 1;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(597, 31);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(46, 18);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "label6";
             // 
             // btnUpdate
             // 
@@ -109,24 +165,6 @@
             this.btnUpdate.TabIndex = 1;
             this.btnUpdate.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnUpdate.UseVisualStyleBackColor = false;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(513, 59);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(62, 24);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Yazdır";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(344, 59);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(159, 24);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Borç/Alacak İşlem";
             // 
             // button3
             // 
@@ -163,15 +201,6 @@
             this.btnBorcAlacak.UseVisualStyleBackColor = false;
             this.btnBorcAlacak.Click += new System.EventHandler(this.btnBorcAlacak_Click);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(246, 59);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 24);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Cari Sil";
-            // 
             // btndelete
             // 
             this.btndelete.BackColor = System.Drawing.Color.Transparent;
@@ -188,15 +217,6 @@
             this.btndelete.Tag = "";
             this.btndelete.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btndelete.UseVisualStyleBackColor = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 59);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 24);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Cari Ekle";
             // 
             // btnCariAdd
             // 
@@ -233,26 +253,9 @@
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.UseVisualStyleBackColor = false;
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.dataGridView1);
-            this.panel2.Location = new System.Drawing.Point(12, 112);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(975, 495);
-            this.panel2.TabIndex = 1;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(597, 31);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(60, 24);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "label6";
-            // 
             // FrmCariListele
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(208)))), ((int)(((byte)(161)))));
             this.ClientSize = new System.Drawing.Size(1000, 619);
@@ -265,8 +268,10 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmCariListele";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cari Listesi";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmCariListele_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);

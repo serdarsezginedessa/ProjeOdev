@@ -30,17 +30,19 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.kasaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cariToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bankaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cariListeleriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kasaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kasaListesiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bankaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bankaListesiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblTime = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cariToolStripMenuItem,
             this.kasaToolStripMenuItem,
@@ -54,6 +56,21 @@
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // cariToolStripMenuItem
+            // 
+            this.cariToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cariListeleriToolStripMenuItem});
+            this.cariToolStripMenuItem.Name = "cariToolStripMenuItem";
+            this.cariToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
+            this.cariToolStripMenuItem.Text = "Cari";
+            // 
+            // cariListeleriToolStripMenuItem
+            // 
+            this.cariListeleriToolStripMenuItem.Name = "cariListeleriToolStripMenuItem";
+            this.cariListeleriToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.cariListeleriToolStripMenuItem.Text = "Cari Listeleri";
+            this.cariListeleriToolStripMenuItem.Click += new System.EventHandler(this.cariListeleriToolStripMenuItem_Click);
+            // 
             // kasaToolStripMenuItem
             // 
             this.kasaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -62,13 +79,11 @@
             this.kasaToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
             this.kasaToolStripMenuItem.Text = "Kasa";
             // 
-            // cariToolStripMenuItem
+            // kasaListesiToolStripMenuItem
             // 
-            this.cariToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cariListeleriToolStripMenuItem});
-            this.cariToolStripMenuItem.Name = "cariToolStripMenuItem";
-            this.cariToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
-            this.cariToolStripMenuItem.Text = "Cari";
+            this.kasaListesiToolStripMenuItem.Name = "kasaListesiToolStripMenuItem";
+            this.kasaListesiToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.kasaListesiToolStripMenuItem.Text = "Kasa Listesi";
             // 
             // bankaToolStripMenuItem
             // 
@@ -78,23 +93,24 @@
             this.bankaToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
             this.bankaToolStripMenuItem.Text = "Banka";
             // 
-            // cariListeleriToolStripMenuItem
-            // 
-            this.cariListeleriToolStripMenuItem.Name = "cariListeleriToolStripMenuItem";
-            this.cariListeleriToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.cariListeleriToolStripMenuItem.Text = "Cari Listeleri";
-            // 
-            // kasaListesiToolStripMenuItem
-            // 
-            this.kasaListesiToolStripMenuItem.Name = "kasaListesiToolStripMenuItem";
-            this.kasaListesiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.kasaListesiToolStripMenuItem.Text = "Kasa Listesi";
-            // 
             // bankaListesiToolStripMenuItem
             // 
             this.bankaListesiToolStripMenuItem.Name = "bankaListesiToolStripMenuItem";
-            this.bankaListesiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.bankaListesiToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.bankaListesiToolStripMenuItem.Text = "Banka Listesi";
+            // 
+            // lblTime
+            // 
+            this.lblTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTime.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblTime.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.lblTime.Font = new System.Drawing.Font("Arial Rounded MT Bold", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(182)))), ((int)(((byte)(149)))));
+            this.lblTime.Location = new System.Drawing.Point(1016, 33);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(172, 40);
+            this.lblTime.TabIndex = 2;
+            this.lblTime.Text = "20:20:20";
             // 
             // Form1
             // 
@@ -102,14 +118,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(208)))), ((int)(((byte)(161)))));
             this.ClientSize = new System.Drawing.Size(1200, 623);
+            this.Controls.Add(this.lblTime);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Kobi Finans";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -127,6 +145,7 @@
         private System.Windows.Forms.ToolStripMenuItem cariListeleriToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem kasaListesiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bankaListesiToolStripMenuItem;
+        private System.Windows.Forms.Label lblTime;
     }
 }
 

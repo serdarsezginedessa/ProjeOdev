@@ -13,11 +13,17 @@ using System.Configuration;
 namespace Kobi_v1
 {
     public partial class Form1 : Form
+
     {
+        private ClockManager clockManager;
         public Form1()
         {
             InitializeComponent();
+            clockManager = new ClockManager(lblTime);
+            
+            
         }
+
         static string connectionString = ConfigurationManager.ConnectionStrings["KobiFinans"].ConnectionString;
         SqlConnection baglanti = new SqlConnection(connectionString);
 
@@ -28,8 +34,6 @@ namespace Kobi_v1
                 if (baglanti.State == ConnectionState.Closed)
                 {
                     baglanti.Open();
-                    MessageBox.Show("Bağlantı Başarılı");
-
                 }
             }
             catch (Exception ex)
@@ -42,5 +46,12 @@ namespace Kobi_v1
             }
             
         }
+
+        private void cariListeleriToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCariListele frmCariListele = new FrmCariListele();
+            frmCariListele.ShowDialog();
+        }
+
     }
 }

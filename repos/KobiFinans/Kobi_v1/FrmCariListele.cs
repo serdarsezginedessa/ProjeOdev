@@ -56,20 +56,35 @@ namespace Kobi_v1
 
         static string connectionString = ConfigurationManager.ConnectionStrings["KobiFinans"].ConnectionString;
         SqlConnection baglanti = new SqlConnection(connectionString);
-        private void FrmCariListele_Load(object sender, EventArgs e)
+        string sorguListele = "Select * From Cari";
+        string sorgu = "Select cariID From Cari where cariAdi=@cad";
+        string sorguCari_Tur = @"Select c.CariID,
+                                    c.CariAdi,
+		                            c.Telefon,
+		                            c.Email,
+		                            c.Adres,
+		                            c.VergiNo,
+		                            c.Borc,
+		                            c.Alacak, 
+		                            ct.Ad 
+		                            From cari as c
+		                            INNER JOIN
+		                            CariTuru as ct
+		                            ON
+		                            c.cariTuru = ct.ID";
+        private void CariCariturListele()
         {
             try
             {
-                string sorguListele = "Select * From Cari";
-                string sorgucariadi = "Select cariID From Cari where cariAdi=@cad";
-
+                label6.Visible = false;
                 if (baglanti.State == ConnectionState.Closed) baglanti.Open();
-                
-                SqlDataAdapter da = new SqlDataAdapter(sorguListele, baglanti);
+
+                SqlDataAdapter da = new SqlDataAdapter(sorguCari_Tur, baglanti);
                 DataTable dt = new DataTable();
+                dt.Clear();
                 da.Fill(dt);
                 dataGridView1.DataSource = dt;
-                
+
                 dataGridView1.Columns[0].HeaderText = "ID";
                 dataGridView1.Columns[1].HeaderText = "Cari Adı";
                 dataGridView1.Columns[2].HeaderText = "Telefon";
@@ -78,9 +93,7 @@ namespace Kobi_v1
                 dataGridView1.Columns[5].HeaderText = "Vergi No";
                 dataGridView1.Columns[6].HeaderText = "Borç";
                 dataGridView1.Columns[7].HeaderText = "Alacak";
-                
-
-
+                dataGridView1.Columns[8].HeaderText = "Cari Türü";
             }
             catch (Exception ex)
             {
@@ -90,6 +103,11 @@ namespace Kobi_v1
             {
                 baglanti.Close();
             }
+        }
+
+        private void FrmCariListele_Load(object sender, EventArgs e)
+        {
+            CariCariturListele();
         }
 
         private void btnBorcAlacak_Click(object sender, EventArgs e)
@@ -112,23 +130,31 @@ namespace Kobi_v1
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            label6.Visible = true;
             label6.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            
-            if (e.RowIndex >= 0) // Geçerli bir hücre seçili mi?
+            try
             {
-                // Seçilen hücredeki veriyi al
-                string selectedData = dataGridView1.Rows[e.RowIndex].Cells["cariadi"].Value.ToString(); // Sütun adını belirt
+                if (e.RowIndex >= 0) // Geçerli bir hücre seçili mi?
+                {
+                    // Seçilen hücredeki veriyi al
+                    string selectedData = dataGridView1.Rows[e.RowIndex].Cells["cariadi"].Value.ToString(); // Sütun adını belirt
 
-                // Ana formda ilgili metoda bilgiyi gönder
-                ((FrmCariIslemler)this.Owner).SetCariInfo(selectedData);
+                    // Ana formda ilgili metoda bilgiyi gönder
+                    ((FrmCariIslemler)this.Owner).SetCariInfo(selectedData);
 
-                // Formu kapat
-                this.Close();
+                    // Formu kapat
+                    this.Close();
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hata: " + ex.Message);
+            }
+
         }
     }
     
