@@ -67,7 +67,7 @@ namespace Kobi_v1
             Form frm3 = new FrmKasa(); // Yüklemek istediğiniz form
             LoadFormIntoPanel(frm3, splitContainer1);
         }
-        private void FormOlustur()
+        private void FormOlustur()//Yeni Banka Ekleme Formu
         {
             Form frmBanka = new Form(); // Yüklemek istediğiniz form
             int r = 252;
@@ -146,7 +146,7 @@ namespace Kobi_v1
         }
         private void btnBanka_Click(object sender, EventArgs e)
         {
-            FormOlustur();
+            
         }
     }
 }
