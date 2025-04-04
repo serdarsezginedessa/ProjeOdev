@@ -265,6 +265,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmCariListele";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cari Listesi";
             this.Load += new System.EventHandler(this.FrmCariListele_Load);

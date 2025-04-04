@@ -60,6 +60,7 @@ namespace Kobi_v1
         {
             try
             {
+                label6.Visible = false;
                 string sorguListele = "Select * From Cari";
                 string sorgucariadi = "Select cariID From Cari where cariAdi=@cad";
 
@@ -112,6 +113,7 @@ namespace Kobi_v1
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            label6.Visible = true;
             label6.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
         }
 

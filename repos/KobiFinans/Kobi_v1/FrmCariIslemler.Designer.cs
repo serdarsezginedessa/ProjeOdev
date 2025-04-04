@@ -287,8 +287,13 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.dateTimePicker1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmCariIslemler";
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmCariIslemler";
             this.Load += new System.EventHandler(this.FrmCariIslemler_Load);
             this.groupBox1.ResumeLayout(false);

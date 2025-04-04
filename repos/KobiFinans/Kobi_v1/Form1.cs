@@ -42,5 +42,11 @@ namespace Kobi_v1
             }
             
         }
+
+        private void cariListeleriToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCariListele frmCariListele = new FrmCariListele();
+            frmCariListele.ShowDialog();
+        }
     }
 }
