@@ -53,5 +53,34 @@ namespace Kobi_v1
             frmCariListele.ShowDialog();
         }
 
+        private void cariHareketlerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCariHareketleri frmCariHareketleri = new FrmCariHareketleri();
+            frmCariHareketleri.ShowDialog();
+        }
+
+        private void cariOToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCariEkle frmCariEkle = new FrmCariEkle();
+            frmCariEkle.ShowDialog();
+        }
+
+        private void kasaListesiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmKasa frmKasa = new FrmKasa();
+            frmKasa.ShowDialog();
+        }
+
+        private void kasaHareketleriToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmKasaHareketleri frmKasaHareketleri = new FrmKasaHareketleri();
+            frmKasaHareketleri.ShowDialog();
+        }
+
+        private void bankaListesiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmBanka    frmBanka = new FrmBanka();
+            frmBanka.ShowDialog();
+        }
     }
 }

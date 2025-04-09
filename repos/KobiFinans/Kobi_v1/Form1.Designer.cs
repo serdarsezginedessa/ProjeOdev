@@ -37,6 +37,9 @@
             this.bankaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bankaListesiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblTime = new System.Windows.Forms.Label();
+            this.cariHareketlerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cariOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kasaHareketleriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,7 +62,9 @@
             // cariToolStripMenuItem
             // 
             this.cariToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cariListeleriToolStripMenuItem});
+            this.cariListeleriToolStripMenuItem,
+            this.cariHareketlerToolStripMenuItem,
+            this.cariOToolStripMenuItem});
             this.cariToolStripMenuItem.Name = "cariToolStripMenuItem";
             this.cariToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
             this.cariToolStripMenuItem.Text = "Cari";
@@ -67,14 +72,15 @@
             // cariListeleriToolStripMenuItem
             // 
             this.cariListeleriToolStripMenuItem.Name = "cariListeleriToolStripMenuItem";
-            this.cariListeleriToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
-            this.cariListeleriToolStripMenuItem.Text = "Cari Listeleri";
+            this.cariListeleriToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cariListeleriToolStripMenuItem.Text = "Cari Listesi";
             this.cariListeleriToolStripMenuItem.Click += new System.EventHandler(this.cariListeleriToolStripMenuItem_Click);
             // 
             // kasaToolStripMenuItem
             // 
             this.kasaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.kasaListesiToolStripMenuItem});
+            this.kasaListesiToolStripMenuItem,
+            this.kasaHareketleriToolStripMenuItem});
             this.kasaToolStripMenuItem.Name = "kasaToolStripMenuItem";
             this.kasaToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
             this.kasaToolStripMenuItem.Text = "Kasa";
@@ -82,8 +88,9 @@
             // kasaListesiToolStripMenuItem
             // 
             this.kasaListesiToolStripMenuItem.Name = "kasaListesiToolStripMenuItem";
-            this.kasaListesiToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.kasaListesiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.kasaListesiToolStripMenuItem.Text = "Kasa Listesi";
+            this.kasaListesiToolStripMenuItem.Click += new System.EventHandler(this.kasaListesiToolStripMenuItem_Click);
             // 
             // bankaToolStripMenuItem
             // 
@@ -96,8 +103,9 @@
             // bankaListesiToolStripMenuItem
             // 
             this.bankaListesiToolStripMenuItem.Name = "bankaListesiToolStripMenuItem";
-            this.bankaListesiToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
-            this.bankaListesiToolStripMenuItem.Text = "Banka Listesi";
+            this.bankaListesiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.bankaListesiToolStripMenuItem.Text = "Banka Ekle";
+            this.bankaListesiToolStripMenuItem.Click += new System.EventHandler(this.bankaListesiToolStripMenuItem_Click);
             // 
             // lblTime
             // 
@@ -111,6 +119,27 @@
             this.lblTime.Size = new System.Drawing.Size(172, 40);
             this.lblTime.TabIndex = 2;
             this.lblTime.Text = "20:20:20";
+            // 
+            // cariHareketlerToolStripMenuItem
+            // 
+            this.cariHareketlerToolStripMenuItem.Name = "cariHareketlerToolStripMenuItem";
+            this.cariHareketlerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cariHareketlerToolStripMenuItem.Text = "Cari Hareketler";
+            this.cariHareketlerToolStripMenuItem.Click += new System.EventHandler(this.cariHareketlerToolStripMenuItem_Click);
+            // 
+            // cariOToolStripMenuItem
+            // 
+            this.cariOToolStripMenuItem.Name = "cariOToolStripMenuItem";
+            this.cariOToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cariOToolStripMenuItem.Text = "Cari Tanımla";
+            this.cariOToolStripMenuItem.Click += new System.EventHandler(this.cariOToolStripMenuItem_Click);
+            // 
+            // kasaHareketleriToolStripMenuItem
+            // 
+            this.kasaHareketleriToolStripMenuItem.Name = "kasaHareketleriToolStripMenuItem";
+            this.kasaHareketleriToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.kasaHareketleriToolStripMenuItem.Text = "Kasa Hareketleri";
+            this.kasaHareketleriToolStripMenuItem.Click += new System.EventHandler(this.kasaHareketleriToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -146,6 +175,9 @@
         private System.Windows.Forms.ToolStripMenuItem kasaListesiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bankaListesiToolStripMenuItem;
         private System.Windows.Forms.Label lblTime;
+        private System.Windows.Forms.ToolStripMenuItem cariHareketlerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cariOToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem kasaHareketleriToolStripMenuItem;
     }
 }
 

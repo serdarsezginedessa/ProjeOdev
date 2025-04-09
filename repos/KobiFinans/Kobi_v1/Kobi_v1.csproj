@@ -71,6 +71,18 @@
     <Compile Include="FrmAyarlar.Designer.cs">
       <DependentUpon>FrmAyarlar.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmBanka.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBanka.Designer.cs">
+      <DependentUpon>FrmBanka.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBankaListe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBankaListe.Designer.cs">
+      <DependentUpon>FrmBankaListe.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmCariEkle.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -171,6 +183,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAyarlar.resx">
       <DependentUpon>FrmAyarlar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBanka.resx">
+      <DependentUpon>FrmBanka.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBankaListe.resx">
+      <DependentUpon>FrmBankaListe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCariEkle.resx">
       <DependentUpon>FrmCariEkle.cs</DependentUpon>
