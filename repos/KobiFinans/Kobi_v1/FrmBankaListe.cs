@@ -25,13 +25,17 @@ namespace Kobi_v1
         SqlConnection baglanti = new SqlConnection(connectionString);
         private void dtHeader()
         {
-            dataGridView1.ColumnCount = 5;
-            dataGridView1.Columns[0].HeaderText = "Banka Adı";
-            dataGridView1.Columns[1].HeaderText = "Şube Adı";
-            dataGridView1.Columns[2].HeaderText = "Hesap No";
-            dataGridView1.Columns[3].HeaderText = "IBAN";
-            dataGridView1.Columns[4].HeaderText = "Eklenme Tarihi";
-           
+            if (dataGridView1.Columns.Count == 0)
+
+              {
+                dataGridView1.Columns.Add("BankaAd", "Banka Adı");
+                dataGridView1.Columns.Add("BankaSube", "Şube Adı");
+                dataGridView1.Columns.Add("HesapNo", "Hesap No");
+                dataGridView1.Columns.Add("IBAN", "IBAN");
+                dataGridView1.Columns.Add("EklenmeTarihi", "Eklenme Tarihi");
+            }
+
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -41,15 +45,25 @@ namespace Kobi_v1
                 if(baglanti.State==ConnectionState.Closed) 
                 {
                     baglanti.Open();
-                    SqlCommand kmt = new SqlCommand("select BankaAd,BankaSube,HesapNo,IBAN,EklenmeTarihi from Bankalar where BankaAd like @bad", baglanti);
-                    kmt.Parameters.AddWithValue("@bad", textBox1.Text + "%");
-                    SqlDataAdapter da = new SqlDataAdapter(kmt);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-                    dataGridView1.DataSource = dt;
-                    
-                    
+                    if (textBox1.Text=="")
+                    {
+                        dataGridView1.Rows.Clear();
+                    }
+                    else
+                    {
+                        SqlCommand kmt = new SqlCommand("select BankaAd,BankaSube,HesapNo,IBAN,EklenmeTarihi from Bankalar where BankaAd like @bad", baglanti);
+                        kmt.Parameters.AddWithValue("@bad", textBox1.Text + "%");
+                        SqlDataAdapter da = new SqlDataAdapter(kmt);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
 
+                        dataGridView1.Rows.Clear(); // Mevcut satırları temizleyin Manuel Eklediğim Başlıklar Bozulmuyor..
+                        foreach (DataRow row in dt.Rows)
+                        {
+                            dataGridView1.Rows.Add(row.ItemArray); // Satırlar ekleniyor..
+                        }
+                    }
+                    
                 }
             }
             catch (Exception hata)
@@ -60,6 +74,11 @@ namespace Kobi_v1
             {
                 baglanti.Close();
             }
+        }
+
+        private void FrmBankaListe_Load(object sender, EventArgs e)
+        {
+            dtHeader();
         }
     }
 }
