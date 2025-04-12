@@ -24,15 +24,23 @@ namespace Kobi_v1
         SqlConnection baglanti = new SqlConnection(connectionString);
         string sorguListele = "Select * From Cari";
         string sorgu = "Select cariID From Cari where cariAdi=@cad";
-        string sorguCari_Tur = @"Select c.CariID,
+        string sorguCari_Tur = @"Select 
+                                    c.CariKod,
                                     c.CariAdi,
+                                    ct.Ad,
+                                    c.Yetkili,
 		                            c.Telefon,
-		                            c.Email,
+		                            c.Eposta,
 		                            c.Adres,
+                                    c.Sehir,
+                                    c.Ulke,
+                                    c.VergiDairesi,
 		                            c.VergiNo,
-		                            c.Borc,
-		                            c.Alacak, 
-		                            ct.Ad 
+                                    c.DogumTarihi,
+                                    c.EvlilikTarihi,
+                                    c.KayitTarihi,
+                                    c.Durum,
+                                    c.Aciklama
 		                            From cari as c
 		                            INNER JOIN
 		                            CariTuru as ct
@@ -43,83 +51,58 @@ namespace Kobi_v1
         {
             if (dataGridView1.Columns.Count == 0)
             {
-                dataGridView1.Columns.Add("ID", "Cari No");
-                dataGridView1.Columns.Add("Cari Adı", "Cari Adı");
-                dataGridView1.Columns.Add("Telefon", "Telefon");
-                dataGridView1.Columns.Add("E-Posta", "E-Posta");
-                dataGridView1.Columns.Add("Adres", "Adres");
-                dataGridView1.Columns.Add("Vergi No", "Vergi No");
-                dataGridView1.Columns.Add("Borç", "Borç");
-                dataGridView1.Columns.Add("Alacak", "Alacak");
-                dataGridView1.Columns.Add("Cari Türü", "Cari Türü");
+                dataGridView1.Columns.Clear();
+                dataGridView1.AutoGenerateColumns = false; // Otomatik sütun oluşturmayı kapat
+                                                           //dataGridView1.Columns.Add("ID", "Cari No");
+                dataGridView1.Columns.Add("c.CariKod", "Cari Kodu");
+                dataGridView1.Columns.Add("c.CariAdi", "Cari Adı");
+                dataGridView1.Columns.Add("ct.Ad", -----------------------------------------------------------------------------------------**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************---+--------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+++++*-++*"Cari Turü");
+                dataGridView1.Columns.Add("c.Yetkili", "Yetkili");
+                dataGridView1.Columns.Add("c.Telefon", "Telefon");
+                dataGridView1.Columns.Add("c.EPosta", "E-Posta");
+                dataGridView1.Columns.Add("c.Adres", "Adres");
+                dataGridView1.Columns.Add("c.Sehir", "Şehir");
+                dataGridView1.Columns.Add("c.Ulke", "Ülke");
+                dataGridView1.Columns.Add("c.VergiDairesi", "Vergi D.");
+                dataGridView1.Columns.Add("c.VergiNo", "Vergi No");
+                dataGridView1.Columns.Add("c.DogumTarihi", "Doğum T.");
+                dataGridView1.Columns.Add("c.EvlilikTarihi", "Evlilik T.");
+                dataGridView1.Columns.Add("c.KayitTarihi", "Kayıt T.");
+                dataGridView1.Columns.Add("c.Durum", "Durum");
+                dataGridView1.Columns.Add("c.Aciklama", "Açıklama");
+            }
+            
+          
+        }
+        private void listele()
+        {
+            try
+            {
+                if (baglanti.State == ConnectionState.Closed) baglanti.Open();
+
+                SqlCommand kmt = new SqlCommand(sorguCari_Tur, baglanti);
+                SqlDataAdapter da = new SqlDataAdapter(kmt);
+                DataTable dt = new DataTable();
+                da.Fill(dt);                
+                dataGridView1.DataSource = dt;
+                baglanti.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hata: " + ex.Message);
             }
         }
 
         private void FrmCariListele_Load(object sender, EventArgs e)
         {
+            dtHeader();
+            listele();
             
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
-
-
-
-
-
-
-
-
-
-
-
-        /*private void btnBorcAlacak_Click(object sender, EventArgs e)
-        {
-            FrmCariHareketleri frmCariHareketleri = new FrmCariHareketleri();
-            frmCariHareketleri.cariad = ad.ToString();
-            frmCariHareketleri.adres = adres.ToString();
-            frmCariHareketleri.alacak = alacak.ToString();
-            frmCariHareketleri.borc = borc.ToString();
-            frmCariHareketleri.telefon = tel.ToString();
-            frmCariHareketleri.ShowDialog();
-            
-        }*/
-
-
-        /*  private void CariCariturListele()
-  {
-      try
-      {
-          label6.Visible = false;
-          if (baglanti.State == ConnectionState.Closed) baglanti.Open();
-
-          SqlDataAdapter da = new SqlDataAdapter(sorguCari_Tur, baglanti);
-          DataTable dt = new DataTable();
-          dt.Clear();
-          da.Fill(dt);
-          dataGridView1.DataSource = dt;
-
-          dataGridView1.Columns[0].HeaderText = "ID";
-          dataGridView1.Columns[1].HeaderText = "Cari Adı";
-          dataGridView1.Columns[2].HeaderText = "Telefon";
-          dataGridView1.Columns[3].HeaderText = "E-Posta";
-          dataGridView1.Columns[4].HeaderText = "Adres";
-          dataGridView1.Columns[5].HeaderText = "Vergi No";
-          dataGridView1.Columns[6].HeaderText = "Borç";
-          dataGridView1.Columns[7].HeaderText = "Alacak";
-          dataGridView1.Columns[8].HeaderText = "Cari Türü";
-      }
-      catch (Exception ex)
-      {
-          MessageBox.Show(ex.Message);
-      }
-      finally
-      {
-          baglanti.Close();
-      }
-  }*/
-
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
