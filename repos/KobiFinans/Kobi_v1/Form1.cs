@@ -77,10 +77,18 @@ namespace Kobi_v1
             frmKasaHareketleri.ShowDialog();
         }
 
-        private void bankaListesiToolStripMenuItem_Click(object sender, EventArgs e)
+
+
+        private void bankaHareketleriToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmBanka    frmBanka = new FrmBanka();
-            frmBanka.ShowDialog();
+            FrmBankaHareket frmBankaHareket = new FrmBankaHareket();
+            frmBankaHareket.ShowDialog();
+        }
+
+        private void bankalarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmBankaListe frmBankaListe = new FrmBankaListe();
+            frmBankaListe.ShowDialog();
         }
     }
 }

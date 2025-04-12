@@ -18,41 +18,7 @@ namespace Kobi_v1
         {
             InitializeComponent();
         }
-        public int id
-        {
-            get { return Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value); }
-            
-        }
         
-        public  string ad
-        {
-            get { return label6.Text; }
-
-        }
-        public string tel
-        {
-            get { return dataGridView1.CurrentRow.Cells[2].Value.ToString(); }
-        }
-        public string eposta
-        {
-            get { return dataGridView1.CurrentRow.Cells[3].Value.ToString(); }
-        }
-        public string adres
-        {
-            get { return dataGridView1.CurrentRow.Cells[4].Value.ToString(); }
-        }
-        public string vergiNo
-        {
-            get { return dataGridView1.CurrentRow.Cells[5].Value.ToString(); }
-        }
-        public decimal borc
-        {
-            get { return Convert.ToDecimal(dataGridView1.CurrentRow.Cells[6].Value); }
-        }
-        public decimal alacak
-        {
-            get { return Convert.ToDecimal(dataGridView1.CurrentRow.Cells[7].Value); }
-        }
 
         static string connectionString = ConfigurationManager.ConnectionStrings["KobiFinans"].ConnectionString;
         SqlConnection baglanti = new SqlConnection(connectionString);
@@ -72,45 +38,43 @@ namespace Kobi_v1
 		                            CariTuru as ct
 		                            ON
 		                            c.cariTuru = ct.ID";
-        private void CariCariturListele()
+
+        private void dtHeader()
         {
-            try
+            if (dataGridView1.Columns.Count == 0)
             {
-                label6.Visible = false;
-                if (baglanti.State == ConnectionState.Closed) baglanti.Open();
-
-                SqlDataAdapter da = new SqlDataAdapter(sorguCari_Tur, baglanti);
-                DataTable dt = new DataTable();
-                dt.Clear();
-                da.Fill(dt);
-                dataGridView1.DataSource = dt;
-
-                dataGridView1.Columns[0].HeaderText = "ID";
-                dataGridView1.Columns[1].HeaderText = "Cari Adı";
-                dataGridView1.Columns[2].HeaderText = "Telefon";
-                dataGridView1.Columns[3].HeaderText = "E-Posta";
-                dataGridView1.Columns[4].HeaderText = "Adres";
-                dataGridView1.Columns[5].HeaderText = "Vergi No";
-                dataGridView1.Columns[6].HeaderText = "Borç";
-                dataGridView1.Columns[7].HeaderText = "Alacak";
-                dataGridView1.Columns[8].HeaderText = "Cari Türü";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                baglanti.Close();
+                dataGridView1.Columns.Add("ID", "Cari No");
+                dataGridView1.Columns.Add("Cari Adı", "Cari Adı");
+                dataGridView1.Columns.Add("Telefon", "Telefon");
+                dataGridView1.Columns.Add("E-Posta", "E-Posta");
+                dataGridView1.Columns.Add("Adres", "Adres");
+                dataGridView1.Columns.Add("Vergi No", "Vergi No");
+                dataGridView1.Columns.Add("Borç", "Borç");
+                dataGridView1.Columns.Add("Alacak", "Alacak");
+                dataGridView1.Columns.Add("Cari Türü", "Cari Türü");
             }
         }
 
         private void FrmCariListele_Load(object sender, EventArgs e)
         {
-            CariCariturListele();
+            
+        }
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
 
-        private void btnBorcAlacak_Click(object sender, EventArgs e)
+
+
+
+
+
+
+
+
+
+
+        /*private void btnBorcAlacak_Click(object sender, EventArgs e)
         {
             FrmCariHareketleri frmCariHareketleri = new FrmCariHareketleri();
             frmCariHareketleri.cariad = ad.ToString();
@@ -120,19 +84,42 @@ namespace Kobi_v1
             frmCariHareketleri.telefon = tel.ToString();
             frmCariHareketleri.ShowDialog();
             
-        }
+        }*/
 
-        private void btnCariAdd_Click(object sender, EventArgs e)
-        {
-            FrmCariEkle frmCariEkle = new FrmCariEkle();
-            frmCariEkle.ShowDialog();
-        }
 
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            label6.Visible = true;
-            label6.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-        }
+        /*  private void CariCariturListele()
+  {
+      try
+      {
+          label6.Visible = false;
+          if (baglanti.State == ConnectionState.Closed) baglanti.Open();
+
+          SqlDataAdapter da = new SqlDataAdapter(sorguCari_Tur, baglanti);
+          DataTable dt = new DataTable();
+          dt.Clear();
+          da.Fill(dt);
+          dataGridView1.DataSource = dt;
+
+          dataGridView1.Columns[0].HeaderText = "ID";
+          dataGridView1.Columns[1].HeaderText = "Cari Adı";
+          dataGridView1.Columns[2].HeaderText = "Telefon";
+          dataGridView1.Columns[3].HeaderText = "E-Posta";
+          dataGridView1.Columns[4].HeaderText = "Adres";
+          dataGridView1.Columns[5].HeaderText = "Vergi No";
+          dataGridView1.Columns[6].HeaderText = "Borç";
+          dataGridView1.Columns[7].HeaderText = "Alacak";
+          dataGridView1.Columns[8].HeaderText = "Cari Türü";
+      }
+      catch (Exception ex)
+      {
+          MessageBox.Show(ex.Message);
+      }
+      finally
+      {
+          baglanti.Close();
+      }
+  }*/
+
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -140,14 +127,7 @@ namespace Kobi_v1
             {
                 if (e.RowIndex >= 0) // Geçerli bir hücre seçili mi?
                 {
-                    // Seçilen hücredeki veriyi al
-                    string selectedData = dataGridView1.Rows[e.RowIndex].Cells["cariadi"].Value.ToString(); // Sütun adını belirt
-
-                    // Ana formda ilgili metoda bilgiyi gönder
-                    ((FrmCariIslemler)this.Owner).SetCariInfo(selectedData);
-
-                    // Formu kapat
-                    this.Close();
+                    
                 }
             }
             catch (Exception ex)
@@ -157,5 +137,5 @@ namespace Kobi_v1
 
         }
     }
-    
+
 }

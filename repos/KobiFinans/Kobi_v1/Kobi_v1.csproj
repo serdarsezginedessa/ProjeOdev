@@ -77,6 +77,12 @@
     <Compile Include="FrmBanka.Designer.cs">
       <DependentUpon>FrmBanka.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmBankaHareket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBankaHareket.Designer.cs">
+      <DependentUpon>FrmBankaHareket.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmBankaListe.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,11 +137,11 @@
     <Compile Include="FrmGelirGiderTipi.Designer.cs">
       <DependentUpon>FrmGelirGiderTipi.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmKasa.cs">
+    <Compile Include="FrmKasaListesi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmKasa.Designer.cs">
-      <DependentUpon>FrmKasa.cs</DependentUpon>
+    <Compile Include="FrmKasaListesi.Designer.cs">
+      <DependentUpon>FrmKasaListesi.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmKasaEkle.cs">
       <SubType>Form</SubType>
@@ -187,6 +193,9 @@
     <EmbeddedResource Include="FrmBanka.resx">
       <DependentUpon>FrmBanka.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmBankaHareket.resx">
+      <DependentUpon>FrmBankaHareket.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmBankaListe.resx">
       <DependentUpon>FrmBankaListe.cs</DependentUpon>
     </EmbeddedResource>
@@ -214,8 +223,8 @@
     <EmbeddedResource Include="FrmGelirGiderTipi.resx">
       <DependentUpon>FrmGelirGiderTipi.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmKasa.resx">
-      <DependentUpon>FrmKasa.cs</DependentUpon>
+    <EmbeddedResource Include="FrmKasaListesi.resx">
+      <DependentUpon>FrmKasaListesi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmKasaEkle.resx">
       <DependentUpon>FrmKasaEkle.cs</DependentUpon>
@@ -307,7 +316,13 @@
     <None Include="Resources\Bank Building.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Restart.png" />
+    <None Include="Resources\Add1.png" />
     <Content Include="Resources\Bank.ico" />
+    <None Include="Resources\Minus48px.png" />
+    <None Include="Resources\Minus_64px.png" />
+    <None Include="Resources\Search More.png" />
+    <None Include="Resources\Filter.png" />
     <None Include="Resources\clear.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

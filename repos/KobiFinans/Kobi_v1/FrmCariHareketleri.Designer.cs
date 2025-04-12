@@ -360,7 +360,7 @@
             this.Name = "FrmCariHareketleri";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cari Hareketler";
+            this.Text = "Cari Raporları";
             this.Load += new System.EventHandler(this.FrmCariHareketleri_Load_1);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
