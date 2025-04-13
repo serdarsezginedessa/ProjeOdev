@@ -60,6 +60,7 @@ namespace Kobi_v1
 		                            CariTuru as ct
 		                            ON
 		                            c.cariTuru = ct.ID";
+        public string cariKodUretilmis;
 
         private void cariTurListele()
         {
@@ -92,24 +93,6 @@ namespace Kobi_v1
         }
 
 
-        private void Listele()
-        {
-           
-
-        }
-
-
-        void temizle()
-        {
-
-        }
-
-
-
-
-
-
-
         private void btnTurEkle_Click(object sender, EventArgs e)
         {
             FrmCariTurEkle frmCariTurEkle = new FrmCariTurEkle();
@@ -126,17 +109,20 @@ namespace Kobi_v1
             btnSil.Enabled = false;
             //Form yüklendiğinde cari türlerini listele
             cariTurListele();
+
         }
 
         private void combTur_SelectedIndexChanged(object sender, EventArgs e)
         {
-           if(combTur.SelectedIndex<=0)
+            //txtKod.Text = combTur.SelectedItem.ToString();
+
+            /*if (combTur.SelectedIndex <= 0)
             {
                 txtKod.Text = "";
                 return;
             }
 
-            string secilenTur=combTur.SelectedItem.ToString();
+            string secilenTur = combTur.SelectedItem.ToString();
             string prefix = "";
             int prefixCount = 1;
 
@@ -150,7 +136,7 @@ namespace Kobi_v1
                 SqlCommand kmt = new SqlCommand(sorguprefix, baglanti);
 
                 kmt.Parameters.AddWithValue("@tur", secilenTur);
-    
+
                 prefix = (string)kmt.ExecuteScalar();
 
                 // Aynı prefix'le başlayan kaç cari var kontrol et
@@ -171,8 +157,7 @@ namespace Kobi_v1
             {
                 txtKod.Text = prefix + prefixCount.ToString("D3");
                 baglanti.Close();
-            }
-            
+            }*/
         }
 
         private void chcDurum_CheckedChanged(object sender, EventArgs e)
@@ -189,9 +174,53 @@ namespace Kobi_v1
 
         private void btnEkle_Click(object sender, EventArgs e)
         {
+            
             try
             {
-                if(combTur.SelectedItem == null || combTur.SelectedItem.ToString() == "Tür Seçiniz")
+                if (combTur.SelectedIndex <= 0)
+                {
+                    txtKod.Text = "";
+                    return;
+                }
+
+                string secilenTur = combTur.SelectedItem.ToString();
+                string prefix = "";
+                int prefixCount = 1;
+
+                try
+                {
+                    if (baglanti.State == ConnectionState.Closed) baglanti.Open();
+
+                    //prefix veritabanından çekiliyor.
+
+                    string sorguprefix = "select prefix from CariTuru where Ad=@tur";
+                    SqlCommand kmt = new SqlCommand(sorguprefix, baglanti);
+
+                    kmt.Parameters.AddWithValue("@tur", secilenTur);
+
+                    prefix = (string)kmt.ExecuteScalar();
+
+                    // Aynı prefix'le başlayan kaç cari var kontrol et
+
+                    string sorguprefixCount = "select count(*) from Cari where CariKod LIKE @prefix + '%'";
+                    SqlCommand kmt1 = new SqlCommand(sorguprefixCount, baglanti);
+                    kmt1.Parameters.AddWithValue("@prefix", prefix);
+
+                    prefixCount = (int)kmt1.ExecuteScalar() + 1;
+
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Hata: " + ex.Message);
+                }
+                finally
+                {
+                    string cariKodUretilmis = prefix + prefixCount.ToString("D3");
+                    txtKod.Text = cariKodUretilmis;
+                    baglanti.Close();
+                }
+                if (combTur.SelectedItem == null || combTur.SelectedItem.ToString() == "Tür Seçiniz")
                 {
                     MessageBox.Show("Lütfen Cari Türü Seçiniz");
                     return;
@@ -214,7 +243,7 @@ namespace Kobi_v1
                 string aciklama = txtAciklama.Text;
 
                 //Otomatik cari kod üretecek
-                string carikod=txtKod.Text;
+                string carikod=cariKodUretilmis;
                 if(chcDurum.Checked)
                 {
                     durum = true;
@@ -224,12 +253,12 @@ namespace Kobi_v1
                     durum = false;
                 }
 
-                if (string.IsNullOrEmpty(cariAdi)|| string.IsNullOrEmpty(carikod) || string.IsNullOrEmpty(cariTur))
+                if (string.IsNullOrEmpty(cariAdi))
                 {
                     MessageBox.Show("Lütfen Bos Alanları Doldurunuz");
                     return;
                 }
-                if(baglanti.State == ConnectionState.Closed)
+                if (baglanti.State == ConnectionState.Closed)
                 {
                     baglanti.Open();
 
@@ -248,31 +277,31 @@ namespace Kobi_v1
                                                     "(@carikod,@cariadi,@caritur,@yetkili,@telefon,@eposta,@Adres,@sehir,@ulke," +
                                                     "@vergiDairesi,@VergiNo,@dtarih,@evltarih,@kaytarih,@durum,@aciklama)";
 
-                    SqlCommand kmt = new SqlCommand(sorguEkle, baglanti);
+                    SqlCommand kmtEkle = new SqlCommand(sorguEkle, baglanti);
                     // Parametreleri ekle
-                    kmt.Parameters.AddWithValue("@caritur", cariTuruID);
-                    kmt.Parameters.AddWithValue("@carikod", carikod);
-                    kmt.Parameters.AddWithValue("@cariadi", cariAdi);
-                    kmt.Parameters.AddWithValue("@yetkili", yetkili);
-                    kmt.Parameters.AddWithValue("@telefon", telefon);
-                    kmt.Parameters.AddWithValue("@eposta", eposta);
-                    kmt.Parameters.AddWithValue("@Adres", adres);
-                    kmt.Parameters.AddWithValue("@sehir", sehir);
-                    kmt.Parameters.AddWithValue("@ulke", ulke);
-                    kmt.Parameters.AddWithValue("@vergiDairesi", vergiDairesi);
-                    kmt.Parameters.AddWithValue("@VergiNo", vergiNo);
-                    kmt.Parameters.AddWithValue("@dtarih", Convert.ToDateTime(dtarih));
-                    kmt.Parameters.AddWithValue("@evltarih", Convert.ToDateTime(evltarih));
-                    kmt.Parameters.AddWithValue("@kaytarih", Convert.ToDateTime(kaytarih));
-                    kmt.Parameters.AddWithValue("@durum", Convert.ToInt32(durum));
-                    kmt.Parameters.AddWithValue("@aciklama", aciklama);
+                    kmtEkle.Parameters.AddWithValue("@caritur", cariTuruID);
+                    kmtEkle.Parameters.AddWithValue("@carikod", carikod);
+                    kmtEkle.Parameters.AddWithValue("@cariadi", cariAdi);
+                    kmtEkle.Parameters.AddWithValue("@yetkili", yetkili);
+                    kmtEkle.Parameters.AddWithValue("@telefon", telefon);
+                    kmtEkle.Parameters.AddWithValue("@eposta", eposta);
+                    kmtEkle.Parameters.AddWithValue("@Adres", adres);
+                    kmtEkle.Parameters.AddWithValue("@sehir", sehir);
+                    kmtEkle.Parameters.AddWithValue("@ulke", ulke);
+                    kmtEkle.Parameters.AddWithValue("@vergiDairesi", vergiDairesi);
+                    kmtEkle.Parameters.AddWithValue("@VergiNo", vergiNo);
+                    kmtEkle.Parameters.AddWithValue("@dtarih", Convert.ToDateTime(dtarih));
+                    kmtEkle.Parameters.AddWithValue("@evltarih", Convert.ToDateTime(evltarih));
+                    kmtEkle.Parameters.AddWithValue("@kaytarih", Convert.ToDateTime(kaytarih));
+                    kmtEkle.Parameters.AddWithValue("@durum", Convert.ToInt32(durum));
+                    kmtEkle.Parameters.AddWithValue("@aciklama", aciklama);
                     
-                    int result = kmt.ExecuteNonQuery();
+                    int result = kmtEkle.ExecuteNonQuery();
                     if (result > 0)
                     {
                         // Başarılı ekleme işlemi
                         MessageBox.Show("Cari Eklendi");
-                        temizle();
+                        //temizle();
                     }
                     else
                     {
@@ -290,14 +319,72 @@ namespace Kobi_v1
             finally
             {
                 baglanti.Close();
-                temizle();
+                //temizle();
+            }
+        }
+
+        private void btnSil_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(txtID.Text))
+                {
+                    MessageBox.Show("Lütfen Silinecek Cari Seçiniz");
+                    return;
+                }
+                if (baglanti.State == ConnectionState.Closed) baglanti.Open();
+                SqlCommand kmt = new SqlCommand(sorguSil, baglanti);
+                kmt.Parameters.AddWithValue("@CariId", txtID.Text);
+                kmt.ExecuteNonQuery();
+                MessageBox.Show("Cari Silindi");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hata: " + ex.Message);
+            }
+            finally
+            {
+                baglanti.Close();
+                //temizle();
             }
         }
 
         private void btnAra_Click(object sender, EventArgs e)
         {
             FrmCariListele frmCariListele = new FrmCariListele();
+            frmCariListele.CagrilanForm = this;
             frmCariListele.ShowDialog();
+        }
+        public void CariBilgileriYukle( string cariKod,string cariAdi, string cariTuru, string yetkili, string telefon, string eposta, 
+            string adres, string sehir,string ulke, string vergidairesi , string vergiNo, string dtarih, string etarih,string ktarih, string durum,string aciklama)
+        {
+            txtKod.Text = cariKod;
+            txtAd.Text = cariAdi;
+            combTur.SelectedItem = cariTuru;
+            txtYetkili.Text = yetkili;
+            txtTel.Text = telefon;
+            txtEposta.Text = eposta;
+            txtAdres.Text = adres;
+            txtSehir.Text = sehir;
+            txtUlke.Text = ulke;
+            txtVergiD.Text = vergidairesi;
+            txtVergiNo.Text = vergiNo;
+            dateDogum.Value = Convert.ToDateTime(dtarih);
+            dateEvlilik.Value = Convert.ToDateTime(etarih);
+            dateKayit.Value = Convert.ToDateTime(ktarih);
+            if (durum=="True")
+            {
+                chcDurum.Checked = true;
+            }
+            else
+            {
+                chcDurum.Checked = false;
+            }
+            txtAciklama.Text = aciklama;
+            
+            btnEkle.Enabled = false;
+            btnGuncelle.Enabled = true;
+            btnSil.Enabled = true;
         }
     }
 }

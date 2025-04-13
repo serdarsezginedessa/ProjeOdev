@@ -316,6 +316,7 @@
     <None Include="Resources\Bank Building.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Search More36px.png" />
     <None Include="Resources\Restart.png" />
     <None Include="Resources\Add1.png" />
     <Content Include="Resources\Bank.ico" />

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
+using System.Data.Common.CommandTrees.ExpressionBuilder;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
@@ -14,11 +15,15 @@ namespace Kobi_v1
 {
     public partial class FrmCariListele : Form
     {
+        
+
         public FrmCariListele()
         {
             InitializeComponent();
+            
         }
-        
+        public Form CagrilanForm { get; set; }
+
 
         static string connectionString = ConfigurationManager.ConnectionStrings["KobiFinans"].ConnectionString;
         SqlConnection baglanti = new SqlConnection(connectionString);
@@ -47,16 +52,16 @@ namespace Kobi_v1
 		                            ON
 		                            c.cariTuru = ct.ID";
 
-        private void dtHeader()
+        private void dtHeader() // datagridview1 başlıkları ekleniyor..
         {
             if (dataGridView1.Columns.Count == 0)
             {
                 dataGridView1.Columns.Clear();
-                dataGridView1.AutoGenerateColumns = false; // Otomatik sütun oluşturmayı kapat
+               
                                                            //dataGridView1.Columns.Add("ID", "Cari No");
                 dataGridView1.Columns.Add("c.CariKod", "Cari Kodu");
                 dataGridView1.Columns.Add("c.CariAdi", "Cari Adı");
-                dataGridView1.Columns.Add("ct.Ad", -----------------------------------------------------------------------------------------**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************---+--------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+++++*-++*"Cari Turü");
+                dataGridView1.Columns.Add("ct.Ad", "Cari Turü");
                 dataGridView1.Columns.Add("c.Yetkili", "Yetkili");
                 dataGridView1.Columns.Add("c.Telefon", "Telefon");
                 dataGridView1.Columns.Add("c.EPosta", "E-Posta");
@@ -83,8 +88,13 @@ namespace Kobi_v1
                 SqlCommand kmt = new SqlCommand(sorguCari_Tur, baglanti);
                 SqlDataAdapter da = new SqlDataAdapter(kmt);
                 DataTable dt = new DataTable();
-                da.Fill(dt);                
-                dataGridView1.DataSource = dt;
+                da.Fill(dt);
+                //dataGridView1.DataSource = dt;
+                dataGridView1.Rows.Clear(); // Mevcut satırları temizleyin Manuel Eklediğim Başlıklar Bozulmuyor..
+                foreach (DataRow row in dt.Rows)
+                {
+                    dataGridView1.Rows.Add(row.ItemArray); // Satırlar ekleniyor..
+                }
                 baglanti.Close();
             }
             catch (Exception ex)
@@ -93,31 +103,50 @@ namespace Kobi_v1
             }
         }
 
+
         private void FrmCariListele_Load(object sender, EventArgs e)
         {
             dtHeader();
             listele();
             
         }
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
+            if (e.RowIndex >= 0)
             {
-                if (e.RowIndex >= 0) // Geçerli bir hücre seçili mi?
-                {
-                    
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Hata: " + ex.Message);
-            }
+                DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
+                string cariKod = row.Cells["c.CariKod"].Value.ToString();
+                string cariAdi = row.Cells["c.CariAdi"].Value.ToString();
+                string cariTur = row.Cells["ct.Ad"].Value.ToString();
+                string yetkili = row.Cells["c.Yetkili"].Value.ToString();
+                string telefon = row.Cells["c.Telefon"].Value.ToString();
+                string ePosta = row.Cells["c.EPosta"].Value.ToString();
+                string adres = row.Cells["c.Adres"].Value.ToString();
+                string sehir = row.Cells["c.Sehir"].Value.ToString();
+                string ulke = row.Cells["c.Ulke"].Value.ToString();
+                string vergiDairesi = row.Cells["c.VergiDairesi"].Value.ToString();
+                string vergiNo = row.Cells["c.VergiNo"].Value.ToString();
+                string dogumTarihi = row.Cells["c.DogumTarihi"].Value.ToString();
+                string evlilikTarihi = row.Cells["c.EvlilikTarihi"].Value.ToString();
+                string kayitTarihi = row.Cells["c.KayitTarihi"].Value.ToString();
+                string durum = row.Cells["c.Durum"].Value.ToString();
+                string aciklama = row.Cells["c.Aciklama"].Value.ToString();
 
+                //Hangi Formdan Geldiysek veriyi o forma gönderiyoruz.
+
+                if(CagrilanForm is FrmCariEkle)
+                {
+                    var hedefForm= CagrilanForm as FrmCariEkle;
+                    hedefForm.CariBilgileriYukle(cariKod,cariAdi, cariTur, yetkili, telefon, ePosta, adres, sehir, ulke, vergiDairesi, vergiNo, dogumTarihi, evlilikTarihi, kayitTarihi, durum, aciklama);
+
+                }
+                else
+                {
+
+                }
+                this.Close();
+            }
         }
     }
 
