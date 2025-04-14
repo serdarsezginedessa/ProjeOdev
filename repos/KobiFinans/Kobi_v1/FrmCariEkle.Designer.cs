@@ -30,10 +30,18 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCariEkle));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.checboxeTarih = new System.Windows.Forms.CheckBox();
+            this.checboxdTarih = new System.Windows.Forms.CheckBox();
+            this.btnAra = new System.Windows.Forms.Button();
             this.btnTurEkle = new System.Windows.Forms.Button();
             this.combTur = new System.Windows.Forms.ComboBox();
             this.txtTel = new System.Windows.Forms.MaskedTextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnSil = new System.Windows.Forms.Button();
+            this.btnEkle = new System.Windows.Forms.Button();
+            this.btnYeniKayit = new System.Windows.Forms.Button();
+            this.btniptal = new System.Windows.Forms.Button();
+            this.btnGuncelle = new System.Windows.Forms.Button();
             this.chcDurum = new System.Windows.Forms.CheckBox();
             this.dateKayit = new System.Windows.Forms.DateTimePicker();
             this.dateEvlilik = new System.Windows.Forms.DateTimePicker();
@@ -66,16 +74,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnAra = new System.Windows.Forms.Button();
-            this.btnSil = new System.Windows.Forms.Button();
-            this.btnEkle = new System.Windows.Forms.Button();
-            this.btnGuncelle = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.checboxeTarih);
+            this.panel1.Controls.Add(this.checboxdTarih);
             this.panel1.Controls.Add(this.btnAra);
             this.panel1.Controls.Add(this.btnTurEkle);
             this.panel1.Controls.Add(this.combTur);
@@ -116,8 +122,45 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(873, 399);
+            this.panel1.Size = new System.Drawing.Size(873, 443);
             this.panel1.TabIndex = 11;
+            // 
+            // checboxeTarih
+            // 
+            this.checboxeTarih.AutoSize = true;
+            this.checboxeTarih.Location = new System.Drawing.Point(581, 89);
+            this.checboxeTarih.Name = "checboxeTarih";
+            this.checboxeTarih.Size = new System.Drawing.Size(18, 17);
+            this.checboxeTarih.TabIndex = 30;
+            this.checboxeTarih.UseVisualStyleBackColor = true;
+            this.checboxeTarih.CheckedChanged += new System.EventHandler(this.checboxeTarih_CheckedChanged_1);
+            // 
+            // checboxdTarih
+            // 
+            this.checboxdTarih.AutoSize = true;
+            this.checboxdTarih.Location = new System.Drawing.Point(581, 53);
+            this.checboxdTarih.Name = "checboxdTarih";
+            this.checboxdTarih.Size = new System.Drawing.Size(18, 17);
+            this.checboxdTarih.TabIndex = 29;
+            this.checboxdTarih.UseVisualStyleBackColor = true;
+            this.checboxdTarih.CheckedChanged += new System.EventHandler(this.checboxdTarih_CheckedChanged);
+            // 
+            // btnAra
+            // 
+            this.btnAra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
+            this.btnAra.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAra.FlatAppearance.BorderSize = 0;
+            this.btnAra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAra.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnAra.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnAra.Image = global::Kobi_v1.Properties.Resources.Search_More36px;
+            this.btnAra.Location = new System.Drawing.Point(248, 6);
+            this.btnAra.Name = "btnAra";
+            this.btnAra.Size = new System.Drawing.Size(38, 34);
+            this.btnAra.TabIndex = 28;
+            this.btnAra.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAra.UseVisualStyleBackColor = false;
+            this.btnAra.Click += new System.EventHandler(this.btnAra_Click);
             // 
             // btnTurEkle
             // 
@@ -125,9 +168,9 @@
             this.btnTurEkle.FlatAppearance.BorderSize = 0;
             this.btnTurEkle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTurEkle.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnTurEkle.Location = new System.Drawing.Point(303, 124);
+            this.btnTurEkle.Location = new System.Drawing.Point(308, 124);
             this.btnTurEkle.Name = "btnTurEkle";
-            this.btnTurEkle.Size = new System.Drawing.Size(87, 31);
+            this.btnTurEkle.Size = new System.Drawing.Size(90, 31);
             this.btnTurEkle.TabIndex = 28;
             this.btnTurEkle.Text = "Tür Ekle";
             this.btnTurEkle.UseVisualStyleBackColor = false;
@@ -141,7 +184,6 @@
             this.combTur.Name = "combTur";
             this.combTur.Size = new System.Drawing.Size(178, 30);
             this.combTur.TabIndex = 27;
-            this.combTur.Text = "Seçiniz";
             this.combTur.SelectedIndexChanged += new System.EventHandler(this.combTur_SelectedIndexChanged);
             // 
             // txtTel
@@ -158,11 +200,103 @@
             // 
             this.panel2.Controls.Add(this.btnSil);
             this.panel2.Controls.Add(this.btnEkle);
+            this.panel2.Controls.Add(this.btnYeniKayit);
+            this.panel2.Controls.Add(this.btniptal);
             this.panel2.Controls.Add(this.btnGuncelle);
             this.panel2.Location = new System.Drawing.Point(628, 12);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(236, 126);
+            this.panel2.Size = new System.Drawing.Size(236, 238);
             this.panel2.TabIndex = 25;
+            // 
+            // btnSil
+            // 
+            this.btnSil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
+            this.btnSil.BackgroundImage = global::Kobi_v1.Properties.Resources.Minus48px;
+            this.btnSil.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnSil.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSil.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnSil.ForeColor = System.Drawing.Color.Transparent;
+            this.btnSil.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSil.Location = new System.Drawing.Point(137, 121);
+            this.btnSil.Name = "btnSil";
+            this.btnSil.Size = new System.Drawing.Size(96, 51);
+            this.btnSil.TabIndex = 23;
+            this.btnSil.Text = "Sil";
+            this.btnSil.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSil.UseVisualStyleBackColor = false;
+            this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
+            // 
+            // btnEkle
+            // 
+            this.btnEkle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
+            this.btnEkle.BackgroundImage = global::Kobi_v1.Properties.Resources.Add1;
+            this.btnEkle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnEkle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnEkle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnEkle.ForeColor = System.Drawing.Color.Transparent;
+            this.btnEkle.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEkle.Location = new System.Drawing.Point(7, 121);
+            this.btnEkle.Name = "btnEkle";
+            this.btnEkle.Size = new System.Drawing.Size(124, 51);
+            this.btnEkle.TabIndex = 21;
+            this.btnEkle.Text = "Ekle";
+            this.btnEkle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEkle.UseVisualStyleBackColor = false;
+            this.btnEkle.Click += new System.EventHandler(this.btnEkle_Click);
+            // 
+            // btnYeniKayit
+            // 
+            this.btnYeniKayit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
+            this.btnYeniKayit.BackgroundImage = global::Kobi_v1.Properties.Resources.Restart;
+            this.btnYeniKayit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnYeniKayit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnYeniKayit.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnYeniKayit.ForeColor = System.Drawing.Color.Transparent;
+            this.btnYeniKayit.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnYeniKayit.Location = new System.Drawing.Point(7, 7);
+            this.btnYeniKayit.Name = "btnYeniKayit";
+            this.btnYeniKayit.Size = new System.Drawing.Size(226, 51);
+            this.btnYeniKayit.TabIndex = 22;
+            this.btnYeniKayit.Text = "Yeni Kayıt";
+            this.btnYeniKayit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnYeniKayit.UseVisualStyleBackColor = false;
+            this.btnYeniKayit.Click += new System.EventHandler(this.btnYeniKayit_Click);
+            // 
+            // btniptal
+            // 
+            this.btniptal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
+            this.btniptal.BackgroundImage = global::Kobi_v1.Properties.Resources.Restart;
+            this.btniptal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btniptal.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btniptal.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btniptal.ForeColor = System.Drawing.Color.Transparent;
+            this.btniptal.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btniptal.Location = new System.Drawing.Point(7, 64);
+            this.btniptal.Name = "btniptal";
+            this.btniptal.Size = new System.Drawing.Size(226, 51);
+            this.btniptal.TabIndex = 22;
+            this.btniptal.Text = "İptal";
+            this.btniptal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btniptal.UseVisualStyleBackColor = false;
+            this.btniptal.Click += new System.EventHandler(this.btniptal_Click);
+            // 
+            // btnGuncelle
+            // 
+            this.btnGuncelle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
+            this.btnGuncelle.BackgroundImage = global::Kobi_v1.Properties.Resources.Restart;
+            this.btnGuncelle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnGuncelle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnGuncelle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnGuncelle.ForeColor = System.Drawing.Color.Transparent;
+            this.btnGuncelle.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGuncelle.Location = new System.Drawing.Point(7, 178);
+            this.btnGuncelle.Name = "btnGuncelle";
+            this.btnGuncelle.Size = new System.Drawing.Size(226, 51);
+            this.btnGuncelle.TabIndex = 22;
+            this.btnGuncelle.Text = "Düzenle";
+            this.btnGuncelle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGuncelle.UseVisualStyleBackColor = false;
+            this.btnGuncelle.Click += new System.EventHandler(this.btnGuncelle_Click);
             // 
             // chcDurum
             // 
@@ -180,7 +314,7 @@
             // 
             this.dateKayit.CalendarMonthBackground = System.Drawing.Color.Linen;
             this.dateKayit.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateKayit.Location = new System.Drawing.Point(397, 81);
+            this.dateKayit.Location = new System.Drawing.Point(397, 11);
             this.dateKayit.Name = "dateKayit";
             this.dateKayit.Size = new System.Drawing.Size(178, 28);
             this.dateKayit.TabIndex = 19;
@@ -189,7 +323,7 @@
             // 
             this.dateEvlilik.CalendarMonthBackground = System.Drawing.Color.Linen;
             this.dateEvlilik.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateEvlilik.Location = new System.Drawing.Point(397, 42);
+            this.dateEvlilik.Location = new System.Drawing.Point(397, 84);
             this.dateEvlilik.Name = "dateEvlilik";
             this.dateEvlilik.Size = new System.Drawing.Size(178, 28);
             this.dateEvlilik.TabIndex = 19;
@@ -198,7 +332,7 @@
             // 
             this.dateDogum.CalendarMonthBackground = System.Drawing.Color.Linen;
             this.dateDogum.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateDogum.Location = new System.Drawing.Point(397, 5);
+            this.dateDogum.Location = new System.Drawing.Point(397, 46);
             this.dateDogum.Name = "dateDogum";
             this.dateDogum.Size = new System.Drawing.Size(178, 28);
             this.dateDogum.TabIndex = 19;
@@ -225,10 +359,10 @@
             // 
             this.txtAciklama.BackColor = System.Drawing.Color.Linen;
             this.txtAciklama.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtAciklama.Location = new System.Drawing.Point(592, 190);
+            this.txtAciklama.Location = new System.Drawing.Point(585, 286);
             this.txtAciklama.Multiline = true;
             this.txtAciklama.Name = "txtAciklama";
-            this.txtAciklama.Size = new System.Drawing.Size(272, 202);
+            this.txtAciklama.Size = new System.Drawing.Size(279, 149);
             this.txtAciklama.TabIndex = 20;
             // 
             // txtUlke
@@ -258,7 +392,7 @@
             this.txtAdres.Location = new System.Drawing.Point(108, 282);
             this.txtAdres.Multiline = true;
             this.txtAdres.Name = "txtAdres";
-            this.txtAdres.Size = new System.Drawing.Size(178, 110);
+            this.txtAdres.Size = new System.Drawing.Size(178, 153);
             this.txtAdres.TabIndex = 17;
             // 
             // txtEposta
@@ -337,7 +471,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(304, 47);
+            this.label15.Location = new System.Drawing.Point(304, 88);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(78, 22);
             this.label15.TabIndex = 10;
@@ -364,7 +498,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(593, 165);
+            this.label17.Location = new System.Drawing.Point(581, 256);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(82, 22);
             this.label17.TabIndex = 11;
@@ -382,7 +516,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(304, 86);
+            this.label14.Location = new System.Drawing.Point(304, 16);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(72, 22);
             this.label14.TabIndex = 13;
@@ -418,7 +552,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(304, 10);
+            this.label13.Location = new System.Drawing.Point(304, 51);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(89, 22);
             this.label13.TabIndex = 13;
@@ -460,81 +594,12 @@
             this.label1.TabIndex = 15;
             this.label1.Text = "Cari No";
             // 
-            // btnAra
-            // 
-            this.btnAra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
-            this.btnAra.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnAra.FlatAppearance.BorderSize = 0;
-            this.btnAra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAra.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnAra.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnAra.Image = global::Kobi_v1.Properties.Resources.Search_More36px;
-            this.btnAra.Location = new System.Drawing.Point(248, 6);
-            this.btnAra.Name = "btnAra";
-            this.btnAra.Size = new System.Drawing.Size(38, 34);
-            this.btnAra.TabIndex = 28;
-            this.btnAra.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAra.UseVisualStyleBackColor = false;
-            this.btnAra.Click += new System.EventHandler(this.btnAra_Click);
-            // 
-            // btnSil
-            // 
-            this.btnSil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
-            this.btnSil.BackgroundImage = global::Kobi_v1.Properties.Resources.Minus48px;
-            this.btnSil.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnSil.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSil.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnSil.ForeColor = System.Drawing.Color.Transparent;
-            this.btnSil.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSil.Location = new System.Drawing.Point(133, 9);
-            this.btnSil.Name = "btnSil";
-            this.btnSil.Size = new System.Drawing.Size(96, 51);
-            this.btnSil.TabIndex = 23;
-            this.btnSil.Text = "Sil";
-            this.btnSil.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSil.UseVisualStyleBackColor = false;
-            // 
-            // btnEkle
-            // 
-            this.btnEkle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
-            this.btnEkle.BackgroundImage = global::Kobi_v1.Properties.Resources.Add1;
-            this.btnEkle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnEkle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnEkle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnEkle.ForeColor = System.Drawing.Color.Transparent;
-            this.btnEkle.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEkle.Location = new System.Drawing.Point(3, 9);
-            this.btnEkle.Name = "btnEkle";
-            this.btnEkle.Size = new System.Drawing.Size(124, 51);
-            this.btnEkle.TabIndex = 21;
-            this.btnEkle.Text = "Ekle";
-            this.btnEkle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEkle.UseVisualStyleBackColor = false;
-            this.btnEkle.Click += new System.EventHandler(this.btnEkle_Click);
-            // 
-            // btnGuncelle
-            // 
-            this.btnGuncelle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
-            this.btnGuncelle.BackgroundImage = global::Kobi_v1.Properties.Resources.Restart;
-            this.btnGuncelle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnGuncelle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnGuncelle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnGuncelle.ForeColor = System.Drawing.Color.Transparent;
-            this.btnGuncelle.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGuncelle.Location = new System.Drawing.Point(3, 66);
-            this.btnGuncelle.Name = "btnGuncelle";
-            this.btnGuncelle.Size = new System.Drawing.Size(226, 51);
-            this.btnGuncelle.TabIndex = 22;
-            this.btnGuncelle.Text = "Güncelle";
-            this.btnGuncelle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGuncelle.UseVisualStyleBackColor = false;
-            // 
             // FrmCariEkle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(208)))), ((int)(((byte)(161)))));
-            this.ClientSize = new System.Drawing.Size(873, 399);
+            this.ClientSize = new System.Drawing.Size(873, 443);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -597,5 +662,9 @@
         private System.Windows.Forms.ComboBox combTur;
         private System.Windows.Forms.Button btnTurEkle;
         private System.Windows.Forms.Button btnAra;
+        private System.Windows.Forms.Button btnYeniKayit;
+        private System.Windows.Forms.CheckBox checboxeTarih;
+        private System.Windows.Forms.CheckBox checboxdTarih;
+        private System.Windows.Forms.Button btniptal;
     }
 }

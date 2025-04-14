@@ -30,6 +30,7 @@ namespace Kobi_v1
         string sorguListele = "Select * From Cari";
         string sorgu = "Select cariID From Cari where cariAdi=@cad";
         string sorguCari_Tur = @"Select 
+                                    c.CariID,
                                     c.CariKod,
                                     c.CariAdi,
                                     ct.Ad,
@@ -56,9 +57,9 @@ namespace Kobi_v1
         {
             if (dataGridView1.Columns.Count == 0)
             {
-                dataGridView1.Columns.Clear();
+                
                
-                                                           //dataGridView1.Columns.Add("ID", "Cari No");
+                dataGridView1.Columns.Add("c.CariID", "Cari No");
                 dataGridView1.Columns.Add("c.CariKod", "Cari Kodu");
                 dataGridView1.Columns.Add("c.CariAdi", "Cari Adı");
                 dataGridView1.Columns.Add("ct.Ad", "Cari Turü");
@@ -116,6 +117,7 @@ namespace Kobi_v1
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
+                string cariID = row.Cells["c.CariID"].Value.ToString();
                 string cariKod = row.Cells["c.CariKod"].Value.ToString();
                 string cariAdi = row.Cells["c.CariAdi"].Value.ToString();
                 string cariTur = row.Cells["ct.Ad"].Value.ToString();
@@ -127,8 +129,16 @@ namespace Kobi_v1
                 string ulke = row.Cells["c.Ulke"].Value.ToString();
                 string vergiDairesi = row.Cells["c.VergiDairesi"].Value.ToString();
                 string vergiNo = row.Cells["c.VergiNo"].Value.ToString();
-                string dogumTarihi = row.Cells["c.DogumTarihi"].Value.ToString();
-                string evlilikTarihi = row.Cells["c.EvlilikTarihi"].Value.ToString();
+
+                object dogumTarihiOBJ = row.Cells["c.DogumTarihi"].Value;
+                string dogumTarihi = (dogumTarihiOBJ==DBNull.Value)?"" :Convert.ToDateTime(dogumTarihiOBJ).ToString();
+
+
+                object evlilikTarihiOBJ = row.Cells["c.EvlilikTarihi"].Value;
+                string evlilikTarihi = (evlilikTarihiOBJ == DBNull.Value) ? "" : Convert.ToDateTime(evlilikTarihiOBJ).ToString();
+
+
+
                 string kayitTarihi = row.Cells["c.KayitTarihi"].Value.ToString();
                 string durum = row.Cells["c.Durum"].Value.ToString();
                 string aciklama = row.Cells["c.Aciklama"].Value.ToString();
@@ -138,7 +148,7 @@ namespace Kobi_v1
                 if(CagrilanForm is FrmCariEkle)
                 {
                     var hedefForm= CagrilanForm as FrmCariEkle;
-                    hedefForm.CariBilgileriYukle(cariKod,cariAdi, cariTur, yetkili, telefon, ePosta, adres, sehir, ulke, vergiDairesi, vergiNo, dogumTarihi, evlilikTarihi, kayitTarihi, durum, aciklama);
+                    hedefForm.CariBilgileriYukle(cariID,cariKod,cariAdi, cariTur, yetkili, telefon, ePosta, adres, sehir, ulke, vergiDairesi, vergiNo, dogumTarihi, evlilikTarihi, kayitTarihi, durum, aciklama);
 
                 }
                 else

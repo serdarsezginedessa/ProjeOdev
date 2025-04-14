@@ -24,6 +24,9 @@ namespace Kobi_v1
         static string connectionString = ConfigurationManager.ConnectionStrings["KobiFinans"].ConnectionString;
         SqlConnection baglanti = new SqlConnection(connectionString);
 
+        bool yeniKayitModu = true;
+
+
         string sorguEkle = @"INSERT INTO  [dbo].[Cari]
                                                            ([CariKod]
                                                            ,[CariAdi]
@@ -43,7 +46,11 @@ namespace Kobi_v1
                                                            ,[Aciklama])  VALUES 
                                                             (@carikod,@cariad,@caritur,@yetkili,@telefon,@eposta,@adres,@sehir,@ulke,@vergidairesi,@vergino,@dtarih,@evltarih,@ktarih,@durum,@aciklama)
                                                             ";
-        string sorguGuncelle = "UPDATE Cari SET CariAdi=@CariAdi, Telefon=@Telefon, Email=@Email, Adres=@Adres, VergiNo=@VergiNo, Borc=@Borc, Alacak=@Alacak, CariTuru=@CariTuru WHERE CariID=@CariId";
+        string sorguGuncelle = "UPDATE Cari SET CariAdi=@cariadi, Yetkili=@yetkili, Telefon=@telefon, Eposta=@eposta," +
+                                " Adres=@adres, Sehir=@sehir, Ulke=@ulke, VergiDairesi=@vergiDairesi, VergiNo=@vergiNo, DogumTarihi=@dtarih, " +
+                                "EvlilikTarihi=@evltarih, KayitTarihi=@kaytarih, Durum=@durum, Aciklama=@aciklama " +
+                                "WHERE CariID=@CariId";
+        string sorguAra = "SELECT * FROM Cari WHERE CariID=@CariId";
         string sorguSil = "DELETE FROM Cari WHERE CariID=@CariId";
         string sorgucarituru = "SELECT AD  FROM CariTuru";
         string sorguListele = @"Select c.CariID,
@@ -60,8 +67,18 @@ namespace Kobi_v1
 		                            CariTuru as ct
 		                            ON
 		                            c.cariTuru = ct.ID";
-        public string cariKodUretilmis;
+        
+        private void YeniKayitislemleri()
+        {
+            btnEkle.Enabled = true;
+            btnGuncelle.Enabled = false;
+            btnSil.Enabled = false;
+            btnYeniKayit.Enabled = false;
+            btnTurEkle.Enabled = true;
+            btniptal.Enabled = true;
+            chcDurum.Text = "Aktif";
 
+        }
         private void cariTurListele()
         {
             try
@@ -91,32 +108,137 @@ namespace Kobi_v1
                 combTur.SelectedIndex = 0; // ilk değer 'Seçiniz' olacak
             }
         }
-
-
-        private void btnTurEkle_Click(object sender, EventArgs e)
+        private void btnDisable()
         {
-            FrmCariTurEkle frmCariTurEkle = new FrmCariTurEkle();
-            frmCariTurEkle.ShowDialog();
-            cariTurListele();
+            btnEkle.Enabled = false;
+            btnGuncelle.Enabled = false;
+            btnSil.Enabled = false;
+            btnYeniKayit.Enabled = true;
+            btnTurEkle.Enabled = false;
+            btniptal.Enabled = false;
+
+        }
+        private void btnEnable()
+        {
+            btnEkle.Enabled = true;
+            btnGuncelle.Enabled = true;
+            btnSil.Enabled = true;
+            btnYeniKayit.Enabled = false;
+            btnTurEkle.Enabled = true;
+            btniptal.Enabled = true;
+        }
+        private void TextleriTemizle()
+        {
+            txtID.Text = "";
+            txtKod.Text = "";
+            txtAd.Text = "";
+            combTur.Text = "";
+            txtYetkili.Text = "";
+            txtTel.Text = "";
+            txtEposta.Text = "";
+            txtAdres.Text = "";
+            txtSehir.Text = "";
+            txtUlke.Text = "";
+            txtVergiD.Text = "";
+            txtVergiNo.Text = "";
+            dateDogum.Format=DateTimePickerFormat.Custom;
+            dateDogum.CustomFormat = " ";
+            dateEvlilik.Format = DateTimePickerFormat.Custom;
+            dateEvlilik.CustomFormat = " ";
+            dateKayit.Value=DateTime.Now;
+            chcDurum.Checked = false;
+            txtAciklama.Text = "";
+        }
+        private void textEnable()
+        {
+            txtID.Enabled = false;
+            txtKod.Enabled = false;
+            txtAd.Enabled = true;
+            combTur.Enabled = true;
+            txtYetkili.Enabled = true;
+            txtTel.Enabled = true;
+            txtEposta.Enabled = true;
+            txtAdres.Enabled = true;
+            txtSehir.Enabled = true;
+            txtUlke.Enabled = true;
+            txtVergiD.Enabled = true;
+            txtVergiNo.Enabled = true;
+            dateKayit.Enabled = true;
+            chcDurum.Enabled = true;
+            checboxdTarih.Enabled = true;
+            checboxeTarih.Enabled = true;
+            
+            txtAciklama.Enabled = true;
+        }
+        private void textDisable()
+        {
+            txtID.Enabled = false;
+            txtKod.Enabled = false;
+            txtAd.Enabled = false;
+            combTur.Enabled = false;
+            txtYetkili.Enabled = false;
+            txtTel.Enabled = false;
+            txtEposta.Enabled = false;
+            txtAdres.Enabled = false;
+            txtSehir.Enabled = false;
+            txtUlke.Enabled = false;
+            txtVergiD.Enabled = false;
+            txtVergiNo.Enabled = false;
+            dateDogum.Enabled = false;
+            dateEvlilik.Enabled = false;
+            dateKayit.Enabled = false;
+            chcDurum.Enabled = false;
+            checboxeTarih.Enabled = false;
+            checboxdTarih.Enabled = false;
+            txtAciklama.Enabled = false;
         }
 
         private void FrmCariEkle_Load(object sender, EventArgs e)
         {
-            chcDurum.Text = "Aktif";
-            txtID.Enabled = false;
-            txtKod.Enabled = false;
-            btnGuncelle.Enabled = false;
-            btnSil.Enabled = false;
-            //Form yüklendiğinde cari türlerini listele
-            cariTurListele();
+            /*dateEvlilik.Format = DateTimePickerFormat.Custom;
+            dateEvlilik.CustomFormat = " ";
+            dateDogum.Format = DateTimePickerFormat.Custom;
+            dateDogum.CustomFormat = " ";*/
+            TextleriTemizle();
+            textDisable();
+            
+            btnDisable();
 
+
+        }
+
+        private void btnYeniKayit_Click(object sender, EventArgs e)
+        {
+            YeniKayitislemleri();
+            cariTurListele();
+            textEnable();
+            TextleriTemizle();
+            yeniKayitModu = true;
+        }
+
+        private void btniptal_Click(object sender, EventArgs e)
+        {
+            btnDisable();
+            textDisable();
+            TextleriTemizle();
+            checboxdTarih.Checked = false;
+            checboxeTarih.Checked = false;
+            chcDurum.Checked = false;
+            chcDurum.Text = "";
         }
 
         private void combTur_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //txtKod.Text = combTur.SelectedItem.ToString();
+            if (!yeniKayitModu)
+                return;
 
-            /*if (combTur.SelectedIndex <= 0)
+            if (combTur.SelectedIndex <= 0)
+            {
+                txtKod.Text = "";
+                return;
+            }
+
+            if (combTur.SelectedIndex <= 0)
             {
                 txtKod.Text = "";
                 return;
@@ -157,19 +279,14 @@ namespace Kobi_v1
             {
                 txtKod.Text = prefix + prefixCount.ToString("D3");
                 baglanti.Close();
-            }*/
+            }
         }
 
-        private void chcDurum_CheckedChanged(object sender, EventArgs e)
+        private void btnTurEkle_Click(object sender, EventArgs e)
         {
-            if (chcDurum.Checked)
-            {
-                chcDurum.Text = "Aktif";
-            }
-            else
-            {
-                chcDurum.Text = "Pasif";
-            }
+            FrmCariTurEkle frmCariTurEkle = new FrmCariTurEkle();
+            frmCariTurEkle.ShowDialog();
+            cariTurListele();
         }
 
         private void btnEkle_Click(object sender, EventArgs e)
@@ -177,55 +294,15 @@ namespace Kobi_v1
             
             try
             {
-                if (combTur.SelectedIndex <= 0)
+               
+                
+                if (string.IsNullOrEmpty(txtAd.Text))
                 {
-                    txtKod.Text = "";
+                    MessageBox.Show("Lütfen Bos Alanları Doldurunuz", "Doldurulmamış Alan Mesajı", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-
-                string secilenTur = combTur.SelectedItem.ToString();
-                string prefix = "";
-                int prefixCount = 1;
-
-                try
-                {
-                    if (baglanti.State == ConnectionState.Closed) baglanti.Open();
-
-                    //prefix veritabanından çekiliyor.
-
-                    string sorguprefix = "select prefix from CariTuru where Ad=@tur";
-                    SqlCommand kmt = new SqlCommand(sorguprefix, baglanti);
-
-                    kmt.Parameters.AddWithValue("@tur", secilenTur);
-
-                    prefix = (string)kmt.ExecuteScalar();
-
-                    // Aynı prefix'le başlayan kaç cari var kontrol et
-
-                    string sorguprefixCount = "select count(*) from Cari where CariKod LIKE @prefix + '%'";
-                    SqlCommand kmt1 = new SqlCommand(sorguprefixCount, baglanti);
-                    kmt1.Parameters.AddWithValue("@prefix", prefix);
-
-                    prefixCount = (int)kmt1.ExecuteScalar() + 1;
-
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Hata: " + ex.Message);
-                }
-                finally
-                {
-                    string cariKodUretilmis = prefix + prefixCount.ToString("D3");
-                    txtKod.Text = cariKodUretilmis;
-                    baglanti.Close();
-                }
-                if (combTur.SelectedItem == null || combTur.SelectedItem.ToString() == "Tür Seçiniz")
-                {
-                    MessageBox.Show("Lütfen Cari Türü Seçiniz");
-                    return;
-                }
-
+                DateTime? dtarih = null;
+                DateTime? evltarih = null;
                 string cariAdi= txtAd.Text;
                 string cariTur=combTur.SelectedItem.ToString();
                 string yetkili = txtYetkili.Text;
@@ -236,14 +313,21 @@ namespace Kobi_v1
                 string ulke = txtUlke.Text;
                 string vergiDairesi = txtVergiD.Text;
                 string vergiNo = txtVergiNo.Text;
-                string dtarih=dateDogum.Value.ToString();
-                string evltarih=dateEvlilik.Value.ToString();
+                if(dateDogum.CustomFormat != " ")
+                {
+                    dtarih = dateDogum.Value;
+                }
+                
+                if(dateEvlilik.CustomFormat != " ")
+                {
+                    evltarih = dateEvlilik.Value;
+                }
                 string kaytarih=dateKayit.Value.ToString();
                 bool durum = chcDurum.Checked;
                 string aciklama = txtAciklama.Text;
 
                 //Otomatik cari kod üretecek
-                string carikod=cariKodUretilmis;
+                string carikod=txtKod.Text;
                 if(chcDurum.Checked)
                 {
                     durum = true;
@@ -253,9 +337,9 @@ namespace Kobi_v1
                     durum = false;
                 }
 
-                if (string.IsNullOrEmpty(cariAdi))
+                if (combTur.SelectedItem == null || combTur.SelectedItem.ToString() == "Tür Seçiniz")
                 {
-                    MessageBox.Show("Lütfen Bos Alanları Doldurunuz");
+                    MessageBox.Show("Lütfen Cari Türü Seçiniz", "Bilgilendirme", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
                 if (baglanti.State == ConnectionState.Closed)
@@ -290,8 +374,25 @@ namespace Kobi_v1
                     kmtEkle.Parameters.AddWithValue("@ulke", ulke);
                     kmtEkle.Parameters.AddWithValue("@vergiDairesi", vergiDairesi);
                     kmtEkle.Parameters.AddWithValue("@VergiNo", vergiNo);
-                    kmtEkle.Parameters.AddWithValue("@dtarih", Convert.ToDateTime(dtarih));
-                    kmtEkle.Parameters.AddWithValue("@evltarih", Convert.ToDateTime(evltarih));
+
+                    
+                    if(dtarih != null)
+                    {
+                        kmtEkle.Parameters.AddWithValue("@dtarih", dtarih.Value);
+                    }
+                    else
+                    {
+                        kmtEkle.Parameters.AddWithValue("@dtarih", DBNull.Value);
+                    }
+                    if (evltarih != null)
+                    {
+                        kmtEkle.Parameters.AddWithValue("@evltarih", evltarih.Value);
+                    }
+                    else
+                    {
+                        kmtEkle.Parameters.AddWithValue("@evltarih", DBNull.Value);
+                    }
+                    //kmtEkle.Parameters.AddWithValue("@evltarih", Convert.ToDateTime(evltarih));
                     kmtEkle.Parameters.AddWithValue("@kaytarih", Convert.ToDateTime(kaytarih));
                     kmtEkle.Parameters.AddWithValue("@durum", Convert.ToInt32(durum));
                     kmtEkle.Parameters.AddWithValue("@aciklama", aciklama);
@@ -300,13 +401,13 @@ namespace Kobi_v1
                     if (result > 0)
                     {
                         // Başarılı ekleme işlemi
-                        MessageBox.Show("Cari Eklendi");
+                        MessageBox.Show("Cari Kart Sisteme Eklendi","Bilgilendirme",MessageBoxButtons.OK,MessageBoxIcon.Information);
                         //temizle();
                     }
                     else
                     {
                         // Başarısız ekleme işlemi
-                        MessageBox.Show("Cari Eklenemedi");
+                        MessageBox.Show("Cari Eklenemedi","Hata",MessageBoxButtons.OK,MessageBoxIcon.Error);
                     }
                     
                 }
@@ -319,24 +420,72 @@ namespace Kobi_v1
             finally
             {
                 baglanti.Close();
-                //temizle();
+                TextleriTemizle();
+                btnDisable();
+                textDisable();
+                chcDurum.Text = "";
             }
         }
-
-        private void btnSil_Click(object sender, EventArgs e)
+        private void btnGuncelle_Click(object sender, EventArgs e)
         {
+            DateTime? dtarih = null;
+            DateTime? evltarih = null;
+            if (string.IsNullOrWhiteSpace(txtID.Text))
+            {
+                MessageBox.Show("Lütfen Güncellenecek Cari Seçiniz");
+                return;
+            }
             try
             {
-                if (string.IsNullOrEmpty(txtID.Text))
-                {
-                    MessageBox.Show("Lütfen Silinecek Cari Seçiniz");
-                    return;
-                }
                 if (baglanti.State == ConnectionState.Closed) baglanti.Open();
-                SqlCommand kmt = new SqlCommand(sorguSil, baglanti);
-                kmt.Parameters.AddWithValue("@CariId", txtID.Text);
-                kmt.ExecuteNonQuery();
-                MessageBox.Show("Cari Silindi");
+
+                SqlCommand kmtGuncelle = new SqlCommand(sorguGuncelle, baglanti);
+                kmtGuncelle.Parameters.AddWithValue("@CariId", txtID.Text);
+                kmtGuncelle.Parameters.AddWithValue("@cariadi", txtAd.Text);
+                kmtGuncelle.Parameters.AddWithValue("@yetkili", txtYetkili.Text);
+                kmtGuncelle.Parameters.AddWithValue("@telefon", txtTel.Text);
+                kmtGuncelle.Parameters.AddWithValue("@eposta", txtEposta.Text);
+                kmtGuncelle.Parameters.AddWithValue("@Adres", txtAdres.Text);
+                kmtGuncelle.Parameters.AddWithValue("@sehir", txtSehir.Text);
+                kmtGuncelle.Parameters.AddWithValue("@ulke", txtUlke.Text);
+                kmtGuncelle.Parameters.AddWithValue("@vergiDairesi", txtVergiD.Text);
+                kmtGuncelle.Parameters.AddWithValue("@VergiNo", txtVergiNo.Text);
+
+               
+                //kmtGuncelle.Parameters.AddWithValue("@dtarih", Convert.ToDateTime(dateDogum.Value));
+
+                
+                if(checboxeTarih.Checked)
+                {
+                    kmtGuncelle.Parameters.AddWithValue("@evltarih", Convert.ToDateTime(dateEvlilik.Value));
+                    
+                }
+                else
+                    kmtGuncelle.Parameters.AddWithValue("@evltarih", DBNull.Value);
+
+                if (checboxdTarih.Checked)
+                {
+                    kmtGuncelle.Parameters.AddWithValue("@dtarih", Convert.ToDateTime(dateDogum.Value));
+                    
+                }
+                else
+                {
+                    kmtGuncelle.Parameters.AddWithValue("@dtarih", DBNull.Value);
+                }
+                    
+                kmtGuncelle.Parameters.AddWithValue("@kaytarih", Convert.ToDateTime(dateKayit.Value));
+
+                kmtGuncelle.Parameters.AddWithValue("@durum", Convert.ToInt32(chcDurum.Checked));
+                kmtGuncelle.Parameters.AddWithValue("@aciklama", txtAciklama.Text);
+                int result = kmtGuncelle.ExecuteNonQuery();
+                if (result > 0)
+                {
+                    MessageBox.Show("Cari Güncellendi");
+                }
+                else
+                {
+                    MessageBox.Show("Güncelleme Başarısız");
+                }
             }
             catch (Exception ex)
             {
@@ -345,22 +494,80 @@ namespace Kobi_v1
             finally
             {
                 baglanti.Close();
-                //temizle();
+                TextleriTemizle();
+                btnDisable();
+                textDisable();
+                yeniKayitModu = true;
+            }
+        }
+
+        private void btnSil_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(txtID.Text))
+                {
+                    MessageBox.Show("Lütfen Silinecek Cari Seçiniz", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+                else
+                {
+                    DialogResult sonuc = MessageBox.Show("Silmek istediğinize emin misiniz?", "Silme Onayı", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (sonuc == DialogResult.Yes)
+                    {
+                        if (baglanti.State == ConnectionState.Closed) baglanti.Open();
+                        SqlCommand kmtSil = new SqlCommand(sorguSil, baglanti);
+                        kmtSil.Parameters.AddWithValue("@CariId", txtID.Text);
+                        int result = kmtSil.ExecuteNonQuery();
+                        if (result > 0)
+                        {
+                            MessageBox.Show("Cari Silindi", "Silme İşlemi Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Silme Başarısız", "Silme İşlemi Hatası", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hata: " + ex.Message);
+            }
+            finally
+            {
+                baglanti.Close();
+                TextleriTemizle();
+                btnDisable();
+                textDisable();
+                yeniKayitModu = true;
+                chcDurum.Text = "";
             }
         }
 
         private void btnAra_Click(object sender, EventArgs e)
         {
+            yeniKayitModu = false;
             FrmCariListele frmCariListele = new FrmCariListele();
             frmCariListele.CagrilanForm = this;
             frmCariListele.ShowDialog();
+            textEnable();
+            combTur.Enabled = false;
+            
+
         }
-        public void CariBilgileriYukle( string cariKod,string cariAdi, string cariTuru, string yetkili, string telefon, string eposta, 
+
+        public void CariBilgileriYukle( string cariID, string cariKod,string cariAdi, string cariTur, string yetkili, string telefon, string eposta, 
             string adres, string sehir,string ulke, string vergidairesi , string vergiNo, string dtarih, string etarih,string ktarih, string durum,string aciklama)
         {
+            cariTurListele();
+            txtID.Text = cariID;
+            txtID.Enabled = false;
+            txtKod.Enabled = false;
             txtKod.Text = cariKod;
             txtAd.Text = cariAdi;
-            combTur.SelectedItem = cariTuru;
+            combTur.SelectedItem = cariTur;
             txtYetkili.Text = yetkili;
             txtTel.Text = telefon;
             txtEposta.Text = eposta;
@@ -369,8 +576,40 @@ namespace Kobi_v1
             txtUlke.Text = ulke;
             txtVergiD.Text = vergidairesi;
             txtVergiNo.Text = vergiNo;
-            dateDogum.Value = Convert.ToDateTime(dtarih);
-            dateEvlilik.Value = Convert.ToDateTime(etarih);
+
+            if(string.IsNullOrEmpty(dtarih)) //CarilisteleFormundan gelen doğum tarihi boş dolu kontrolü
+            {
+                checboxdTarih.Checked = false;
+                dateDogum.Enabled = false;
+                dateDogum.Format=DateTimePickerFormat.Custom;
+                dateDogum.CustomFormat = " ";
+                
+            }
+            else
+            {
+                checboxdTarih.Checked = true;
+                dateDogum.Enabled = true;
+                dateDogum.CustomFormat = "dd.MM.yyyy";
+                dateDogum.Value = Convert.ToDateTime(dtarih);
+                
+            }
+
+            if (string.IsNullOrEmpty(etarih)) //CarilisteleFormundan gelen evlilik tarihi boş dolu kontrolü
+            {
+                dateEvlilik.Enabled = false;
+                checboxeTarih.Checked = false;
+                dateEvlilik.Format = DateTimePickerFormat.Custom;
+                dateEvlilik.CustomFormat = " ";
+                
+            }
+            else
+            {
+                checboxeTarih.Checked = true;
+                dateEvlilik.Enabled = true;
+                dateEvlilik.CustomFormat = "dd.MM.yyyy";
+                dateEvlilik.Value = Convert.ToDateTime(etarih);
+                
+            }
             dateKayit.Value = Convert.ToDateTime(ktarih);
             if (durum=="True")
             {
@@ -381,11 +620,65 @@ namespace Kobi_v1
                 chcDurum.Checked = false;
             }
             txtAciklama.Text = aciklama;
-            
+
+
+
             btnEkle.Enabled = false;
             btnGuncelle.Enabled = true;
             btnSil.Enabled = true;
+            btniptal.Enabled = true;
+
+
         }
+
+        
+
+        private void checboxdTarih_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checboxdTarih.Checked)
+            {
+                dateDogum.Enabled = true;
+                dateDogum.CustomFormat = "dd.MM.yyyy";
+            }
+            else
+            {
+                
+                dateDogum.Enabled = false;
+                dateDogum.CustomFormat = " ";
+
+            }
+        }
+
+        private void checboxeTarih_CheckedChanged_1(object sender, EventArgs e)
+        {
+            if (checboxeTarih.Checked)
+            {
+                dateEvlilik.Enabled = true;
+                dateEvlilik.CustomFormat = "dd.MM.yyyy";
+                
+
+            }
+            else
+            {
+                dateEvlilik.Enabled = false;
+                dateEvlilik.CustomFormat = " ";
+
+            }
+        }
+
+        private void chcDurum_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chcDurum.Checked)
+            {
+                chcDurum.Text = "Aktif";
+            }
+            else
+            {
+                chcDurum.Text = "Pasif";
+            }
+        }
+
+        
     }
 }
 
