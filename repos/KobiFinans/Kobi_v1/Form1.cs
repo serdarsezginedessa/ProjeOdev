@@ -15,7 +15,7 @@ namespace Kobi_v1
     public partial class Form1 : Form
 
     {
-        private ClockManager clockManager;
+        private readonly ClockManager clockManager;
         public Form1()
         {
             InitializeComponent();
@@ -24,7 +24,7 @@ namespace Kobi_v1
             
         }
 
-        static string connectionString = ConfigurationManager.ConnectionStrings["KobiFinans"].ConnectionString;
+        private static readonly string connectionString = ConfigurationManager.ConnectionStrings["KobiFinans"].ConnectionString;
         SqlConnection baglanti = new SqlConnection(connectionString);
 
         private void Form1_Load(object sender, EventArgs e)

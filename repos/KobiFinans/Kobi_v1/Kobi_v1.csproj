@@ -316,9 +316,19 @@
     <None Include="Resources\Bank Building.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Close Pane3px.png" />
+    <None Include="Resources\clear36px.png" />
+    <None Include="Resources\Edit36px.png" />
+    <None Include="Resources\Save as36px.png" />
+    <None Include="Resources\Minus36px.png" />
+    <None Include="Resources\iptal.png" />
+    <None Include="Resources\Restart36px.png" />
+    <None Include="Resources\Restart24px.png" />
     <None Include="Resources\Search More36px.png" />
     <None Include="Resources\Restart.png" />
     <None Include="Resources\Add1.png" />
+    <None Include="Resources\Add File36px.png" />
+    <None Include="Resources\Add36px.png" />
     <Content Include="Resources\Bank.ico" />
     <None Include="Resources\Minus48px.png" />
     <None Include="Resources\Minus_64px.png" />

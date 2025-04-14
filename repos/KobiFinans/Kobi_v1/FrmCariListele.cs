@@ -27,9 +27,8 @@ namespace Kobi_v1
 
         static string connectionString = ConfigurationManager.ConnectionStrings["KobiFinans"].ConnectionString;
         SqlConnection baglanti = new SqlConnection(connectionString);
-        string sorguListele = "Select * From Cari";
-        string sorgu = "Select cariID From Cari where cariAdi=@cad";
-        string sorguCari_Tur = @"Select 
+
+        string sorguInnerJoin = @"Select 
                                     c.CariID,
                                     c.CariKod,
                                     c.CariAdi,
@@ -52,6 +51,252 @@ namespace Kobi_v1
 		                            CariTuru as ct
 		                            ON
 		                            c.cariTuru = ct.ID";
+        string sorguCariAd = @"SELECT 
+                c.CariID,
+                c.CariKod,
+                c.CariAdi,
+                ct.Ad,
+                c.Yetkili,
+		        c.Telefon,
+		        c.Eposta,
+		        c.Adres,
+                c.Sehir,
+                c.Ulke,
+                c.VergiDairesi,
+		        c.VergiNo,
+                c.DogumTarihi,
+                c.EvlilikTarihi,
+                c.KayitTarihi,
+                c.Durum,
+                c.Aciklama
+		        From cari as c
+		        INNER JOIN
+		        CariTuru as ct
+		        ON
+		        c.cariTuru = ct.ID
+				where c.cariAdi LIKE @cariAd";
+        string sorguCariKod = @"SELECT 
+                c.CariID,
+                c.CariKod,
+                c.CariAdi,
+                ct.Ad,
+                c.Yetkili,
+		        c.Telefon,
+		        c.Eposta,
+		        c.Adres,
+                c.Sehir,
+                c.Ulke,
+                c.VergiDairesi,
+		        c.VergiNo,
+                c.DogumTarihi,
+                c.EvlilikTarihi,
+                c.KayitTarihi,
+                c.Durum,
+                c.Aciklama
+		        From cari as c
+		        INNER JOIN
+		        CariTuru as ct
+		        ON
+		        c.cariTuru = ct.ID
+				where c.cariKod LIKE @cariKod";
+        string sorguCariTur = @"SELECT 
+                c.CariID,
+                c.CariKod,
+                c.CariAdi,
+                ct.Ad,
+                c.Yetkili,
+		        c.Telefon,
+		        c.Eposta,
+		        c.Adres,
+                c.Sehir,
+                c.Ulke,
+                c.VergiDairesi,
+		        c.VergiNo,
+                c.DogumTarihi,
+                c.EvlilikTarihi,
+                c.KayitTarihi,
+                c.Durum,
+                c.Aciklama
+		        From cari as c
+		        INNER JOIN
+		        CariTuru as ct
+		        ON
+		        c.cariTuru = ct.ID
+				where ct.Ad LIKE @cariTurAd";
+        string sorguCariYetkili = @"SELECT 
+                c.CariID,
+                c.CariKod,
+                c.CariAdi,
+                ct.Ad,
+                c.Yetkili,
+                c.Telefon,
+                c.Eposta,
+                c.Adres,
+                c.Sehir,
+                c.Ulke,
+                c.VergiDairesi,
+                c.VergiNo,
+                c.DogumTarihi,
+                c.EvlilikTarihi,
+                c.KayitTarihi,
+                c.Durum,
+                c.Aciklama
+                From cari as c
+                INNER JOIN
+                CariTuru as ct
+                ON
+                c.cariTuru = ct.ID
+                Where 
+                c.Yetkili LIKE @yetkili";
+        string sorguTelefon = @"Select 
+                                    c.CariID,
+                                    c.CariKod,
+                                    c.CariAdi,
+                                    ct.Ad,
+                                    c.Yetkili,
+		                            c.Telefon,
+		                            c.Eposta,
+		                            c.Adres,
+                                    c.Sehir,
+                                    c.Ulke,
+                                    c.VergiDairesi,
+		                            c.VergiNo,
+                                    c.DogumTarihi,
+                                    c.EvlilikTarihi,
+                                    c.KayitTarihi,
+                                    c.Durum,
+                                    c.Aciklama
+		                            From cari as c
+		                            INNER JOIN
+		                            CariTuru as ct
+		                            ON
+		                            c.cariTuru = ct.ID
+                                    where c.Telefon LIKE @telefon";
+        string sorguSehir = @"Select 
+                                    c.CariID,
+                                    c.CariKod,
+                                    c.CariAdi,
+                                    ct.Ad,
+                                    c.Yetkili,
+                                    c.Telefon,
+                                    c.Eposta,
+                                    c.Adres,
+                                    c.Sehir,
+                                    c.Ulke,
+                                    c.VergiDairesi,
+                                    c.VergiNo,
+                                    c.DogumTarihi,
+                                    c.EvlilikTarihi,
+                                    c.KayitTarihi,
+                                    c.Durum,
+                                    c.Aciklama
+                                    From cari as c
+                                    INNER JOIN
+                                    CariTuru as ct
+                                    ON
+                                    c.cariTuru = ct.ID
+                                    where c.Sehir LIKE @sehir";
+        string sorguDtarihi = @"Select
+                                    c.CariID,
+                                    c.CariKod,
+                                    c.CariAdi,
+                                    ct.Ad,
+                                    c.Yetkili,
+                                    c.Telefon,
+                                    c.Eposta,
+                                    c.Adres,
+                                    c.Sehir,
+                                    c.Ulke,
+                                    c.VergiDairesi,
+                                    c.VergiNo,
+                                    c.DogumTarihi,
+                                    c.EvlilikTarihi,
+                                    c.KayitTarihi,
+                                    c.Durum,
+                                    c.Aciklama
+                                    From cari as c
+                                    INNER JOIN
+                                    CariTuru as ct
+                                    ON
+                                    c.cariTuru = ct.ID
+                                    where c.DogumTarihi = @dtarih";
+        string sorguEtarihi = @"Select
+                                    c.CariID,
+                                    c.CariKod,
+                                    c.CariAdi,
+                                    ct.Ad,
+                                    c.Yetkili,
+                                    c.Telefon,
+                                    c.Eposta,
+                                    c.Adres,
+                                    c.Sehir,
+                                    c.Ulke,
+                                    c.VergiDairesi,
+                                    c.VergiNo,
+                                    c.DogumTarihi,
+                                    c.EvlilikTarihi,
+                                    c.KayitTarihi,
+                                    c.Durum,
+                                    c.Aciklama
+                                    From cari as c
+                                    INNER JOIN
+                                    CariTuru as ct
+                                    ON
+                                    c.cariTuru = ct.ID
+                                    where c.EvlilikTarihi = @etarih";
+        string sorguKtarihi = @"Select
+                                    c.CariID,
+                                    c.CariKod,
+                                    c.CariAdi,
+                                    ct.Ad,
+                                    c.Yetkili,
+                                    c.Telefon,
+                                    c.Eposta,
+                                    c.Adres,
+                                    c.Sehir,
+                                    c.Ulke,
+                                    c.VergiDairesi,
+                                    c.VergiNo,
+                                    c.DogumTarihi,
+                                    c.EvlilikTarihi,
+                                    c.KayitTarihi,
+                                    c.Durum,
+                                    c.Aciklama
+                                    From cari as c
+                                    INNER JOIN
+                                    CariTuru as ct
+                                    ON
+                                    c.cariTuru = ct.ID
+                                    
+                                    where CAST (c.KayitTarihi AS DATE) = @ktarih";
+
+        string sorguDurum = @"Select
+                                    c.CariID,
+                                    c.CariKod,
+                                    c.CariAdi,
+                                    ct.Ad,
+                                    c.Yetkili,
+                                    c.Telefon,
+                                    c.Eposta,
+                                    c.Adres,
+                                    c.Sehir,
+                                    c.Ulke,
+                                    c.VergiDairesi,
+                                    c.VergiNo,
+                                    c.DogumTarihi,
+                                    c.EvlilikTarihi,
+                                    c.KayitTarihi,
+                                    c.Durum,
+                                    c.Aciklama
+                                    From cari as c
+                                    INNER JOIN
+                                    CariTuru as ct
+                                    ON
+                                    c.cariTuru = ct.ID
+                                    where c.Durum = @durum";
+
+
+
 
         private void dtHeader() // datagridview1 başlıkları ekleniyor..
         {
@@ -80,23 +325,44 @@ namespace Kobi_v1
             
           
         }
+
+        private void temizle()
+        {
+            txtCariAD.Clear();
+            txtCariKOD.Clear();
+            txtCariTUR.Clear();
+            txtYetkili.Clear();
+            txtTelefon.Clear();
+            txtSehir.Clear();
+            dateDtarih.Value = DateTime.Now;
+            dateEtarih.Value = DateTime.Now;
+            datektarih.Value = DateTime.Now;
+            comboBox1.Text = "";
+            txtCariKOD.Focus();
+            listele();
+
+
+        }
         private void listele()
         {
             try
             {
                 if (baglanti.State == ConnectionState.Closed) baglanti.Open();
-
-                SqlCommand kmt = new SqlCommand(sorguCari_Tur, baglanti);
-                SqlDataAdapter da = new SqlDataAdapter(kmt);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                //dataGridView1.DataSource = dt;
-                dataGridView1.Rows.Clear(); // Mevcut satırları temizleyin Manuel Eklediğim Başlıklar Bozulmuyor..
-                foreach (DataRow row in dt.Rows)
+                
                 {
-                    dataGridView1.Rows.Add(row.ItemArray); // Satırlar ekleniyor..
+                    SqlCommand kmt = new SqlCommand(sorguInnerJoin, baglanti);
+                    SqlDataAdapter da = new SqlDataAdapter(kmt);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    //dataGridView1.DataSource = dt;
+                    dataGridView1.Rows.Clear(); // Mevcut satırları temizle Manuel Eklediğim Başlıklar Bozulmuyor..
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        dataGridView1.Rows.Add(row.ItemArray); // Satırlar ekleniyor..
+                    }
+                    baglanti.Close();
                 }
-                baglanti.Close();
+                
             }
             catch (Exception ex)
             {
@@ -105,15 +371,22 @@ namespace Kobi_v1
         }
 
 
+
         private void FrmCariListele_Load(object sender, EventArgs e)
         {
             dtHeader();
             listele();
             
         }
+        private void btnSifirla_Click(object sender, EventArgs e)
+        {
+            temizle();
+        }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            // DataGridView'de çift tıklama olayı
+
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
@@ -151,11 +424,494 @@ namespace Kobi_v1
                     hedefForm.CariBilgileriYukle(cariID,cariKod,cariAdi, cariTur, yetkili, telefon, ePosta, adres, sehir, ulke, vergiDairesi, vergiNo, dogumTarihi, evlilikTarihi, kayitTarihi, durum, aciklama);
 
                 }
+                //Diğer Formlardanda datagrid deki veriler çekilecekse  else if eklenecek ve hedef form verilecek
                 else
                 {
-
+                    return;
                 }
                 this.Close();
+            }
+        }
+
+
+
+        private void txtCariTUR_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if(baglanti.State == ConnectionState.Closed) baglanti.Open();
+                if(!string.IsNullOrEmpty(txtCariTUR.Text))
+                {
+                    SqlCommand kmtCariTur = new SqlCommand(sorguCariTur, baglanti);
+                    kmtCariTur.Parameters.AddWithValue("@cariTurAd", txtCariTUR.Text+"%");
+                    SqlDataAdapter da = new SqlDataAdapter(kmtCariTur);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    dataGridView1.Rows.Clear(); // Mevcut satırları temizleyin Manuel Eklediğim Başlıklar Bozulmuyor..
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        dataGridView1.Rows.Add(row.ItemArray); // Satırlar ekleniyor..
+                    }
+                    baglanti.Close();
+                }
+                else
+                {
+                    SqlCommand kmtCariTur = new SqlCommand(sorguInnerJoin, baglanti);
+                    SqlDataAdapter da = new SqlDataAdapter(kmtCariTur);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    dataGridView1.Rows.Clear(); // Mevcut satırları temizleyin Manuel Eklediğim Başlıklar Bozulmuyor..
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        dataGridView1.Rows.Add(row.ItemArray); // Satırlar ekleniyor..
+                    }
+                    baglanti.Close();
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hata: " + ex.ToString());
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+        }
+
+        private void txtCariKOD_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (baglanti.State == ConnectionState.Closed) baglanti.Open();
+                if (!string.IsNullOrEmpty(txtCariKOD.Text))
+                {
+                    SqlCommand kmtCariTur = new SqlCommand(sorguCariKod, baglanti);
+                    kmtCariTur.Parameters.AddWithValue("@cariKod", txtCariKOD.Text + "%");
+                    SqlDataAdapter da = new SqlDataAdapter(kmtCariTur);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    dataGridView1.Rows.Clear(); // Mevcut satırları temizleyin Manuel Eklediğim Başlıklar Bozulmuyor..
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        dataGridView1.Rows.Add(row.ItemArray); // Satırlar ekleniyor..
+                    }
+                    baglanti.Close();
+                }
+                else
+                {
+                    SqlCommand kmtCariTur = new SqlCommand(sorguInnerJoin, baglanti);
+                    SqlDataAdapter da = new SqlDataAdapter(kmtCariTur);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    dataGridView1.Rows.Clear(); // Mevcut satırları temizleyin Manuel Eklediğim Başlıklar Bozulmuyor..
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        dataGridView1.Rows.Add(row.ItemArray); // Satırlar ekleniyor..
+                    }
+                    baglanti.Close();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hata: " + ex.ToString());
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+        }
+
+        private void txtCariAD_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (baglanti.State == ConnectionState.Closed) baglanti.Open();
+                if (!string.IsNullOrEmpty(txtCariAD.Text))
+                {
+                    SqlCommand kmtCariTur = new SqlCommand(sorguCariAd, baglanti);
+                    kmtCariTur.Parameters.AddWithValue("@cariAd", txtCariAD.Text + "%");
+                    SqlDataAdapter da = new SqlDataAdapter(kmtCariTur);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    dataGridView1.Rows.Clear(); // Mevcut satırları temizleyin Manuel Eklediğim Başlıklar Bozulmuyor..
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        dataGridView1.Rows.Add(row.ItemArray); // Satırlar ekleniyor..
+                    }
+                    baglanti.Close();
+                }
+                else
+                {
+                    SqlCommand kmtCariTur = new SqlCommand(sorguInnerJoin, baglanti);
+                    SqlDataAdapter da = new SqlDataAdapter(kmtCariTur);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    dataGridView1.Rows.Clear(); // Mevcut satırları temizleyin Manuel Eklediğim Başlıklar Bozulmuyor..
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        dataGridView1.Rows.Add(row.ItemArray); // Satırlar ekleniyor..
+                    }
+                    baglanti.Close();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hata: " + ex.ToString());
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+        }
+
+        private void txtYetkili_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (baglanti.State == ConnectionState.Closed) baglanti.Open();
+                if (!string.IsNullOrEmpty(txtYetkili.Text))
+                {
+                    SqlCommand kmtCariTur = new SqlCommand(sorguCariYetkili, baglanti);
+                    kmtCariTur.Parameters.AddWithValue("@yetkili", txtYetkili.Text + "%");
+                    SqlDataAdapter da = new SqlDataAdapter(kmtCariTur);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    dataGridView1.Rows.Clear(); // Mevcut satırları temizle Manuel Eklediğim Başlıklar Bozulmuyor..
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        dataGridView1.Rows.Add(row.ItemArray); // Satırlar ekleniyor..
+                    }
+                    baglanti.Close();
+                }
+                else
+                {
+                    SqlCommand kmtCariTur = new SqlCommand(sorguInnerJoin, baglanti);
+                    SqlDataAdapter da = new SqlDataAdapter(kmtCariTur);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    dataGridView1.Rows.Clear(); // Mevcut satırları temizle Manuel Eklediğim Başlıklar Bozulmuyor..
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        dataGridView1.Rows.Add(row.ItemArray); // Satırlar ekleniyor..
+                    }
+                    baglanti.Close();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hata: " + ex.ToString());
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+        }
+
+        private void txtTelefon_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (baglanti.State == ConnectionState.Closed) baglanti.Open();
+                if (!string.IsNullOrEmpty(txtTelefon.Text))
+                {
+                    SqlCommand kmtCariTur = new SqlCommand(sorguTelefon, baglanti);
+                    kmtCariTur.Parameters.AddWithValue("@telefon", txtTelefon.Text + "%");
+                    SqlDataAdapter da = new SqlDataAdapter(kmtCariTur);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    dataGridView1.Rows.Clear(); // Mevcut satırları temizle Manuel Eklediğim Başlıklar Bozulmuyor..
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        dataGridView1.Rows.Add(row.ItemArray); // Satırlar ekleniyor..
+                    }
+                    baglanti.Close();
+                }
+                else
+                {
+                    SqlCommand kmtCariTur = new SqlCommand(sorguInnerJoin, baglanti);
+                    SqlDataAdapter da = new SqlDataAdapter(kmtCariTur);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    dataGridView1.Rows.Clear(); // Mevcut satırları temizle Manuel Eklediğim Başlıklar Bozulmuyor..
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        dataGridView1.Rows.Add(row.ItemArray); // Satırlar ekleniyor..
+                    }
+                    baglanti.Close();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hata: " + ex.ToString());
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+        }
+
+        private void txtSehir_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (baglanti.State == ConnectionState.Closed) baglanti.Open();
+                if (!string.IsNullOrEmpty(txtSehir.Text))
+                {
+                    SqlCommand kmtCariTur = new SqlCommand(sorguSehir, baglanti);
+                    kmtCariTur.Parameters.AddWithValue("@sehir", txtSehir.Text + "%");
+                    SqlDataAdapter da = new SqlDataAdapter(kmtCariTur);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    dataGridView1.Rows.Clear(); // Mevcut satırları temizle Manuel Eklediğim Başlıklar Bozulmuyor..
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        dataGridView1.Rows.Add(row.ItemArray); // Satırlar ekleniyor..
+                    }
+                    baglanti.Close();
+                }
+                else
+                {
+                    SqlCommand kmtCariTur = new SqlCommand(sorguInnerJoin, baglanti);
+                    SqlDataAdapter da = new SqlDataAdapter(kmtCariTur);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    dataGridView1.Rows.Clear(); // Mevcut satırları temizle Manuel Eklediğim Başlıklar Bozulmuyor..
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        dataGridView1.Rows.Add(row.ItemArray); // Satırlar ekleniyor..
+                    }
+                    baglanti.Close();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hata: " + ex.ToString());
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+        }
+
+        private void dateDtarih_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                
+                if (baglanti.State == ConnectionState.Closed) baglanti.Open();
+                if (dateDtarih.Value != null)
+                {
+                    
+                    SqlCommand kmtCariTur = new SqlCommand(sorguDtarihi, baglanti);
+
+                    
+                    
+
+                    kmtCariTur.Parameters.AddWithValue("@dtarih", Convert.ToDateTime(dateDtarih.Text));
+                    
+                    SqlDataAdapter da = new SqlDataAdapter(kmtCariTur);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    dataGridView1.Rows.Clear(); // Mevcut satırları temizle Manuel Eklediğim Başlıklar Bozulmuyor..
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        dataGridView1.Rows.Add(row.ItemArray); // Satırlar ekleniyor..
+                    }
+                    baglanti.Close();
+                }
+                else
+                {
+                    dateDtarih.CustomFormat = "yyyy-MM-dd";
+                    SqlCommand kmtCariTur = new SqlCommand(sorguInnerJoin, baglanti);
+                    
+                    SqlDataAdapter da = new SqlDataAdapter(kmtCariTur);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    dataGridView1.Rows.Clear(); // Mevcut satırları temizle Manuel Eklediğim Başlıklar Bozulmuyor..
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        dataGridView1.Rows.Add(row.ItemArray); // Satırlar ekleniyor..
+                    }
+                    baglanti.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hata: " + ex.ToString());
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+        }
+
+        private void dateEtarih_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (baglanti.State == ConnectionState.Closed) baglanti.Open();
+                if (dateEtarih.Value != null)
+                {
+
+                    SqlCommand kmtCariTur = new SqlCommand(sorguEtarihi, baglanti);
+
+                    kmtCariTur.Parameters.AddWithValue("@etarih", Convert.ToDateTime(dateEtarih.Text));
+                    
+                    SqlDataAdapter da = new SqlDataAdapter(kmtCariTur);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    dataGridView1.Rows.Clear(); // Mevcut satırları temizle Manuel Eklediğim Başlıklar Bozulmuyor..
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        dataGridView1.Rows.Add(row.ItemArray); // Satırlar ekleniyor..
+                    }
+                    baglanti.Close();
+                }
+                else
+                {
+                    dateDtarih.CustomFormat = "yyyy-MM-dd";
+                    SqlCommand kmtCariTur = new SqlCommand(sorguInnerJoin, baglanti);
+
+                    SqlDataAdapter da = new SqlDataAdapter(kmtCariTur);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    dataGridView1.Rows.Clear(); // Mevcut satırları temizle Manuel Eklediğim Başlıklar Bozulmuyor..
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        dataGridView1.Rows.Add(row.ItemArray); // Satırlar ekleniyor..
+                    }
+                    baglanti.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hata: " + ex.ToString());
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+        }
+
+        private void datektarih_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (baglanti.State == ConnectionState.Closed) baglanti.Open();
+                if (datektarih.Value != null)
+                {
+
+                    SqlCommand kmtCariTur = new SqlCommand(sorguKtarihi, baglanti);
+
+                    /*
+                    DateTime Sorgu Hatasını bulmak icin ekledim
+                    MessageBox.Show(datektarih.Text); 
+                    MessageBox.Show(datektarih.Value.ToString());
+                    */
+
+                    kmtCariTur.Parameters.AddWithValue("@ktarih", Convert.ToDateTime(datektarih.Text));
+
+                    
+
+                    SqlDataAdapter da = new SqlDataAdapter(kmtCariTur);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    dataGridView1.Rows.Clear(); // Mevcut satırları temizle Manuel Eklediğim Başlıklar Bozulmuyor..
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        dataGridView1.Rows.Add(row.ItemArray); // Satırlar ekleniyor..
+                    }
+                    baglanti.Close();
+                }
+                else
+                {
+                    
+                    SqlCommand kmtCariTur = new SqlCommand(sorguInnerJoin, baglanti);
+
+                    SqlDataAdapter da = new SqlDataAdapter(kmtCariTur);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    dataGridView1.Rows.Clear(); // Mevcut satırları temizle Manuel Eklediğim Başlıklar Bozulmuyor..
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        dataGridView1.Rows.Add(row.ItemArray); // Satırlar ekleniyor..
+                    }
+                    baglanti.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hata: " + ex.ToString());
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+        }
+
+        private void comboBox1_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Convert.ToString(comboBox1.Text) == "Aktif")
+                {
+                    // Hata Kontrolü yapılacak
+                    //MessageBox.Show(comboBox1.Text);
+
+                    SqlCommand kmtCariTur = new SqlCommand(sorguDurum, baglanti);
+                    kmtCariTur.Parameters.AddWithValue("@durum", 1);
+                    SqlDataAdapter da = new SqlDataAdapter(kmtCariTur);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    dataGridView1.Rows.Clear(); // Mevcut satırları temizle Manuel Eklediğim Başlıklar Bozulmuyor..
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        dataGridView1.Rows.Add(row.ItemArray); // Satırlar ekleniyor..
+                    }
+                    baglanti.Close();
+                }
+                else if (Convert.ToString(comboBox1.Text) == "Pasif")
+                {
+                    SqlCommand kmtCariTur = new SqlCommand(sorguDurum, baglanti);
+                    kmtCariTur.Parameters.AddWithValue("@durum", 0);
+                    SqlDataAdapter da = new SqlDataAdapter(kmtCariTur);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    dataGridView1.Rows.Clear(); // Mevcut satırları temizle Manuel Eklediğim Başlıklar Bozulmuyor..
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        dataGridView1.Rows.Add(row.ItemArray); // Satırlar ekleniyor..
+                    }
+                    baglanti.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hata: " + ex.ToString());
+            }
+            finally
+            {
+                baglanti.Close();
             }
         }
     }

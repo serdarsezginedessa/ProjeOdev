@@ -18,8 +18,6 @@ namespace Kobi_v1
         public FrmCariEkle()
         {
             InitializeComponent();
-
-
         }
         static string connectionString = ConfigurationManager.ConnectionStrings["KobiFinans"].ConnectionString;
         SqlConnection baglanti = new SqlConnection(connectionString);
@@ -27,46 +25,20 @@ namespace Kobi_v1
         bool yeniKayitModu = true;
 
 
-        string sorguEkle = @"INSERT INTO  [dbo].[Cari]
-                                                           ([CariKod]
-                                                           ,[CariAdi]
-                                                           ,[CariTuru]
-                                                           ,[Yetkili]
-                                                           ,[Telefon]
-                                                           ,[Eposta]
-                                                           ,[Adres]
-                                                           ,[Sehir]
-                                                           ,[Ulke]
-                                                           ,[VergiDairesi]
-                                                           ,[VergiNo]
-                                                           ,[DogumTarihi]
-                                                           ,[EvlilikTarihi]
-                                                           ,[KayitTarihi]
-                                                           ,[Durum]
-                                                           ,[Aciklama])  VALUES 
-                                                            (@carikod,@cariad,@caritur,@yetkili,@telefon,@eposta,@adres,@sehir,@ulke,@vergidairesi,@vergino,@dtarih,@evltarih,@ktarih,@durum,@aciklama)
-                                                            ";
-        string sorguGuncelle = "UPDATE Cari SET CariAdi=@cariadi, Yetkili=@yetkili, Telefon=@telefon, Eposta=@eposta," +
-                                " Adres=@adres, Sehir=@sehir, Ulke=@ulke, VergiDairesi=@vergiDairesi, VergiNo=@vergiNo, DogumTarihi=@dtarih, " +
-                                "EvlilikTarihi=@evltarih, KayitTarihi=@kaytarih, Durum=@durum, Aciklama=@aciklama " +
-                                "WHERE CariID=@CariId";
-        string sorguAra = "SELECT * FROM Cari WHERE CariID=@CariId";
+        string sorguEkle = @"INSERT INTO Cari (CariKod, CariAdi, CariTuru, Yetkili, Telefon, Eposta, Adres, Sehir, Ulke, 
+                                                    VergiDairesi, VergiNo, DogumTarihi, EvlilikTarihi, KayitTarihi, Durum, Aciklama) 
+                                                    VALUES 
+                                                    (@carikod,@cariadi,@caritur,@yetkili,@telefon,@eposta,@Adres,@sehir,@ulke,
+                                                    @vergiDairesi,@VergiNo,@dtarih,@evltarih,@kaytarih,@durum,@aciklama)";
+
+        string sorguGuncelle = @"UPDATE Cari SET CariAdi=@cariadi, Yetkili=@yetkili, Telefon=@telefon, Eposta=@eposta,
+                                Adres=@adres, Sehir=@sehir, Ulke=@ulke, VergiDairesi=@vergiDairesi, VergiNo=@vergiNo, DogumTarihi=@dtarih, 
+                                EvlilikTarihi=@evltarih, KayitTarihi=@kaytarih, Durum=@durum, Aciklama=@aciklama  
+                                WHERE CariID=@CariId";
+        
         string sorguSil = "DELETE FROM Cari WHERE CariID=@CariId";
         string sorgucarituru = "SELECT AD  FROM CariTuru";
-        string sorguListele = @"Select c.CariID,
-                                    c.CariAdi,
-		                            c.Telefon,
-		                            c.Email,
-		                            c.Adres,
-		                            c.VergiNo,
-		                            c.Borc,
-		                            c.Alacak, 
-		                            ct.Ad 
-		                            From cari as c
-		                            INNER JOIN
-		                            CariTuru as ct
-		                            ON
-		                            c.cariTuru = ct.ID";
+        
         
         private void YeniKayitislemleri()
         {
@@ -355,11 +327,7 @@ namespace Kobi_v1
                     int cariTuruID = (int)kmtTurID.ExecuteScalar();
 
                     //Cari Ekleme
-                    string sorguEkle = @"INSERT INTO Cari (CariKod, CariAdi, CariTuru, Yetkili, Telefon, Eposta, Adres, Sehir, Ulke, 
-                                                    VergiDairesi, VergiNo, DogumTarihi, EvlilikTarihi, KayitTarihi, Durum, Aciklama) " +
-                                                    "VALUES " +
-                                                    "(@carikod,@cariadi,@caritur,@yetkili,@telefon,@eposta,@Adres,@sehir,@ulke," +
-                                                    "@vergiDairesi,@VergiNo,@dtarih,@evltarih,@kaytarih,@durum,@aciklama)";
+                    
 
                     SqlCommand kmtEkle = new SqlCommand(sorguEkle, baglanti);
                     // Parametreleri ekle
@@ -428,8 +396,7 @@ namespace Kobi_v1
         }
         private void btnGuncelle_Click(object sender, EventArgs e)
         {
-            DateTime? dtarih = null;
-            DateTime? evltarih = null;
+            
             if (string.IsNullOrWhiteSpace(txtID.Text))
             {
                 MessageBox.Show("Lütfen Güncellenecek Cari Seçiniz");
@@ -450,9 +417,6 @@ namespace Kobi_v1
                 kmtGuncelle.Parameters.AddWithValue("@ulke", txtUlke.Text);
                 kmtGuncelle.Parameters.AddWithValue("@vergiDairesi", txtVergiD.Text);
                 kmtGuncelle.Parameters.AddWithValue("@VergiNo", txtVergiNo.Text);
-
-               
-                //kmtGuncelle.Parameters.AddWithValue("@dtarih", Convert.ToDateTime(dateDogum.Value));
 
                 
                 if(checboxeTarih.Checked)
@@ -678,7 +642,10 @@ namespace Kobi_v1
             }
         }
 
-        
+        private void btnKapat_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
 
