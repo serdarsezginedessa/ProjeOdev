@@ -914,6 +914,10 @@ namespace Kobi_v1
                 baglanti.Close();
             }
         }
+
+
+
+
     }
 
 }
