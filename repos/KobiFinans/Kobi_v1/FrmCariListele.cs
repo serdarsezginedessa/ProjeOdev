@@ -915,9 +915,33 @@ namespace Kobi_v1
             }
         }
 
+        private void btnEkle_Click(object sender, EventArgs e)
+        {
+            FrmCariEkle frmCariEkle = new FrmCariEkle();
+            frmCariEkle.ShowDialog();
+            listele();
+        }
 
+        private void cariEkleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCariEkle frmCariEkle = new FrmCariEkle();
+            frmCariEkle.ShowDialog();
+            listele();
+        }
 
+        private void cariBilgileriDüzeltToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCariEkle frmCariEkle = new FrmCariEkle();
+            frmCariEkle.ShowDialog();
+            listele();
+        }
 
+        private void cariSilToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCariEkle frmCariEkle = new FrmCariEkle();
+            frmCariEkle.ShowDialog();
+            listele();
+        }
     }
 
 }

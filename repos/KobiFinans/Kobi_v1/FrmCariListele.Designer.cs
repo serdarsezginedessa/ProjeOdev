@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCariListele));
@@ -37,9 +38,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.btnSifirla = new System.Windows.Forms.Button();
-            this.btnAra = new System.Windows.Forms.Button();
-            this.btnGüncelle = new System.Windows.Forms.Button();
-            this.btnSil = new System.Windows.Forms.Button();
             this.btnEkle = new System.Windows.Forms.Button();
             this.datektarih = new System.Windows.Forms.DateTimePicker();
             this.dateEtarih = new System.Windows.Forms.DateTimePicker();
@@ -60,9 +58,14 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cariEkleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cariBilgileriDüzeltToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cariSilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -71,9 +74,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.Controls.Add(this.dataGridView1);
-            this.panel2.Location = new System.Drawing.Point(0, 204);
+            this.panel2.Location = new System.Drawing.Point(0, 181);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1464, 537);
+            this.panel2.Size = new System.Drawing.Size(1464, 560);
             this.panel2.TabIndex = 1;
             // 
             // dataGridView1
@@ -85,6 +88,7 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.MultiSelect = false;
@@ -95,7 +99,7 @@
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.RowTemplate.DefaultCellStyle.NullValue = null;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1464, 537);
+            this.dataGridView1.Size = new System.Drawing.Size(1464, 560);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.TabStop = false;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
@@ -106,9 +110,6 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.comboBox1);
             this.panel1.Controls.Add(this.btnSifirla);
-            this.panel1.Controls.Add(this.btnAra);
-            this.panel1.Controls.Add(this.btnGüncelle);
-            this.panel1.Controls.Add(this.btnSil);
             this.panel1.Controls.Add(this.btnEkle);
             this.panel1.Controls.Add(this.datektarih);
             this.panel1.Controls.Add(this.dateEtarih);
@@ -134,7 +135,7 @@
             this.panel1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1464, 198);
+            this.panel1.Size = new System.Drawing.Size(1464, 175);
             this.panel1.TabIndex = 0;
             // 
             // label1
@@ -142,7 +143,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label1.ForeColor = System.Drawing.Color.Firebrick;
-            this.label1.Location = new System.Drawing.Point(10, 7);
+            this.label1.Location = new System.Drawing.Point(3, 7);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(259, 25);
             this.label1.TabIndex = 30;
@@ -154,7 +155,7 @@
             this.comboBox1.Items.AddRange(new object[] {
             "Aktif",
             "Pasif"});
-            this.comboBox1.Location = new System.Drawing.Point(854, 35);
+            this.comboBox1.Location = new System.Drawing.Point(896, 33);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 30);
             this.comboBox1.TabIndex = 4;
@@ -167,83 +168,36 @@
             this.btnSifirla.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSifirla.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnSifirla.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnSifirla.Location = new System.Drawing.Point(1065, 122);
+            this.btnSifirla.Location = new System.Drawing.Point(827, 100);
             this.btnSifirla.Name = "btnSifirla";
-            this.btnSifirla.Size = new System.Drawing.Size(178, 27);
+            this.btnSifirla.Size = new System.Drawing.Size(73, 35);
             this.btnSifirla.TabIndex = 11;
-            this.btnSifirla.Text = "Tarihi Sıfırla";
+            this.btnSifirla.Text = "Sıfırla";
             this.btnSifirla.UseVisualStyleBackColor = false;
             this.btnSifirla.Click += new System.EventHandler(this.btnSifirla_Click);
-            // 
-            // btnAra
-            // 
-            this.btnAra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
-            this.btnAra.FlatAppearance.BorderSize = 0;
-            this.btnAra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAra.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnAra.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnAra.Location = new System.Drawing.Point(7, 146);
-            this.btnAra.Name = "btnAra";
-            this.btnAra.Size = new System.Drawing.Size(140, 49);
-            this.btnAra.TabIndex = 29;
-            this.btnAra.Text = "Cari Ara";
-            this.btnAra.UseVisualStyleBackColor = false;
-            // 
-            // btnGüncelle
-            // 
-            this.btnGüncelle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
-            this.btnGüncelle.BackgroundImage = global::Kobi_v1.Properties.Resources.Restart;
-            this.btnGüncelle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnGüncelle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnGüncelle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnGüncelle.ForeColor = System.Drawing.Color.Transparent;
-            this.btnGüncelle.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGüncelle.Location = new System.Drawing.Point(385, 146);
-            this.btnGüncelle.Name = "btnGüncelle";
-            this.btnGüncelle.Size = new System.Drawing.Size(226, 51);
-            this.btnGüncelle.TabIndex = 22;
-            this.btnGüncelle.Text = "Güncelle";
-            this.btnGüncelle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGüncelle.UseVisualStyleBackColor = false;
-            // 
-            // btnSil
-            // 
-            this.btnSil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
-            this.btnSil.BackgroundImage = global::Kobi_v1.Properties.Resources.Minus48px;
-            this.btnSil.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnSil.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSil.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnSil.ForeColor = System.Drawing.Color.Transparent;
-            this.btnSil.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSil.Location = new System.Drawing.Point(283, 146);
-            this.btnSil.Name = "btnSil";
-            this.btnSil.Size = new System.Drawing.Size(96, 51);
-            this.btnSil.TabIndex = 23;
-            this.btnSil.Text = "Sil";
-            this.btnSil.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSil.UseVisualStyleBackColor = false;
             // 
             // btnEkle
             // 
             this.btnEkle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
-            this.btnEkle.BackgroundImage = global::Kobi_v1.Properties.Resources.Add1;
             this.btnEkle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnEkle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnEkle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnEkle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnEkle.ForeColor = System.Drawing.Color.Transparent;
-            this.btnEkle.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEkle.Location = new System.Drawing.Point(153, 146);
+            this.btnEkle.Image = global::Kobi_v1.Properties.Resources.Edit36px;
+            this.btnEkle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEkle.Location = new System.Drawing.Point(906, 98);
             this.btnEkle.Name = "btnEkle";
-            this.btnEkle.Size = new System.Drawing.Size(124, 51);
+            this.btnEkle.Size = new System.Drawing.Size(189, 37);
             this.btnEkle.TabIndex = 21;
-            this.btnEkle.Text = "Ekle";
+            this.btnEkle.Text = "Ekle-Güncelle-Sil";
             this.btnEkle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEkle.UseVisualStyleBackColor = false;
+            this.btnEkle.Click += new System.EventHandler(this.btnEkle_Click);
             // 
             // datektarih
             // 
             this.datektarih.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.datektarih.Location = new System.Drawing.Point(1065, 32);
+            this.datektarih.Location = new System.Drawing.Point(92, 104);
             this.datektarih.Name = "datektarih";
             this.datektarih.Size = new System.Drawing.Size(178, 28);
             this.datektarih.TabIndex = 8;
@@ -252,7 +206,7 @@
             // dateEtarih
             // 
             this.dateEtarih.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateEtarih.Location = new System.Drawing.Point(1065, 62);
+            this.dateEtarih.Location = new System.Drawing.Point(361, 104);
             this.dateEtarih.Name = "dateEtarih";
             this.dateEtarih.Size = new System.Drawing.Size(178, 28);
             this.dateEtarih.TabIndex = 9;
@@ -261,7 +215,7 @@
             // dateDtarih
             // 
             this.dateDtarih.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateDtarih.Location = new System.Drawing.Point(1065, 92);
+            this.dateDtarih.Location = new System.Drawing.Point(639, 104);
             this.dateDtarih.Name = "dateDtarih";
             this.dateDtarih.Size = new System.Drawing.Size(178, 28);
             this.dateDtarih.TabIndex = 10;
@@ -270,7 +224,7 @@
             // txtCariTUR
             // 
             this.txtCariTUR.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.txtCariTUR.Location = new System.Drawing.Point(597, 38);
+            this.txtCariTUR.Location = new System.Drawing.Point(639, 34);
             this.txtCariTUR.Name = "txtCariTUR";
             this.txtCariTUR.Size = new System.Drawing.Size(178, 28);
             this.txtCariTUR.TabIndex = 3;
@@ -279,7 +233,7 @@
             // txtCariAD
             // 
             this.txtCariAD.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.txtCariAD.Location = new System.Drawing.Point(338, 38);
+            this.txtCariAD.Location = new System.Drawing.Point(361, 34);
             this.txtCariAD.Name = "txtCariAD";
             this.txtCariAD.Size = new System.Drawing.Size(178, 28);
             this.txtCariAD.TabIndex = 2;
@@ -288,7 +242,7 @@
             // txtTelefon
             // 
             this.txtTelefon.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.txtTelefon.Location = new System.Drawing.Point(597, 71);
+            this.txtTelefon.Location = new System.Drawing.Point(639, 70);
             this.txtTelefon.MaxLength = 10;
             this.txtTelefon.Name = "txtTelefon";
             this.txtTelefon.Size = new System.Drawing.Size(178, 28);
@@ -298,7 +252,7 @@
             // txtYetkili
             // 
             this.txtYetkili.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.txtYetkili.Location = new System.Drawing.Point(338, 71);
+            this.txtYetkili.Location = new System.Drawing.Point(361, 70);
             this.txtYetkili.Name = "txtYetkili";
             this.txtYetkili.Size = new System.Drawing.Size(178, 28);
             this.txtYetkili.TabIndex = 6;
@@ -316,7 +270,7 @@
             // txtCariKOD
             // 
             this.txtCariKOD.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.txtCariKOD.Location = new System.Drawing.Point(92, 36);
+            this.txtCariKOD.Location = new System.Drawing.Point(92, 34);
             this.txtCariKOD.Name = "txtCariKOD";
             this.txtCariKOD.Size = new System.Drawing.Size(178, 28);
             this.txtCariKOD.TabIndex = 1;
@@ -325,7 +279,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(795, 40);
+            this.label16.Location = new System.Drawing.Point(823, 37);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(67, 24);
             this.label16.TabIndex = 10;
@@ -334,7 +288,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(985, 67);
+            this.label15.Location = new System.Drawing.Point(276, 108);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(79, 24);
             this.label15.TabIndex = 10;
@@ -343,7 +297,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(522, 73);
+            this.label6.Location = new System.Drawing.Point(545, 73);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(74, 24);
             this.label6.TabIndex = 10;
@@ -352,7 +306,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(522, 41);
+            this.label5.Location = new System.Drawing.Point(545, 38);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(88, 24);
             this.label5.TabIndex = 11;
@@ -361,7 +315,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(985, 37);
+            this.label14.Location = new System.Drawing.Point(4, 108);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(71, 24);
             this.label14.TabIndex = 13;
@@ -379,7 +333,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(985, 97);
+            this.label13.Location = new System.Drawing.Point(545, 107);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(94, 24);
             this.label13.TabIndex = 13;
@@ -412,6 +366,37 @@
             this.label2.TabIndex = 14;
             this.label2.Text = "Cari Kod";
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cariEkleToolStripMenuItem,
+            this.cariBilgileriDüzeltToolStripMenuItem,
+            this.cariSilToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(207, 76);
+            // 
+            // cariEkleToolStripMenuItem
+            // 
+            this.cariEkleToolStripMenuItem.Name = "cariEkleToolStripMenuItem";
+            this.cariEkleToolStripMenuItem.Size = new System.Drawing.Size(206, 24);
+            this.cariEkleToolStripMenuItem.Text = "Cari Ekle";
+            this.cariEkleToolStripMenuItem.Click += new System.EventHandler(this.cariEkleToolStripMenuItem_Click);
+            // 
+            // cariBilgileriDüzeltToolStripMenuItem
+            // 
+            this.cariBilgileriDüzeltToolStripMenuItem.Name = "cariBilgileriDüzeltToolStripMenuItem";
+            this.cariBilgileriDüzeltToolStripMenuItem.Size = new System.Drawing.Size(206, 24);
+            this.cariBilgileriDüzeltToolStripMenuItem.Text = "Cari Bilgileri Düzelt";
+            this.cariBilgileriDüzeltToolStripMenuItem.Click += new System.EventHandler(this.cariBilgileriDüzeltToolStripMenuItem_Click);
+            // 
+            // cariSilToolStripMenuItem
+            // 
+            this.cariSilToolStripMenuItem.Name = "cariSilToolStripMenuItem";
+            this.cariSilToolStripMenuItem.Size = new System.Drawing.Size(206, 24);
+            this.cariSilToolStripMenuItem.Text = "Cari Sil";
+            this.cariSilToolStripMenuItem.Click += new System.EventHandler(this.cariSilToolStripMenuItem_Click);
+            // 
             // FrmCariListele
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
@@ -436,6 +421,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -463,12 +449,13 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button btnAra;
-        private System.Windows.Forms.Button btnGüncelle;
-        private System.Windows.Forms.Button btnSil;
         private System.Windows.Forms.Button btnEkle;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button btnSifirla;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem cariEkleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cariBilgileriDüzeltToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cariSilToolStripMenuItem;
     }
 }

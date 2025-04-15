@@ -56,8 +56,6 @@ namespace Kobi_v1
                                 ch.Tarih,
 	                            ch.HareketID,
 	                            ch.Aciklama,	
-	                            c.Borc,
-	                            c.Alacak,    
                                 ch.HareketTipi,
                                 ch.Tutar
                             FROM 
@@ -81,10 +79,8 @@ namespace Kobi_v1
                 dataGridView1.Columns[0].HeaderText = "Tarih";
                 dataGridView1.Columns[1].HeaderText = "Belge No";
                 dataGridView1.Columns[2].HeaderText = "Açıklama";
-                dataGridView1.Columns[3].HeaderText = "Borç";
-                dataGridView1.Columns[4].HeaderText = "Alacak";
-                dataGridView1.Columns[5].HeaderText = "Bakiye";
-                dataGridView1.Columns[6].HeaderText = "İşlem Türü";
+                dataGridView1.Columns[3].HeaderText = "Bakiye";
+                dataGridView1.Columns[4].HeaderText = "İşlem Türü";
 
 
             }
