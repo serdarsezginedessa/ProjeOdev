@@ -34,11 +34,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCariListele));
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cariEkleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cariBilgileriDüzeltToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cariSilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.btnSifirla = new System.Windows.Forms.Button();
-            this.btnEkle = new System.Windows.Forms.Button();
             this.datektarih = new System.Windows.Forms.DateTimePicker();
             this.dateEtarih = new System.Windows.Forms.DateTimePicker();
             this.dateDtarih = new System.Windows.Forms.DateTimePicker();
@@ -58,14 +61,11 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.cariEkleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cariBilgileriDüzeltToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cariSilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnEkle = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panel1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -74,9 +74,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.Controls.Add(this.dataGridView1);
-            this.panel2.Location = new System.Drawing.Point(0, 181);
+            this.panel2.Location = new System.Drawing.Point(0, 196);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1464, 560);
+            this.panel2.Size = new System.Drawing.Size(1464, 545);
             this.panel2.TabIndex = 1;
             // 
             // dataGridView1
@@ -99,10 +99,41 @@
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.RowTemplate.DefaultCellStyle.NullValue = null;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1464, 560);
+            this.dataGridView1.Size = new System.Drawing.Size(1464, 545);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.TabStop = false;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cariEkleToolStripMenuItem,
+            this.cariBilgileriDüzeltToolStripMenuItem,
+            this.cariSilToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(207, 76);
+            // 
+            // cariEkleToolStripMenuItem
+            // 
+            this.cariEkleToolStripMenuItem.Name = "cariEkleToolStripMenuItem";
+            this.cariEkleToolStripMenuItem.Size = new System.Drawing.Size(206, 24);
+            this.cariEkleToolStripMenuItem.Text = "Cari Ekle";
+            this.cariEkleToolStripMenuItem.Click += new System.EventHandler(this.cariEkleToolStripMenuItem_Click);
+            // 
+            // cariBilgileriDüzeltToolStripMenuItem
+            // 
+            this.cariBilgileriDüzeltToolStripMenuItem.Name = "cariBilgileriDüzeltToolStripMenuItem";
+            this.cariBilgileriDüzeltToolStripMenuItem.Size = new System.Drawing.Size(206, 24);
+            this.cariBilgileriDüzeltToolStripMenuItem.Text = "Cari Bilgileri Düzelt";
+            this.cariBilgileriDüzeltToolStripMenuItem.Click += new System.EventHandler(this.cariBilgileriDüzeltToolStripMenuItem_Click);
+            // 
+            // cariSilToolStripMenuItem
+            // 
+            this.cariSilToolStripMenuItem.Name = "cariSilToolStripMenuItem";
+            this.cariSilToolStripMenuItem.Size = new System.Drawing.Size(206, 24);
+            this.cariSilToolStripMenuItem.Text = "Cari Sil";
+            this.cariSilToolStripMenuItem.Click += new System.EventHandler(this.cariSilToolStripMenuItem_Click);
             // 
             // panel1
             // 
@@ -135,7 +166,7 @@
             this.panel1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1464, 175);
+            this.panel1.Size = new System.Drawing.Size(1464, 190);
             this.panel1.TabIndex = 0;
             // 
             // label1
@@ -145,9 +176,9 @@
             this.label1.ForeColor = System.Drawing.Color.Firebrick;
             this.label1.Location = new System.Drawing.Point(3, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(259, 25);
+            this.label1.Size = new System.Drawing.Size(158, 25);
             this.label1.TabIndex = 30;
-            this.label1.Text = "Cari Kayıt Arama Filtreleri";
+            this.label1.Text = "Arama Filtreleri";
             // 
             // comboBox1
             // 
@@ -168,31 +199,13 @@
             this.btnSifirla.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSifirla.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnSifirla.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnSifirla.Location = new System.Drawing.Point(827, 100);
+            this.btnSifirla.Location = new System.Drawing.Point(8, 138);
             this.btnSifirla.Name = "btnSifirla";
-            this.btnSifirla.Size = new System.Drawing.Size(73, 35);
+            this.btnSifirla.Size = new System.Drawing.Size(124, 35);
             this.btnSifirla.TabIndex = 11;
-            this.btnSifirla.Text = "Sıfırla";
+            this.btnSifirla.Text = "Filtre Sıfırla";
             this.btnSifirla.UseVisualStyleBackColor = false;
             this.btnSifirla.Click += new System.EventHandler(this.btnSifirla_Click);
-            // 
-            // btnEkle
-            // 
-            this.btnEkle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
-            this.btnEkle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnEkle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnEkle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnEkle.ForeColor = System.Drawing.Color.Transparent;
-            this.btnEkle.Image = global::Kobi_v1.Properties.Resources.Edit36px;
-            this.btnEkle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEkle.Location = new System.Drawing.Point(906, 98);
-            this.btnEkle.Name = "btnEkle";
-            this.btnEkle.Size = new System.Drawing.Size(189, 37);
-            this.btnEkle.TabIndex = 21;
-            this.btnEkle.Text = "Ekle-Güncelle-Sil";
-            this.btnEkle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEkle.UseVisualStyleBackColor = false;
-            this.btnEkle.Click += new System.EventHandler(this.btnEkle_Click);
             // 
             // datektarih
             // 
@@ -366,41 +379,30 @@
             this.label2.TabIndex = 14;
             this.label2.Text = "Cari Kod";
             // 
-            // contextMenuStrip1
+            // btnEkle
             // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cariEkleToolStripMenuItem,
-            this.cariBilgileriDüzeltToolStripMenuItem,
-            this.cariSilToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(207, 76);
-            // 
-            // cariEkleToolStripMenuItem
-            // 
-            this.cariEkleToolStripMenuItem.Name = "cariEkleToolStripMenuItem";
-            this.cariEkleToolStripMenuItem.Size = new System.Drawing.Size(206, 24);
-            this.cariEkleToolStripMenuItem.Text = "Cari Ekle";
-            this.cariEkleToolStripMenuItem.Click += new System.EventHandler(this.cariEkleToolStripMenuItem_Click);
-            // 
-            // cariBilgileriDüzeltToolStripMenuItem
-            // 
-            this.cariBilgileriDüzeltToolStripMenuItem.Name = "cariBilgileriDüzeltToolStripMenuItem";
-            this.cariBilgileriDüzeltToolStripMenuItem.Size = new System.Drawing.Size(206, 24);
-            this.cariBilgileriDüzeltToolStripMenuItem.Text = "Cari Bilgileri Düzelt";
-            this.cariBilgileriDüzeltToolStripMenuItem.Click += new System.EventHandler(this.cariBilgileriDüzeltToolStripMenuItem_Click);
-            // 
-            // cariSilToolStripMenuItem
-            // 
-            this.cariSilToolStripMenuItem.Name = "cariSilToolStripMenuItem";
-            this.cariSilToolStripMenuItem.Size = new System.Drawing.Size(206, 24);
-            this.cariSilToolStripMenuItem.Text = "Cari Sil";
-            this.cariSilToolStripMenuItem.Click += new System.EventHandler(this.cariSilToolStripMenuItem_Click);
+            this.btnEkle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
+            this.btnEkle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnEkle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnEkle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnEkle.ForeColor = System.Drawing.Color.Transparent;
+            this.btnEkle.Image = global::Kobi_v1.Properties.Resources.Edit36px;
+            this.btnEkle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEkle.Location = new System.Drawing.Point(1023, 33);
+            this.btnEkle.Name = "btnEkle";
+            this.btnEkle.Size = new System.Drawing.Size(227, 48);
+            this.btnEkle.TabIndex = 21;
+            this.btnEkle.Text = "Ekle-Güncelle-Sil";
+            this.btnEkle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEkle.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnEkle.UseVisualStyleBackColor = false;
+            this.btnEkle.Click += new System.EventHandler(this.btnEkle_Click);
             // 
             // FrmCariListele
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(208)))), ((int)(((byte)(161)))));
             this.ClientSize = new System.Drawing.Size(1464, 742);
             this.Controls.Add(this.panel1);
@@ -419,9 +421,9 @@
             this.Load += new System.EventHandler(this.FrmCariListele_Load);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

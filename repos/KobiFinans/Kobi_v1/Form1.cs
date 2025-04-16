@@ -90,5 +90,17 @@ namespace Kobi_v1
             FrmBankaListe frmBankaListe = new FrmBankaListe();
             frmBankaListe.ShowDialog();
         }
+
+        private void stoklarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmStoklar frmStoklar = new FrmStoklar();
+            frmStoklar.ShowDialog();
+        }
+
+        private void stokTanımlamalarıToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmStokEkle frmStokEkle = new FrmStokEkle();
+            frmStokEkle.ShowDialog();
+        }
     }
 }
