@@ -38,7 +38,7 @@ namespace Kobi_v1
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Hata: " + ex.Message);
+                MessageBox.Show("Hata: " + "Veri Tabanı Bağlantı Hatası");
             }
             finally
             {
@@ -101,6 +101,18 @@ namespace Kobi_v1
         {
             FrmStokEkle frmStokEkle = new FrmStokEkle();
             frmStokEkle.ShowDialog();
+        }
+
+        private void stokKategorileriToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmStokKategori frmStokKategori = new FrmStokKategori();
+            frmStokKategori.ShowDialog();
+        }
+
+        private void satışToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmSatis frmSatis = new FrmSatis();
+            frmSatis.ShowDialog();
         }
     }
 }

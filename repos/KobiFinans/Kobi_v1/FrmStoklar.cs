@@ -16,5 +16,15 @@ namespace Kobi_v1
         {
             InitializeComponent();
         }
+
+        private void button1_MouseMove(object sender, MouseEventArgs e)
+        {
+            button1.BackColor = Color.IndianRed;
+        }
+
+        private void button1_MouseLeave(object sender, EventArgs e)
+        {
+            button1.BackColor = Color.Transparent;
+        }
     }
 }
