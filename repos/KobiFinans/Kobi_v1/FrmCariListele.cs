@@ -45,7 +45,8 @@ namespace Kobi_v1
                                     c.EvlilikTarihi,
                                     c.KayitTarihi,
                                     c.Durum,
-                                    c.Aciklama
+                                    c.Aciklama,
+                                    c.Resim
 		                            From cari as c
 		                            INNER JOIN
 		                            CariTuru as ct
@@ -321,6 +322,7 @@ namespace Kobi_v1
                 dataGridView1.Columns.Add("c.KayitTarihi", "Kayıt T.");
                 dataGridView1.Columns.Add("c.Durum", "Durum");
                 dataGridView1.Columns.Add("c.Aciklama", "Açıklama");
+                dataGridView1.Columns.Add("c.Resim","Resim");
             }
             
           
@@ -415,16 +417,22 @@ namespace Kobi_v1
                 string kayitTarihi = row.Cells["c.KayitTarihi"].Value.ToString();
                 string durum = row.Cells["c.Durum"].Value.ToString();
                 string aciklama = row.Cells["c.Aciklama"].Value.ToString();
+                string resim = row.Cells["c.Resim"].Value.ToString();
 
                 //Hangi Formdan Geldiysek veriyi o forma gönderiyoruz.
 
-                if(CagrilanForm is FrmCariEkle)
+                if (CagrilanForm is FrmCariEkle)
                 {
                     var hedefForm= CagrilanForm as FrmCariEkle;
-                    hedefForm.CariBilgileriYukle(cariID,cariKod,cariAdi, cariTur, yetkili, telefon, ePosta, adres, sehir, ulke, vergiDairesi, vergiNo, dogumTarihi, evlilikTarihi, kayitTarihi, durum, aciklama);
+                    hedefForm.CariBilgileriYukle(cariID,cariKod,cariAdi, cariTur, yetkili, telefon, ePosta, adres, sehir, ulke, vergiDairesi, vergiNo, dogumTarihi, evlilikTarihi, kayitTarihi, durum, aciklama,resim);
 
                 }
                 //Diğer Formlardanda datagrid deki veriler çekilecekse  else if eklenecek ve hedef form verilecek
+                else if(CagrilanForm is FrmSatis)
+                {
+                    var hedefForm = CagrilanForm as FrmSatis;
+                    hedefForm.CariBilgileriYukle(cariID, cariKod, cariAdi, cariTur, yetkili, telefon, ePosta,resim);
+                }
                 else
                 {
                     return;

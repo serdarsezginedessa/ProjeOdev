@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,14 +27,14 @@ namespace Kobi_v1
 
 
         string sorguEkle = @"INSERT INTO Cari (CariKod, CariAdi, CariTuru, Yetkili, Telefon, Eposta, Adres, Sehir, Ulke, 
-                                                    VergiDairesi, VergiNo, DogumTarihi, EvlilikTarihi, KayitTarihi, Durum, Aciklama) 
+                                                    VergiDairesi, VergiNo, DogumTarihi, EvlilikTarihi, KayitTarihi, Durum, Aciklama,Resim) 
                                                     VALUES 
                                                     (@carikod,@cariadi,@caritur,@yetkili,@telefon,@eposta,@Adres,@sehir,@ulke,
-                                                    @vergiDairesi,@VergiNo,@dtarih,@evltarih,@kaytarih,@durum,@aciklama)";
+                                                    @vergiDairesi,@VergiNo,@dtarih,@evltarih,@kaytarih,@durum,@aciklama,@resim)";
 
         string sorguGuncelle = @"UPDATE Cari SET CariAdi=@cariadi, Yetkili=@yetkili, Telefon=@telefon, Eposta=@eposta,
                                 Adres=@adres, Sehir=@sehir, Ulke=@ulke, VergiDairesi=@vergiDairesi, VergiNo=@vergiNo, DogumTarihi=@dtarih, 
-                                EvlilikTarihi=@evltarih, KayitTarihi=@kaytarih, Durum=@durum, Aciklama=@aciklama  
+                                EvlilikTarihi=@evltarih, KayitTarihi=@kaytarih, Durum=@durum, Aciklama=@aciklama,Resim=@resim  
                                 WHERE CariID=@CariId";
         
         string sorguSil = "DELETE FROM Cari WHERE CariID=@CariId";
@@ -120,6 +121,7 @@ namespace Kobi_v1
             dateKayit.Value=DateTime.Now;
             chcDurum.Checked = false;
             txtAciklama.Text = "";
+            pictureBox1.Image = null;
         }
         private void textEnable()
         {
@@ -175,6 +177,7 @@ namespace Kobi_v1
             textDisable();
             
             btnDisable();
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
 
 
         }
@@ -364,7 +367,15 @@ namespace Kobi_v1
                     kmtEkle.Parameters.AddWithValue("@kaytarih", Convert.ToDateTime(kaytarih));
                     kmtEkle.Parameters.AddWithValue("@durum", Convert.ToInt32(durum));
                     kmtEkle.Parameters.AddWithValue("@aciklama", aciklama);
-                    
+                    if (bayrak)
+                    {
+                        kmtEkle.Parameters.AddWithValue("@resim", resimYolu);
+                    }
+                    else
+                    {
+                        kmtEkle.Parameters.AddWithValue("@resim", varsayilanresimyolu);
+                    }
+
                     int result = kmtEkle.ExecuteNonQuery();
                     if (result > 0)
                     {
@@ -392,6 +403,7 @@ namespace Kobi_v1
                 btnDisable();
                 textDisable();
                 chcDurum.Text = "";
+                bayrak = false;
             }
         }
         private void btnGuncelle_Click(object sender, EventArgs e)
@@ -441,6 +453,14 @@ namespace Kobi_v1
 
                 kmtGuncelle.Parameters.AddWithValue("@durum", Convert.ToInt32(chcDurum.Checked));
                 kmtGuncelle.Parameters.AddWithValue("@aciklama", txtAciklama.Text);
+                if (bayrak)
+                {
+                    kmtGuncelle.Parameters.AddWithValue("@resim", resimYolu);
+                }
+                else
+                {
+                    kmtGuncelle.Parameters.AddWithValue("@resim", varsayilanresimyolu);
+                }
                 int result = kmtGuncelle.ExecuteNonQuery();
                 if (result > 0)
                 {
@@ -462,6 +482,7 @@ namespace Kobi_v1
                 btnDisable();
                 textDisable();
                 yeniKayitModu = true;
+                bayrak = false;
             }
         }
 
@@ -523,7 +544,7 @@ namespace Kobi_v1
         }
 
         public void CariBilgileriYukle( string cariID, string cariKod,string cariAdi, string cariTur, string yetkili, string telefon, string eposta, 
-            string adres, string sehir,string ulke, string vergidairesi , string vergiNo, string dtarih, string etarih,string ktarih, string durum,string aciklama)
+            string adres, string sehir,string ulke, string vergidairesi , string vergiNo, string dtarih, string etarih,string ktarih, string durum,string aciklama,string resim)
         {
             cariTurListele();
             txtID.Text = cariID;
@@ -584,6 +605,15 @@ namespace Kobi_v1
                 chcDurum.Checked = false;
             }
             txtAciklama.Text = aciklama;
+            if (string.IsNullOrEmpty(resim))
+            {
+                resim = varsayilanresimyolu;
+            }
+            else
+            {
+                pictureBox1.ImageLocation = Application.StartupPath + resim;
+            }
+            
 
 
 
@@ -645,6 +675,31 @@ namespace Kobi_v1
         private void btnKapat_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void pictureEdit1_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+        string resimYolu = "";
+        string varsayilanresimyolu= @"\\images\\default.png";
+        bool bayrak = false;
+        private void pictureBox1_DoubleClick(object sender, EventArgs e)
+        {
+            OpenFileDialog resimAc = new OpenFileDialog();
+            resimAc.Filter = "Resim Dosyaları|*.jpg;*.JPG;*.jpeg;*.png;*.bmp|Tüm Dosyalar|*.*";
+            resimAc.Title = "Resim Seçiniz";
+            if (resimAc.ShowDialog() == DialogResult.OK)
+            {
+                pictureBox1.ImageLocation = resimAc.FileName;
+                string kaynak = resimAc.FileName;
+                string hedef = Application.StartupPath + @"\\images\\";
+                string yeniAd=Guid.NewGuid().ToString() + ".jpg";
+                File.Copy(kaynak, hedef + yeniAd, true);
+                resimYolu = @"\\images\\" + yeniAd;
+                bayrak = true;
+                
+            }
         }
     }
 }
