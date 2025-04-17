@@ -32,54 +32,58 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSatis));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnTurEkle = new System.Windows.Forms.Button();
+            this.lblEposta = new System.Windows.Forms.Label();
+            this.lblYetkili = new System.Windows.Forms.Label();
+            this.lblTelefon = new System.Windows.Forms.Label();
+            this.lblMusteriTuru = new System.Windows.Forms.Label();
+            this.lblCariID = new System.Windows.Forms.Label();
+            this.lblCariKod = new System.Windows.Forms.Label();
             this.LblMusteri = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnSil = new System.Windows.Forms.Button();
+            this.btnKayit = new System.Windows.Forms.Button();
+            this.btnEkle = new System.Windows.Forms.Button();
+            this.btniptal = new System.Windows.Forms.Button();
+            this.btnKapat = new System.Windows.Forms.Button();
+            this.btnGuncelle = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
+            this.btnAra = new System.Windows.Forms.Button();
             this.dateKayit = new System.Windows.Forms.DateTimePicker();
-            this.combTur = new System.Windows.Forms.ComboBox();
+            this.comboBoxDurum = new System.Windows.Forms.ComboBox();
+            this.comboboxOdemeTuru = new System.Windows.Forms.ComboBox();
             this.txtAd = new System.Windows.Forms.TextBox();
             this.txtAdres = new System.Windows.Forms.TextBox();
             this.txtEposta = new System.Windows.Forms.TextBox();
             this.txtSatisFiyati = new System.Windows.Forms.TextBox();
             this.txtYetkili = new System.Windows.Forms.TextBox();
-            this.txtKod = new System.Windows.Forms.TextBox();
+            this.txtCariAd = new System.Windows.Forms.TextBox();
             this.txtID = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBoxDurum = new System.Windows.Forms.ComboBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.lblCariKod = new System.Windows.Forms.Label();
-            this.lblMusteriTuru = new System.Windows.Forms.Label();
-            this.lblTelefon = new System.Windows.Forms.Label();
-            this.lblCariID = new System.Windows.Forms.Label();
-            this.lblEposta = new System.Windows.Forms.Label();
-            this.lblYetkili = new System.Windows.Forms.Label();
-            this.btnKapat = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnSil = new System.Windows.Forms.Button();
-            this.btnKayit = new System.Windows.Forms.Button();
-            this.btnEkle = new System.Windows.Forms.Button();
-            this.btniptal = new System.Windows.Forms.Button();
-            this.btnGuncelle = new System.Windows.Forms.Button();
-            this.btnAra = new System.Windows.Forms.Button();
+            this.comboBoxKasa = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.comboBoxBanka = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -110,12 +114,25 @@
             this.splitContainer1.SplitterDistance = 241;
             this.splitContainer1.TabIndex = 0;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::Kobi_v1.Properties.Resources.Male_User96;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox1.ErrorImage = global::Kobi_v1.Properties.Resources.Close;
+            this.pictureBox1.InitialImage = global::Kobi_v1.Properties.Resources.Product;
+            this.pictureBox1.Location = new System.Drawing.Point(48, 11);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(132, 132);
+            this.pictureBox1.TabIndex = 33;
+            this.pictureBox1.TabStop = false;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(252, 25);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(84, 24);
+            this.label4.Size = new System.Drawing.Size(64, 18);
             this.label4.TabIndex = 12;
             this.label4.Text = "Ürün Adı";
             // 
@@ -133,6 +150,90 @@
             this.btnTurEkle.Text = "Kategori Ekle";
             this.btnTurEkle.UseVisualStyleBackColor = false;
             // 
+            // lblEposta
+            // 
+            this.lblEposta.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblEposta.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.lblEposta.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEposta.ForeColor = System.Drawing.Color.Firebrick;
+            this.lblEposta.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblEposta.Location = new System.Drawing.Point(3, 373);
+            this.lblEposta.Name = "lblEposta";
+            this.lblEposta.Size = new System.Drawing.Size(223, 36);
+            this.lblEposta.TabIndex = 13;
+            this.lblEposta.Text = "Eposta";
+            this.lblEposta.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // lblYetkili
+            // 
+            this.lblYetkili.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblYetkili.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.lblYetkili.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblYetkili.ForeColor = System.Drawing.Color.Firebrick;
+            this.lblYetkili.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblYetkili.Location = new System.Drawing.Point(3, 299);
+            this.lblYetkili.Name = "lblYetkili";
+            this.lblYetkili.Size = new System.Drawing.Size(223, 36);
+            this.lblYetkili.TabIndex = 13;
+            this.lblYetkili.Text = "Yetkili";
+            this.lblYetkili.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // lblTelefon
+            // 
+            this.lblTelefon.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblTelefon.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.lblTelefon.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTelefon.ForeColor = System.Drawing.Color.Firebrick;
+            this.lblTelefon.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblTelefon.Location = new System.Drawing.Point(3, 336);
+            this.lblTelefon.Name = "lblTelefon";
+            this.lblTelefon.Size = new System.Drawing.Size(223, 36);
+            this.lblTelefon.TabIndex = 13;
+            this.lblTelefon.Text = "Telefon";
+            this.lblTelefon.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // lblMusteriTuru
+            // 
+            this.lblMusteriTuru.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblMusteriTuru.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.lblMusteriTuru.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMusteriTuru.ForeColor = System.Drawing.Color.Firebrick;
+            this.lblMusteriTuru.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblMusteriTuru.Location = new System.Drawing.Point(3, 262);
+            this.lblMusteriTuru.Name = "lblMusteriTuru";
+            this.lblMusteriTuru.Size = new System.Drawing.Size(223, 36);
+            this.lblMusteriTuru.TabIndex = 13;
+            this.lblMusteriTuru.Text = "Müşteri Türü";
+            this.lblMusteriTuru.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // lblCariID
+            // 
+            this.lblCariID.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblCariID.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.lblCariID.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCariID.ForeColor = System.Drawing.Color.Firebrick;
+            this.lblCariID.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblCariID.Location = new System.Drawing.Point(3, 188);
+            this.lblCariID.Name = "lblCariID";
+            this.lblCariID.Size = new System.Drawing.Size(223, 36);
+            this.lblCariID.TabIndex = 13;
+            this.lblCariID.Text = "Cari No";
+            this.lblCariID.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // lblCariKod
+            // 
+            this.lblCariKod.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblCariKod.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.lblCariKod.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCariKod.ForeColor = System.Drawing.Color.Firebrick;
+            this.lblCariKod.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblCariKod.Location = new System.Drawing.Point(3, 225);
+            this.lblCariKod.Name = "lblCariKod";
+            this.lblCariKod.Size = new System.Drawing.Size(223, 36);
+            this.lblCariKod.TabIndex = 13;
+            this.lblCariKod.Text = "Cari Kod";
+            this.lblCariKod.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
             // LblMusteri
             // 
             this.LblMusteri.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -149,6 +250,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label2);
@@ -157,212 +259,27 @@
             this.panel1.Controls.Add(this.btnAra);
             this.panel1.Controls.Add(this.dateKayit);
             this.panel1.Controls.Add(this.comboBoxDurum);
-            this.panel1.Controls.Add(this.combTur);
+            this.panel1.Controls.Add(this.comboBoxBanka);
+            this.panel1.Controls.Add(this.comboBoxKasa);
+            this.panel1.Controls.Add(this.comboboxOdemeTuru);
             this.panel1.Controls.Add(this.txtAd);
             this.panel1.Controls.Add(this.txtAdres);
             this.panel1.Controls.Add(this.txtEposta);
             this.panel1.Controls.Add(this.txtSatisFiyati);
             this.panel1.Controls.Add(this.txtYetkili);
-            this.panel1.Controls.Add(this.txtKod);
+            this.panel1.Controls.Add(this.txtCariAd);
             this.panel1.Controls.Add(this.txtID);
             this.panel1.Controls.Add(this.label16);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label17);
             this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(906, 781);
             this.panel1.TabIndex = 13;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 24);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "Müşteri No:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 44);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 24);
-            this.label2.TabIndex = 14;
-            this.label2.Text = "Ad Soyad:";
-            // 
-            // panel2
-            // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.AutoSize = true;
-            this.panel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Controls.Add(this.btnSil);
-            this.panel2.Controls.Add(this.btnKayit);
-            this.panel2.Controls.Add(this.btnEkle);
-            this.panel2.Controls.Add(this.btniptal);
-            this.panel2.Controls.Add(this.btnKapat);
-            this.panel2.Controls.Add(this.btnGuncelle);
-            this.panel2.Location = new System.Drawing.Point(167, 733);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(626, 50);
-            this.panel2.TabIndex = 25;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(481, 11);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(71, 24);
-            this.label14.TabIndex = 13;
-            this.label14.Text = "Kayıt T.";
-            // 
-            // dateKayit
-            // 
-            this.dateKayit.CalendarMonthBackground = System.Drawing.Color.Linen;
-            this.dateKayit.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateKayit.Location = new System.Drawing.Point(579, 11);
-            this.dateKayit.Name = "dateKayit";
-            this.dateKayit.Size = new System.Drawing.Size(116, 28);
-            this.dateKayit.TabIndex = 19;
-            // 
-            // combTur
-            // 
-            this.combTur.BackColor = System.Drawing.Color.Linen;
-            this.combTur.FormattingEnabled = true;
-            this.combTur.Location = new System.Drawing.Point(122, 113);
-            this.combTur.Name = "combTur";
-            this.combTur.Size = new System.Drawing.Size(178, 30);
-            this.combTur.TabIndex = 27;
-            // 
-            // txtAd
-            // 
-            this.txtAd.BackColor = System.Drawing.Color.Linen;
-            this.txtAd.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtAd.Location = new System.Drawing.Point(122, 77);
-            this.txtAd.Name = "txtAd";
-            this.txtAd.Size = new System.Drawing.Size(178, 28);
-            this.txtAd.TabIndex = 18;
-            // 
-            // txtAdres
-            // 
-            this.txtAdres.BackColor = System.Drawing.Color.Linen;
-            this.txtAdres.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtAdres.Location = new System.Drawing.Point(485, 95);
-            this.txtAdres.Multiline = true;
-            this.txtAdres.Name = "txtAdres";
-            this.txtAdres.Size = new System.Drawing.Size(381, 125);
-            this.txtAdres.TabIndex = 17;
-            // 
-            // txtEposta
-            // 
-            this.txtEposta.BackColor = System.Drawing.Color.Linen;
-            this.txtEposta.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtEposta.Location = new System.Drawing.Point(122, 223);
-            this.txtEposta.Name = "txtEposta";
-            this.txtEposta.Size = new System.Drawing.Size(178, 28);
-            this.txtEposta.TabIndex = 17;
-            // 
-            // txtSatisFiyati
-            // 
-            this.txtSatisFiyati.BackColor = System.Drawing.Color.Linen;
-            this.txtSatisFiyati.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtSatisFiyati.Location = new System.Drawing.Point(122, 187);
-            this.txtSatisFiyati.Name = "txtSatisFiyati";
-            this.txtSatisFiyati.Size = new System.Drawing.Size(178, 28);
-            this.txtSatisFiyati.TabIndex = 17;
-            // 
-            // txtYetkili
-            // 
-            this.txtYetkili.BackColor = System.Drawing.Color.Linen;
-            this.txtYetkili.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtYetkili.Location = new System.Drawing.Point(122, 151);
-            this.txtYetkili.Name = "txtYetkili";
-            this.txtYetkili.Size = new System.Drawing.Size(178, 28);
-            this.txtYetkili.TabIndex = 17;
-            // 
-            // txtKod
-            // 
-            this.txtKod.BackColor = System.Drawing.Color.Linen;
-            this.txtKod.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtKod.Location = new System.Drawing.Point(122, 41);
-            this.txtKod.Name = "txtKod";
-            this.txtKod.Size = new System.Drawing.Size(178, 28);
-            this.txtKod.TabIndex = 16;
-            // 
-            // txtID
-            // 
-            this.txtID.BackColor = System.Drawing.Color.Linen;
-            this.txtID.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtID.Location = new System.Drawing.Point(122, 5);
-            this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(178, 28);
-            this.txtID.TabIndex = 9;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(15, 303);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(67, 24);
-            this.label16.TabIndex = 10;
-            this.label16.Text = "Durum";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(15, 196);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(97, 24);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Satış Fiyatı";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(481, 57);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(86, 24);
-            this.label17.TabIndex = 11;
-            this.label17.Text = "Açıklama";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(15, 119);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(81, 24);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Karegori";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 158);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(88, 24);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "Alış Fiyatı";
-            // 
-            // comboBoxDurum
-            // 
-            this.comboBoxDurum.BackColor = System.Drawing.Color.Linen;
-            this.comboBoxDurum.FormattingEnabled = true;
-            this.comboBoxDurum.Items.AddRange(new object[] {
-            "Yeni",
-            "İşlemde",
-            "İptal",
-            "Borçlu Teslim",
-            "Teslim",
-            "Sevk Edildi"});
-            this.comboBoxDurum.Location = new System.Drawing.Point(122, 297);
-            this.comboBoxDurum.Name = "comboBoxDurum";
-            this.comboBoxDurum.Size = new System.Drawing.Size(178, 30);
-            this.comboBoxDurum.TabIndex = 27;
             // 
             // panel3
             // 
@@ -397,120 +314,41 @@
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             this.dataGridView1.DoubleClick += new System.EventHandler(this.dataGridView1_DoubleClick);
             // 
-            // lblCariKod
+            // label1
             // 
-            this.lblCariKod.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblCariKod.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.lblCariKod.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCariKod.ForeColor = System.Drawing.Color.Firebrick;
-            this.lblCariKod.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.lblCariKod.Location = new System.Drawing.Point(3, 225);
-            this.lblCariKod.Name = "lblCariKod";
-            this.lblCariKod.Size = new System.Drawing.Size(223, 36);
-            this.lblCariKod.TabIndex = 13;
-            this.lblCariKod.Text = "Cari Kod";
-            this.lblCariKod.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(10, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(85, 18);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Müşteri No:";
             // 
-            // lblMusteriTuru
+            // label2
             // 
-            this.lblMusteriTuru.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblMusteriTuru.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.lblMusteriTuru.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMusteriTuru.ForeColor = System.Drawing.Color.Firebrick;
-            this.lblMusteriTuru.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.lblMusteriTuru.Location = new System.Drawing.Point(3, 262);
-            this.lblMusteriTuru.Name = "lblMusteriTuru";
-            this.lblMusteriTuru.Size = new System.Drawing.Size(223, 36);
-            this.lblMusteriTuru.TabIndex = 13;
-            this.lblMusteriTuru.Text = "Müşteri Türü";
-            this.lblMusteriTuru.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(10, 44);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(75, 18);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Ad Soyad:";
             // 
-            // lblTelefon
+            // panel2
             // 
-            this.lblTelefon.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblTelefon.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.lblTelefon.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTelefon.ForeColor = System.Drawing.Color.Firebrick;
-            this.lblTelefon.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.lblTelefon.Location = new System.Drawing.Point(3, 336);
-            this.lblTelefon.Name = "lblTelefon";
-            this.lblTelefon.Size = new System.Drawing.Size(223, 36);
-            this.lblTelefon.TabIndex = 13;
-            this.lblTelefon.Text = "Telefon";
-            this.lblTelefon.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            // 
-            // lblCariID
-            // 
-            this.lblCariID.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblCariID.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.lblCariID.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCariID.ForeColor = System.Drawing.Color.Firebrick;
-            this.lblCariID.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.lblCariID.Location = new System.Drawing.Point(3, 188);
-            this.lblCariID.Name = "lblCariID";
-            this.lblCariID.Size = new System.Drawing.Size(223, 36);
-            this.lblCariID.TabIndex = 13;
-            this.lblCariID.Text = "Cari No";
-            this.lblCariID.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            // 
-            // lblEposta
-            // 
-            this.lblEposta.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblEposta.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.lblEposta.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEposta.ForeColor = System.Drawing.Color.Firebrick;
-            this.lblEposta.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.lblEposta.Location = new System.Drawing.Point(3, 373);
-            this.lblEposta.Name = "lblEposta";
-            this.lblEposta.Size = new System.Drawing.Size(223, 36);
-            this.lblEposta.TabIndex = 13;
-            this.lblEposta.Text = "Eposta";
-            this.lblEposta.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            // 
-            // lblYetkili
-            // 
-            this.lblYetkili.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblYetkili.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.lblYetkili.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblYetkili.ForeColor = System.Drawing.Color.Firebrick;
-            this.lblYetkili.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.lblYetkili.Location = new System.Drawing.Point(3, 299);
-            this.lblYetkili.Name = "lblYetkili";
-            this.lblYetkili.Size = new System.Drawing.Size(223, 36);
-            this.lblYetkili.TabIndex = 13;
-            this.lblYetkili.Text = "Yetkili";
-            this.lblYetkili.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            // 
-            // btnKapat
-            // 
-            this.btnKapat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
-            this.btnKapat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnKapat.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnKapat.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnKapat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnKapat.ForeColor = System.Drawing.Color.Transparent;
-            this.btnKapat.Image = global::Kobi_v1.Properties.Resources.Close_Pane3px;
-            this.btnKapat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnKapat.Location = new System.Drawing.Point(522, 4);
-            this.btnKapat.Name = "btnKapat";
-            this.btnKapat.Size = new System.Drawing.Size(97, 39);
-            this.btnKapat.TabIndex = 22;
-            this.btnKapat.Text = "Kapat";
-            this.btnKapat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnKapat.UseVisualStyleBackColor = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::Kobi_v1.Properties.Resources.Male_User96;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox1.ErrorImage = global::Kobi_v1.Properties.Resources.Close;
-            this.pictureBox1.InitialImage = global::Kobi_v1.Properties.Resources.Product;
-            this.pictureBox1.Location = new System.Drawing.Point(48, 11);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(132, 132);
-            this.pictureBox1.TabIndex = 33;
-            this.pictureBox1.TabStop = false;
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.AutoSize = true;
+            this.panel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.btnSil);
+            this.panel2.Controls.Add(this.btnKayit);
+            this.panel2.Controls.Add(this.btnEkle);
+            this.panel2.Controls.Add(this.btniptal);
+            this.panel2.Controls.Add(this.btnKapat);
+            this.panel2.Controls.Add(this.btnGuncelle);
+            this.panel2.Location = new System.Drawing.Point(167, 733);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(626, 50);
+            this.panel2.TabIndex = 25;
             // 
             // btnSil
             // 
@@ -580,6 +418,24 @@
             this.btniptal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btniptal.UseVisualStyleBackColor = false;
             // 
+            // btnKapat
+            // 
+            this.btnKapat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
+            this.btnKapat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnKapat.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnKapat.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnKapat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnKapat.ForeColor = System.Drawing.Color.Transparent;
+            this.btnKapat.Image = global::Kobi_v1.Properties.Resources.Close_Pane3px;
+            this.btnKapat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnKapat.Location = new System.Drawing.Point(522, 4);
+            this.btnKapat.Name = "btnKapat";
+            this.btnKapat.Size = new System.Drawing.Size(97, 39);
+            this.btnKapat.TabIndex = 22;
+            this.btnKapat.Text = "Kapat";
+            this.btnKapat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnKapat.UseVisualStyleBackColor = false;
+            // 
             // btnGuncelle
             // 
             this.btnGuncelle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
@@ -597,6 +453,15 @@
             this.btnGuncelle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGuncelle.UseVisualStyleBackColor = false;
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(319, 47);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(57, 18);
+            this.label14.TabIndex = 13;
+            this.label14.Text = "Kayıt T.";
+            // 
             // btnAra
             // 
             this.btnAra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
@@ -606,7 +471,7 @@
             this.btnAra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAra.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnAra.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnAra.Location = new System.Drawing.Point(324, 11);
+            this.btnAra.Location = new System.Drawing.Point(306, 6);
             this.btnAra.Name = "btnAra";
             this.btnAra.Size = new System.Drawing.Size(38, 24);
             this.btnAra.TabIndex = 28;
@@ -614,9 +479,195 @@
             this.btnAra.UseVisualStyleBackColor = false;
             this.btnAra.Click += new System.EventHandler(this.btnAra_Click);
             // 
+            // dateKayit
+            // 
+            this.dateKayit.CalendarMonthBackground = System.Drawing.Color.Linen;
+            this.dateKayit.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateKayit.Location = new System.Drawing.Point(382, 44);
+            this.dateKayit.Name = "dateKayit";
+            this.dateKayit.Size = new System.Drawing.Size(116, 24);
+            this.dateKayit.TabIndex = 19;
+            // 
+            // comboBoxDurum
+            // 
+            this.comboBoxDurum.BackColor = System.Drawing.Color.Linen;
+            this.comboBoxDurum.FormattingEnabled = true;
+            this.comboBoxDurum.Items.AddRange(new object[] {
+            "Yeni",
+            "İşlemde",
+            "İptal",
+            "Borçlu Teslim",
+            "Teslim",
+            "Sevk Edildi"});
+            this.comboBoxDurum.Location = new System.Drawing.Point(382, 74);
+            this.comboBoxDurum.Name = "comboBoxDurum";
+            this.comboBoxDurum.Size = new System.Drawing.Size(178, 26);
+            this.comboBoxDurum.TabIndex = 27;
+            this.comboBoxDurum.Text = "Seçiniz";
+            this.comboBoxDurum.SelectedIndexChanged += new System.EventHandler(this.comboBoxDurum_SelectedIndexChanged);
+            this.comboBoxDurum.TextChanged += new System.EventHandler(this.comboBoxDurum_TextChanged);
+            // 
+            // comboboxOdemeTuru
+            // 
+            this.comboboxOdemeTuru.BackColor = System.Drawing.Color.Linen;
+            this.comboboxOdemeTuru.FormattingEnabled = true;
+            this.comboboxOdemeTuru.Location = new System.Drawing.Point(122, 76);
+            this.comboboxOdemeTuru.Name = "comboboxOdemeTuru";
+            this.comboboxOdemeTuru.Size = new System.Drawing.Size(178, 26);
+            this.comboboxOdemeTuru.TabIndex = 27;
+            this.comboboxOdemeTuru.Text = "Seçiniz";
+            this.comboboxOdemeTuru.SelectedIndexChanged += new System.EventHandler(this.comboboxOdemeTuru_SelectedIndexChanged);
+            // 
+            // txtAd
+            // 
+            this.txtAd.BackColor = System.Drawing.Color.Linen;
+            this.txtAd.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtAd.Location = new System.Drawing.Point(122, 232);
+            this.txtAd.Name = "txtAd";
+            this.txtAd.Size = new System.Drawing.Size(178, 24);
+            this.txtAd.TabIndex = 18;
+            // 
+            // txtAdres
+            // 
+            this.txtAdres.BackColor = System.Drawing.Color.Linen;
+            this.txtAdres.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtAdres.Location = new System.Drawing.Point(371, 262);
+            this.txtAdres.Multiline = true;
+            this.txtAdres.Name = "txtAdres";
+            this.txtAdres.Size = new System.Drawing.Size(381, 125);
+            this.txtAdres.TabIndex = 17;
+            // 
+            // txtEposta
+            // 
+            this.txtEposta.BackColor = System.Drawing.Color.Linen;
+            this.txtEposta.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtEposta.Location = new System.Drawing.Point(122, 334);
+            this.txtEposta.Name = "txtEposta";
+            this.txtEposta.Size = new System.Drawing.Size(178, 24);
+            this.txtEposta.TabIndex = 17;
+            // 
+            // txtSatisFiyati
+            // 
+            this.txtSatisFiyati.BackColor = System.Drawing.Color.Linen;
+            this.txtSatisFiyati.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtSatisFiyati.Location = new System.Drawing.Point(122, 298);
+            this.txtSatisFiyati.Name = "txtSatisFiyati";
+            this.txtSatisFiyati.Size = new System.Drawing.Size(178, 24);
+            this.txtSatisFiyati.TabIndex = 17;
+            // 
+            // txtYetkili
+            // 
+            this.txtYetkili.BackColor = System.Drawing.Color.Linen;
+            this.txtYetkili.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtYetkili.Location = new System.Drawing.Point(122, 262);
+            this.txtYetkili.Name = "txtYetkili";
+            this.txtYetkili.Size = new System.Drawing.Size(178, 24);
+            this.txtYetkili.TabIndex = 17;
+            // 
+            // txtCariAd
+            // 
+            this.txtCariAd.BackColor = System.Drawing.Color.Linen;
+            this.txtCariAd.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtCariAd.Location = new System.Drawing.Point(122, 41);
+            this.txtCariAd.Name = "txtCariAd";
+            this.txtCariAd.Size = new System.Drawing.Size(178, 24);
+            this.txtCariAd.TabIndex = 16;
+            // 
+            // txtID
+            // 
+            this.txtID.BackColor = System.Drawing.Color.Linen;
+            this.txtID.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtID.Location = new System.Drawing.Point(122, 5);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(178, 24);
+            this.txtID.TabIndex = 9;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(319, 80);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(53, 18);
+            this.label16.TabIndex = 10;
+            this.label16.Text = "Durum";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(15, 307);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(79, 18);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Satış Fiyatı";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(368, 232);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(68, 18);
+            this.label17.TabIndex = 11;
+            this.label17.Text = "Açıklama";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(10, 82);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(93, 18);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Ödeme Şekli";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(15, 120);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(42, 18);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "Kasa";
+            // 
+            // comboBoxKasa
+            // 
+            this.comboBoxKasa.BackColor = System.Drawing.Color.Linen;
+            this.comboBoxKasa.FormattingEnabled = true;
+            this.comboBoxKasa.Location = new System.Drawing.Point(122, 112);
+            this.comboBoxKasa.Name = "comboBoxKasa";
+            this.comboBoxKasa.Size = new System.Drawing.Size(178, 26);
+            this.comboBoxKasa.TabIndex = 27;
+            this.comboBoxKasa.Text = "Seçiniz";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(15, 151);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(50, 18);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "Banka";
+            // 
+            // comboBoxBanka
+            // 
+            this.comboBoxBanka.BackColor = System.Drawing.Color.Linen;
+            this.comboBoxBanka.FormattingEnabled = true;
+            this.comboBoxBanka.Location = new System.Drawing.Point(122, 143);
+            this.comboBoxBanka.Name = "comboBoxBanka";
+            this.comboBoxBanka.Size = new System.Drawing.Size(178, 26);
+            this.comboBoxBanka.TabIndex = 27;
+            this.comboBoxBanka.Text = "Seçiniz";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(173, 188);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(46, 18);
+            this.label8.TabIndex = 31;
+            this.label8.Text = "label8";
+            // 
             // FrmSatis
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(208)))), ((int)(((byte)(161)))));
@@ -639,12 +690,12 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -667,13 +718,13 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnAra;
         private System.Windows.Forms.Button btnTurEkle;
-        private System.Windows.Forms.ComboBox combTur;
+        private System.Windows.Forms.ComboBox comboboxOdemeTuru;
         private System.Windows.Forms.TextBox txtAd;
         private System.Windows.Forms.TextBox txtAdres;
         private System.Windows.Forms.TextBox txtEposta;
         private System.Windows.Forms.TextBox txtSatisFiyati;
         private System.Windows.Forms.TextBox txtYetkili;
-        private System.Windows.Forms.TextBox txtKod;
+        private System.Windows.Forms.TextBox txtCariAd;
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label6;
@@ -691,5 +742,9 @@
         private System.Windows.Forms.Label lblEposta;
         private System.Windows.Forms.Label lblCariID;
         private System.Windows.Forms.Label lblYetkili;
+        private System.Windows.Forms.ComboBox comboBoxKasa;
+        private System.Windows.Forms.ComboBox comboBoxBanka;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
     }
 }

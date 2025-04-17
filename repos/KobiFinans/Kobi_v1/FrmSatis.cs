@@ -92,9 +92,12 @@ namespace Kobi_v1
         }
         private void FrmSatis_Load(object sender, EventArgs e)
         {
+            
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             dtHeader();
             UrunListele();
+            OdemeTuruSec();
+            KasaSec();
         }
 
         private void SatisUrunEkle()
@@ -111,7 +114,7 @@ namespace Kobi_v1
             lblYetkili.Text = "Yetkili: "+yetkili;
             lblCariID.Text = "Cari No:"+cariID;
             lblMusteriTuru.Text = "Cari Türü: "+cariTur;
-            txtAd.Text = CariAdi;
+            txtCariAd.Text = CariAdi;
             txtID.Text = cariID;
 
             if (resim != "")
@@ -127,7 +130,56 @@ namespace Kobi_v1
             }
             else
             {
+                pictureBox1.Image = null;
+            }
+        }
+        private void OdemeTuruSec()
+        {
+            try
+            {
+                comboboxOdemeTuru.Items.Clear();
+                comboboxOdemeTuru.Items.Add("Ödeme Şekli");
+                if (baglanti.State == ConnectionState.Closed) baglanti.Open();
+                SqlCommand komut = new SqlCommand("select OdemeAd from OdemeTuru", baglanti);
+                SqlDataReader dr = komut.ExecuteReader();
+                while (dr.Read())
+                {
+                    comboboxOdemeTuru.Items.Add(dr["OdemeAd"].ToString());
+                }
                 
+                
+            }
+            catch (Exception hata)
+            {
+                MessageBox.Show("Hata: " + hata.Message);
+            }
+            finally
+            {
+                baglanti.Close();
+                comboboxOdemeTuru.SelectedIndex = 0;
+            }
+        }
+        private void KasaSec()
+        {
+
+            try
+            {
+                if (baglanti.State == ConnectionState.Closed) baglanti.Open();
+                SqlCommand komut = new SqlCommand("select KasaAdi from Kasa", baglanti);
+                SqlDataAdapter da = new SqlDataAdapter(komut);
+                DataSet ds = new DataSet();
+                ds.Clear();
+                da.Fill(ds);
+                comboBoxKasa.DataSource = ds.Tables[0];
+                comboBoxKasa.DisplayMember = "KasaAdi";
+            }
+            catch (Exception hata)
+            {
+                MessageBox.Show("Hata: " + hata.Message);
+            }
+            finally
+            {
+                baglanti.Close();
             }
         }
 
@@ -155,5 +207,36 @@ namespace Kobi_v1
             frmStoklar.CagrilanForm = this;
             frmStoklar.ShowDialog();
         }
+
+        private void comboboxOdemeTuru_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           string secilen = comboboxOdemeTuru.SelectedItem.ToString();
+            if(secilen == "Nakit")
+            {
+                comboBoxKasa.Enabled = true;
+                comboBoxBanka.Enabled = false;
+            }
+            else if(secilen == "Havale"||secilen == "Kredi Kartı")
+            {
+                comboBoxKasa.Enabled = false;
+                comboBoxBanka.Enabled = true;
+            }
+            else
+            {
+                comboBoxKasa.Enabled = false;
+                comboBoxBanka.Enabled = false;
+            }
+        }
+
+        private void comboBoxDurum_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxDurum_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
     }
+    
 }

@@ -213,12 +213,6 @@ namespace Kobi_v1
                 return;
             }
 
-            if (combTur.SelectedIndex <= 0)
-            {
-                txtKod.Text = "";
-                return;
-            }
-
             string secilenTur = combTur.SelectedItem.ToString();
             string prefix = "";
             int prefixCount = 1;
@@ -542,6 +536,27 @@ namespace Kobi_v1
             
 
         }
+        string resimYolu = "";
+        string varsayilanresimyolu = @"\\images\\default.png";
+        bool bayrak = false;
+        private void pictureBox1_DoubleClick(object sender, EventArgs e)
+        {
+            OpenFileDialog resimAc = new OpenFileDialog();
+            pictureBox1.Image = null;
+            resimAc.Filter = "Resim Dosyaları|*.jpg;*.JPG;*.jpeg;*.png;*.bmp|Tüm Dosyalar|*.*";
+            resimAc.Title = "Resim Seçiniz";
+            if (resimAc.ShowDialog() == DialogResult.OK)
+            {
+                pictureBox1.ImageLocation = resimAc.FileName;
+                string kaynak = resimAc.FileName;
+                string hedef = Application.StartupPath + @"\\images\\";
+                string yeniAd = Guid.NewGuid().ToString() + ".jpg";
+                File.Copy(kaynak, hedef + yeniAd, true);
+                resimYolu = @"\\images\\" + yeniAd;
+                bayrak = true;
+
+            }
+        }
 
         public void CariBilgileriYukle( string cariID, string cariKod,string cariAdi, string cariTur, string yetkili, string telefon, string eposta, 
             string adres, string sehir,string ulke, string vergidairesi , string vergiNo, string dtarih, string etarih,string ktarih, string durum,string aciklama,string resim)
@@ -605,14 +620,17 @@ namespace Kobi_v1
                 chcDurum.Checked = false;
             }
             txtAciklama.Text = aciklama;
+
             if (string.IsNullOrEmpty(resim))
             {
-                resim = varsayilanresimyolu;
+                
+                pictureBox1.ImageLocation = Application.StartupPath + varsayilanresimyolu;
             }
             else
             {
                 pictureBox1.ImageLocation = Application.StartupPath + resim;
             }
+            
             
 
 
@@ -681,26 +699,7 @@ namespace Kobi_v1
         {
 
         }
-        string resimYolu = "";
-        string varsayilanresimyolu= @"\\images\\default.png";
-        bool bayrak = false;
-        private void pictureBox1_DoubleClick(object sender, EventArgs e)
-        {
-            OpenFileDialog resimAc = new OpenFileDialog();
-            resimAc.Filter = "Resim Dosyaları|*.jpg;*.JPG;*.jpeg;*.png;*.bmp|Tüm Dosyalar|*.*";
-            resimAc.Title = "Resim Seçiniz";
-            if (resimAc.ShowDialog() == DialogResult.OK)
-            {
-                pictureBox1.ImageLocation = resimAc.FileName;
-                string kaynak = resimAc.FileName;
-                string hedef = Application.StartupPath + @"\\images\\";
-                string yeniAd=Guid.NewGuid().ToString() + ".jpg";
-                File.Copy(kaynak, hedef + yeniAd, true);
-                resimYolu = @"\\images\\" + yeniAd;
-                bayrak = true;
-                
-            }
-        }
+        
     }
 }
 

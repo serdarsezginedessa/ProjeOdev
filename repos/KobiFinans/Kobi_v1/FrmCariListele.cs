@@ -879,48 +879,7 @@ namespace Kobi_v1
 
         private void comboBox1_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                if (Convert.ToString(comboBox1.Text) == "Aktif")
-                {
-                    // Hata Kontrolü yapılacak
-                    //MessageBox.Show(comboBox1.Text);
 
-                    SqlCommand kmtCariTur = new SqlCommand(sorguDurum, baglanti);
-                    kmtCariTur.Parameters.AddWithValue("@durum", 1);
-                    SqlDataAdapter da = new SqlDataAdapter(kmtCariTur);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-                    dataGridView1.Rows.Clear(); // Mevcut satırları temizle Manuel Eklediğim Başlıklar Bozulmuyor..
-                    foreach (DataRow row in dt.Rows)
-                    {
-                        dataGridView1.Rows.Add(row.ItemArray); // Satırlar ekleniyor..
-                    }
-                    baglanti.Close();
-                }
-                else if (Convert.ToString(comboBox1.Text) == "Pasif")
-                {
-                    SqlCommand kmtCariTur = new SqlCommand(sorguDurum, baglanti);
-                    kmtCariTur.Parameters.AddWithValue("@durum", 0);
-                    SqlDataAdapter da = new SqlDataAdapter(kmtCariTur);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-                    dataGridView1.Rows.Clear(); // Mevcut satırları temizle Manuel Eklediğim Başlıklar Bozulmuyor..
-                    foreach (DataRow row in dt.Rows)
-                    {
-                        dataGridView1.Rows.Add(row.ItemArray); // Satırlar ekleniyor..
-                    }
-                    baglanti.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Hata: " + ex.ToString());
-            }
-            finally
-            {
-                baglanti.Close();
-            }
         }
 
         private void btnEkle_Click(object sender, EventArgs e)
@@ -949,6 +908,11 @@ namespace Kobi_v1
             FrmCariEkle frmCariEkle = new FrmCariEkle();
             frmCariEkle.ShowDialog();
             listele();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 
