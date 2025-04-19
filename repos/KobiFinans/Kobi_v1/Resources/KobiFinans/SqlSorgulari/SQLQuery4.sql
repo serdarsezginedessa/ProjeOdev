@@ -30,4 +30,17 @@ Select c.CariAdi [Cari Adý],
 		INNER JOIN
 		CariTuru as ct
 		ON
-		c.cariTuru = ct.ID
+		c.cariTuru = ct.ID;
+
+
+
+
+Select ur.UrunKodu [Ürün Kodu],ur.UrunAdi [Ürün Adý],ur.Kdv [Kdv],ur.AlisFiyat [Fiyatý]  from Urunler as ur
+Inner Join
+SatisIslemleri as si
+ON
+ur.UrunID=si.UrunID
+Inner Join
+Cari as c
+ON
+si.CariID=c.CariID

@@ -362,13 +362,17 @@ namespace Kobi_v1
                     {
                         dataGridView1.Rows.Add(row.ItemArray); // Satırlar ekleniyor..
                     }
-                    baglanti.Close();
+                    
                 }
                 
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Hata: " + ex.Message);
+            }
+            finally
+            {
+                baglanti.Close();
             }
         }
 
