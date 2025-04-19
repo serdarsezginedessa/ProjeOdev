@@ -38,7 +38,7 @@ namespace Kobi_v1
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Hata: " + "Veri Tabanı Bağlantı Hatası");
+                MessageBox.Show("Hata: " + "Veri Tabanı Bağlantı Hatası"+ex.Message);
             }
             finally
             {

@@ -21,9 +21,6 @@ namespace Kobi_v1
         static string connectionString = ConfigurationManager.ConnectionStrings["KobiFinans"].ConnectionString;
         SqlConnection baglanti = new SqlConnection(connectionString);
         SqlCommand kmt;
-        SqlDataAdapter da;
-        DataTable dt;
-
         void ekle()
         {
             try

@@ -19,9 +19,13 @@ namespace Kobi_v1
         {
             InitializeComponent();
         }
+        private string _secilenCariID;
+        private string _secilenUrunID;
+        
         private static string connectionString = ConfigurationManager.ConnectionStrings["KobiFinans"].ConnectionString;
         SqlConnection baglanti = new SqlConnection(connectionString);
 
+        
         string sorguUrunekle = "Select * from Urunler";
 
         private void musteriAdi()
@@ -123,18 +127,26 @@ namespace Kobi_v1
         }
 
 
-        public void CariBilgileriYukle(string cariID,  string CariKod,string CariAdi, string cariTur, string yetkili, string telefon, string ePosta,string resim)
+        public void CariBilgileriYukle(string cariID,
+                                       string CariKod,
+                                       string CariAdi,
+                                       string cariTur,
+                                       string yetkili,
+                                       string telefon,
+                                       string ePosta,
+                                       string resim)
         {
             
+            _secilenCariID = cariID;
             LblMusteri.Text = CariAdi;
             lblCariKod.Text = "Cari Kod: "+CariKod;
             lblTelefon.Text = telefon;
             lblEposta.Text = ePosta;
             lblYetkili.Text = "Yetkili: "+yetkili;
-            lblCariID.Text = "Cari No:"+cariID;
+            lblCariID.Text = "Cari No:"+_secilenCariID;
             lblMusteriTuru.Text = "Cari Türü: "+cariTur;
             txtCariAd.Text = CariAdi;
-            txtID.Text = cariID;
+            txtID.Text = _secilenCariID;
 
             if (resim != "")
             {
@@ -151,6 +163,21 @@ namespace Kobi_v1
             {
                 pictureBox1.Image = null;
             }
+        }
+        public void StokBilgileriYukle(
+                     int SatirIndex, string stokID, string stokKod, string stokBarkod, string stokAdi, string stokKategori,
+                     string stokMarka, string stokModel, string stokAlisFiyati, string stokSatisFiyati, string stokKdv,
+                     string stokMiktar, string stokAciklama, string stokResim, string stokDurum, string stokKayitTarihi,
+                     string stokBirim)
+        {
+
+            dataGridView1.Rows[SatirIndex].Cells["UrunKodu"].Value = stokKod;
+            dataGridView1.Rows[SatirIndex].Cells["UrunAdi"].Value = stokAdi;
+            dataGridView1.Rows[SatirIndex].Cells["SatisFiyati"].Value = stokSatisFiyati;
+            dataGridView1.Rows[SatirIndex].Cells["Kdv"].Value = stokKdv;
+            dataGridView1.Rows[SatirIndex].Cells["Adet"].Value = 1;
+            decimal tutar = Convert.ToDecimal(stokSatisFiyati) * 1;
+            dataGridView1.Rows[SatirIndex].Cells["Tutar"].Value = tutar.ToString("N2");
         }
 
         private void BankaBilgileriSec()
@@ -230,22 +257,7 @@ namespace Kobi_v1
             }
         }
 
-        public void StokBilgileriYukle(int SatirIndex,string stokID, string stokKod, string stokBarkod, string stokAdi, string stokKategori,string stokMarka, string stokModel, string stokAlisFiyati, string stokSatisFiyati, string stokKdv, string stokMiktar ,string stokAciklama, string stokResim, string stokDurum, string stokKayitTarihi, string stokBirim)
-        {
-            
-            dataGridView1.Rows[SatirIndex].Cells["UrunKodu"].Value = stokKod;
-            dataGridView1.Rows[SatirIndex].Cells["UrunAdi"].Value = stokAdi;
-            dataGridView1.Rows[SatirIndex].Cells["SatisFiyati"].Value = stokSatisFiyati;
-            dataGridView1.Rows[SatirIndex].Cells["Kdv"].Value = stokKdv;
-            dataGridView1.Rows[SatirIndex].Cells["Adet"].Value = 1;
-            decimal tutar = Convert.ToDecimal(stokSatisFiyati) * 1;
-            dataGridView1.Rows[SatirIndex].Cells["Tutar"].Value = tutar.ToString("N2");
-
-           
-
-
-
-        }
+ 
 
 
         private void btnAra_Click(object sender, EventArgs e)
@@ -462,8 +474,67 @@ namespace Kobi_v1
             txtKdv.Text = toplamKdv.ToString("N2");
             txtGenelToplam.Text = genelToplam.ToString("N2");
         }
+
+        private void btnKayit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                
+                
+                if (baglanti.State == ConnectionState.Closed) baglanti.Open();
+                SqlCommand kmtKaydet = new SqlCommand(@"Insert Into SatisIslemleri ([UrunID]
+                                                                        ,[CariID]
+                                                                        ,[KasaID]
+                                                                        ,[BankaID]
+                                                                        ,[OdemeID]
+                                                                        ,[SatisTarihi]
+                                                                        ,[Adet]
+                                                                        ,[Tutar]
+                                                                        ,[Durum]) 
+             Values (@urunID, @cariID, @kasaID, @bankaID, @odemeID, @tarih, @adet,@tutar,@durum)", baglanti);
+
+                kmtKaydet.Parameters.AddWithValue("@urunID", Convert.ToInt32(_secilenUrunID));
+                kmtKaydet.Parameters.AddWithValue("@cariID", Convert.ToInt32(_secilenCariID));
+                
+                kmtKaydet.Parameters.AddWithValue("@kasaID", Convert.ToInt32(comboBoxKasa.SelectedIndex+1));
+                kmtKaydet.Parameters.AddWithValue("@bankaID", Convert.ToInt32(comboBoxBanka.SelectedIndex+1));
+                kmtKaydet.Parameters.AddWithValue("@odemeID", Convert.ToInt32(comboboxOdemeTuru.SelectedIndex+1));
+                kmtKaydet.Parameters.AddWithValue("@tarih", Convert.ToDateTime(dateKayit.Text));
+                decimal toplamAdet = 0;
+                string kolonAdi = "adet"; // Kolon adınızı buraya doğru şekilde yazın
+
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    if (!row.IsNewRow)
+                    {
+                        if (row.Cells[kolonAdi].Value != null && decimal.TryParse(row.Cells[kolonAdi].Value.ToString(), out decimal adet))
+                        {
+                            toplamAdet += adet;
+                        }
+                        else
+                        {
+                            // Hata yönetimi
+                        }
+                    }
+                }
+                kmtKaydet.Parameters.AddWithValue("@adet", Convert.ToInt32(toplamAdet));
+                kmtKaydet.Parameters.AddWithValue("@tutar", Convert.ToDecimal(txtGenelToplam.Text));
+                kmtKaydet.Parameters.AddWithValue("@durum", 1);
+                kmtKaydet.ExecuteNonQuery();
+                MessageBox.Show("Satis Kaydedildi");
+            }
+            catch (Exception hata)
+            {
+                MessageBox.Show("Hata: " + hata.Message);
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+
+        }
+
        
-        
     }
     
     

@@ -271,7 +271,7 @@ namespace Kobi_v1
                                     
                                     where CAST (c.KayitTarihi AS DATE) = @ktarih";
 
-        string sorguDurum = @"Select
+        /*string sorguDurum = @"Select
                                     c.CariID,
                                     c.CariKod,
                                     c.CariAdi,
@@ -294,7 +294,7 @@ namespace Kobi_v1
                                     CariTuru as ct
                                     ON
                                     c.cariTuru = ct.ID
-                                    where c.Durum = @durum";
+                                    where c.Durum = @durum";*/
 
 
 
