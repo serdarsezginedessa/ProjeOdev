@@ -44,6 +44,7 @@
             this.lblCariKod = new System.Windows.Forms.Label();
             this.LblMusteri = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -66,6 +67,7 @@
             this.txtKdvHaricTutar = new System.Windows.Forms.TextBox();
             this.txtToplamTutar = new System.Windows.Forms.TextBox();
             this.txtCariAd = new System.Windows.Forms.TextBox();
+            this.txtFaturaNo = new System.Windows.Forms.TextBox();
             this.txtID = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -78,8 +80,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.txtFaturaNo = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -136,7 +136,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(252, 25);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(84, 24);
+            this.label4.Size = new System.Drawing.Size(64, 18);
             this.label4.TabIndex = 12;
             this.label4.Text = "Ürün Adı";
             // 
@@ -275,12 +275,21 @@
             this.panel1.Size = new System.Drawing.Size(906, 781);
             this.panel1.TabIndex = 13;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(366, 43);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(78, 18);
+            this.label11.TabIndex = 15;
+            this.label11.Text = "Fatura No:";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(10, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 24);
+            this.label1.Size = new System.Drawing.Size(85, 18);
             this.label1.TabIndex = 15;
             this.label1.Text = "Müşteri No:";
             // 
@@ -289,7 +298,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(367, 8);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 24);
+            this.label2.Size = new System.Drawing.Size(75, 18);
             this.label2.TabIndex = 14;
             this.label2.Text = "Ad Soyad:";
             // 
@@ -306,7 +315,7 @@
             this.panel2.Controls.Add(this.btniptal);
             this.panel2.Controls.Add(this.btnKapat);
             this.panel2.Controls.Add(this.btnGuncelle);
-            this.panel2.Location = new System.Drawing.Point(162, 721);
+            this.panel2.Location = new System.Drawing.Point(94, 662);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(626, 50);
             this.panel2.TabIndex = 25;
@@ -422,7 +431,7 @@
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(663, 8);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(71, 24);
+            this.label14.Size = new System.Drawing.Size(57, 18);
             this.label14.TabIndex = 13;
             this.label14.Text = "Kayıt T.";
             // 
@@ -449,7 +458,7 @@
             this.dateKayit.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateKayit.Location = new System.Drawing.Point(740, 5);
             this.dateKayit.Name = "dateKayit";
-            this.dateKayit.Size = new System.Drawing.Size(116, 28);
+            this.dateKayit.Size = new System.Drawing.Size(116, 24);
             this.dateKayit.TabIndex = 19;
             // 
             // comboBoxDurum
@@ -465,11 +474,9 @@
             "Sevk Edildi"});
             this.comboBoxDurum.Location = new System.Drawing.Point(122, 43);
             this.comboBoxDurum.Name = "comboBoxDurum";
-            this.comboBoxDurum.Size = new System.Drawing.Size(178, 30);
+            this.comboBoxDurum.Size = new System.Drawing.Size(178, 26);
             this.comboBoxDurum.TabIndex = 27;
             this.comboBoxDurum.Text = "Seçiniz";
-            this.comboBoxDurum.SelectedIndexChanged += new System.EventHandler(this.comboBoxDurum_SelectedIndexChanged);
-            this.comboBoxDurum.TextChanged += new System.EventHandler(this.comboBoxDurum_TextChanged);
             // 
             // comboBoxBanka
             // 
@@ -477,7 +484,7 @@
             this.comboBoxBanka.FormattingEnabled = true;
             this.comboBoxBanka.Location = new System.Drawing.Point(676, 216);
             this.comboBoxBanka.Name = "comboBoxBanka";
-            this.comboBoxBanka.Size = new System.Drawing.Size(178, 30);
+            this.comboBoxBanka.Size = new System.Drawing.Size(178, 26);
             this.comboBoxBanka.TabIndex = 27;
             this.comboBoxBanka.Text = "Seçiniz";
             // 
@@ -489,7 +496,7 @@
             "Seçiniz"});
             this.comboBoxKasa.Location = new System.Drawing.Point(404, 216);
             this.comboBoxKasa.Name = "comboBoxKasa";
-            this.comboBoxKasa.Size = new System.Drawing.Size(178, 30);
+            this.comboBoxKasa.Size = new System.Drawing.Size(178, 26);
             this.comboBoxKasa.TabIndex = 27;
             this.comboBoxKasa.Text = "Seçiniz";
             // 
@@ -499,7 +506,7 @@
             this.comboboxOdemeTuru.FormattingEnabled = true;
             this.comboboxOdemeTuru.Location = new System.Drawing.Point(143, 216);
             this.comboboxOdemeTuru.Name = "comboboxOdemeTuru";
-            this.comboboxOdemeTuru.Size = new System.Drawing.Size(178, 30);
+            this.comboboxOdemeTuru.Size = new System.Drawing.Size(178, 26);
             this.comboboxOdemeTuru.TabIndex = 27;
             this.comboboxOdemeTuru.Text = "Seçiniz";
             this.comboboxOdemeTuru.SelectedIndexChanged += new System.EventHandler(this.comboboxOdemeTuru_SelectedIndexChanged);
@@ -521,7 +528,7 @@
             this.txtGenelToplam.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtGenelToplam.Location = new System.Drawing.Point(793, 672);
             this.txtGenelToplam.Name = "txtGenelToplam";
-            this.txtGenelToplam.Size = new System.Drawing.Size(110, 28);
+            this.txtGenelToplam.Size = new System.Drawing.Size(110, 24);
             this.txtGenelToplam.TabIndex = 16;
             // 
             // txtKdv
@@ -531,7 +538,7 @@
             this.txtKdv.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtKdv.Location = new System.Drawing.Point(793, 606);
             this.txtKdv.Name = "txtKdv";
-            this.txtKdv.Size = new System.Drawing.Size(110, 28);
+            this.txtKdv.Size = new System.Drawing.Size(110, 24);
             this.txtKdv.TabIndex = 16;
             // 
             // txtKdvHaricTutar
@@ -541,7 +548,7 @@
             this.txtKdvHaricTutar.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtKdvHaricTutar.Location = new System.Drawing.Point(793, 573);
             this.txtKdvHaricTutar.Name = "txtKdvHaricTutar";
-            this.txtKdvHaricTutar.Size = new System.Drawing.Size(110, 28);
+            this.txtKdvHaricTutar.Size = new System.Drawing.Size(110, 24);
             this.txtKdvHaricTutar.TabIndex = 16;
             // 
             // txtToplamTutar
@@ -551,7 +558,7 @@
             this.txtToplamTutar.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtToplamTutar.Location = new System.Drawing.Point(793, 639);
             this.txtToplamTutar.Name = "txtToplamTutar";
-            this.txtToplamTutar.Size = new System.Drawing.Size(110, 28);
+            this.txtToplamTutar.Size = new System.Drawing.Size(110, 24);
             this.txtToplamTutar.TabIndex = 16;
             // 
             // txtCariAd
@@ -560,8 +567,17 @@
             this.txtCariAd.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtCariAd.Location = new System.Drawing.Point(479, 5);
             this.txtCariAd.Name = "txtCariAd";
-            this.txtCariAd.Size = new System.Drawing.Size(178, 28);
+            this.txtCariAd.Size = new System.Drawing.Size(178, 24);
             this.txtCariAd.TabIndex = 16;
+            // 
+            // txtFaturaNo
+            // 
+            this.txtFaturaNo.BackColor = System.Drawing.Color.Linen;
+            this.txtFaturaNo.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtFaturaNo.Location = new System.Drawing.Point(480, 39);
+            this.txtFaturaNo.Name = "txtFaturaNo";
+            this.txtFaturaNo.Size = new System.Drawing.Size(178, 24);
+            this.txtFaturaNo.TabIndex = 9;
             // 
             // txtID
             // 
@@ -569,7 +585,7 @@
             this.txtID.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtID.Location = new System.Drawing.Point(122, 5);
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(178, 28);
+            this.txtID.Size = new System.Drawing.Size(178, 24);
             this.txtID.TabIndex = 9;
             // 
             // label16
@@ -577,7 +593,7 @@
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(10, 49);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(67, 24);
+            this.label16.Size = new System.Drawing.Size(53, 18);
             this.label16.TabIndex = 10;
             this.label16.Text = "Durum";
             // 
@@ -586,7 +602,7 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(679, 675);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(109, 24);
+            this.label9.Size = new System.Drawing.Size(85, 18);
             this.label9.TabIndex = 11;
             this.label9.Text = "Genel Tutar";
             // 
@@ -595,7 +611,7 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(648, 577);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(139, 24);
+            this.label10.Size = new System.Drawing.Size(110, 18);
             this.label10.TabIndex = 11;
             this.label10.Text = "Kdv Hariç Tutar";
             // 
@@ -604,7 +620,7 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(676, 610);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(111, 24);
+            this.label8.Size = new System.Drawing.Size(87, 18);
             this.label8.TabIndex = 11;
             this.label8.Text = "Toplam Kdv";
             // 
@@ -613,7 +629,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(665, 641);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(122, 24);
+            this.label6.Size = new System.Drawing.Size(96, 18);
             this.label6.TabIndex = 11;
             this.label6.Text = "Toplam Tutar";
             // 
@@ -622,7 +638,7 @@
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(10, 98);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(86, 24);
+            this.label17.Size = new System.Drawing.Size(68, 18);
             this.label17.TabIndex = 11;
             this.label17.Text = "Açıklama";
             // 
@@ -631,7 +647,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(8, 219);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(119, 24);
+            this.label5.Size = new System.Drawing.Size(93, 18);
             this.label5.TabIndex = 11;
             this.label5.Text = "Ödeme Şekli";
             // 
@@ -640,7 +656,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(598, 219);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(62, 24);
+            this.label7.Size = new System.Drawing.Size(50, 18);
             this.label7.TabIndex = 13;
             this.label7.Text = "Banka";
             // 
@@ -649,7 +665,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(337, 219);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 24);
+            this.label3.Size = new System.Drawing.Size(42, 18);
             this.label3.TabIndex = 13;
             this.label3.Text = "Kasa";
             // 
@@ -707,32 +723,13 @@
             this.dataGridView1.TabStop = false;
             this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridView1_CellBeginEdit);
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
-            this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             this.dataGridView1.DoubleClick += new System.EventHandler(this.dataGridView1_DoubleClick);
             this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown);
             // 
-            // txtFaturaNo
-            // 
-            this.txtFaturaNo.BackColor = System.Drawing.Color.Linen;
-            this.txtFaturaNo.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtFaturaNo.Location = new System.Drawing.Point(480, 39);
-            this.txtFaturaNo.Name = "txtFaturaNo";
-            this.txtFaturaNo.Size = new System.Drawing.Size(178, 28);
-            this.txtFaturaNo.TabIndex = 9;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(366, 43);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(98, 24);
-            this.label11.TabIndex = 15;
-            this.label11.Text = "Fatura No:";
-            // 
             // FrmSatis
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(208)))), ((int)(((byte)(161)))));

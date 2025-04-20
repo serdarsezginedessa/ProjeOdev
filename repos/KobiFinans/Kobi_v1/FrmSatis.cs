@@ -22,14 +22,10 @@ namespace Kobi_v1
         private string _secilenCariID;
         private string _secilenUrunID;
 
-
         private static string connectionString = ConfigurationManager.ConnectionStrings["KobiFinans"].ConnectionString;
         SqlConnection baglanti = new SqlConnection(connectionString);
 
-
-        string sorguUrunekle = "Select * from Urunler";
-
-        private void musteriAdi()
+        /*  private void musteriAdi()
         {
             try
             {
@@ -49,8 +45,9 @@ namespace Kobi_v1
             {
                 baglanti.Close();
             }
-        }
-        private void UrunListele()
+        }*/
+      //*********************************************************************
+        /*private void UrunListele()
         {
             try
             {
@@ -74,7 +71,7 @@ namespace Kobi_v1
             {
                 baglanti.Close();
             }
-        }
+        }*/
         private void dtHeader()
         {
             dataGridView1.Columns.Clear();
@@ -86,25 +83,7 @@ namespace Kobi_v1
             dataGridView1.Columns.Add("Adet", "Adet");
             dataGridView1.Columns.Add("Tutar", "Tutar");
             dataGridView1.Rows.Add();
-
-
-            /*          dataGridView1.Columns["Adet"].ReadOnly = false;
-                        dataGridView1.Columns["Adet"].DefaultCellStyle.BackColor = Color.LightYellow;
-                        dataGridView1.Columns["Adet"].CellTemplate = new DataGridViewTextBoxCell();
-
-                        dataGridView1.Columns["SatisFiyati"].ReadOnly = false;
-                        dataGridView1.Columns["SatisFiyati"].DefaultCellStyle.BackColor = Color.LightYellow;
-                        dataGridView1.Columns["SatisFiyati"].CellTemplate = new DataGridViewTextBoxCell();
-
-                        dataGridView1.Columns["Tutar"].ReadOnly = false;
-                        dataGridView1.Columns["Tutar"].DefaultCellStyle.BackColor = Color.LightGray;
-                        dataGridView1.Columns["Tutar"].CellTemplate = new DataGridViewTextBoxCell();
-
-                        dataGridView1.Columns["Kdv"].ReadOnly = false;
-                        dataGridView1.Columns["Kdv"].DefaultCellStyle.BackColor = Color.LightGray;
-                        dataGridView1.Columns["Kdv"].CellTemplate = new DataGridViewTextBoxCell();
-            */
-            dataGridView1.CellEndEdit += dataGridView1_CellEndEdit;
+           //dataGridView1.CellEndEdit += dataGridView1_CellEndEdit;
 
 
 
@@ -128,7 +107,6 @@ namespace Kobi_v1
             SatisFromYeniKayitKontrolDisabled();
 
         }
-
 
         public void CariBilgileriYukle(string cariID,
                                        string CariKod,
@@ -262,10 +240,6 @@ namespace Kobi_v1
                 baglanti.Close();
             }
         }
-
-
-
-
         private void btnAra_Click(object sender, EventArgs e)
         {
             FrmCariListele frmCariListele = new FrmCariListele();
@@ -275,8 +249,6 @@ namespace Kobi_v1
 
 
         }
-
-
 
         private void comboboxOdemeTuru_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -299,16 +271,6 @@ namespace Kobi_v1
             }
         }
 
-        private void comboBoxDurum_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBoxDurum_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -319,12 +281,6 @@ namespace Kobi_v1
                 frmStoklar.ShowDialog();
 
             }
-        }
-
-        private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-
-
         }
 
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -499,7 +455,7 @@ namespace Kobi_v1
                                 if (innerControl is TextBox textBox)
                                 {
                                     textBox.Enabled = true;
-                                    textBox.Clear();
+                                    
                                 }
                                 else if (innerControl is ComboBox comboBox)
 
@@ -547,7 +503,9 @@ namespace Kobi_v1
         private void btnKayit_Click(object sender, EventArgs e)
         {
             satisKayit();
-            
+            SatisFromYeniKayitKontrolDisabled();
+            textComboTemizle();
+
         }
         private void btniptal_Click(object sender, EventArgs e)
         {
@@ -762,6 +720,9 @@ namespace Kobi_v1
                 transaction.Commit();
                 MessageBox.Show("Satış işlemleri başarıyla kaydedildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dataGridView1.Rows.Clear();
+
+
+
             }
             catch (Exception ex)
             {
@@ -776,7 +737,33 @@ namespace Kobi_v1
                 if (baglanti.State == ConnectionState.Open) baglanti.Close();
             }
         }
+        private void textComboTemizle()
+        {
+            comboBoxDurum.Text = "Seçiniz";
+            comboboxOdemeTuru.Text = "Seçiniz";
+            comboBoxKasa.Text = "Seçiniz";
+            comboBoxBanka.Text = "Seçiniz";
+            txtID.Text = "";
+            txtFaturaNo.Text = "";
+            txtCariAd.Text = "";
+            txtAciklama.Text = "";
+            txtGenelToplam.Text = "0,00";
+            txtKdv.Text = "0,00";
+            txtKdvHaricTutar.Text = "0,00";
+            txtToplamTutar.Text = "0,00";
+            LblMusteri.Text = "";
+            lblCariID.Text = "";
+            lblCariKod.Text = "";
+            lblMusteriTuru.Text = "";
+            lblTelefon.Text = "";
+            lblEposta.Text = "";
+            lblYetkili.Text = "";
+            pictureBox1.Image = null;
+            
 
+
+
+        }
         private int _currentFaturaNo;
 
         private void FaturaNo()
@@ -863,16 +850,5 @@ namespace Kobi_v1
             }
 
         }
-
-       
     }
 }
-        
-
-    
-
-       
-    
-    
-    
-
