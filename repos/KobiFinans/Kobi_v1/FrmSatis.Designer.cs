@@ -36,7 +36,6 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnTurEkle = new System.Windows.Forms.Button();
             this.lblEposta = new System.Windows.Forms.Label();
             this.lblYetkili = new System.Windows.Forms.Label();
             this.lblTelefon = new System.Windows.Forms.Label();
@@ -50,7 +49,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnSil = new System.Windows.Forms.Button();
             this.btnKayit = new System.Windows.Forms.Button();
-            this.btnEkle = new System.Windows.Forms.Button();
+            this.btnYeniKayit = new System.Windows.Forms.Button();
             this.btniptal = new System.Windows.Forms.Button();
             this.btnKapat = new System.Windows.Forms.Button();
             this.btnGuncelle = new System.Windows.Forms.Button();
@@ -79,6 +78,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.txtFaturaNo = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -102,7 +103,6 @@
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(182)))), ((int)(((byte)(149)))));
             this.splitContainer1.Panel1.Controls.Add(this.pictureBox1);
             this.splitContainer1.Panel1.Controls.Add(this.label4);
-            this.splitContainer1.Panel1.Controls.Add(this.btnTurEkle);
             this.splitContainer1.Panel1.Controls.Add(this.lblEposta);
             this.splitContainer1.Panel1.Controls.Add(this.lblYetkili);
             this.splitContainer1.Panel1.Controls.Add(this.lblTelefon);
@@ -136,23 +136,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(252, 25);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(64, 18);
+            this.label4.Size = new System.Drawing.Size(84, 24);
             this.label4.TabIndex = 12;
             this.label4.Text = "Ürün Adı";
-            // 
-            // btnTurEkle
-            // 
-            this.btnTurEkle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
-            this.btnTurEkle.FlatAppearance.BorderSize = 0;
-            this.btnTurEkle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTurEkle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnTurEkle.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnTurEkle.Location = new System.Drawing.Point(47, 573);
-            this.btnTurEkle.Name = "btnTurEkle";
-            this.btnTurEkle.Size = new System.Drawing.Size(100, 26);
-            this.btnTurEkle.TabIndex = 28;
-            this.btnTurEkle.Text = "Kategori Ekle";
-            this.btnTurEkle.UseVisualStyleBackColor = false;
             // 
             // lblEposta
             // 
@@ -254,6 +240,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.panel2);
@@ -270,6 +257,7 @@
             this.panel1.Controls.Add(this.txtKdvHaricTutar);
             this.panel1.Controls.Add(this.txtToplamTutar);
             this.panel1.Controls.Add(this.txtCariAd);
+            this.panel1.Controls.Add(this.txtFaturaNo);
             this.panel1.Controls.Add(this.txtID);
             this.panel1.Controls.Add(this.label16);
             this.panel1.Controls.Add(this.label9);
@@ -292,7 +280,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(10, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 18);
+            this.label1.Size = new System.Drawing.Size(106, 24);
             this.label1.TabIndex = 15;
             this.label1.Text = "Müşteri No:";
             // 
@@ -301,7 +289,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(367, 8);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 18);
+            this.label2.Size = new System.Drawing.Size(97, 24);
             this.label2.TabIndex = 14;
             this.label2.Text = "Ad Soyad:";
             // 
@@ -314,7 +302,7 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.btnSil);
             this.panel2.Controls.Add(this.btnKayit);
-            this.panel2.Controls.Add(this.btnEkle);
+            this.panel2.Controls.Add(this.btnYeniKayit);
             this.panel2.Controls.Add(this.btniptal);
             this.panel2.Controls.Add(this.btnKapat);
             this.panel2.Controls.Add(this.btnGuncelle);
@@ -358,22 +346,23 @@
             this.btnKayit.UseVisualStyleBackColor = false;
             this.btnKayit.Click += new System.EventHandler(this.btnKayit_Click);
             // 
-            // btnEkle
+            // btnYeniKayit
             // 
-            this.btnEkle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
-            this.btnEkle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnEkle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnEkle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnEkle.ForeColor = System.Drawing.Color.Transparent;
-            this.btnEkle.Image = global::Kobi_v1.Properties.Resources.clear36px;
-            this.btnEkle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEkle.Location = new System.Drawing.Point(7, 4);
-            this.btnEkle.Name = "btnEkle";
-            this.btnEkle.Size = new System.Drawing.Size(97, 39);
-            this.btnEkle.TabIndex = 22;
-            this.btnEkle.Text = "Ekle";
-            this.btnEkle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEkle.UseVisualStyleBackColor = false;
+            this.btnYeniKayit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
+            this.btnYeniKayit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnYeniKayit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnYeniKayit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnYeniKayit.ForeColor = System.Drawing.Color.Transparent;
+            this.btnYeniKayit.Image = global::Kobi_v1.Properties.Resources.clear36px;
+            this.btnYeniKayit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnYeniKayit.Location = new System.Drawing.Point(7, 4);
+            this.btnYeniKayit.Name = "btnYeniKayit";
+            this.btnYeniKayit.Size = new System.Drawing.Size(97, 39);
+            this.btnYeniKayit.TabIndex = 22;
+            this.btnYeniKayit.Text = "Yeni";
+            this.btnYeniKayit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnYeniKayit.UseVisualStyleBackColor = false;
+            this.btnYeniKayit.Click += new System.EventHandler(this.btnYeniKayit_Click);
             // 
             // btniptal
             // 
@@ -391,6 +380,7 @@
             this.btniptal.Text = "İptal";
             this.btniptal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btniptal.UseVisualStyleBackColor = false;
+            this.btniptal.Click += new System.EventHandler(this.btniptal_Click);
             // 
             // btnKapat
             // 
@@ -432,7 +422,7 @@
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(663, 8);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(57, 18);
+            this.label14.Size = new System.Drawing.Size(71, 24);
             this.label14.TabIndex = 13;
             this.label14.Text = "Kayıt T.";
             // 
@@ -459,7 +449,7 @@
             this.dateKayit.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateKayit.Location = new System.Drawing.Point(740, 5);
             this.dateKayit.Name = "dateKayit";
-            this.dateKayit.Size = new System.Drawing.Size(116, 24);
+            this.dateKayit.Size = new System.Drawing.Size(116, 28);
             this.dateKayit.TabIndex = 19;
             // 
             // comboBoxDurum
@@ -475,7 +465,7 @@
             "Sevk Edildi"});
             this.comboBoxDurum.Location = new System.Drawing.Point(122, 43);
             this.comboBoxDurum.Name = "comboBoxDurum";
-            this.comboBoxDurum.Size = new System.Drawing.Size(178, 26);
+            this.comboBoxDurum.Size = new System.Drawing.Size(178, 30);
             this.comboBoxDurum.TabIndex = 27;
             this.comboBoxDurum.Text = "Seçiniz";
             this.comboBoxDurum.SelectedIndexChanged += new System.EventHandler(this.comboBoxDurum_SelectedIndexChanged);
@@ -487,7 +477,7 @@
             this.comboBoxBanka.FormattingEnabled = true;
             this.comboBoxBanka.Location = new System.Drawing.Point(676, 216);
             this.comboBoxBanka.Name = "comboBoxBanka";
-            this.comboBoxBanka.Size = new System.Drawing.Size(178, 26);
+            this.comboBoxBanka.Size = new System.Drawing.Size(178, 30);
             this.comboBoxBanka.TabIndex = 27;
             this.comboBoxBanka.Text = "Seçiniz";
             // 
@@ -495,9 +485,11 @@
             // 
             this.comboBoxKasa.BackColor = System.Drawing.Color.Linen;
             this.comboBoxKasa.FormattingEnabled = true;
+            this.comboBoxKasa.Items.AddRange(new object[] {
+            "Seçiniz"});
             this.comboBoxKasa.Location = new System.Drawing.Point(404, 216);
             this.comboBoxKasa.Name = "comboBoxKasa";
-            this.comboBoxKasa.Size = new System.Drawing.Size(178, 26);
+            this.comboBoxKasa.Size = new System.Drawing.Size(178, 30);
             this.comboBoxKasa.TabIndex = 27;
             this.comboBoxKasa.Text = "Seçiniz";
             // 
@@ -507,7 +499,7 @@
             this.comboboxOdemeTuru.FormattingEnabled = true;
             this.comboboxOdemeTuru.Location = new System.Drawing.Point(143, 216);
             this.comboboxOdemeTuru.Name = "comboboxOdemeTuru";
-            this.comboboxOdemeTuru.Size = new System.Drawing.Size(178, 26);
+            this.comboboxOdemeTuru.Size = new System.Drawing.Size(178, 30);
             this.comboboxOdemeTuru.TabIndex = 27;
             this.comboboxOdemeTuru.Text = "Seçiniz";
             this.comboboxOdemeTuru.SelectedIndexChanged += new System.EventHandler(this.comboboxOdemeTuru_SelectedIndexChanged);
@@ -529,7 +521,7 @@
             this.txtGenelToplam.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtGenelToplam.Location = new System.Drawing.Point(793, 672);
             this.txtGenelToplam.Name = "txtGenelToplam";
-            this.txtGenelToplam.Size = new System.Drawing.Size(110, 24);
+            this.txtGenelToplam.Size = new System.Drawing.Size(110, 28);
             this.txtGenelToplam.TabIndex = 16;
             // 
             // txtKdv
@@ -539,7 +531,7 @@
             this.txtKdv.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtKdv.Location = new System.Drawing.Point(793, 606);
             this.txtKdv.Name = "txtKdv";
-            this.txtKdv.Size = new System.Drawing.Size(110, 24);
+            this.txtKdv.Size = new System.Drawing.Size(110, 28);
             this.txtKdv.TabIndex = 16;
             // 
             // txtKdvHaricTutar
@@ -549,7 +541,7 @@
             this.txtKdvHaricTutar.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtKdvHaricTutar.Location = new System.Drawing.Point(793, 573);
             this.txtKdvHaricTutar.Name = "txtKdvHaricTutar";
-            this.txtKdvHaricTutar.Size = new System.Drawing.Size(110, 24);
+            this.txtKdvHaricTutar.Size = new System.Drawing.Size(110, 28);
             this.txtKdvHaricTutar.TabIndex = 16;
             // 
             // txtToplamTutar
@@ -559,7 +551,7 @@
             this.txtToplamTutar.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtToplamTutar.Location = new System.Drawing.Point(793, 639);
             this.txtToplamTutar.Name = "txtToplamTutar";
-            this.txtToplamTutar.Size = new System.Drawing.Size(110, 24);
+            this.txtToplamTutar.Size = new System.Drawing.Size(110, 28);
             this.txtToplamTutar.TabIndex = 16;
             // 
             // txtCariAd
@@ -568,7 +560,7 @@
             this.txtCariAd.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtCariAd.Location = new System.Drawing.Point(479, 5);
             this.txtCariAd.Name = "txtCariAd";
-            this.txtCariAd.Size = new System.Drawing.Size(178, 24);
+            this.txtCariAd.Size = new System.Drawing.Size(178, 28);
             this.txtCariAd.TabIndex = 16;
             // 
             // txtID
@@ -577,7 +569,7 @@
             this.txtID.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtID.Location = new System.Drawing.Point(122, 5);
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(178, 24);
+            this.txtID.Size = new System.Drawing.Size(178, 28);
             this.txtID.TabIndex = 9;
             // 
             // label16
@@ -585,7 +577,7 @@
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(10, 49);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(53, 18);
+            this.label16.Size = new System.Drawing.Size(67, 24);
             this.label16.TabIndex = 10;
             this.label16.Text = "Durum";
             // 
@@ -594,7 +586,7 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(679, 675);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(85, 18);
+            this.label9.Size = new System.Drawing.Size(109, 24);
             this.label9.TabIndex = 11;
             this.label9.Text = "Genel Tutar";
             // 
@@ -603,7 +595,7 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(648, 577);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(110, 18);
+            this.label10.Size = new System.Drawing.Size(139, 24);
             this.label10.TabIndex = 11;
             this.label10.Text = "Kdv Hariç Tutar";
             // 
@@ -612,7 +604,7 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(676, 610);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(87, 18);
+            this.label8.Size = new System.Drawing.Size(111, 24);
             this.label8.TabIndex = 11;
             this.label8.Text = "Toplam Kdv";
             // 
@@ -621,7 +613,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(665, 641);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(96, 18);
+            this.label6.Size = new System.Drawing.Size(122, 24);
             this.label6.TabIndex = 11;
             this.label6.Text = "Toplam Tutar";
             // 
@@ -630,7 +622,7 @@
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(10, 98);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(68, 18);
+            this.label17.Size = new System.Drawing.Size(86, 24);
             this.label17.TabIndex = 11;
             this.label17.Text = "Açıklama";
             // 
@@ -639,7 +631,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(8, 219);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(93, 18);
+            this.label5.Size = new System.Drawing.Size(119, 24);
             this.label5.TabIndex = 11;
             this.label5.Text = "Ödeme Şekli";
             // 
@@ -648,7 +640,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(598, 219);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(50, 18);
+            this.label7.Size = new System.Drawing.Size(62, 24);
             this.label7.TabIndex = 13;
             this.label7.Text = "Banka";
             // 
@@ -657,7 +649,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(337, 219);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 18);
+            this.label3.Size = new System.Drawing.Size(51, 24);
             this.label3.TabIndex = 13;
             this.label3.Text = "Kasa";
             // 
@@ -720,9 +712,27 @@
             this.dataGridView1.DoubleClick += new System.EventHandler(this.dataGridView1_DoubleClick);
             this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown);
             // 
+            // txtFaturaNo
+            // 
+            this.txtFaturaNo.BackColor = System.Drawing.Color.Linen;
+            this.txtFaturaNo.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtFaturaNo.Location = new System.Drawing.Point(480, 39);
+            this.txtFaturaNo.Name = "txtFaturaNo";
+            this.txtFaturaNo.Size = new System.Drawing.Size(178, 28);
+            this.txtFaturaNo.TabIndex = 9;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(366, 43);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(98, 24);
+            this.label11.TabIndex = 15;
+            this.label11.Text = "Fatura No:";
+            // 
             // FrmSatis
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(208)))), ((int)(((byte)(161)))));
@@ -761,7 +771,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnSil;
         private System.Windows.Forms.Button btnKayit;
-        private System.Windows.Forms.Button btnEkle;
+        private System.Windows.Forms.Button btnYeniKayit;
         private System.Windows.Forms.Button btniptal;
         private System.Windows.Forms.Button btnKapat;
         private System.Windows.Forms.Button btnGuncelle;
@@ -772,7 +782,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnAra;
-        private System.Windows.Forms.Button btnTurEkle;
         private System.Windows.Forms.ComboBox comboboxOdemeTuru;
         private System.Windows.Forms.TextBox txtAciklama;
         private System.Windows.Forms.TextBox txtCariAd;
@@ -803,5 +812,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtKdvHaricTutar;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtFaturaNo;
     }
 }

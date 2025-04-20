@@ -21,11 +21,12 @@ namespace Kobi_v1
         }
         private string _secilenCariID;
         private string _secilenUrunID;
-        
+
+
         private static string connectionString = ConfigurationManager.ConnectionStrings["KobiFinans"].ConnectionString;
         SqlConnection baglanti = new SqlConnection(connectionString);
 
-        
+
         string sorguUrunekle = "Select * from Urunler";
 
         private void musteriAdi()
@@ -77,15 +78,15 @@ namespace Kobi_v1
         private void dtHeader()
         {
             dataGridView1.Columns.Clear();
-           
-            dataGridView1.Columns.Add("UrunKodu","Ürün Kodu");           
-            dataGridView1.Columns.Add("UrunAdi","Ürün Adı");           
-            dataGridView1.Columns.Add("SatisFiyati","Satış Fiyatı");
-            dataGridView1.Columns.Add("Kdv","KDV");
-            dataGridView1.Columns.Add("Adet","Adet");
+
+            dataGridView1.Columns.Add("UrunKodu", "Ürün Kodu");
+            dataGridView1.Columns.Add("UrunAdi", "Ürün Adı");
+            dataGridView1.Columns.Add("SatisFiyati", "Satış Fiyatı");
+            dataGridView1.Columns.Add("Kdv", "KDV");
+            dataGridView1.Columns.Add("Adet", "Adet");
             dataGridView1.Columns.Add("Tutar", "Tutar");
             dataGridView1.Rows.Add();
-            
+
 
             /*          dataGridView1.Columns["Adet"].ReadOnly = false;
                         dataGridView1.Columns["Adet"].DefaultCellStyle.BackColor = Color.LightYellow;
@@ -110,6 +111,7 @@ namespace Kobi_v1
         }
         private void FrmSatis_Load(object sender, EventArgs e)
         {
+            
             txtToplamTutar.Text = "0,00";
             txtKdv.Text = "0,00";
             txtGenelToplam.Text = "0,00";
@@ -120,10 +122,11 @@ namespace Kobi_v1
             txtKdvHaricTutar.Enabled = false;
 
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            dtHeader();            
+            dtHeader();
             OdemeTuruSec();
             KasaSec();
-            
+            SatisFromYeniKayitKontrolDisabled();
+
         }
 
 
@@ -136,15 +139,15 @@ namespace Kobi_v1
                                        string ePosta,
                                        string resim)
         {
-            
+
             _secilenCariID = cariID;
             LblMusteri.Text = CariAdi;
-            lblCariKod.Text = "Cari Kod: "+CariKod;
+            lblCariKod.Text = "Cari Kod: " + CariKod;
             lblTelefon.Text = telefon;
             lblEposta.Text = ePosta;
-            lblYetkili.Text = "Yetkili: "+yetkili;
-            lblCariID.Text = "Cari No:"+_secilenCariID;
-            lblMusteriTuru.Text = "Cari Türü: "+cariTur;
+            lblYetkili.Text = "Yetkili: " + yetkili;
+            lblCariID.Text = "Cari No:" + _secilenCariID;
+            lblMusteriTuru.Text = "Cari Türü: " + cariTur;
             txtCariAd.Text = CariAdi;
             txtID.Text = _secilenCariID;
 
@@ -170,6 +173,7 @@ namespace Kobi_v1
                      string stokMiktar, string stokAciklama, string stokResim, string stokDurum, string stokKayitTarihi,
                      string stokBirim)
         {
+            _secilenUrunID = stokID;
 
             dataGridView1.Rows[SatirIndex].Cells["UrunKodu"].Value = stokKod;
             dataGridView1.Rows[SatirIndex].Cells["UrunAdi"].Value = stokAdi;
@@ -211,7 +215,7 @@ namespace Kobi_v1
             try
             {
                 comboboxOdemeTuru.Items.Clear();
-                comboboxOdemeTuru.Items.Add("Ödeme Şekli");
+                comboboxOdemeTuru.Items.Add("Seçiniz");
                 if (baglanti.State == ConnectionState.Closed) baglanti.Open();
                 SqlCommand komut = new SqlCommand("select OdemeAd from OdemeTuru", baglanti);
                 SqlDataReader dr = komut.ExecuteReader();
@@ -230,7 +234,7 @@ namespace Kobi_v1
             finally
             {
                 baglanti.Close();
-                comboboxOdemeTuru.SelectedIndex = 0;
+                
             }
         }
         private void KasaSec()
@@ -238,14 +242,16 @@ namespace Kobi_v1
 
             try
             {
+                comboBoxKasa.Items.Clear();
+                comboBoxKasa.Items.Add("Seçiniz");
                 if (baglanti.State == ConnectionState.Closed) baglanti.Open();
                 SqlCommand komut = new SqlCommand("select KasaAdi from Kasa", baglanti);
-                SqlDataAdapter da = new SqlDataAdapter(komut);
-                DataSet ds = new DataSet();
-                ds.Clear();
-                da.Fill(ds);
-                comboBoxKasa.DataSource = ds.Tables[0];
-                comboBoxKasa.DisplayMember = "KasaAdi";
+                SqlDataReader dr = komut.ExecuteReader();
+                while (dr.Read())
+                {
+                    comboBoxKasa.Items.Add(dr["KasaAdi"].ToString());
+                }
+                dr.Close();
             }
             catch (Exception hata)
             {
@@ -257,7 +263,7 @@ namespace Kobi_v1
             }
         }
 
- 
+
 
 
         private void btnAra_Click(object sender, EventArgs e)
@@ -265,19 +271,22 @@ namespace Kobi_v1
             FrmCariListele frmCariListele = new FrmCariListele();
             frmCariListele.CagrilanForm = this;
             frmCariListele.ShowDialog();
+            FaturaNo();
+
+
         }
 
-       
+
 
         private void comboboxOdemeTuru_SelectedIndexChanged(object sender, EventArgs e)
         {
-           string secilen = comboboxOdemeTuru.SelectedItem.ToString();
-            if(secilen == "Nakit")
+            string secilen = comboboxOdemeTuru.SelectedItem.ToString();
+            if (secilen == "Nakit")
             {
                 comboBoxKasa.Enabled = true;
                 comboBoxBanka.Enabled = false;
             }
-            else if(secilen == "Havale"||secilen == "Kredi Kartı")
+            else if (secilen == "Havale" || secilen == "Kredi Kartı")
             {
                 comboBoxKasa.Enabled = false;
                 comboBoxBanka.Enabled = true;
@@ -297,7 +306,7 @@ namespace Kobi_v1
 
         private void comboBoxDurum_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -314,8 +323,8 @@ namespace Kobi_v1
 
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            
-          
+
+
         }
 
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -386,14 +395,14 @@ namespace Kobi_v1
                 // Toplam tutarı güncelle
                 ToplamTutarHesapla();
             }
-            
+
         }
 
         private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Delete && dataGridView1.SelectedRows.Count>0)
+            if (e.KeyCode == Keys.Delete && dataGridView1.SelectedRows.Count > 0)
             {
-                if(MessageBox.Show("Silmek istediğinize emin misiniz?", "Sil", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Silmek istediğinize emin misiniz?", "Sil", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     for (int i = dataGridView1.SelectedRows.Count - 1; i >= 0; i--)
                     {
@@ -408,18 +417,18 @@ namespace Kobi_v1
         private void dataGridView1_DoubleClick(object sender, EventArgs e)
         {
             // Son satırın boş olup olmadığını kontrol et
-            if (dataGridView1.Rows.Count<0)
+            if (dataGridView1.Rows.Count < 0)
             {
                 dataGridView1.Rows.Add();
-                
+
 
             }
             else if (dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells["UrunKodu"].Value != null && dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells["UrunKodu"].Value.ToString() != "")
             {
                 dataGridView1.Rows.Add();
-                
+
             }
-           
+
 
         }
 
@@ -463,79 +472,407 @@ namespace Kobi_v1
                 {
                     toplamTutar += Convert.ToDecimal(row.Cells["Tutar"].Value);
                 }
-                
-                
+
+
             }
             toplamKdv += Convert.ToDecimal(txtToplamTutar.Text) - Convert.ToDecimal(Convert.ToInt32((toplamTutar)) / (1 + .20));
             kdvHaricTutar = toplamTutar - toplamKdv;
-            genelToplam = toplamTutar ;
+            genelToplam = toplamTutar;
             txtKdvHaricTutar.Text = kdvHaricTutar.ToString("N2");
             txtToplamTutar.Text = toplamTutar.ToString("N2");
             txtKdv.Text = toplamKdv.ToString("N2");
             txtGenelToplam.Text = genelToplam.ToString("N2");
         }
-
-        private void btnKayit_Click(object sender, EventArgs e)
+        private void btnYeniKayit_Click(object sender, EventArgs e)
         {
-            try
+            
+            foreach (Control control in this.Controls)
             {
-                
-                
-                if (baglanti.State == ConnectionState.Closed) baglanti.Open();
-                SqlCommand kmtKaydet = new SqlCommand(@"Insert Into SatisIslemleri ([UrunID]
-                                                                        ,[CariID]
-                                                                        ,[KasaID]
-                                                                        ,[BankaID]
-                                                                        ,[OdemeID]
-                                                                        ,[SatisTarihi]
-                                                                        ,[Adet]
-                                                                        ,[Tutar]
-                                                                        ,[Durum]) 
-             Values (@urunID, @cariID, @kasaID, @bankaID, @odemeID, @tarih, @adet,@tutar,@durum)", baglanti);
-
-                kmtKaydet.Parameters.AddWithValue("@urunID", Convert.ToInt32(_secilenUrunID));
-                kmtKaydet.Parameters.AddWithValue("@cariID", Convert.ToInt32(_secilenCariID));
-                
-                kmtKaydet.Parameters.AddWithValue("@kasaID", Convert.ToInt32(comboBoxKasa.SelectedIndex+1));
-                kmtKaydet.Parameters.AddWithValue("@bankaID", Convert.ToInt32(comboBoxBanka.SelectedIndex+1));
-                kmtKaydet.Parameters.AddWithValue("@odemeID", Convert.ToInt32(comboboxOdemeTuru.SelectedIndex+1));
-                kmtKaydet.Parameters.AddWithValue("@tarih", Convert.ToDateTime(dateKayit.Text));
-                decimal toplamAdet = 0;
-                string kolonAdi = "adet"; // Kolon adınızı buraya doğru şekilde yazın
-
-                foreach (DataGridViewRow row in dataGridView1.Rows)
+                if (control is SplitContainer splitContainer)
                 {
-                    if (!row.IsNewRow)
+                    foreach (Control panel1control in splitContainer.Panel2.Controls)
                     {
-                        if (row.Cells[kolonAdi].Value != null && decimal.TryParse(row.Cells[kolonAdi].Value.ToString(), out decimal adet))
+                        if (panel1control is Panel panel)
                         {
-                            toplamAdet += adet;
-                        }
-                        else
-                        {
-                            // Hata yönetimi
+                            foreach (Control innerControl in panel.Controls)
+                            {
+                                if (innerControl is TextBox textBox)
+                                {
+                                    textBox.Enabled = true;
+                                    textBox.Clear();
+                                }
+                                else if (innerControl is ComboBox comboBox)
+
+                                {
+                                    if (comboBox.Name == "comboboxOdemeTuru" || comboBox.Name == "comboBoxDurum")
+                                    {
+                                        comboBox.Enabled = true;
+                                    }
+                                    else
+                                        comboBox.Enabled = false;
+                                }
+                                else if (innerControl is DateTimePicker dateTimePicker)
+                                {
+                                    dateTimePicker.Enabled = true;
+                                }
+                               
+                                else if (innerControl is Button button)
+                                {
+                                    button.Enabled = true;
+                                }
+                                else if (innerControl is Panel panel1)
+                                {
+                                    foreach (Control innerControl2 in panel1.Controls)
+                                    {
+                                        if (innerControl2 is Button button1)
+                                        {
+                                            if (button1.Name == "btnYeniKayit")
+                                            {
+                                                button1.Enabled = false;
+                                            }
+                                            else
+                                            {
+                                                button1.Enabled = true;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }
-                kmtKaydet.Parameters.AddWithValue("@adet", Convert.ToInt32(toplamAdet));
-                kmtKaydet.Parameters.AddWithValue("@tutar", Convert.ToDecimal(txtGenelToplam.Text));
-                kmtKaydet.Parameters.AddWithValue("@durum", 1);
-                kmtKaydet.ExecuteNonQuery();
-                MessageBox.Show("Satis Kaydedildi");
             }
-            catch (Exception hata)
+        }
+
+        private void btnKayit_Click(object sender, EventArgs e)
+        {
+            satisKayit();
+            
+        }
+        private void btniptal_Click(object sender, EventArgs e)
+        {
+            SatisFromYeniKayitKontrolDisabled();
+            
+            btnYeniKayit.Enabled = true;
+            comboBoxDurum.Text = "Seçiniz";
+            comboBoxBanka.Text = "Seçiniz";
+            comboBoxKasa.Text = "Seçiniz";
+            comboboxOdemeTuru.Text = "Seçiniz";
+
+        }
+        private void satisKayit()
+        {
+
+            if (baglanti.State == ConnectionState.Closed) baglanti.Open();
+            if (_secilenCariID == null)
             {
-                MessageBox.Show("Hata: " + hata.Message);
+                MessageBox.Show("Lütfen Cari Seçiniz");
+                return;
+            }
+            else if (txtFaturaNo.Text == "")
+            {
+                MessageBox.Show("Lütfen Fatura No Giriniz");
+                return;
+            }
+            else if (comboBoxDurum.Text == "" || comboBoxDurum.Text == "Seçiniz")
+            {
+                MessageBox.Show("Durum Seçiniz");
+                return;
+            }
+            else if (dataGridView1.Rows.Count < 2)
+            {
+                MessageBox.Show("Lütfen En Az 1 Ürün Seçiniz");
+                return;
+            }
+
+
+            else if (comboboxOdemeTuru.Text == "" || comboboxOdemeTuru.Text == "Seçiniz")
+            {
+                MessageBox.Show("Ödeme Yöntemi Seçiniz");
+                return;
+            }
+            if (comboboxOdemeTuru.Text == "Açık Hesap")
+            {
+
+            }
+            else if (comboBoxKasa.Text == "Nakit")
+            {
+                MessageBox.Show("Kasa Seçiniz");
+                return;
+            }
+
+            else if (comboBoxBanka.Text == "" || comboBoxBanka.Text == "Banka Seçiniz")
+            {
+                MessageBox.Show("Banka Seçiniz");
+                return;
+            }
+
+            SqlTransaction transaction = null;
+
+            try
+            {
+                transaction = baglanti.BeginTransaction();
+
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    if (!row.IsNewRow && row.Cells["UrunKodu"].Value != null && row.Cells["UrunAdi"].Value != null && row.Cells["Adet"].Value != null && row.Cells["Tutar"].Value != null)
+                    {
+                        // Her satırdaki ürün bilgilerini alın
+                        string urunKodu = row.Cells["UrunKodu"].Value.ToString();
+                        string urunAdi = row.Cells["UrunAdi"].Value.ToString();
+                        if (int.TryParse(row.Cells["Adet"].Value.ToString(), out int adet))
+                        {
+                            if (decimal.TryParse(row.Cells["Tutar"].Value.ToString(), out decimal tutar))
+                            {
+                                // Ürün kodundan UrunID'yi veritabanından çekmeniz gerekecek.
+                                int urunID = 0;
+                                SqlCommand cmdUrunID = new SqlCommand("SELECT UrunID FROM Urunler WHERE UrunKodu = @urunKodu", baglanti, transaction);
+                                cmdUrunID.Parameters.AddWithValue("@urunKodu", urunKodu);
+                                object urunIDResult = cmdUrunID.ExecuteScalar();
+                                if (urunIDResult != null && int.TryParse(urunIDResult.ToString(), out int urunIDValue))
+                                {
+                                    urunID = urunIDValue;
+
+                                    int? kasaID = null;
+                                    int? bankaID = null;
+                                    int odemeID = 0;
+                                    DateTime satisTarihi = Convert.ToDateTime(dateKayit.Text);
+
+                                    // Ödeme türüne göre KasaID veya BankaID belirle ve INSERT sorgusunu çalıştır
+                                    if (comboboxOdemeTuru.Text == "Açık Hesap")
+                                    {
+                                        string sqlAcikHesap = @"Insert into SatisIslemleri ([UrunID], [CariID], [OdemeID], [SatisTarihi], [Adet], [Tutar], [Durum],[FaturaNo])
+                                                       Values (@urunID, @cariID, @odemeID, @tarih, @adet, @tutar, @durum,@faturaNo)";
+
+                                        SqlCommand kmtOdemeTuru = new SqlCommand("Select OdemeID from OdemeTuru where OdemeAd=@odemeAd", baglanti, transaction);
+                                        kmtOdemeTuru.Parameters.Clear();
+                                        kmtOdemeTuru.Parameters.AddWithValue("@odemeAd", comboboxOdemeTuru.Text);
+                                        object odemeIDResult = kmtOdemeTuru.ExecuteScalar();
+                                        if (odemeIDResult != null && int.TryParse(odemeIDResult.ToString(), out int odemeIdValue))
+                                        {
+                                            odemeID = odemeIdValue;
+                                        }
+                                        SqlCommand kmtAcikHesapInsert = new SqlCommand(sqlAcikHesap, baglanti, transaction);
+                                        kmtAcikHesapInsert.Parameters.Clear();
+                                        kmtAcikHesapInsert.Parameters.AddWithValue("@urunID", urunID);
+                                        kmtAcikHesapInsert.Parameters.AddWithValue("@cariID", _secilenCariID);
+                                        kmtAcikHesapInsert.Parameters.AddWithValue("@odemeID", odemeID);
+                                        kmtAcikHesapInsert.Parameters.AddWithValue("@tarih", satisTarihi);
+                                        kmtAcikHesapInsert.Parameters.AddWithValue("@adet", adet);
+                                        kmtAcikHesapInsert.Parameters.AddWithValue("@tutar", tutar);
+                                        kmtAcikHesapInsert.Parameters.AddWithValue("@durum", comboBoxDurum.Text);
+                                        kmtAcikHesapInsert.Parameters.AddWithValue("@faturaNo", txtFaturaNo.Text);
+                                        kmtAcikHesapInsert.ExecuteNonQuery();
+
+                                    }
+                                    if (comboboxOdemeTuru.Text == "Nakit")
+                                    {
+                                        SqlCommand kmtkasaID = new SqlCommand("Select id from Kasa where KasaAdi=@kasaAdi", baglanti, transaction);
+                                        kmtkasaID.Parameters.Clear();
+                                        kmtkasaID.Parameters.AddWithValue("@kasaAdi", comboBoxKasa.Text);
+                                        object kasaIDResult = kmtkasaID.ExecuteScalar();
+                                        if (kasaIDResult != null && int.TryParse(kasaIDResult.ToString(), out int kasaIdValue))
+                                        {
+                                            kasaID = kasaIdValue;
+                                        }
+
+                                        SqlCommand kmtOdemeTuruNakit = new SqlCommand("Select OdemeID from OdemeTuru where OdemeAd=@odemeAd", baglanti, transaction);
+                                        kmtOdemeTuruNakit.Parameters.Clear();
+                                        kmtOdemeTuruNakit.Parameters.AddWithValue("@odemeAd", comboboxOdemeTuru.Text);
+                                        object odemeIDResultNakit = kmtOdemeTuruNakit.ExecuteScalar();
+                                        if (odemeIDResultNakit != null && int.TryParse(odemeIDResultNakit.ToString(), out int odemeIdValueNakit))
+                                        {
+                                            odemeID = odemeIdValueNakit;
+                                        }
+
+                                        string sqlnakit = @"Insert into SatisIslemleri ([UrunID], [CariID], [KasaID], [OdemeID], [SatisTarihi], [Adet], [Tutar], [Durum],[FaturaNo])
+                                                       Values (@urunID, @cariID, @kasaID, @odemeID, @tarih, @adet, @tutar, @durum,@faturaNo)";
+                                        SqlCommand kmtNakitInsert = new SqlCommand(sqlnakit, baglanti, transaction);
+                                        kmtNakitInsert.Parameters.Clear();
+                                        kmtNakitInsert.Parameters.AddWithValue("@urunID", urunID);
+                                        kmtNakitInsert.Parameters.AddWithValue("@cariID", _secilenCariID);
+                                        kmtNakitInsert.Parameters.AddWithValue("@kasaID", kasaID.HasValue ? (object)kasaID.Value : DBNull.Value);
+                                        kmtNakitInsert.Parameters.AddWithValue("@odemeID", odemeID);
+                                        kmtNakitInsert.Parameters.AddWithValue("@tarih", satisTarihi);
+                                        kmtNakitInsert.Parameters.AddWithValue("@adet", adet);
+                                        kmtNakitInsert.Parameters.AddWithValue("@tutar", tutar);
+                                        kmtNakitInsert.Parameters.AddWithValue("@durum", comboBoxDurum.Text);
+                                        kmtNakitInsert.Parameters.AddWithValue("@faturaNo", txtFaturaNo.Text);
+                                        kmtNakitInsert.ExecuteNonQuery();
+                                    }
+                                    else if (comboboxOdemeTuru.Text == "Havale" || comboboxOdemeTuru.Text == "Kredi Kartı")
+                                    {
+                                        SqlCommand kmtBankaID = new SqlCommand("Select ID from Bankalar where BankaAd=@bankaAdi", baglanti, transaction);
+                                        kmtBankaID.Parameters.Clear();
+                                        kmtBankaID.Parameters.AddWithValue("@bankaAdi", comboBoxBanka.Text);
+                                        object bankaIDResult = kmtBankaID.ExecuteScalar();
+                                        if (bankaIDResult != null && int.TryParse(bankaIDResult.ToString(), out int bankaIdValue))
+                                        {
+                                            bankaID = bankaIdValue;
+                                        }
+
+                                        SqlCommand kmtOdemeTuruBanka = new SqlCommand("Select OdemeID from OdemeTuru where OdemeAd=@odemeAd", baglanti, transaction);
+                                        kmtOdemeTuruBanka.Parameters.Clear();
+                                        kmtOdemeTuruBanka.Parameters.AddWithValue("@odemeAd", comboboxOdemeTuru.Text);
+                                        object odemeIDResultBanka = kmtOdemeTuruBanka.ExecuteScalar();
+                                        if (odemeIDResultBanka != null && int.TryParse(odemeIDResultBanka.ToString(), out int odemeIdValueBanka))
+                                        {
+                                            odemeID = odemeIdValueBanka;
+                                        }
+
+                                        string sqlBanka = @"Insert into SatisIslemleri ([UrunID], [CariID], [BankaID], [OdemeID], [SatisTarihi], [Adet], [Tutar], [Durum],[FaturaNo])
+                                                       Values (@urunID, @cariID, @bankaID, @odemeID, @tarih, @adet, @tutar, @durum,@faturaNo)";
+                                        SqlCommand kmtBankaInsert = new SqlCommand(sqlBanka, baglanti, transaction);
+                                        kmtBankaInsert.Parameters.Clear();
+                                        kmtBankaInsert.Parameters.AddWithValue("@urunID", urunID);
+                                        kmtBankaInsert.Parameters.AddWithValue("@cariID", _secilenCariID);
+                                        kmtBankaInsert.Parameters.AddWithValue("@bankaID", bankaID.HasValue ? (object)bankaID.Value : DBNull.Value);
+                                        kmtBankaInsert.Parameters.AddWithValue("@odemeID", odemeID);
+                                        kmtBankaInsert.Parameters.AddWithValue("@tarih", satisTarihi);
+                                        kmtBankaInsert.Parameters.AddWithValue("@adet", adet);
+                                        kmtBankaInsert.Parameters.AddWithValue("@tutar", tutar);
+                                        kmtBankaInsert.Parameters.AddWithValue("@durum", comboBoxDurum.Text);
+                                        kmtBankaInsert.Parameters.AddWithValue("@faturaNo", txtFaturaNo.Text);
+                                        kmtBankaInsert.ExecuteNonQuery();
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show($"Ürün kodu '{urunKodu}' ile eşleşen ürün bulunamadı.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    transaction.Rollback();
+                                    return;
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show($"Geçersiz tutar değeri: Ürün Kodu {urunKodu}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                transaction.Rollback();
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show($"Geçersiz adet değeri: Ürün Kodu {urunKodu}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            transaction.Rollback();
+                            return;
+                        }
+                    }
+                }
+
+                transaction.Commit();
+                MessageBox.Show("Satış işlemleri başarıyla kaydedildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dataGridView1.Rows.Clear();
+            }
+            catch (Exception ex)
+            {
+                if (transaction != null)
+                {
+                    transaction.Rollback();
+                }
+                MessageBox.Show("Veritabanı hatası: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
-                baglanti.Close();
+                if (baglanti.State == ConnectionState.Open) baglanti.Close();
+            }
+        }
+
+        private int _currentFaturaNo;
+
+        private void FaturaNo()
+        {
+            try
+            {
+                if (baglanti.State == ConnectionState.Closed) baglanti.Open();
+                SqlCommand komut = new SqlCommand("Insert Into SatisFaturaNo DEFAULT VALUES; SELECT SCOPE_IDENTITY();", baglanti);
+
+                object result = komut.ExecuteScalar();
+                if (result != null && int.TryParse(result.ToString(), out _currentFaturaNo))
+                {
+                    MessageBox.Show($"Yeni Fatura ID Oluşturuldu: {_currentFaturaNo}");
+                    // _currentFaturaNo değişkenini kullanarak satış kayıtlarını yapabilirsiniz.
+                    // Örneğin, bu numarayı bir TextBox'ta gösterebilirsiniz.
+                    txtFaturaNo.Text = _currentFaturaNo.ToString();
+                }
+                else
+                {
+                    MessageBox.Show("Yeni Fatura ID oluşturulurken bir hata oluştu.");
+                    _currentFaturaNo = 0; // Hata durumunda sıfırla veya başka bir değer atayın.
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Veritabanı hatası: " + ex.Message);
+                _currentFaturaNo = 0;
+            }
+            finally
+            {
+                if (baglanti.State == ConnectionState.Open) baglanti.Close();
+            }
+        }
+        private void SatisFromYeniKayitKontrolDisabled()
+        {
+            foreach (Control control in this.Controls)
+            {
+                if (control is SplitContainer  SplitContainer)
+                {
+                    foreach (Control panel1control in splitContainer1.Panel2.Controls)
+                    {
+                        if (panel1control is Panel panel)
+                        {
+                            foreach (Control innerControl in panel.Controls)
+                            {
+                                if (innerControl is TextBox textBox)
+                                {
+                                    textBox.Enabled = false;
+                                    
+                                }
+                                else if (innerControl is ComboBox comboBox)
+                                {
+                                    comboBox.Enabled = false;
+                                }
+                                else if (innerControl is DateTimePicker dateTimePicker)
+                                {
+                                    dateTimePicker.Enabled = false;
+                                }
+                             
+                                else if (innerControl is Button button)
+                                {
+                                    button.Enabled = false;
+                                }
+                                else if (innerControl is Panel panel1)
+                                {
+                                    foreach (Control innerControl2 in panel1.Controls)
+                                    {
+                                        if (innerControl2 is Button button1)
+                                        {
+                                            if(button1.Name!= "btnYeniKayit")
+                                            {
+                                                button1.Enabled = false;
+                                            }
+                                            
+                                        }
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
             }
 
         }
 
        
     }
-    
-    
 }
+        
+
+    
+
+       
+    
+    
+    
+
