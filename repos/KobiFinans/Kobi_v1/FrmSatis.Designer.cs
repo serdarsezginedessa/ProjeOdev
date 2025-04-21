@@ -80,6 +80,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnFaturaAra = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -114,8 +115,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.panel1);
-            this.splitContainer1.Size = new System.Drawing.Size(1155, 785);
-            this.splitContainer1.SplitterDistance = 241;
+            this.splitContainer1.Size = new System.Drawing.Size(1233, 785);
+            this.splitContainer1.SplitterDistance = 257;
             this.splitContainer1.TabIndex = 0;
             // 
             // pictureBox1
@@ -136,7 +137,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(252, 25);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(64, 18);
+            this.label4.Size = new System.Drawing.Size(84, 24);
             this.label4.TabIndex = 12;
             this.label4.Text = "Ürün Adı";
             // 
@@ -245,6 +246,7 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.label14);
+            this.panel1.Controls.Add(this.btnFaturaAra);
             this.panel1.Controls.Add(this.btnAra);
             this.panel1.Controls.Add(this.dateKayit);
             this.panel1.Controls.Add(this.comboBoxDurum);
@@ -272,7 +274,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(906, 781);
+            this.panel1.Size = new System.Drawing.Size(968, 781);
             this.panel1.TabIndex = 13;
             // 
             // label11
@@ -280,7 +282,7 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(366, 43);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(78, 18);
+            this.label11.Size = new System.Drawing.Size(98, 24);
             this.label11.TabIndex = 15;
             this.label11.Text = "Fatura No:";
             // 
@@ -289,7 +291,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(10, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 18);
+            this.label1.Size = new System.Drawing.Size(106, 24);
             this.label1.TabIndex = 15;
             this.label1.Text = "Müşteri No:";
             // 
@@ -298,15 +300,12 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(367, 8);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 18);
+            this.label2.Size = new System.Drawing.Size(97, 24);
             this.label2.TabIndex = 14;
             this.label2.Text = "Ad Soyad:";
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.AutoSize = true;
             this.panel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.btnSil);
@@ -315,9 +314,9 @@
             this.panel2.Controls.Add(this.btniptal);
             this.panel2.Controls.Add(this.btnKapat);
             this.panel2.Controls.Add(this.btnGuncelle);
-            this.panel2.Location = new System.Drawing.Point(94, 662);
+            this.panel2.Location = new System.Drawing.Point(664, 5);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(626, 50);
+            this.panel2.Size = new System.Drawing.Size(304, 148);
             this.panel2.TabIndex = 25;
             // 
             // btnSil
@@ -326,70 +325,75 @@
             this.btnSil.BackgroundImage = global::Kobi_v1.Properties.Resources.Minus36px;
             this.btnSil.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnSil.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSil.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnSil.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnSil.ForeColor = System.Drawing.Color.Transparent;
             this.btnSil.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSil.Location = new System.Drawing.Point(213, 4);
+            this.btnSil.Location = new System.Drawing.Point(7, 94);
             this.btnSil.Name = "btnSil";
-            this.btnSil.Size = new System.Drawing.Size(97, 39);
+            this.btnSil.Size = new System.Drawing.Size(135, 42);
             this.btnSil.TabIndex = 23;
             this.btnSil.Text = "Sil";
             this.btnSil.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSil.UseVisualStyleBackColor = false;
+            this.btnSil.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnSil_KeyDown);
             // 
             // btnKayit
             // 
             this.btnKayit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
             this.btnKayit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnKayit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnKayit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnKayit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnKayit.ForeColor = System.Drawing.Color.Transparent;
             this.btnKayit.Image = global::Kobi_v1.Properties.Resources.Add_File36px1;
             this.btnKayit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnKayit.Location = new System.Drawing.Point(316, 4);
+            this.btnKayit.Location = new System.Drawing.Point(7, 48);
             this.btnKayit.Name = "btnKayit";
-            this.btnKayit.Size = new System.Drawing.Size(97, 39);
+            this.btnKayit.Size = new System.Drawing.Size(135, 42);
             this.btnKayit.TabIndex = 21;
-            this.btnKayit.Text = "Kayit";
+            this.btnKayit.Text = "Kayit (F2)";
             this.btnKayit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnKayit.UseVisualStyleBackColor = false;
             this.btnKayit.Click += new System.EventHandler(this.btnKayit_Click);
+            this.btnKayit.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnKayit_KeyDown);
             // 
             // btnYeniKayit
             // 
             this.btnYeniKayit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
             this.btnYeniKayit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnYeniKayit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnYeniKayit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnYeniKayit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnYeniKayit.ForeColor = System.Drawing.Color.Transparent;
             this.btnYeniKayit.Image = global::Kobi_v1.Properties.Resources.clear36px;
             this.btnYeniKayit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnYeniKayit.Location = new System.Drawing.Point(7, 4);
             this.btnYeniKayit.Name = "btnYeniKayit";
-            this.btnYeniKayit.Size = new System.Drawing.Size(97, 39);
+            this.btnYeniKayit.Size = new System.Drawing.Size(135, 42);
             this.btnYeniKayit.TabIndex = 22;
-            this.btnYeniKayit.Text = "Yeni";
-            this.btnYeniKayit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnYeniKayit.Text = "Yeni (F8)";
+            this.btnYeniKayit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnYeniKayit.UseVisualStyleBackColor = false;
             this.btnYeniKayit.Click += new System.EventHandler(this.btnYeniKayit_Click);
+            this.btnYeniKayit.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnYeniKayit_KeyDown);
             // 
             // btniptal
             // 
             this.btniptal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
             this.btniptal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btniptal.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btniptal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btniptal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btniptal.ForeColor = System.Drawing.Color.Transparent;
             this.btniptal.Image = global::Kobi_v1.Properties.Resources.iptal;
             this.btniptal.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btniptal.Location = new System.Drawing.Point(110, 4);
+            this.btniptal.Location = new System.Drawing.Point(148, 3);
             this.btniptal.Name = "btniptal";
-            this.btniptal.Size = new System.Drawing.Size(97, 39);
+            this.btniptal.Size = new System.Drawing.Size(144, 42);
             this.btniptal.TabIndex = 22;
-            this.btniptal.Text = "İptal";
+            this.btniptal.Text = "İptal (Esc)";
             this.btniptal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btniptal.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btniptal.UseVisualStyleBackColor = false;
             this.btniptal.Click += new System.EventHandler(this.btniptal_Click);
+            this.btniptal.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btniptal_KeyDown);
             // 
             // btnKapat
             // 
@@ -397,13 +401,13 @@
             this.btnKapat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnKapat.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnKapat.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnKapat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnKapat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnKapat.ForeColor = System.Drawing.Color.Transparent;
             this.btnKapat.Image = global::Kobi_v1.Properties.Resources.Close_Pane3px;
             this.btnKapat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnKapat.Location = new System.Drawing.Point(522, 4);
+            this.btnKapat.Location = new System.Drawing.Point(148, 94);
             this.btnKapat.Name = "btnKapat";
-            this.btnKapat.Size = new System.Drawing.Size(97, 39);
+            this.btnKapat.Size = new System.Drawing.Size(144, 42);
             this.btnKapat.TabIndex = 22;
             this.btnKapat.Text = "Kapat";
             this.btnKapat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -414,13 +418,13 @@
             this.btnGuncelle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
             this.btnGuncelle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnGuncelle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnGuncelle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnGuncelle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnGuncelle.ForeColor = System.Drawing.Color.Transparent;
             this.btnGuncelle.Image = global::Kobi_v1.Properties.Resources.Edit36px;
             this.btnGuncelle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuncelle.Location = new System.Drawing.Point(419, 4);
+            this.btnGuncelle.Location = new System.Drawing.Point(148, 48);
             this.btnGuncelle.Name = "btnGuncelle";
-            this.btnGuncelle.Size = new System.Drawing.Size(97, 39);
+            this.btnGuncelle.Size = new System.Drawing.Size(144, 42);
             this.btnGuncelle.TabIndex = 22;
             this.btnGuncelle.Text = "Düzelt";
             this.btnGuncelle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -429,9 +433,9 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(663, 8);
+            this.label14.Location = new System.Drawing.Point(403, 76);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(57, 18);
+            this.label14.Size = new System.Drawing.Size(71, 24);
             this.label14.TabIndex = 13;
             this.label14.Text = "Kayıt T.";
             // 
@@ -456,9 +460,9 @@
             // 
             this.dateKayit.CalendarMonthBackground = System.Drawing.Color.Linen;
             this.dateKayit.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateKayit.Location = new System.Drawing.Point(740, 5);
+            this.dateKayit.Location = new System.Drawing.Point(480, 73);
             this.dateKayit.Name = "dateKayit";
-            this.dateKayit.Size = new System.Drawing.Size(116, 24);
+            this.dateKayit.Size = new System.Drawing.Size(176, 28);
             this.dateKayit.TabIndex = 19;
             // 
             // comboBoxDurum
@@ -474,7 +478,7 @@
             "Sevk Edildi"});
             this.comboBoxDurum.Location = new System.Drawing.Point(122, 43);
             this.comboBoxDurum.Name = "comboBoxDurum";
-            this.comboBoxDurum.Size = new System.Drawing.Size(178, 26);
+            this.comboBoxDurum.Size = new System.Drawing.Size(178, 30);
             this.comboBoxDurum.TabIndex = 27;
             this.comboBoxDurum.Text = "Seçiniz";
             // 
@@ -482,9 +486,9 @@
             // 
             this.comboBoxBanka.BackColor = System.Drawing.Color.Linen;
             this.comboBoxBanka.FormattingEnabled = true;
-            this.comboBoxBanka.Location = new System.Drawing.Point(676, 216);
+            this.comboBoxBanka.Location = new System.Drawing.Point(140, 642);
             this.comboBoxBanka.Name = "comboBoxBanka";
-            this.comboBoxBanka.Size = new System.Drawing.Size(178, 26);
+            this.comboBoxBanka.Size = new System.Drawing.Size(97, 30);
             this.comboBoxBanka.TabIndex = 27;
             this.comboBoxBanka.Text = "Seçiniz";
             // 
@@ -492,11 +496,9 @@
             // 
             this.comboBoxKasa.BackColor = System.Drawing.Color.Linen;
             this.comboBoxKasa.FormattingEnabled = true;
-            this.comboBoxKasa.Items.AddRange(new object[] {
-            "Seçiniz"});
-            this.comboBoxKasa.Location = new System.Drawing.Point(404, 216);
+            this.comboBoxKasa.Location = new System.Drawing.Point(138, 606);
             this.comboBoxKasa.Name = "comboBoxKasa";
-            this.comboBoxKasa.Size = new System.Drawing.Size(178, 26);
+            this.comboBoxKasa.Size = new System.Drawing.Size(99, 30);
             this.comboBoxKasa.TabIndex = 27;
             this.comboBoxKasa.Text = "Seçiniz";
             // 
@@ -504,9 +506,9 @@
             // 
             this.comboboxOdemeTuru.BackColor = System.Drawing.Color.Linen;
             this.comboboxOdemeTuru.FormattingEnabled = true;
-            this.comboboxOdemeTuru.Location = new System.Drawing.Point(143, 216);
+            this.comboboxOdemeTuru.Location = new System.Drawing.Point(138, 570);
             this.comboboxOdemeTuru.Name = "comboboxOdemeTuru";
-            this.comboboxOdemeTuru.Size = new System.Drawing.Size(178, 26);
+            this.comboboxOdemeTuru.Size = new System.Drawing.Size(97, 30);
             this.comboboxOdemeTuru.TabIndex = 27;
             this.comboboxOdemeTuru.Text = "Seçiniz";
             this.comboboxOdemeTuru.SelectedIndexChanged += new System.EventHandler(this.comboboxOdemeTuru_SelectedIndexChanged);
@@ -518,7 +520,7 @@
             this.txtAciklama.Location = new System.Drawing.Point(122, 86);
             this.txtAciklama.Multiline = true;
             this.txtAciklama.Name = "txtAciklama";
-            this.txtAciklama.Size = new System.Drawing.Size(178, 101);
+            this.txtAciklama.Size = new System.Drawing.Size(178, 57);
             this.txtAciklama.TabIndex = 17;
             // 
             // txtGenelToplam
@@ -526,9 +528,9 @@
             this.txtGenelToplam.BackColor = System.Drawing.Color.Linen;
             this.txtGenelToplam.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtGenelToplam.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtGenelToplam.Location = new System.Drawing.Point(793, 672);
+            this.txtGenelToplam.Location = new System.Drawing.Point(855, 668);
             this.txtGenelToplam.Name = "txtGenelToplam";
-            this.txtGenelToplam.Size = new System.Drawing.Size(110, 24);
+            this.txtGenelToplam.Size = new System.Drawing.Size(110, 28);
             this.txtGenelToplam.TabIndex = 16;
             // 
             // txtKdv
@@ -536,9 +538,9 @@
             this.txtKdv.BackColor = System.Drawing.Color.Linen;
             this.txtKdv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtKdv.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtKdv.Location = new System.Drawing.Point(793, 606);
+            this.txtKdv.Location = new System.Drawing.Point(855, 602);
             this.txtKdv.Name = "txtKdv";
-            this.txtKdv.Size = new System.Drawing.Size(110, 24);
+            this.txtKdv.Size = new System.Drawing.Size(110, 28);
             this.txtKdv.TabIndex = 16;
             // 
             // txtKdvHaricTutar
@@ -546,9 +548,9 @@
             this.txtKdvHaricTutar.BackColor = System.Drawing.Color.Linen;
             this.txtKdvHaricTutar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtKdvHaricTutar.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtKdvHaricTutar.Location = new System.Drawing.Point(793, 573);
+            this.txtKdvHaricTutar.Location = new System.Drawing.Point(855, 569);
             this.txtKdvHaricTutar.Name = "txtKdvHaricTutar";
-            this.txtKdvHaricTutar.Size = new System.Drawing.Size(110, 24);
+            this.txtKdvHaricTutar.Size = new System.Drawing.Size(110, 28);
             this.txtKdvHaricTutar.TabIndex = 16;
             // 
             // txtToplamTutar
@@ -556,9 +558,9 @@
             this.txtToplamTutar.BackColor = System.Drawing.Color.Linen;
             this.txtToplamTutar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtToplamTutar.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtToplamTutar.Location = new System.Drawing.Point(793, 639);
+            this.txtToplamTutar.Location = new System.Drawing.Point(855, 635);
             this.txtToplamTutar.Name = "txtToplamTutar";
-            this.txtToplamTutar.Size = new System.Drawing.Size(110, 24);
+            this.txtToplamTutar.Size = new System.Drawing.Size(110, 28);
             this.txtToplamTutar.TabIndex = 16;
             // 
             // txtCariAd
@@ -567,7 +569,7 @@
             this.txtCariAd.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtCariAd.Location = new System.Drawing.Point(479, 5);
             this.txtCariAd.Name = "txtCariAd";
-            this.txtCariAd.Size = new System.Drawing.Size(178, 24);
+            this.txtCariAd.Size = new System.Drawing.Size(178, 28);
             this.txtCariAd.TabIndex = 16;
             // 
             // txtFaturaNo
@@ -576,7 +578,7 @@
             this.txtFaturaNo.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtFaturaNo.Location = new System.Drawing.Point(480, 39);
             this.txtFaturaNo.Name = "txtFaturaNo";
-            this.txtFaturaNo.Size = new System.Drawing.Size(178, 24);
+            this.txtFaturaNo.Size = new System.Drawing.Size(129, 28);
             this.txtFaturaNo.TabIndex = 9;
             // 
             // txtID
@@ -585,7 +587,7 @@
             this.txtID.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtID.Location = new System.Drawing.Point(122, 5);
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(178, 24);
+            this.txtID.Size = new System.Drawing.Size(178, 28);
             this.txtID.TabIndex = 9;
             // 
             // label16
@@ -593,43 +595,43 @@
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(10, 49);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(53, 18);
+            this.label16.Size = new System.Drawing.Size(67, 24);
             this.label16.TabIndex = 10;
             this.label16.Text = "Durum";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(679, 675);
+            this.label9.Location = new System.Drawing.Point(741, 671);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(85, 18);
+            this.label9.Size = new System.Drawing.Size(109, 24);
             this.label9.TabIndex = 11;
             this.label9.Text = "Genel Tutar";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(648, 577);
+            this.label10.Location = new System.Drawing.Point(710, 573);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(110, 18);
+            this.label10.Size = new System.Drawing.Size(139, 24);
             this.label10.TabIndex = 11;
             this.label10.Text = "Kdv Hariç Tutar";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(676, 610);
+            this.label8.Location = new System.Drawing.Point(738, 606);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(87, 18);
+            this.label8.Size = new System.Drawing.Size(111, 24);
             this.label8.TabIndex = 11;
             this.label8.Text = "Toplam Kdv";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(665, 641);
+            this.label6.Location = new System.Drawing.Point(727, 637);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(96, 18);
+            this.label6.Size = new System.Drawing.Size(122, 24);
             this.label6.TabIndex = 11;
             this.label6.Text = "Toplam Tutar";
             // 
@@ -638,43 +640,43 @@
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(10, 98);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(68, 18);
+            this.label17.Size = new System.Drawing.Size(86, 24);
             this.label17.TabIndex = 11;
             this.label17.Text = "Açıklama";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(8, 219);
+            this.label5.Location = new System.Drawing.Point(3, 573);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(93, 18);
+            this.label5.Size = new System.Drawing.Size(119, 24);
             this.label5.TabIndex = 11;
             this.label5.Text = "Ödeme Şekli";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(598, 219);
+            this.label7.Location = new System.Drawing.Point(62, 645);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(50, 18);
+            this.label7.Size = new System.Drawing.Size(62, 24);
             this.label7.TabIndex = 13;
             this.label7.Text = "Banka";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(337, 219);
+            this.label3.Location = new System.Drawing.Point(71, 609);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 18);
+            this.label3.Size = new System.Drawing.Size(51, 24);
             this.label3.TabIndex = 13;
             this.label3.Text = "Kasa";
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.dataGridView1);
-            this.panel3.Location = new System.Drawing.Point(0, 262);
+            this.panel3.Location = new System.Drawing.Point(0, 159);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(907, 304);
+            this.panel3.Size = new System.Drawing.Size(965, 407);
             this.panel3.TabIndex = 30;
             // 
             // dataGridView1
@@ -718,27 +720,46 @@
             this.dataGridView1.RowTemplate.DefaultCellStyle.NullValue = null;
             this.dataGridView1.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.DodgerBlue;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(907, 304);
+            this.dataGridView1.Size = new System.Drawing.Size(965, 407);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.TabStop = false;
             this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridView1_CellBeginEdit);
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
+            this.dataGridView1.Click += new System.EventHandler(this.dataGridView1_Click);
             this.dataGridView1.DoubleClick += new System.EventHandler(this.dataGridView1_DoubleClick);
             this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown);
             // 
+            // btnFaturaAra
+            // 
+            this.btnFaturaAra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
+            this.btnFaturaAra.BackgroundImage = global::Kobi_v1.Properties.Resources.Search_More36px;
+            this.btnFaturaAra.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnFaturaAra.FlatAppearance.BorderSize = 0;
+            this.btnFaturaAra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFaturaAra.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnFaturaAra.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnFaturaAra.Location = new System.Drawing.Point(615, 42);
+            this.btnFaturaAra.Name = "btnFaturaAra";
+            this.btnFaturaAra.Size = new System.Drawing.Size(38, 24);
+            this.btnFaturaAra.TabIndex = 28;
+            this.btnFaturaAra.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnFaturaAra.UseVisualStyleBackColor = false;
+            this.btnFaturaAra.Click += new System.EventHandler(this.btnFaturaAra_Click);
+            this.btnFaturaAra.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnFaturaAra_KeyDown);
+            // 
             // FrmSatis
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(208)))), ((int)(((byte)(161)))));
-            this.CancelButton = this.btnKapat;
-            this.ClientSize = new System.Drawing.Size(1155, 785);
+            this.ClientSize = new System.Drawing.Size(1233, 785);
             this.Controls.Add(this.splitContainer1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -811,5 +832,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtFaturaNo;
+        private System.Windows.Forms.Button btnFaturaAra;
     }
 }

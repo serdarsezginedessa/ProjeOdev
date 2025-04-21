@@ -90,7 +90,13 @@ namespace Kobi_v1
         }
         private void FrmSatis_Load(object sender, EventArgs e)
         {
-            
+            //BtnTextComboAcilisForm();
+            this.KeyPreview = true;
+            this.KeyDown += btnYeniKayit_KeyDown;
+            this.KeyDown+=btniptal_KeyDown;
+            this.KeyDown += btnKayit_KeyDown;
+            this.KeyDown+=btnSil_KeyDown;
+            this.KeyDown+=btnFaturaAra_KeyDown;
             txtToplamTutar.Text = "0,00";
             txtKdv.Text = "0,00";
             txtGenelToplam.Text = "0,00";
@@ -99,7 +105,6 @@ namespace Kobi_v1
             txtKdv.Enabled = false;
             txtGenelToplam.Enabled = false;
             txtKdvHaricTutar.Enabled = false;
-
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             dtHeader();
             OdemeTuruSec();
@@ -245,8 +250,7 @@ namespace Kobi_v1
             FrmCariListele frmCariListele = new FrmCariListele();
             frmCariListele.CagrilanForm = this;
             frmCariListele.ShowDialog();
-            FaturaNo();
-
+            
 
         }
 
@@ -269,6 +273,11 @@ namespace Kobi_v1
                 comboBoxKasa.Enabled = false;
                 comboBoxBanka.Enabled = false;
             }
+        }
+        private void dataGridView1_Click(object sender, EventArgs e)
+        {
+            if (txtFaturaNo.Text == "")
+                FaturaNo();
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -441,6 +450,7 @@ namespace Kobi_v1
         }
         private void btnYeniKayit_Click(object sender, EventArgs e)
         {
+
             
             foreach (Control control in this.Controls)
             {
@@ -482,7 +492,7 @@ namespace Kobi_v1
                                     {
                                         if (innerControl2 is Button button1)
                                         {
-                                            if (button1.Name == "btnYeniKayit")
+                                            if (button1.Name == "btnYeniKayit" || button1.Name=="btnGuncelle"||button1.Name=="btnSil" || button1.Name=="btnKapat")
                                             {
                                                 button1.Enabled = false;
                                             }
@@ -503,72 +513,84 @@ namespace Kobi_v1
         private void btnKayit_Click(object sender, EventArgs e)
         {
             satisKayit();
+            
+            //textComboTemizle();
             SatisFromYeniKayitKontrolDisabled();
-            textComboTemizle();
-
+            btnYeniKayit.Enabled = true;
+            btnKapat.Enabled = true;
         }
         private void btniptal_Click(object sender, EventArgs e)
         {
+            textComboTemizle();
             SatisFromYeniKayitKontrolDisabled();
             
             btnYeniKayit.Enabled = true;
-            comboBoxDurum.Text = "Seçiniz";
+            btnKapat.Enabled = true;
+            dataGridView1.Rows.Clear();
+            dataGridView1.Rows.Add();
+            /*comboBoxDurum.Text = "Seçiniz";
             comboBoxBanka.Text = "Seçiniz";
             comboBoxKasa.Text = "Seçiniz";
             comboboxOdemeTuru.Text = "Seçiniz";
-
+*/
         }
         private void satisKayit()
         {
 
-            if (baglanti.State == ConnectionState.Closed) baglanti.Open();
-            if (_secilenCariID == null)
-            {
-                MessageBox.Show("Lütfen Cari Seçiniz");
-                return;
-            }
-            else if (txtFaturaNo.Text == "")
-            {
-                MessageBox.Show("Lütfen Fatura No Giriniz");
-                return;
-            }
-            else if (comboBoxDurum.Text == "" || comboBoxDurum.Text == "Seçiniz")
-            {
-                MessageBox.Show("Durum Seçiniz");
-                return;
-            }
-            else if (dataGridView1.Rows.Count < 2)
-            {
-                MessageBox.Show("Lütfen En Az 1 Ürün Seçiniz");
-                return;
-            }
-
-
-            else if (comboboxOdemeTuru.Text == "" || comboboxOdemeTuru.Text == "Seçiniz")
-            {
-                MessageBox.Show("Ödeme Yöntemi Seçiniz");
-                return;
-            }
-            if (comboboxOdemeTuru.Text == "Açık Hesap")
-            {
-
-            }
-            else if (comboBoxKasa.Text == "Nakit")
-            {
-                MessageBox.Show("Kasa Seçiniz");
-                return;
-            }
-
-            else if (comboBoxBanka.Text == "" || comboBoxBanka.Text == "Banka Seçiniz")
-            {
-                MessageBox.Show("Banka Seçiniz");
-                return;
-            }
-
+            
             SqlTransaction transaction = null;
 
             try
             {
+                if (baglanti.State == ConnectionState.Closed) baglanti.Open();
+                if (_secilenCariID == null)
+                {
+                    MessageBox.Show("Lütfen Cari Seçiniz");
+                    return;
+                }
+                else if (txtFaturaNo.Text == "")
+                {
+                    MessageBox.Show("Lütfen Fatura No Giriniz");
+                    return;
+                }
+                else if (comboBoxDurum.Text == "" || comboBoxDurum.Text == "Seçiniz")
+                {
+                    MessageBox.Show("Durum Seçiniz");
+                    return;
+                }
+                else if (dataGridView1.Rows.Count < 2)
+                {
+                    MessageBox.Show("Lütfen En Az 1 Ürün Seçiniz");
+                    return;
+                }
+
+
+                else if (comboboxOdemeTuru.Text == "" || comboboxOdemeTuru.Text == "Seçiniz")
+                {
+                    MessageBox.Show("Ödeme Yöntemi Seçiniz");
+                    return;
+                }
+                if (comboboxOdemeTuru.Text == "Açık Hesap")
+                {
+
+                }
+                else if (comboboxOdemeTuru.Text == "Nakit")
+                {
+                    if (comboBoxKasa.Text == "" || comboBoxKasa.Text == "Seçiniz")
+                    {
+                        MessageBox.Show("Kasa Seçiniz");
+                        return;
+                    }
+
+                }
+                else
+                {
+                    if (comboBoxBanka.Text == "" || comboBoxBanka.Text == "Banka Seçiniz")
+                    {
+                        MessageBox.Show("Banka Seçiniz");
+                        return;
+                    }
+                }
                 transaction = baglanti.BeginTransaction();
 
                 foreach (DataGridViewRow row in dataGridView1.Rows)
@@ -718,11 +740,11 @@ namespace Kobi_v1
                 }
 
                 transaction.Commit();
-                MessageBox.Show("Satış işlemleri başarıyla kaydedildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                textComboTemizle();
                 dataGridView1.Rows.Clear();
-
-
-
+                dataGridView1.Rows.Add();
+                MessageBox.Show("Satış işlemleri başarıyla kaydedildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
             }
             catch (Exception ex)
             {
@@ -751,15 +773,24 @@ namespace Kobi_v1
             txtKdv.Text = "0,00";
             txtKdvHaricTutar.Text = "0,00";
             txtToplamTutar.Text = "0,00";
-            LblMusteri.Text = "";
-            lblCariID.Text = "";
-            lblCariKod.Text = "";
-            lblMusteriTuru.Text = "";
-            lblTelefon.Text = "";
-            lblEposta.Text = "";
-            lblYetkili.Text = "";
+            LblMusteri.Text="Müşteri Adı";
+            lblCariID.Text = "Cari No";
+            lblCariKod.Text = "Cari Kod";
+            lblMusteriTuru.Text = "Müşteri Türü";
+            lblTelefon.Text = "Telefon";
+            lblEposta.Text = "Eposta";
+            lblYetkili.Text = "Yetkili";
             pictureBox1.Image = null;
-            
+            txtToplamTutar.Text = "0,00";
+            txtKdv.Text = "0,00";
+            txtGenelToplam.Text = "0,00";
+            txtKdvHaricTutar.Text = "0,00";
+            txtToplamTutar.Enabled = false;
+            txtKdv.Enabled = false;
+            txtGenelToplam.Enabled = false;
+            txtKdvHaricTutar.Enabled = false;
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+
 
 
 
@@ -776,9 +807,7 @@ namespace Kobi_v1
                 object result = komut.ExecuteScalar();
                 if (result != null && int.TryParse(result.ToString(), out _currentFaturaNo))
                 {
-                    MessageBox.Show($"Yeni Fatura ID Oluşturuldu: {_currentFaturaNo}");
-                    // _currentFaturaNo değişkenini kullanarak satış kayıtlarını yapabilirsiniz.
-                    // Örneğin, bu numarayı bir TextBox'ta gösterebilirsiniz.
+                    
                     txtFaturaNo.Text = _currentFaturaNo.ToString();
                 }
                 else
@@ -833,7 +862,7 @@ namespace Kobi_v1
                                     {
                                         if (innerControl2 is Button button1)
                                         {
-                                            if(button1.Name!= "btnYeniKayit")
+                                            if(button1.Name!= "btnYeniKayit" && button1.Name!="btnKapat")
                                             {
                                                 button1.Enabled = false;
                                             }
@@ -848,7 +877,73 @@ namespace Kobi_v1
                 }
 
             }
+            txtToplamTutar.Text = "0,00";
+            txtKdv.Text = "0,00";
+            txtGenelToplam.Text = "0,00";
+            txtKdvHaricTutar.Text = "0,00";
+            txtToplamTutar.Enabled = false;
+            txtKdv.Enabled = false;
+            txtGenelToplam.Enabled = false;
+            txtKdvHaricTutar.Enabled = false;
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
 
         }
+
+        private void btnYeniKayit_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode==Keys.F8)
+            {
+                btnYeniKayit.PerformClick();
+            }
+        }
+
+        private void btniptal_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Escape)
+            {
+                btniptal.PerformClick();
+            }
+        }
+
+        private void btnKayit_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.F2)
+            {
+                btnKayit.PerformClick();
+            }
+        }
+
+        private void btnSil_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Control && e.KeyCode==Keys.F10)
+            {
+                btnSil.PerformClick();
+                MessageBox.Show("Silme işlemi başarıyla gerçekleştirildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnFaturaAra_Click(object sender, EventArgs e)
+        {
+            // Fatura arama işlemi için kullanılacak..
+        }
+
+        private void btnFaturaAra_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.F11)
+            {
+                btnFaturaAra.PerformClick();
+            }
+        }
+
+        private void BtnTextComboAcilisForm()
+        {
+            foreach(Control control  in this.Controls)
+            {
+                control.Enabled = false;
+            }
+
+        }
+
+        
     }
 }
