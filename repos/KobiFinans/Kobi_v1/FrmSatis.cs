@@ -276,8 +276,7 @@ namespace Kobi_v1
         }
         private void dataGridView1_Click(object sender, EventArgs e)
         {
-            if (txtFaturaNo.Text == "")
-                FaturaNo();
+            
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -288,6 +287,7 @@ namespace Kobi_v1
                 frmStoklar.CagrilanForm = this;
                 frmStoklar.SeciliSatir = e.RowIndex;
                 frmStoklar.ShowDialog();
+                
 
             }
         }
@@ -392,6 +392,11 @@ namespace Kobi_v1
             {
                 dataGridView1.Rows.Add();
 
+            }
+            else
+            {
+                if (txtFaturaNo.Text == "")
+                    FaturaNo();
             }
 
 
@@ -526,8 +531,10 @@ namespace Kobi_v1
             
             btnYeniKayit.Enabled = true;
             btnKapat.Enabled = true;
-            dataGridView1.Rows.Clear();
+            dataGridView1.Columns.Clear();//sutun temizle
+            dataGridView1.Rows.Clear();//satır temizle
             dataGridView1.Rows.Add();
+            dtHeader();
             /*comboBoxDurum.Text = "Seçiniz";
             comboBoxBanka.Text = "Seçiniz";
             comboBoxKasa.Text = "Seçiniz";
@@ -933,6 +940,7 @@ namespace Kobi_v1
             {
                 btnFaturaAra.PerformClick();
             }
+            
         }
 
         private void BtnTextComboAcilisForm()
@@ -944,6 +952,91 @@ namespace Kobi_v1
 
         }
 
-        
+        private void faturaAraF11ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmSatisHareketleri frmSatisHareketleri = new FrmSatisHareketleri();
+            frmSatisHareketleri.CagrilanForm = this;
+            frmSatisHareketleri.ShowDialog();
+            GelenFaturoNoSql();
+
+        }
+        private string _faturaTarihi; 
+        private string _faturano;
+        private string _cariKod;
+        private string _cariad;
+
+        public void SatisBigileriYukle(string faturaTarihi, string faturano, string cariKod, string cariad)
+        {
+            _faturaTarihi=faturaTarihi;
+            _faturano=faturano;
+            _cariKod=cariKod;
+            _cariad=cariad;
+        }
+
+        string sqlFaturaNo = @"SELECT 
+				                            u.UrunKodu [Ürün Kodu],
+				                            u.UrunAdi [Ürün Adı],
+				                            u.SatisFiyat [Satış Fiyatı],
+				                            u.Kdv,
+				                            si.Adet,si.Tutar
+                                            From SatisIslemleri as si
+                                            Left Join Urunler as u
+                                            On si.UrunID=u.UrunID
+                                            LEFT Join Cari as c
+                                            On si.CariID=c.CariID
+                                            LEFT Join SatisFaturaNo f
+                                            On si.FaturaNo=f.FaturaID
+                                            Left Join Kasa as k
+                                            On si.KasaID=k.id
+                                            Left Join Bankalar as b
+                                            On si.BankaID=b.ID
+                                            Left Join OdemeTuru od
+                                            On si.OdemeID=od.OdemeID
+                                            Where si.FaturaNo=@faturano";
+        string sqlFaturaEkrani= @"SELECT c.CariID,c.CariAdi, c.Eposta, c.Telefon, c.Yetkili, c.CariTuru, si.Durum,si.FaturaNo,
+				si.SatisTarihi,			
+				k.KasaAdi,
+				b.BankaAd,
+				od.OdemeAD
+				
+                                            From SatisIslemleri as si
+                                            Left Join Urunler as u
+                                            On si.UrunID=u.UrunID
+                                            LEFT Join Cari as c
+                                            On si.CariID=c.CariID
+                                            LEFT Join SatisFaturaNo f
+                                            On si.FaturaNo=f.FaturaID
+                                            Left Join Kasa as k
+                                            On si.KasaID=k.id
+                                            Left Join Bankalar as b
+                                            On si.BankaID=b.ID
+                                            Left Join OdemeTuru od
+                                            On si.OdemeID=od.OdemeID
+                                            Where si.FaturaNo=56";
+        private void GelenFaturoNoSql()
+        {
+            try
+            {
+                if (baglanti.State == ConnectionState.Closed) baglanti.Open();
+
+                SqlCommand cmd = new SqlCommand(sqlFaturaNo, baglanti);
+                cmd.Parameters.AddWithValue("@faturano", _faturano);
+                SqlDataReader dr = cmd.ExecuteReader();
+                DataTable dt = new DataTable();
+                dt.Load(dr);
+                dataGridView1.Columns.Clear();
+                dataGridView1.Rows.Clear();
+                dataGridView1.DataSource = dt;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hata" + ex.ToString());
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+        }
     }
 }

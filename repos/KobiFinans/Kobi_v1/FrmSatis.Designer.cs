@@ -55,6 +55,7 @@
             this.btnKapat = new System.Windows.Forms.Button();
             this.btnGuncelle = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
+            this.btnFaturaAra = new System.Windows.Forms.Button();
             this.btnAra = new System.Windows.Forms.Button();
             this.dateKayit = new System.Windows.Forms.DateTimePicker();
             this.comboBoxDurum = new System.Windows.Forms.ComboBox();
@@ -80,7 +81,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnFaturaAra = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.faturaAraF11ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -90,6 +92,7 @@
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -137,7 +140,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(252, 25);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(84, 24);
+            this.label4.Size = new System.Drawing.Size(64, 18);
             this.label4.TabIndex = 12;
             this.label4.Text = "Ürün Adı";
             // 
@@ -271,6 +274,7 @@
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.panel3);
+            this.panel1.Controls.Add(this.menuStrip1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -282,7 +286,7 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(366, 43);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(98, 24);
+            this.label11.Size = new System.Drawing.Size(78, 18);
             this.label11.TabIndex = 15;
             this.label11.Text = "Fatura No:";
             // 
@@ -291,7 +295,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(10, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 24);
+            this.label1.Size = new System.Drawing.Size(85, 18);
             this.label1.TabIndex = 15;
             this.label1.Text = "Müşteri No:";
             // 
@@ -300,7 +304,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(367, 8);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 24);
+            this.label2.Size = new System.Drawing.Size(75, 18);
             this.label2.TabIndex = 14;
             this.label2.Text = "Ad Soyad:";
             // 
@@ -435,9 +439,27 @@
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(403, 76);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(71, 24);
+            this.label14.Size = new System.Drawing.Size(57, 18);
             this.label14.TabIndex = 13;
             this.label14.Text = "Kayıt T.";
+            // 
+            // btnFaturaAra
+            // 
+            this.btnFaturaAra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
+            this.btnFaturaAra.BackgroundImage = global::Kobi_v1.Properties.Resources.Search_More36px;
+            this.btnFaturaAra.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnFaturaAra.FlatAppearance.BorderSize = 0;
+            this.btnFaturaAra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFaturaAra.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnFaturaAra.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnFaturaAra.Location = new System.Drawing.Point(615, 42);
+            this.btnFaturaAra.Name = "btnFaturaAra";
+            this.btnFaturaAra.Size = new System.Drawing.Size(38, 24);
+            this.btnFaturaAra.TabIndex = 28;
+            this.btnFaturaAra.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnFaturaAra.UseVisualStyleBackColor = false;
+            this.btnFaturaAra.Click += new System.EventHandler(this.btnFaturaAra_Click);
+            this.btnFaturaAra.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnFaturaAra_KeyDown);
             // 
             // btnAra
             // 
@@ -462,7 +484,7 @@
             this.dateKayit.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateKayit.Location = new System.Drawing.Point(480, 73);
             this.dateKayit.Name = "dateKayit";
-            this.dateKayit.Size = new System.Drawing.Size(176, 28);
+            this.dateKayit.Size = new System.Drawing.Size(176, 24);
             this.dateKayit.TabIndex = 19;
             // 
             // comboBoxDurum
@@ -478,7 +500,7 @@
             "Sevk Edildi"});
             this.comboBoxDurum.Location = new System.Drawing.Point(122, 43);
             this.comboBoxDurum.Name = "comboBoxDurum";
-            this.comboBoxDurum.Size = new System.Drawing.Size(178, 30);
+            this.comboBoxDurum.Size = new System.Drawing.Size(178, 26);
             this.comboBoxDurum.TabIndex = 27;
             this.comboBoxDurum.Text = "Seçiniz";
             // 
@@ -488,7 +510,7 @@
             this.comboBoxBanka.FormattingEnabled = true;
             this.comboBoxBanka.Location = new System.Drawing.Point(140, 642);
             this.comboBoxBanka.Name = "comboBoxBanka";
-            this.comboBoxBanka.Size = new System.Drawing.Size(97, 30);
+            this.comboBoxBanka.Size = new System.Drawing.Size(97, 26);
             this.comboBoxBanka.TabIndex = 27;
             this.comboBoxBanka.Text = "Seçiniz";
             // 
@@ -498,7 +520,7 @@
             this.comboBoxKasa.FormattingEnabled = true;
             this.comboBoxKasa.Location = new System.Drawing.Point(138, 606);
             this.comboBoxKasa.Name = "comboBoxKasa";
-            this.comboBoxKasa.Size = new System.Drawing.Size(99, 30);
+            this.comboBoxKasa.Size = new System.Drawing.Size(99, 26);
             this.comboBoxKasa.TabIndex = 27;
             this.comboBoxKasa.Text = "Seçiniz";
             // 
@@ -508,7 +530,7 @@
             this.comboboxOdemeTuru.FormattingEnabled = true;
             this.comboboxOdemeTuru.Location = new System.Drawing.Point(138, 570);
             this.comboboxOdemeTuru.Name = "comboboxOdemeTuru";
-            this.comboboxOdemeTuru.Size = new System.Drawing.Size(97, 30);
+            this.comboboxOdemeTuru.Size = new System.Drawing.Size(97, 26);
             this.comboboxOdemeTuru.TabIndex = 27;
             this.comboboxOdemeTuru.Text = "Seçiniz";
             this.comboboxOdemeTuru.SelectedIndexChanged += new System.EventHandler(this.comboboxOdemeTuru_SelectedIndexChanged);
@@ -530,7 +552,7 @@
             this.txtGenelToplam.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtGenelToplam.Location = new System.Drawing.Point(855, 668);
             this.txtGenelToplam.Name = "txtGenelToplam";
-            this.txtGenelToplam.Size = new System.Drawing.Size(110, 28);
+            this.txtGenelToplam.Size = new System.Drawing.Size(110, 24);
             this.txtGenelToplam.TabIndex = 16;
             // 
             // txtKdv
@@ -540,7 +562,7 @@
             this.txtKdv.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtKdv.Location = new System.Drawing.Point(855, 602);
             this.txtKdv.Name = "txtKdv";
-            this.txtKdv.Size = new System.Drawing.Size(110, 28);
+            this.txtKdv.Size = new System.Drawing.Size(110, 24);
             this.txtKdv.TabIndex = 16;
             // 
             // txtKdvHaricTutar
@@ -550,7 +572,7 @@
             this.txtKdvHaricTutar.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtKdvHaricTutar.Location = new System.Drawing.Point(855, 569);
             this.txtKdvHaricTutar.Name = "txtKdvHaricTutar";
-            this.txtKdvHaricTutar.Size = new System.Drawing.Size(110, 28);
+            this.txtKdvHaricTutar.Size = new System.Drawing.Size(110, 24);
             this.txtKdvHaricTutar.TabIndex = 16;
             // 
             // txtToplamTutar
@@ -560,7 +582,7 @@
             this.txtToplamTutar.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtToplamTutar.Location = new System.Drawing.Point(855, 635);
             this.txtToplamTutar.Name = "txtToplamTutar";
-            this.txtToplamTutar.Size = new System.Drawing.Size(110, 28);
+            this.txtToplamTutar.Size = new System.Drawing.Size(110, 24);
             this.txtToplamTutar.TabIndex = 16;
             // 
             // txtCariAd
@@ -569,7 +591,7 @@
             this.txtCariAd.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtCariAd.Location = new System.Drawing.Point(479, 5);
             this.txtCariAd.Name = "txtCariAd";
-            this.txtCariAd.Size = new System.Drawing.Size(178, 28);
+            this.txtCariAd.Size = new System.Drawing.Size(178, 24);
             this.txtCariAd.TabIndex = 16;
             // 
             // txtFaturaNo
@@ -578,7 +600,7 @@
             this.txtFaturaNo.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtFaturaNo.Location = new System.Drawing.Point(480, 39);
             this.txtFaturaNo.Name = "txtFaturaNo";
-            this.txtFaturaNo.Size = new System.Drawing.Size(129, 28);
+            this.txtFaturaNo.Size = new System.Drawing.Size(129, 24);
             this.txtFaturaNo.TabIndex = 9;
             // 
             // txtID
@@ -587,7 +609,7 @@
             this.txtID.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtID.Location = new System.Drawing.Point(122, 5);
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(178, 28);
+            this.txtID.Size = new System.Drawing.Size(178, 24);
             this.txtID.TabIndex = 9;
             // 
             // label16
@@ -595,7 +617,7 @@
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(10, 49);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(67, 24);
+            this.label16.Size = new System.Drawing.Size(53, 18);
             this.label16.TabIndex = 10;
             this.label16.Text = "Durum";
             // 
@@ -604,7 +626,7 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(741, 671);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(109, 24);
+            this.label9.Size = new System.Drawing.Size(85, 18);
             this.label9.TabIndex = 11;
             this.label9.Text = "Genel Tutar";
             // 
@@ -613,7 +635,7 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(710, 573);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(139, 24);
+            this.label10.Size = new System.Drawing.Size(110, 18);
             this.label10.TabIndex = 11;
             this.label10.Text = "Kdv Hariç Tutar";
             // 
@@ -622,7 +644,7 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(738, 606);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(111, 24);
+            this.label8.Size = new System.Drawing.Size(87, 18);
             this.label8.TabIndex = 11;
             this.label8.Text = "Toplam Kdv";
             // 
@@ -631,7 +653,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(727, 637);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(122, 24);
+            this.label6.Size = new System.Drawing.Size(96, 18);
             this.label6.TabIndex = 11;
             this.label6.Text = "Toplam Tutar";
             // 
@@ -640,7 +662,7 @@
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(10, 98);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(86, 24);
+            this.label17.Size = new System.Drawing.Size(68, 18);
             this.label17.TabIndex = 11;
             this.label17.Text = "Açıklama";
             // 
@@ -649,7 +671,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(3, 573);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(119, 24);
+            this.label5.Size = new System.Drawing.Size(93, 18);
             this.label5.TabIndex = 11;
             this.label5.Text = "Ödeme Şekli";
             // 
@@ -658,7 +680,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(62, 645);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(62, 24);
+            this.label7.Size = new System.Drawing.Size(50, 18);
             this.label7.TabIndex = 13;
             this.label7.Text = "Banka";
             // 
@@ -667,7 +689,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(71, 609);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 24);
+            this.label3.Size = new System.Drawing.Size(42, 18);
             this.label3.TabIndex = 13;
             this.label3.Text = "Kasa";
             // 
@@ -730,27 +752,28 @@
             this.dataGridView1.DoubleClick += new System.EventHandler(this.dataGridView1_DoubleClick);
             this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown);
             // 
-            // btnFaturaAra
+            // menuStrip1
             // 
-            this.btnFaturaAra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
-            this.btnFaturaAra.BackgroundImage = global::Kobi_v1.Properties.Resources.Search_More36px;
-            this.btnFaturaAra.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnFaturaAra.FlatAppearance.BorderSize = 0;
-            this.btnFaturaAra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFaturaAra.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnFaturaAra.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnFaturaAra.Location = new System.Drawing.Point(615, 42);
-            this.btnFaturaAra.Name = "btnFaturaAra";
-            this.btnFaturaAra.Size = new System.Drawing.Size(38, 24);
-            this.btnFaturaAra.TabIndex = 28;
-            this.btnFaturaAra.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnFaturaAra.UseVisualStyleBackColor = false;
-            this.btnFaturaAra.Click += new System.EventHandler(this.btnFaturaAra_Click);
-            this.btnFaturaAra.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnFaturaAra_KeyDown);
+            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.faturaAraF11ToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 753);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(968, 28);
+            this.menuStrip1.TabIndex = 31;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // faturaAraF11ToolStripMenuItem
+            // 
+            this.faturaAraF11ToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.faturaAraF11ToolStripMenuItem.Name = "faturaAraF11ToolStripMenuItem";
+            this.faturaAraF11ToolStripMenuItem.Size = new System.Drawing.Size(137, 24);
+            this.faturaAraF11ToolStripMenuItem.Text = "Fatura Ara (F11)";
+            this.faturaAraF11ToolStripMenuItem.Click += new System.EventHandler(this.faturaAraF11ToolStripMenuItem_Click);
             // 
             // FrmSatis
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(208)))), ((int)(((byte)(161)))));
@@ -760,6 +783,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
+            this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -779,6 +803,8 @@
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -833,5 +859,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtFaturaNo;
         private System.Windows.Forms.Button btnFaturaAra;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem faturaAraF11ToolStripMenuItem;
     }
 }
