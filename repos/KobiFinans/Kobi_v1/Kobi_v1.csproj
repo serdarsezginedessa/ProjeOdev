@@ -313,7 +313,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DataBase\" />
+    <Folder Include="DataBase\Yeni03\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Close.png" />

@@ -27,19 +27,26 @@ namespace Kobi_v1
 
         private void ListeleBugun()
         {
-            string sqlListele = @"SELECT Convert(date, si.SatisTarihi) as [Fatura Tarihi] ,si.FaturaNo as [Fatura No],
-                                                                    c.CariKod [Cari Kod], c.cariAdi [Ad Soyad],(Sum(si.Tutar)/1.20) as [Kdv Matrahı],
-                                                                    SUM(si.Tutar) as [Genel Toplam] 
-                                                                    From SatisIslemleri as si
-                                                                    Left Join Urunler as u
-                                                                    On si.UrunID=u.UrunID
-                                                                    LEFT Join Cari as c
-                                                                    On si.CariID=c.CariID
-                                                                    LEFT Join SatisFaturaNo as f            
-                                                                    On si.FaturaNo=f.FaturaID
-                                                                    Where si.SatisTarihi between @tarih1 and @tarih2
+            string sqlListele = @"SELECT Convert(DATE, si.SatisTarihi) as [Fatura Tarihi] 
+							                                            ,si.FaturaNo as [Fatura No]
+                                                                        ,c.CariKod [Cari Kod]
+							                                            ,c.cariAdi [Ad Soyad]
+							                                            ,SUM(si.KdvMatrahi) as [Kdv Matrahı]
+							                                            ,SUM(si.KdvTutari) as [Kdv Tutarı]
+							                                            ,SUM(si.Tutar) as [Tutar]
+							                                            ,SUM(si.GenelToplam) as [Genel Toplam]
+
+                                                                        From SatisIslemleri as si
+                                                                        Left Join Urunler as u
+                                                                        On si.UrunID=u.UrunID
+                                                                        LEFT Join Cari as c
+                                                                        On si.CariID=c.CariID
+                                                                        LEFT Join SatisFaturaNo as f            
+                                                                        On si.FaturaNo=f.FaturaID
+
+																	Where si.SatisTarihi between @tarih1 and @tarih2
                                                                     Group By si.SatisTarihi, si.FaturaNo, c.CariKod,c.CariAdi
-                                                                    Order BY si.FaturaNo DESC ";
+                                                                        Order BY si.FaturaNo DESC ";
             try
             {
                 if (baglanti.State == ConnectionState.Closed) baglanti.Open();
@@ -65,19 +72,26 @@ namespace Kobi_v1
             try
             {
                 if (baglanti.State == ConnectionState.Closed) baglanti.Open();
-                string sqlListele = @"SELECT Convert(date, si.SatisTarihi) as [Fatura Tarihi] ,si.FaturaNo as [Fatura No],
-                                                                    c.CariKod [Cari Kod], c.cariAdi [Ad Soyad],(Sum(si.Tutar)/1.20) as [Kdv Matrahı],
-                                                                    SUM(si.Tutar) as [Genel Toplam] 
-                                                                    From SatisIslemleri as si
-                                                                    Left Join Urunler as u
-                                                                    On si.UrunID=u.UrunID
-                                                                    LEFT Join Cari as c
-                                                                    On si.CariID=c.CariID
-                                                                    LEFT Join SatisFaturaNo as f            
-                                                                    On si.FaturaNo=f.FaturaID
-                                                                    Where c.CariKod like @cariKod
+                string sqlListele = @"SELECT Convert(DATE, si.SatisTarihi) as [Fatura Tarihi] 
+							                                            ,si.FaturaNo as [Fatura No]
+                                                                        ,c.CariKod [Cari Kod]
+							                                            ,c.cariAdi [Ad Soyad]
+							                                            ,SUM(si.KdvMatrahi) as [Kdv Matrahı]
+							                                            ,SUM(si.KdvTutari) as [Kdv Tutarı]
+							                                            ,SUM(si.Tutar) as [Tutar]
+							                                            ,SUM(si.GenelToplam) as [Genel Toplam]
+
+                                                                        From SatisIslemleri as si
+                                                                        Left Join Urunler as u
+                                                                        On si.UrunID=u.UrunID
+                                                                        LEFT Join Cari as c
+                                                                        On si.CariID=c.CariID
+                                                                        LEFT Join SatisFaturaNo as f            
+                                                                        On si.FaturaNo=f.FaturaID
+
+																	Where c.CariKod like @cariKod
                                                                     Group By si.SatisTarihi, si.FaturaNo, c.CariKod,c.CariAdi
-                                                                    Order BY si.FaturaNo DESC ";
+                                                                        Order BY si.FaturaNo DESC  ";
                 SqlCommand kmt = new SqlCommand(sqlListele, baglanti);
                 DataTable dt = new DataTable();
                 kmt.Parameters.AddWithValue("@cariKod", "%" + txtCariKOD.Text + "%");
@@ -99,19 +113,26 @@ namespace Kobi_v1
             try
             {
                 if (baglanti.State == ConnectionState.Closed) baglanti.Open();
-                string sqlListele = @"SELECT Convert(date, si.SatisTarihi) as [Fatura Tarihi] ,si.FaturaNo as [Fatura No],
-                                                                    c.CariKod [Cari Kod], c.cariAdi [Ad Soyad],(Sum(si.Tutar)/1.20) as [Kdv Matrahı],
-                                                                    SUM(si.Tutar) as [Genel Toplam] 
-                                                                    From SatisIslemleri as si
-                                                                    Left Join Urunler as u
-                                                                    On si.UrunID=u.UrunID
-                                                                    LEFT Join Cari as c
-                                                                    On si.CariID=c.CariID
-                                                                    LEFT Join SatisFaturaNo as f            
-                                                                    On si.FaturaNo=f.FaturaID
-                                                                    Where c.CariAdi like @cariAdi
+                string sqlListele = @"SELECT Convert(DATE, si.SatisTarihi) as [Fatura Tarihi] 
+							                                            ,si.FaturaNo as [Fatura No]
+                                                                        ,c.CariKod [Cari Kod]
+							                                            ,c.cariAdi [Ad Soyad]
+							                                            ,SUM(si.KdvMatrahi) as [Kdv Matrahı]
+							                                            ,SUM(si.KdvTutari) as [Kdv Tutarı]
+							                                            ,SUM(si.Tutar) as [Tutar]
+							                                            ,SUM(si.GenelToplam) as [Genel Toplam]
+
+                                                                        From SatisIslemleri as si
+                                                                        Left Join Urunler as u
+                                                                        On si.UrunID=u.UrunID
+                                                                        LEFT Join Cari as c
+                                                                        On si.CariID=c.CariID
+                                                                        LEFT Join SatisFaturaNo as f            
+                                                                        On si.FaturaNo=f.FaturaID
+
+																	Where c.CariAdi like @cariAdi
                                                                     Group By si.SatisTarihi, si.FaturaNo, c.CariKod,c.CariAdi
-                                                                    Order BY si.FaturaNo DESC ";
+                                                                        Order BY si.FaturaNo DESC ";
                 SqlCommand kmt = new SqlCommand(sqlListele, baglanti);
                 DataTable dt = new DataTable();
                 kmt.Parameters.AddWithValue("@cariAdi", "%" + txtCariAD.Text + "%");
@@ -133,19 +154,26 @@ namespace Kobi_v1
             try
             {
                 if (baglanti.State == ConnectionState.Closed) baglanti.Open();
-                string sqlListele = @"SELECT Convert(date, si.SatisTarihi) as [Fatura Tarihi] ,si.FaturaNo as [Fatura No],
-                                                                    c.CariKod [Cari Kod], c.cariAdi [Ad Soyad],(Sum(si.Tutar)/1.20) as [Kdv Matrahı],
-                                                                    SUM(si.Tutar) as [Genel Toplam] 
-                                                                    From SatisIslemleri as si
-                                                                    Left Join Urunler as u
-                                                                    On si.UrunID=u.UrunID
-                                                                    LEFT Join Cari as c
-                                                                    On si.CariID=c.CariID
-                                                                    LEFT Join SatisFaturaNo as f            
-                                                                    On si.FaturaNo=f.FaturaID
-                                                                    Where si.FaturaNo like @faturaNo
-                                                                    Group By si.SatisTarihi, si.FaturaNo, c.CariKod,c.CariAdi
-                                                                    Order BY si.FaturaNo DESC ";
+                string sqlListele = @"SELECT Convert(DATE, si.SatisTarihi) as [Fatura Tarihi] 
+							                                            ,si.FaturaNo as [Fatura No]
+                                                                        ,c.CariKod [Cari Kod]
+							                                            ,c.cariAdi [Ad Soyad]
+							                                            ,SUM(si.KdvMatrahi) as [Kdv Matrahı]
+							                                            ,SUM(si.KdvTutari) as [Kdv Tutarı]
+							                                            ,SUM(si.Tutar) as [Tutar]
+							                                            ,SUM(si.GenelToplam) as [Genel Toplam]
+
+                                                                        From SatisIslemleri as si
+                                                                        Left Join Urunler as u
+                                                                        On si.UrunID=u.UrunID
+                                                                        LEFT Join Cari as c
+                                                                        On si.CariID=c.CariID
+                                                                        LEFT Join SatisFaturaNo as f            
+                                                                        On si.FaturaNo=f.FaturaID
+
+							                                            Where si.FaturaNo like @faturaNo
+                                                                        Group By si.SatisTarihi, si.FaturaNo, c.CariKod,c.CariAdi
+                                                                        Order BY si.FaturaNo DESC  ";
                 SqlCommand kmt = new SqlCommand(sqlListele, baglanti);
                 DataTable dt = new DataTable();
                 kmt.Parameters.AddWithValue("@faturaNo", "%" + txtFaturaNo.Text + "%");
@@ -168,19 +196,25 @@ namespace Kobi_v1
             {
 
                 if (baglanti.State == ConnectionState.Closed) baglanti.Open();
-                string sqlListele = @"SELECT Convert(date, si.SatisTarihi) as [Fatura Tarihi] ,si.FaturaNo as [Fatura No],
-                                                                    c.CariKod [Cari Kod], c.cariAdi [Ad Soyad],(Sum(si.Tutar)/1.20) as [Kdv Matrahı],
-                                                                    SUM(si.Tutar) as [Genel Toplam] 
-                                                                    From SatisIslemleri as si
-                                                                    Left Join Urunler as u
-                                                                    On si.UrunID=u.UrunID
-                                                                    LEFT Join Cari as c
-                                                                    On si.CariID=c.CariID
-                                                                    LEFT Join SatisFaturaNo as f            
-                                                                    On si.FaturaNo=f.FaturaID
-                                                                    Where si.SatisTarihi between @tarih1 and @tarih2
+                string sqlListele = @"SELECT Convert(DATE, si.SatisTarihi) as [Fatura Tarihi] 
+							                                            ,si.FaturaNo as [Fatura No]
+                                                                        ,c.CariKod [Cari Kod]
+							                                            ,c.cariAdi [Ad Soyad]
+							                                            ,SUM(si.KdvMatrahi) as [Kdv Matrahı]
+							                                            ,SUM(si.KdvTutari) as [Kdv Tutarı]
+							                                            ,SUM(si.Tutar) as [Tutar]
+							                                            ,SUM(si.GenelToplam) as [Genel Toplam]
+
+                                                                        From SatisIslemleri as si
+                                                                        Left Join Urunler as u
+                                                                        On si.UrunID=u.UrunID
+                                                                        LEFT Join Cari as c
+                                                                        On si.CariID=c.CariID
+                                                                        LEFT Join SatisFaturaNo as f            
+                                                                        On si.FaturaNo=f.FaturaID
+																	Where si.SatisTarihi between @tarih1 and @tarih2
                                                                     Group By si.SatisTarihi, si.FaturaNo, c.CariKod,c.CariAdi
-                                                                    Order BY si.FaturaNo DESC ";
+                                                                        Order BY si.FaturaNo DESC  ";
                 SqlCommand kmt = new SqlCommand(sqlListele, baglanti);
                 DataTable dt = new DataTable();
                 kmt.Parameters.AddWithValue("@tarih1", Date1.Value.Date);
@@ -203,18 +237,24 @@ namespace Kobi_v1
             try
             {
                 if (baglanti.State == ConnectionState.Closed) baglanti.Open();
-                string sqlListele = @"SELECT Convert(date, si.SatisTarihi) as [Fatura Tarihi] ,si.FaturaNo as [Fatura No],
-                                                                    c.CariKod [Cari Kod], c.cariAdi [Ad Soyad],(Sum(si.Tutar)/1.20) as [Kdv Matrahı],
-                                                                    SUM(si.Tutar) as [Genel Toplam] 
-                                                                    From SatisIslemleri as si
-                                                                    Left Join Urunler as u
-                                                                    On si.UrunID=u.UrunID
-                                                                    LEFT Join Cari as c
-                                                                    On si.CariID=c.CariID
-                                                                    LEFT Join SatisFaturaNo as f            
-                                                                    On si.FaturaNo=f.FaturaID
+                string sqlListele = @"SELECT Convert(DATE, si.SatisTarihi) as [Fatura Tarihi] 
+							                                            ,si.FaturaNo as [Fatura No]
+                                                                        ,c.CariKod [Cari Kod]
+							                                            ,c.cariAdi [Ad Soyad]
+							                                            ,SUM(si.KdvMatrahi) as [Kdv Matrahı]
+							                                            ,SUM(si.KdvTutari) as [Kdv Tutarı]
+							                                            ,SUM(si.Tutar) as [Tutar]
+							                                            ,SUM(si.GenelToplam) as [Genel Toplam]
+
+                                                                        From SatisIslemleri as si
+                                                                        Left Join Urunler as u
+                                                                        On si.UrunID=u.UrunID
+                                                                        LEFT Join Cari as c
+                                                                        On si.CariID=c.CariID
+                                                                        LEFT Join SatisFaturaNo as f            
+                                                                        On si.FaturaNo=f.FaturaID
                                                                     Group By si.SatisTarihi, si.FaturaNo, c.CariKod,c.CariAdi
-                                                                    Order BY si.FaturaNo DESC ";
+                                                                        Order BY si.FaturaNo DESC  ";
                 SqlCommand kmt = new SqlCommand(sqlListele, baglanti);
                 DataTable dt = new DataTable();
                 SqlDataAdapter da = new SqlDataAdapter(kmt);
@@ -269,6 +309,7 @@ namespace Kobi_v1
                 string faturaNo = satir.Cells["Fatura No"].Value.ToString();
                 string cariKod = satir.Cells["Cari Kod"].Value.ToString();
                 string cariAd = satir.Cells["Ad Soyad"].Value.ToString();
+                
 
                 if (CagrilanForm is FrmSatis)
                 {

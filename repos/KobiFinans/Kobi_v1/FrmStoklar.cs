@@ -117,6 +117,12 @@ KategoriID";
         {
             if (e.RowIndex >= 0)
             {
+                SecilenUrun = dataGridView1.Rows[e.RowIndex];
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            /*if (e.RowIndex >= 0)
+            {
                 DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
                 string stokID = row.Cells["ur.UrunID"].Value.ToString();
                 string stokKod = row.Cells["ur.UrunKodu"].Value.ToString();
@@ -145,7 +151,7 @@ KategoriID";
 
                 }
                 this.Close();
-            }
+            }*/
         }
 
         private void FrmStoklar_Load(object sender, EventArgs e)
@@ -154,5 +160,18 @@ KategoriID";
             dtHeader();
             UrunYukle();
         }
+
+
+        public DataGridViewRow SecilenUrun { get; private set; } // Seçilen ürünü tutar
+
+        /*private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                SecilenUrun = dataGridView1.Rows[e.RowIndex];
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+        }*/
     }
 }
