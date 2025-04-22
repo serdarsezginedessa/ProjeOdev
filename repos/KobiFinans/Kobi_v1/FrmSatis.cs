@@ -75,7 +75,6 @@ namespace Kobi_v1
         private void dtHeader()
         {
             dataGridView1.Columns.Clear();
-
             dataGridView1.Columns.Add("UrunKodu", "Ürün Kodu");
             dataGridView1.Columns.Add("UrunAdi", "Ürün Adı");
             dataGridView1.Columns.Add("SatisFiyati", "Satış Fiyatı");
@@ -83,13 +82,22 @@ namespace Kobi_v1
             dataGridView1.Columns.Add("Adet", "Adet");
             dataGridView1.Columns.Add("Tutar", "Tutar");
             dataGridView1.Rows.Add();
-           //dataGridView1.CellEndEdit += dataGridView1_CellEndEdit;
+            //dataGridView1.CellEndEdit += dataGridView1_CellEndEdit;
 
-
-
+        }
+        private void SecBtnekle()
+        {
+            
+            DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
+            btn.HeaderText = "Ürün Seç";
+            btn.Name = "UrunSec";
+            btn.Text = "Seç";
+            btn.UseColumnTextForButtonValue = true;
+            dataGridView1.Columns.Insert(0, btn);
         }
         private void FrmSatis_Load(object sender, EventArgs e)
         {
+            //UrunSecmeButonuEkle();
             //BtnTextComboAcilisForm();
             this.KeyPreview = true;
             this.KeyDown += btnYeniKayit_KeyDown;
@@ -107,6 +115,7 @@ namespace Kobi_v1
             txtKdvHaricTutar.Enabled = false;
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             dtHeader();
+            UrunSecmeButonuEkle();
             OdemeTuruSec();
             KasaSec();
             SatisFromYeniKayitKontrolDisabled();
@@ -158,13 +167,16 @@ namespace Kobi_v1
         {
             _secilenUrunID = stokID;
 
-            dataGridView1.Rows[SatirIndex].Cells["UrunKodu"].Value = stokKod;
-            dataGridView1.Rows[SatirIndex].Cells["UrunAdi"].Value = stokAdi;
-            dataGridView1.Rows[SatirIndex].Cells["SatisFiyati"].Value = stokSatisFiyati;
-            dataGridView1.Rows[SatirIndex].Cells["Kdv"].Value = stokKdv;
-            dataGridView1.Rows[SatirIndex].Cells["Adet"].Value = 1;
-            decimal tutar = Convert.ToDecimal(stokSatisFiyati) * 1;
-            dataGridView1.Rows[SatirIndex].Cells["Tutar"].Value = tutar.ToString("N2");
+            if (SatirIndex >= 1 && SatirIndex < dataGridView1.Rows.Count)
+            {
+                dataGridView1.Rows[SatirIndex].Cells["UrunKodu"].Value = stokKod;
+                dataGridView1.Rows[SatirIndex].Cells["UrunAdi"].Value = stokAdi;
+                dataGridView1.Rows[SatirIndex].Cells["SatisFiyati"].Value = stokSatisFiyati;
+                dataGridView1.Rows[SatirIndex].Cells["Kdv"].Value = stokKdv;
+                dataGridView1.Rows[SatirIndex].Cells["Adet"].Value = 1;
+                decimal tutar = Convert.ToDecimal(stokSatisFiyati) * 1;
+                dataGridView1.Rows[SatirIndex].Cells["Tutar"].Value = tutar.ToString("N2");
+            }
         }
 
         private void BankaBilgileriSec()
@@ -247,6 +259,7 @@ namespace Kobi_v1
         }
         private void btnAra_Click(object sender, EventArgs e)
         {
+
             FrmCariListele frmCariListele = new FrmCariListele();
             frmCariListele.CagrilanForm = this;
             frmCariListele.ShowDialog();
@@ -281,15 +294,15 @@ namespace Kobi_v1
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            /*if (e.RowIndex >= 0)
             {
                 FrmStoklar frmStoklar = new FrmStoklar();
                 frmStoklar.CagrilanForm = this;
                 frmStoklar.SeciliSatir = e.RowIndex;
                 frmStoklar.ShowDialog();
-                
 
-            }
+
+            }*/
         }
 
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -388,11 +401,11 @@ namespace Kobi_v1
 
 
             }
-            else if (dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells["UrunKodu"].Value != null && dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells["UrunKodu"].Value.ToString() != "")
+            /*else if (dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells["UrunKodu"].Value != null && dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells["UrunKodu"].Value.ToString() != "")
             {
                 dataGridView1.Rows.Add();
 
-            }
+            }*/
             else
             {
                 if (txtFaturaNo.Text == "")
@@ -416,7 +429,7 @@ namespace Kobi_v1
             }
         }
         // Bir satırın boş olup olmadığını kontrol eden yardımcı fonksiyon
-        private bool SatirBosMu(DataGridViewRow row)
+       /* private bool SatirBosMu(DataGridViewRow row)
         {
             foreach (DataGridViewCell cell in row.Cells)
             {
@@ -428,7 +441,7 @@ namespace Kobi_v1
             }
             // Satırdaki tüm hücreler boş
             return true;
-        }
+        }*/
 
         private void ToplamTutarHesapla()
         {
@@ -455,8 +468,13 @@ namespace Kobi_v1
         }
         private void btnYeniKayit_Click(object sender, EventArgs e)
         {
+            dataGridView1.Rows.Clear();
+            dataGridView1.Columns.Clear();
+            dtHeader();
+            UrunSecmeButonuEkle();
 
-            
+
+
             foreach (Control control in this.Controls)
             {
                 if (control is SplitContainer splitContainer)
@@ -531,10 +549,10 @@ namespace Kobi_v1
             
             btnYeniKayit.Enabled = true;
             btnKapat.Enabled = true;
-            dataGridView1.Columns.Clear();//sutun temizle
-            dataGridView1.Rows.Clear();//satır temizle
-            dataGridView1.Rows.Add();
+            dataGridView1.Rows.Clear();
+            dataGridView1.Columns.Clear();
             dtHeader();
+
             /*comboBoxDurum.Text = "Seçiniz";
             comboBoxBanka.Text = "Seçiniz";
             comboBoxKasa.Text = "Seçiniz";
@@ -954,9 +972,17 @@ namespace Kobi_v1
 
         private void faturaAraF11ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            
+
             FrmSatisHareketleri frmSatisHareketleri = new FrmSatisHareketleri();
             frmSatisHareketleri.CagrilanForm = this;
             frmSatisHareketleri.ShowDialog();
+            dataGridView1.Columns.Clear();
+            dataGridView1.Rows.Clear();
+            
+            
+            
+            
             GelenFaturoNoSql();
 
         }
@@ -1024,9 +1050,13 @@ namespace Kobi_v1
                 SqlDataReader dr = cmd.ExecuteReader();
                 DataTable dt = new DataTable();
                 dt.Load(dr);
-                dataGridView1.Columns.Clear();
-                dataGridView1.Rows.Clear();
+                
+                dataGridView1.DataSource = null; // en güvenlisi
+                //dtHeader();
+                SecBtnekle();
+
                 dataGridView1.DataSource = dt;
+                
 
             }
             catch (Exception ex)
@@ -1036,6 +1066,71 @@ namespace Kobi_v1
             finally
             {
                 baglanti.Close();
+            }
+        }
+
+        private void BosSatirlariSil()
+        {
+            for (int i = dataGridView1.Rows.Count - 1; i >= 0; i--)
+            {
+                DataGridViewRow row = dataGridView1.Rows[i];
+
+                // Satır yeni satır değilse ve tüm hücreleri boşsa sil
+                if (!row.IsNewRow && SatirBosMu(row))
+                {
+                    dataGridView1.Rows.RemoveAt(i);
+                }
+            }
+        }
+        private void SatirlariSil()
+        {
+            for(int i = dataGridView1.Rows.Count -1; i >= 0; i--)
+            {
+                DataGridViewRow row = dataGridView1.Rows[i];
+                foreach(DataGridViewCell cell in row.Cells)
+                {
+                    if (!row.IsNewRow && cell.Value != null && !string.IsNullOrWhiteSpace(cell.Value.ToString()))
+                    {
+                        dataGridView1.Rows.RemoveAt(i);
+                    }
+                }
+                        
+            }
+        }
+
+        private bool SatirBosMu(DataGridViewRow row)
+        {
+            foreach (DataGridViewCell cell in row.Cells)
+            {
+                if (cell.Value != null && !string.IsNullOrWhiteSpace(cell.Value.ToString()))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private void UrunSecmeButonuEkle()
+        {
+            if (!dataGridView1.Columns.Contains("UrunSec"))
+            {
+                DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
+                btn.HeaderText = "Ürün Seç";
+                btn.Name = "UrunSec";
+                btn.Text = "Seç";
+                btn.UseColumnTextForButtonValue = true;
+                dataGridView1.Columns.Insert(0, btn);
+            }
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && dataGridView1.Columns[e.ColumnIndex].Name == "UrunSec")
+            {
+                FrmStoklar frm = new FrmStoklar();
+                frm.CagrilanForm = this;
+                frm.SeciliSatir = e.RowIndex;
+                frm.ShowDialog();
             }
         }
     }
