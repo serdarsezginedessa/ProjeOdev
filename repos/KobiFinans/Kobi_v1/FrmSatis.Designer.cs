@@ -197,7 +197,7 @@
             this.lblMusteriTuru.Name = "lblMusteriTuru";
             this.lblMusteriTuru.Size = new System.Drawing.Size(223, 36);
             this.lblMusteriTuru.TabIndex = 13;
-            this.lblMusteriTuru.Text = "Müşteri Türü";
+            this.lblMusteriTuru.Text = "Cari Türü";
             this.lblMusteriTuru.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // lblCariID
@@ -749,7 +749,6 @@
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
-            this.dataGridView1.Click += new System.EventHandler(this.dataGridView1_Click);
             this.dataGridView1.DoubleClick += new System.EventHandler(this.dataGridView1_DoubleClick);
             this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown);
             // 

@@ -1,4 +1,5 @@
 --Satýþ Hareketleri Tüm Kayýtlar
+USE KobiFinans
 SELECT Convert(DATE, si.SatisTarihi) as [Fatura Tarihi] 
 							,si.FaturaNo as [Fatura No]
                             ,c.CariKod [Cari Kod]
@@ -110,6 +111,30 @@ SELECT Convert(DATE, si.SatisTarihi) as [Fatura Tarihi]
 
                             Group By si.SatisTarihi, si.FaturaNo, c.CariKod,c.CariAdi
                             Order BY si.FaturaNo DESC
+
+-- *******************Satýþ Faturasý**************************
+
+SELECT 
+		u.UrunKodu [Ürün Kodu],
+		u.UrunAdi [Ürün Adý],
+		u.SatisFiyat [Satýþ Fiyatý],
+		u.Kdv,
+		si.Adet,si.Tutar
+        From SatisIslemleri as si
+        Left Join Urunler as u
+        On si.UrunID=u.UrunID
+        LEFT Join Cari as c
+        On si.CariID=c.CariID
+        LEFT Join SatisFaturaNo f
+        On si.FaturaNo=f.FaturaID
+        Left Join Kasa as k
+        On si.KasaID=k.id
+        Left Join Bankalar as b
+        On si.BankaID=b.ID
+        Left Join OdemeTuru od
+        On si.OdemeID=od.OdemeID
+
+		where si.FaturaNo=56
 
 
 

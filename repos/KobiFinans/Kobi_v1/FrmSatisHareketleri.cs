@@ -309,12 +309,16 @@ namespace Kobi_v1
                 string faturaNo = satir.Cells["Fatura No"].Value.ToString();
                 string cariKod = satir.Cells["Cari Kod"].Value.ToString();
                 string cariAd = satir.Cells["Ad Soyad"].Value.ToString();
+                string kdvMatrahi = satir.Cells["Kdv Matrahı"].Value.ToString();
+                string kdvTutari = satir.Cells["Kdv Tutarı"].Value.ToString();
+                string tutar = satir.Cells["Tutar"].Value.ToString();
+                string genelToplam = satir.Cells["Genel Toplam"].Value.ToString();
                 
 
                 if (CagrilanForm is FrmSatis)
                 {
                     var hedefForm =  CagrilanForm as FrmSatis;
-                    hedefForm.SatisBigileriYukle(faturaTarihi, faturaNo, cariKod, cariAd);
+                    hedefForm.SatisBigileriYukle(satir,faturaTarihi, faturaNo, cariKod, cariAd,kdvMatrahi,kdvTutari,tutar,genelToplam);
                     
                     
                 }

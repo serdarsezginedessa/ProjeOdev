@@ -121,7 +121,7 @@ KategoriID";
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
-            /*if (e.RowIndex >= 0)
+            if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
                 string stokID = row.Cells["ur.UrunID"].Value.ToString();
@@ -131,7 +131,7 @@ KategoriID";
                 string stokKategori = row.Cells["uk.KategoriID"].Value.ToString();
                 string stokMarka = row.Cells["ur.Marka"].Value.ToString();
                 string stokModel = row.Cells["ur.Model"].Value.ToString();
-                
+
                 string stokAlisFiyati = row.Cells["ur.AlisFiyati"].Value.ToString();
                 string stokSatisFiyati = row.Cells["ur.SatisFiyati"].Value.ToString();
                 string stokKdv = row.Cells["ur.Kdv"].Value.ToString();
@@ -145,13 +145,12 @@ KategoriID";
                 if (CagrilanForm is FrmSatis)
                 {
                     FrmSatis frmSatis = (FrmSatis)CagrilanForm;
-                    frmSatis.StokBilgileriYukle(SeciliSatir, stokID, stokKod, stokBarkod,
-                        stokAdi, stokKategori,stokMarka, stokModel, stokAlisFiyati, stokSatisFiyati, stokKdv, stokMiktar, stokAciklama, stokResim, stokDurum, stokKayitTarihi, stokBirim);
-                    
+                    frmSatis.StokBilgileriYukle( stokID, stokKod, stokAdi, stokSatisFiyati, stokKdv);
+
 
                 }
                 this.Close();
-            }*/
+            }
         }
 
         private void FrmStoklar_Load(object sender, EventArgs e)
@@ -164,14 +163,14 @@ KategoriID";
 
         public DataGridViewRow SecilenUrun { get; private set; } // Seçilen ürünü tutar
 
-        /*private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                SecilenUrun = dataGridView1.Rows[e.RowIndex];
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-            }
-        }*/
+        /* private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+         {
+             if (e.RowIndex >= 0)
+             {
+                 SecilenUrun = dataGridView1.Rows[e.RowIndex];
+                 this.DialogResult = DialogResult.OK;
+                 this.Close();
+             }
+         }*/
     }
 }
