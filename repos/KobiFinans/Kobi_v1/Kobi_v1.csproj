@@ -314,6 +314,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DataBase\Yeni03\" />
+    <Folder Include="Resources\images\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Close.png" />
@@ -380,6 +381,7 @@
     <None Include="Resources\Add1.png" />
     <None Include="Resources\Add File36px.png" />
     <None Include="Resources\Add36px.png" />
+    <Content Include="Notlar.txt" />
     <Content Include="Resources\Bank.ico" />
     <None Include="Resources\Minus48px.png" />
     <None Include="Resources\Minus_64px.png" />

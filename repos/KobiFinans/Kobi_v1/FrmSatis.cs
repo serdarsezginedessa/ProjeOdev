@@ -43,13 +43,25 @@ namespace Kobi_v1
             dtHeader();
 
             dataGridView1.Rows.Add();
-
+            
             btnYeniKayit.Enabled = true;
             btniptal.Enabled = false;
             btnSil.Enabled = false;
             btnGuncelle.Enabled = false;
             btnKayit.Enabled = false;
             btnKapat.Enabled=true;
+            
+            txtGenelToplam.ReadOnly = true;
+            txtKdvHaricTutar.ReadOnly = true;
+            txtKdv.ReadOnly = true;
+            txtToplamTutar.ReadOnly = true;
+
+            this.KeyDown += btniptal_KeyDown;
+            this.KeyDown += btnYeniKayit_KeyDown;
+            
+
+
+
         }
 
 
@@ -334,11 +346,93 @@ namespace Kobi_v1
         }
 
         //***********************************************Yeni Methot*************************************************************
+        private void GelenFaturoNoSql()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                if (baglanti.State == ConnectionState.Closed) baglanti.Open();
 
+                SqlCommand cmd = new SqlCommand(@"SELECT 
+				                            u.UrunKodu,
+				                            u.UrunAdi,
+                                            si.Adet,
+                                            u.Kdv,
+				                            u.SatisFiyat,
+				                            si.Tutar
+
+                                            From SatisIslemleri as si
+                                            Left Join Urunler as u
+                                            On si.UrunID=u.UrunID
+                                            LEFT Join Cari as c
+                                            On si.CariID=c.CariID
+                                            LEFT Join SatisFaturaNo f
+                                            On si.FaturaNo=f.FaturaID
+                                            Left Join Kasa as k
+                                            On si.KasaID=k.id
+                                            Left Join Bankalar as b
+                                            On si.BankaID=b.ID
+                                            Left Join OdemeTuru od
+                                            On si.OdemeID=od.OdemeID
+
+                                            Where si.FaturaNo=@faturano", baglanti);
+
+                cmd.Parameters.AddWithValue("@faturano", _faturaNo);
+                ;
+                SqlDataReader dr = cmd.ExecuteReader();
+                
+                dt.Load(dr);
+
+                dtHeader();
+                dataGridView1.Rows.Clear(); // Mevcut satırları temizle Manuel Eklediğim Başlıklar Bozulmuyor..
+                                            // Yeni satırları ekle
+                foreach (DataRow row in dt.Rows)
+                {
+                    dataGridView1.Rows.Add(
+                        "Seç", // Buton metni
+                        row["UrunKodu"].ToString(),
+                        row["UrunAdi"].ToString(),
+                        row["Adet"].ToString(),
+                        row["Kdv"].ToString(),
+                        row["SatisFiyat"].ToString(),
+                        row["Tutar"].ToString()
+                    );
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Fatura Yüklenirken Hata Oluştu!" + ex.ToString());
+            }
+            finally
+            {
+                
+                baglanti.Close();
+                
+            }
+        }
+        private void GridVeriYukle(DataTable dt)
+        {
+            dataGridView1.Rows.Clear();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                dataGridView1.Rows.Add(
+                    "Seç", // Buton için
+                    row["UrunKodu"].ToString(),
+                    row["UrunAdi"].ToString(),
+                    row["Adet"].ToString(),
+                    row["Kdv"].ToString(),
+                    row["Fiyat"].ToString(),
+                    row["Tutar"].ToString()
+                );
+            }
+        }
         private void YeniKayitHazirla() //btnYeniKayıt butonunda kullanılıyor.
         {
             // Müşteri bilgilerini temizle
             pictureBox1.Image = null;
+            pictureBox1.SizeMode    = PictureBoxSizeMode.StretchImage;
             LblMusteri.Text = "Müşteri Adı";
             lblCariID.Text = "Cari No";
             lblCariKod.Text = "Cari Kod";
@@ -350,15 +444,21 @@ namespace Kobi_v1
             // Form alanlarını temizle
             txtID.Text = "";
             txtCariAd.Text = "";
-            comboBoxDurum.SelectedIndex = -1;
+            
             txtAciklama.Text = "";
             txtFaturaNo.Text = ""; // Otomatik atanabilir
             dateKayit.Value = DateTime.Now;
+            dateKayit.Enabled = true;
 
             // ComboBox seçimleri
+            comboBoxDurum.SelectedIndex = -1;
             comboboxOdemeTuru.SelectedIndex = -1;
             comboBoxKasa.SelectedIndex = -1;
             comboBoxBanka.SelectedIndex = -1;
+            comboBoxDurum.Enabled = true;
+            comboboxOdemeTuru.Enabled = true;
+            comboBoxKasa.Enabled = true;
+            comboBoxBanka.Enabled = true;
 
             // Tutarlar
             txtKdvHaricTutar.Text = "";
@@ -367,13 +467,16 @@ namespace Kobi_v1
             txtGenelToplam.Text = "";
 
             // DataGridView temizle
-            //dataGridView1.DataSource = null;
-            //dataGridView1.Rows.Clear(); // Eski satırları sil
-            if(dataGridView1 != null)
-            {
-                dataGridView1.Rows.Clear();
-            }
-            dataGridView1.Rows.Add();   // Yeni boş satır ekle
+
+            dataGridView1.Enabled = true;
+            dtHeader();                 // Eğer yoksa başlıkları oluşturur
+            dataGridView1.Rows.Clear(); // Tüm satırları temizler
+            if(dataGridView1.Rows.Count == 0)
+               {
+                dataGridView1.Rows.Add();// Boş 1 satır ekler
+            }   
+            
+            
 
             // Gerekli buton aktiflikleri
             btnYeniKayit.Enabled = false;
@@ -625,18 +728,19 @@ namespace Kobi_v1
             int satirIndex = -1;
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
-                if (row.IsNewRow) continue;
+                //if (row.IsNewRow) continue;
                 if (row.Cells["UrunKodu"].Value == null || row.Cells["UrunKodu"].Value.ToString() == "")
                 {
-                    satirIndex = row.Index;
+                    
                     break;
                 }
+                satirIndex = row.Index;
             }
 
-            if (satirIndex == -1)
+           /* if (satirIndex == -1)
             {
                 satirIndex = dataGridView1.Rows.Add();
-            }
+            }*/
 
             var satir = dataGridView1.Rows[satirIndex];
             satir.Cells["UrunKodu"].Value = urunKodu;
@@ -760,57 +864,7 @@ namespace Kobi_v1
 
 
         // Satış Hareket Detay Sorgulama faturaNo ya göre  faturaAraF11ToolStripMenuItem_Click Olayında Kullanılıyor.
-        private void GelenFaturoNoSql()
-        {
-            try
-            {
-                if (baglanti.State == ConnectionState.Closed) baglanti.Open();
-
-                SqlCommand cmd = new SqlCommand(@"SELECT 
-				                            u.UrunKodu [Ürün Kodu],
-				                            u.UrunAdi [Ürün Adı],
-                                            si.Adet,
-                                            u.Kdv,
-				                            u.SatisFiyat [Fiyat],
-				                            si.Tutar
-
-                                            From SatisIslemleri as si
-                                            Left Join Urunler as u
-                                            On si.UrunID=u.UrunID
-                                            LEFT Join Cari as c
-                                            On si.CariID=c.CariID
-                                            LEFT Join SatisFaturaNo f
-                                            On si.FaturaNo=f.FaturaID
-                                            Left Join Kasa as k
-                                            On si.KasaID=k.id
-                                            Left Join Bankalar as b
-                                            On si.BankaID=b.ID
-                                            Left Join OdemeTuru od
-                                            On si.OdemeID=od.OdemeID
-
-                                            Where si.FaturaNo=@faturano", baglanti);
-                cmd.Parameters.AddWithValue("@faturano", _faturaNo);
-                SqlDataReader dr = cmd.ExecuteReader();
-                DataTable dt = new DataTable();
-                dt.Load(dr);
-
-                dataGridView1.DataSource = null; // en güvenlisi
-                                                 //dtHeader();
-
-
-                dataGridView1.DataSource = dt;
-
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Fatura Yüklenirken Hata Oluştu!" + ex.ToString());
-            }
-            finally
-            {
-                baglanti.Close();
-            }
-        }
+       
 
 
         // Bir satırın boş olup olmadığını kontrol eden yardımcı fonksiyon
@@ -982,7 +1036,8 @@ namespace Kobi_v1
 
 
 
-        }//btniptal de kullanılıyor
+        }//Kullanılmıyor.
+
         private void textComboTemizle()
         {
             comboBoxDurum.Text = "Seçiniz";
@@ -993,10 +1048,10 @@ namespace Kobi_v1
             txtFaturaNo.Text = "";
             txtCariAd.Text = "";
             txtAciklama.Text = "";
-            txtGenelToplam.Text = "0,00";
-            txtKdv.Text = "0,00";
-            txtKdvHaricTutar.Text = "0,00";
-            txtToplamTutar.Text = "0,00";
+            txtToplamTutar.Text = "";
+            txtKdv.Text = "";
+            txtGenelToplam.Text = "";
+            txtKdvHaricTutar.Text = "";
             LblMusteri.Text = "Müşteri Adı";
             lblCariID.Text = "Cari No";
             lblCariKod.Text = "Cari Kod";
@@ -1005,14 +1060,6 @@ namespace Kobi_v1
             lblEposta.Text = "Eposta";
             lblYetkili.Text = "Yetkili";
             pictureBox1.Image = null;
-            txtToplamTutar.Text = "";
-            txtKdv.Text = "";
-            txtGenelToplam.Text = "";
-            txtKdvHaricTutar.Text = "";
-            txtToplamTutar.Enabled = false;
-            txtKdv.Enabled = false;
-            txtGenelToplam.Enabled = false;
-            txtKdvHaricTutar.Enabled = false;
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
 
 
@@ -1116,59 +1163,24 @@ namespace Kobi_v1
         private void btniptal_Click(object sender, EventArgs e)
         {
             textComboTemizle();
-            SatisFromYeniKayitKontrolDisabled();
-
-            btnYeniKayit.Enabled = true;
-            btnKapat.Enabled = true;
-
-            if(dataGridView1 != null)
+            //SatisFromYeniKayitKontrolDisabled();
+            dataGridView1.Rows.Clear();
+            if (dataGridView1.Rows.Count == 0)
             {
-                dataGridView1.DataSource = null;
-                //dataGridView1.Rows.Clear();
                 dataGridView1.Rows.Add();
-                if (dataGridView1.Columns.Count == 0)
-                {
-                    DataGridViewButtonColumn secButton = new DataGridViewButtonColumn();
-                    secButton.HeaderText = "Ürün Seç";
-                    secButton.Text = "Seç";
-                    secButton.Name = "btnSec";
-                    secButton.UseColumnTextForButtonValue = true;
-                    //dataGridView1.Columns.Add(secButton);
-                    dataGridView1.Columns.Add("UrunKodu", "Ürün Kodu");
-                    dataGridView1.Columns.Add("UrunAdi", "Ürün Adı");
-                    dataGridView1.Columns.Add("Adet", "Adet");
-                    dataGridView1.Columns.Add("Kdv", "Kdv");
-                    dataGridView1.Columns.Add("Fiyat", "Fiyat");
-                    dataGridView1.Columns.Add("Tutar", "Tutar");
-                }
-                else
-                    dataGridView1 = null;
-                
-
-
-
-
-
             }
-            else
-            {
-                
-            }
-            
-            
-            
-            
+            btnYeniKayit.Enabled = true;
+            btniptal.Enabled = false;
+            btnKayit.Enabled = false;
+            btnGuncelle.Enabled = false;
+            btnSil.Enabled = false;
 
-            /*comboBoxDurum.Text = "Seçiniz";
-            comboBoxBanka.Text = "Seçiniz";
-            comboBoxKasa.Text = "Seçiniz";
-            comboboxOdemeTuru.Text = "Seçiniz";
-*/
+
         }
         private void btnYeniKayit_Click(object sender, EventArgs e)
         {
             YeniKayitHazirla();
-            
+            btnAra_Click(e, e);
             //txtFaturaNo.Text = YeniFaturaNoGetir();
 
         }
@@ -1178,6 +1190,8 @@ namespace Kobi_v1
             if (e.KeyCode == Keys.F8)
             {
                 btnYeniKayit.PerformClick();
+               // btnAra_Click(e.KeyValue , e);
+                
             }
         }
         private void btnKayit_KeyDown(object sender, KeyEventArgs e)
@@ -1204,26 +1218,28 @@ namespace Kobi_v1
             }
         }
 
-        private void btnFaturaAra_Click(object sender, EventArgs e)
-        {
-            // Fatura arama işlemi için kullanılacak..
-        }
-        private void btnFaturaAra_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F11)
-            {
-                btnFaturaAra.PerformClick();
-            }
 
-        }
         private void btnAra_Click(object sender, EventArgs e)
         {
 
             FrmCariListele frmCariListele = new FrmCariListele();
             frmCariListele.CagrilanForm = this;
             frmCariListele.ShowDialog();
+            btnYeniKayit.Enabled=false;
+            btniptal.Enabled = true;
+            btnKayit.Enabled = Enabled;
+            btnGuncelle.Enabled = false;
+            btnSil.Enabled = false;
+            pictureBox1.SizeMode=PictureBoxSizeMode.StretchImage;
 
 
+        }
+        private void btnAra_KeyDown(object sender, KeyEventArgs e)
+        {
+           /* if (e.KeyCode == Keys.F8)
+            {
+                btnAra.PerformClick();
+            }*/
         }
         #endregion
         //***************** combobox*************************************************************************
@@ -1438,7 +1454,7 @@ namespace Kobi_v1
             FrmSatisHareketleri frmSatisHareketleri = new FrmSatisHareketleri();
             frmSatisHareketleri.CagrilanForm = this;
             frmSatisHareketleri.ShowDialog(); dataGridView1.DataSource = null; dataGridView1.Columns.Clear(); dataGridView1.Rows.Clear();
-            if (dataGridView1.Columns.Count == 0)
+            /*if (dataGridView1.Columns.Count == 0)
             {
                 DataGridViewButtonColumn secButton = new DataGridViewButtonColumn();
                 secButton.HeaderText = "Ürün Seç";
@@ -1447,40 +1463,14 @@ namespace Kobi_v1
                 secButton.UseColumnTextForButtonValue = true;
                 dataGridView1.Columns.Add(secButton);
 
-            }
+            }*/
             btnYeniKayit.Enabled = false;
             btniptal.Enabled = true;
-            GelenFaturoNoSql();
+            GelenFaturoNoSql();            
             ToplamlariHesapla();
 
-            /*decimal kdvHaricToplam = 0;
-            decimal kdvToplam = 0;
-            decimal genelToplam = 0;
-
-            foreach (DataGridViewRow row in dataGridView1.Rows)
-            {
-                if (row.IsNewRow) continue;
-
-                decimal urunfiyat = Convert.ToDecimal(row.Cells["Fiyat"].Value ?? 0);
-                int urunadet = Convert.ToInt32(row.Cells["Adet"].Value ?? 0);
-                int urunkdvOran = Convert.ToInt32(row.Cells["Kdv"].Value ?? 0);
-
-                decimal araToplam = urunfiyat * urunadet;
-                decimal kdvTutar = (araToplam * urunkdvOran) / 100;
-                decimal toplam = araToplam + kdvTutar;
-
-
-
-                kdvHaricToplam += araToplam;
-                kdvToplam += kdvTutar;
-                genelToplam += toplam;
-            }
-
-            txtKdvHaricTutar.Text = kdvHaricToplam.ToString("C2");
-            txtKdv.Text = kdvToplam.ToString("C2");
-            txtToplamTutar.Text = genelToplam.ToString("C2");
-            txtGenelToplam.Text = genelToplam.ToString("C2");*/
         }
 
+        
     }
 }

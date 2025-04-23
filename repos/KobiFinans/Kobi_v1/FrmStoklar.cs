@@ -141,7 +141,7 @@ KategoriID";
                 string stokDurum = row.Cells["ur.Durum"].Value.ToString();
                 string stokKayitTarihi = row.Cells["ur.KayitTarihi"].Value.ToString();
                 string stokBirim = row.Cells["ur.Birim"].Value.ToString();
-
+                string satirIndex=row.Index.ToString();
                 if (CagrilanForm is FrmSatis)
                 {
                     FrmSatis frmSatis = (FrmSatis)CagrilanForm;

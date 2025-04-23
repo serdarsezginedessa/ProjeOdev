@@ -1,0 +1,1 @@
+﻿1- Fatura ekranından ürün seçmeden çıkarsan faturo no bulamadığı için haa veriyor
