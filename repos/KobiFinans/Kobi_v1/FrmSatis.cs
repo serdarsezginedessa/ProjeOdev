@@ -18,6 +18,8 @@ namespace Kobi_v1
         public FrmSatis()
         {
             InitializeComponent();
+            
+            
         }
         private string _secilenCariID;
         private string _secilenUrunID;
@@ -395,6 +397,94 @@ namespace Kobi_v1
 
                 GridVeriYukle(dt);
 
+                SqlCommand cmd2 = new SqlCommand(@"SELECT c.CariID,c.CariKod,c.CariAdi,c.Yetkili,c.Eposta,c.Telefon,c.Aciklama,c.Resim,
+		                                                    ct.Ad,
+		                                                    si.Durum, si.SatisTarihi,
+		                                                    od.OdemeAD,
+		                                                    k.KasaAdi,
+		                                                    b.BankaAd
+                                                            
+                                                            From SatisIslemleri as si
+                                                            Left Join Urunler as u
+                                                            On si.UrunID=u.UrunID
+                                                            LEFT Join Cari as c
+                                                            On si.CariID=c.CariID
+                                                            LEFT Join SatisFaturaNo f
+                                                            On si.FaturaNo=f.FaturaID
+                                                            Left Join Kasa as k
+                                                            On si.KasaID=k.id
+                                                            Left Join Bankalar as b
+                                                            On si.BankaID=b.ID
+                                                            Left Join OdemeTuru od
+                                                            On si.OdemeID=od.OdemeID
+		                                                    Left Join CariTuru ct
+		                                                    ON c.CariTuru=ct.ID
+
+		                                                    where si.FaturaNo=@faturano
+
+		                                                    group by c.CariID, c.CariAdi,c.CariKod,c.Yetkili,c.Eposta,c.Telefon,c.Aciklama,c.Resim,
+		                                                    ct.Ad,
+		                                                    si.Durum, si.SatisTarihi,
+		                                                    od.OdemeAD,
+		                                                    k.KasaAdi,
+		                                                    b.BankaAd", baglanti);
+
+                cmd2.Parameters.AddWithValue("@faturano", _faturaNo);
+                SqlDataReader dr2 = cmd2.ExecuteReader();
+                while (dr2.Read())
+                {
+                    lblMusteriTuru.Text = "Cari Türü :" + dr2["Ad"].ToString();
+
+                    lblCariID.Text ="Cari No :"+ dr2["CariID"].ToString();
+
+                    lblCariKod.Text ="Cari Kod :"+ dr2["CariKod"].ToString();
+
+                    LblMusteri.Text = dr2["CariAdi"].ToString();
+
+                    
+                    
+                    if (dr2["Eposta"].ToString() == "")
+                        lblEposta.Text = "Eposta :";
+                    else lblEposta.Text = dr2["Eposta"].ToString();
+                    if (dr2["Telefon"].ToString() == "")
+                    {
+                        lblTelefon.Text = "Telefon:";
+                    }
+                    else lblTelefon.Text = "Telelefon: " + dr2["Telefon"].ToString(); 
+
+                    if(dr2["Yetkili"].ToString() == "")
+                        lblYetkili.Text="Yetkili:";
+                    else lblYetkili.Text = "Yetkili : "+dr2["Yetkili"].ToString();
+                    
+
+                    txtID.Text = dr2["CariID"].ToString();
+                    txtCariAd.Text = dr2["CariAdi"].ToString();
+                    
+                    comboBoxDurum.Text = dr2["Durum"].ToString();
+                    dateKayit.Text = dr2["SatisTarihi"].ToString();
+                    comboboxOdemeTuru.Text = dr2["OdemeAD"].ToString();
+                    comboBoxKasa.Text = dr2["KasaAdi"].ToString();
+                    comboBoxBanka.Text = dr2["BankaAd"].ToString();
+                    pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                    if (dr2["Resim"].ToString() != "")
+                    {
+                        try
+                        {
+                            pictureBox1.ImageLocation = Application.StartupPath + dr2["Resim"].ToString();
+                        }
+                        catch (Exception hata)
+                        {
+                            MessageBox.Show("Resim Yüklenemedi: " + hata.ToString());
+                        }
+                    }
+                    else
+                    {
+                        pictureBox1.Image = null;
+                    }
+                    
+                }
+                dr2.Close();
+                
             }
             catch (Exception ex)
             {
@@ -446,16 +536,16 @@ namespace Kobi_v1
             txtID.Text = "";
             txtCariAd.Text = "";
             
-            txtAciklama.Text = "";
+            
             txtFaturaNo.Text = ""; // Otomatik atanabilir
             dateKayit.Value = DateTime.Now;
             dateKayit.Enabled = true;
 
             // ComboBox seçimleri
-            comboBoxDurum.SelectedIndex = -1;
-            comboboxOdemeTuru.SelectedIndex = -1;
-            comboBoxKasa.SelectedIndex = -1;
-            comboBoxBanka.SelectedIndex = -1;
+            comboBoxDurum.Text = "Seçiniz";
+            comboboxOdemeTuru.Text = "Seçiniz";
+            comboBoxKasa.Text = "Seçiniz";
+            comboBoxBanka.Text = "Seçiniz";
             comboBoxDurum.Enabled = true;
             comboboxOdemeTuru.Enabled = true;
             comboBoxKasa.Enabled = false;
@@ -505,7 +595,7 @@ namespace Kobi_v1
         SELECT SCOPE_IDENTITY()", baglanti, trans);
 
                 cmd.Parameters.AddWithValue("@CariID", Convert.ToInt32(lblCariID.Text));
-                cmd.Parameters.AddWithValue("@Aciklama", txtAciklama.Text);
+                
                 cmd.Parameters.AddWithValue("@FaturaNo", txtFaturaNo.Text);
                 cmd.Parameters.AddWithValue("@Tarih", dateKayit.Value);
                 cmd.Parameters.AddWithValue("@OdemeTuruID", comboboxOdemeTuru.SelectedValue ?? DBNull.Value);
@@ -570,7 +660,7 @@ namespace Kobi_v1
             Durum=@Durum WHERE ID=@ID", baglanti, trans);
 
                 cmd.Parameters.AddWithValue("@ID", satisID);
-                cmd.Parameters.AddWithValue("@Aciklama", txtAciklama.Text);
+                
                 cmd.Parameters.AddWithValue("@Tarih", dateKayit.Value);
                 cmd.Parameters.AddWithValue("@OdemeTuruID", comboboxOdemeTuru.SelectedValue ?? DBNull.Value);
                 cmd.Parameters.AddWithValue("@KasaID", comboBoxKasa.SelectedValue ?? DBNull.Value);
@@ -668,6 +758,8 @@ namespace Kobi_v1
             _kdvMatrahi = kdvMatrahi;
             _tutar = tutar;
             _genelToplam = genelToplam;
+
+            txtFaturaNo.Text = _faturaNo;
 
         }
 
@@ -1018,7 +1110,7 @@ namespace Kobi_v1
             txtID.Text = "";
             txtFaturaNo.Text = "";
             txtCariAd.Text = "";
-            txtAciklama.Text = "";
+           
             txtToplamTutar.Text = "";
             txtKdv.Text = "";
             txtGenelToplam.Text = "";
@@ -1032,6 +1124,7 @@ namespace Kobi_v1
             lblYetkili.Text = "Yetkili";
             pictureBox1.Image = null;
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+
 
 
 
@@ -1093,27 +1186,6 @@ namespace Kobi_v1
             txtGenelToplam.Text = genelToplam.ToString("N2");
         }
 
-
-        string sqlFaturaEkrani = @"SELECT c.CariID,c.CariAdi, c.Eposta, c.Telefon, c.Yetkili, c.CariTuru, si.Durum,si.FaturaNo,
-				si.SatisTarihi,			
-				k.KasaAdi,
-				b.BankaAd,
-				od.OdemeAD
-				
-                                            From SatisIslemleri as si
-                                            Left Join Urunler as u
-                                            On si.UrunID=u.UrunID
-                                            LEFT Join Cari as c
-                                            On si.CariID=c.CariID
-                                            LEFT Join SatisFaturaNo f
-                                            On si.FaturaNo=f.FaturaID
-                                            Left Join Kasa as k
-                                            On si.KasaID=k.id
-                                            Left Join Bankalar as b
-                                            On si.BankaID=b.ID
-                                            Left Join OdemeTuru od
-                                            On si.OdemeID=od.OdemeID
-                                            Where si.FaturaNo=56";
 
         #endregion
 
@@ -1439,8 +1511,13 @@ namespace Kobi_v1
             frmSatisHareketleri.CagrilanForm = this;
             frmSatisHareketleri.ShowDialog();
           
-            btnYeniKayit.Enabled = false;
-            btniptal.Enabled = true;
+            btnYeniKayit.Enabled = true;
+            btniptal.Enabled = false;
+            btnKayit.Enabled = false;
+            btnGuncelle.Enabled = true;
+            btnSil.Enabled = true;
+            btnKapat.Enabled = true;
+
             GelenFaturoNoSql();            
             ToplamlariHesapla();
 

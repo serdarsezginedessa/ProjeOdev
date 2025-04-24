@@ -16,6 +16,7 @@ SELECT Convert(DATE, si.SatisTarihi) as [Fatura Tarihi]
                             On si.CariID=c.CariID
                             LEFT Join SatisFaturaNo as f            
                             On si.FaturaNo=f.FaturaID
+							where si.FaturaNo=123
                             Group By si.SatisTarihi, si.FaturaNo, c.CariKod,c.CariAdi
                             Order BY si.FaturaNo DESC
 -- Satýþ Hareketleri  Tarih Aralýðý
@@ -137,7 +138,35 @@ SELECT
 		where si.FaturaNo=56
 
 
+--*****************Satýþ Fatura Detay**********************
+SELECT c.CariID,c.CariKod,c.CariAdi,c.Yetkili,c.Eposta,c.Telefon,c.Aciklama,c.Resim,
+		                                                    ct.Ad,
+		                                                    si.Durum, si.SatisTarihi,
+		                                                    od.OdemeAD,
+		                                                    k.KasaAdi,
+		                                                    b.BankaAd
+                                                            
+                                                            From SatisIslemleri as si
+                                                            Left Join Urunler as u
+                                                            On si.UrunID=u.UrunID
+                                                            LEFT Join Cari as c
+                                                            On si.CariID=c.CariID
+                                                            LEFT Join SatisFaturaNo f
+                                                            On si.FaturaNo=f.FaturaID
+                                                            Left Join Kasa as k
+                                                            On si.KasaID=k.id
+                                                            Left Join Bankalar as b
+                                                            On si.BankaID=b.ID
+                                                            Left Join OdemeTuru od
+                                                            On si.OdemeID=od.OdemeID
+		                                                    Left Join CariTuru ct
+		                                                    ON c.CariTuru=ct.ID
 
+		                                                    where si.FaturaNo=127
 
-
-
+		                                                    group by c.CariID, c.CariAdi,c.CariKod,c.Yetkili,c.Eposta,c.Telefon,c.Aciklama,c.Resim,
+		                                                    ct.Ad,
+		                                                    si.Durum, si.SatisTarihi,
+		                                                    od.OdemeAD,
+		                                                    k.KasaAdi,
+		                                                    b.BankaAd

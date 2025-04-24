@@ -4,6 +4,7 @@ Ok. 2- Ürün ekleme işlevi düzenlenecek
 	ok. a-satırdaki ürünü değiştirmek istiyorsam urun değişecek 
 	ok. b-yeni eklemek istiyorsam yeni ürün eklenecek
 
+	eski fatura yüklendiğinde iptal tuşuna basarsak durum comboboxı hataya neden oluyor
 	*3- Eski fatura eklendiğinde tümbilgiler gerekli yerlere yüklenecek.
 	4- Satış Formu Açtığında Ekrana tüm bilgiler yüklenecek (comboBox txextBox vb.)
 	5- Satış Ekranında Peşinat Yada Ödeme alanı oluşturulacak..
