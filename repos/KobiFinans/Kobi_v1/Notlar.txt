@@ -1,1 +1,9 @@
-﻿1- Fatura ekranından ürün seçmeden çıkarsan faturo no bulamadığı için haa veriyor
+﻿OK. 1- Fatura ekranından ürün seçmeden çıkarsan faturo no bulamadığı için hata veriyor
+
+Ok. 2- Ürün ekleme işlevi düzenlenecek 
+	ok. a-satırdaki ürünü değiştirmek istiyorsam urun değişecek 
+	ok. b-yeni eklemek istiyorsam yeni ürün eklenecek
+
+	*3- Eski fatura eklendiğinde tümbilgiler gerekli yerlere yüklenecek.
+	4- Satış Formu Açtığında Ekrana tüm bilgiler yüklenecek (comboBox txextBox vb.)
+	5- Satış Ekranında Peşinat Yada Ödeme alanı oluşturulacak..

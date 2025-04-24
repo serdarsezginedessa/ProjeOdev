@@ -117,38 +117,24 @@ KategoriID";
         {
             if (e.RowIndex >= 0)
             {
-                SecilenUrun = dataGridView1.Rows[e.RowIndex];
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-            }
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
-                string stokID = row.Cells["ur.UrunID"].Value.ToString();
-                string stokKod = row.Cells["ur.UrunKodu"].Value.ToString();
-                string stokBarkod = row.Cells["ur.Barkod"].Value.ToString();
-                string stokAdi = row.Cells["ur.UrunAdi"].Value.ToString();
-                string stokKategori = row.Cells["uk.KategoriID"].Value.ToString();
-                string stokMarka = row.Cells["ur.Marka"].Value.ToString();
-                string stokModel = row.Cells["ur.Model"].Value.ToString();
+                // Seçilen ürün satırını alalım
+                DataGridViewRow secilenSatir = dataGridView1.Rows[e.RowIndex];
 
-                string stokAlisFiyati = row.Cells["ur.AlisFiyati"].Value.ToString();
-                string stokSatisFiyati = row.Cells["ur.SatisFiyati"].Value.ToString();
-                string stokKdv = row.Cells["ur.Kdv"].Value.ToString();
-                string stokMiktar = row.Cells["ur.StokMiktari"].Value.ToString();
-                string stokAciklama = row.Cells["ur.Aciklama"].Value.ToString();
-                string stokResim = row.Cells["ur.Resim"].Value.ToString();
-                string stokDurum = row.Cells["ur.Durum"].Value.ToString();
-                string stokKayitTarihi = row.Cells["ur.KayitTarihi"].Value.ToString();
-                string stokBirim = row.Cells["ur.Birim"].Value.ToString();
-                string satirIndex=row.Index.ToString();
-                if (CagrilanForm is FrmSatis)
+                // Ürün bilgilerini al
+                string urunNo = secilenSatir.Cells["ur.UrunID"].Value?.ToString();         // Ürün ID (opsiyonel)
+                string urunKodu = secilenSatir.Cells["ur.UrunKodu"].Value?.ToString();
+                string urunAdi = secilenSatir.Cells["ur.UrunAdi"].Value?.ToString();
+                string urunFiyat = secilenSatir.Cells["ur.SatisFiyati"].Value?.ToString();
+                string urunKdv = secilenSatir.Cells["ur.Kdv"].Value?.ToString();
+
+                // Ürünü çağıran forma aktar
+                if (this.CagrilanForm is FrmSatis satisFormu)
                 {
-                    FrmSatis frmSatis = (FrmSatis)CagrilanForm;
-                    frmSatis.StokBilgileriYukle( stokID, stokKod, stokAdi, stokSatisFiyati, stokKdv);
+                    int satirIndex = Convert.ToInt32(this.Tag); // hangi satıra ürün eklenecek
 
-
+                    satisFormu.StokBilgileriYukle(urunNo, urunKodu, urunAdi, urunFiyat, urunKdv, satirIndex);
                 }
+
                 this.Close();
             }
         }
@@ -163,14 +149,5 @@ KategoriID";
 
         public DataGridViewRow SecilenUrun { get; private set; } // Seçilen ürünü tutar
 
-        /* private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-         {
-             if (e.RowIndex >= 0)
-             {
-                 SecilenUrun = dataGridView1.Rows[e.RowIndex];
-                 this.DialogResult = DialogResult.OK;
-                 this.Close();
-             }
-         }*/
     }
 }
