@@ -371,6 +371,12 @@
     <None Include="Resources\Bank Building.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Money Bag Lira36.png" />
+    <None Include="Resources\Money Bag Lira64.png" />
+    <None Include="Resources\Money Bag Lira48.png" />
+    <None Include="Resources\Close Window48.png" />
+    <None Include="Resources\Get Cash36.png" />
+    <None Include="Resources\Get Cash.png" />
     <None Include="Resources\Male User961.png" />
     <None Include="Resources\Male User96.png" />
     <None Include="Resources\Group48.png" />

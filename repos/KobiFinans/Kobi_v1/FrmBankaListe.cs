@@ -31,8 +31,7 @@ namespace Kobi_v1
         {
             dtHeader();
             btnBaslangic();
-            getir();
-            textTemizle();
+            getir();            
             txtID.Enabled = false; // ID alanını devre dışı bırakıyoruz.
         }
 
@@ -41,7 +40,7 @@ namespace Kobi_v1
             if (dataGridView1.Columns.Count == 0)
 
               {
-                dataGridView1.Columns.Add("ID", "ID");
+                dataGridView1.Columns.Add("Banka ID", "Banka No");
                 dataGridView1.Columns.Add("BankaAd", "Banka Adı");
                 dataGridView1.Columns.Add("BankaSube", "Şube Adı");
                 dataGridView1.Columns.Add("HesapNo", "Hesap No");
@@ -97,9 +96,11 @@ namespace Kobi_v1
 
         private void btnBaslangic()
         {
-            btnEkle.Enabled = true;
+            btnYeni.Enabled = true;
+            btnEkle.Enabled = false;
             btnGüncelle.Enabled = false;
             btnSil.Enabled = false;
+            textTemizle();
 
         }
         private void btnGunSilAktif()
@@ -157,7 +158,7 @@ namespace Kobi_v1
             {
                 baglanti.Close();
                 getir();
-                textTemizle();
+                btnBaslangic();
             }
         }
     
@@ -171,7 +172,7 @@ namespace Kobi_v1
                 if (baglanti.State == ConnectionState.Closed)
                 {
                     baglanti.Open();
-                    kmt = new SqlCommand("Update Bankalar Set BankaAd=@BankaAd, BankaSube=@SubeAd, HesapNo=@HesapNo, Iban=@Iban, EklenmeTarihi=@EklenmeTarihi Where ID=@Id", baglanti);
+                    kmt = new SqlCommand("Update Bankalar Set BankaAd=@BankaAd, BankaSube=@SubeAd, HesapNo=@HesapNo, Iban=@Iban, EklenmeTarihi=@EklenmeTarihi Where BankaID=@Id", baglanti);
                     kmt.Parameters.AddWithValue("@Id", txtID.Text);
                     kmt.Parameters.AddWithValue("@BankaAd", txtBankaAdi.Text);
                     kmt.Parameters.AddWithValue("@SubeAd", txtSubeAdi.Text);
@@ -210,7 +211,7 @@ namespace Kobi_v1
                         return;
                     }
                     
-                    kmt = new SqlCommand("Delete From Bankalar Where ID=@Id", baglanti);
+                    kmt = new SqlCommand("Delete From Bankalar Where BankaID=@Id", baglanti);
                     kmt.Parameters.AddWithValue("@Id", txtID.Text);
                     kmt.ExecuteNonQuery();
                     MessageBox.Show("Kayıt Silindi");
@@ -252,6 +253,12 @@ namespace Kobi_v1
                 dateTimePicker1.Value = Convert.ToDateTime(eklenmeTarihi);
                 btnGunSilAktif();
             }
+        }
+
+        private void btnYeni_Click(object sender, EventArgs e)
+        {
+            btnBaslangic();
+            btnEkle.Enabled = true;
         }
     }
 }

@@ -62,6 +62,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnKapat = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -112,32 +113,33 @@
             this.cariBilgileriDüzeltToolStripMenuItem,
             this.cariSilToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(174, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(207, 76);
             // 
             // cariEkleToolStripMenuItem
             // 
             this.cariEkleToolStripMenuItem.Name = "cariEkleToolStripMenuItem";
-            this.cariEkleToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.cariEkleToolStripMenuItem.Size = new System.Drawing.Size(206, 24);
             this.cariEkleToolStripMenuItem.Text = "Cari Ekle";
             this.cariEkleToolStripMenuItem.Click += new System.EventHandler(this.cariEkleToolStripMenuItem_Click);
             // 
             // cariBilgileriDüzeltToolStripMenuItem
             // 
             this.cariBilgileriDüzeltToolStripMenuItem.Name = "cariBilgileriDüzeltToolStripMenuItem";
-            this.cariBilgileriDüzeltToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.cariBilgileriDüzeltToolStripMenuItem.Size = new System.Drawing.Size(206, 24);
             this.cariBilgileriDüzeltToolStripMenuItem.Text = "Cari Bilgileri Düzelt";
             this.cariBilgileriDüzeltToolStripMenuItem.Click += new System.EventHandler(this.cariBilgileriDüzeltToolStripMenuItem_Click);
             // 
             // cariSilToolStripMenuItem
             // 
             this.cariSilToolStripMenuItem.Name = "cariSilToolStripMenuItem";
-            this.cariSilToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.cariSilToolStripMenuItem.Size = new System.Drawing.Size(206, 24);
             this.cariSilToolStripMenuItem.Text = "Cari Sil";
             this.cariSilToolStripMenuItem.Click += new System.EventHandler(this.cariSilToolStripMenuItem_Click);
             // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.btnKapat);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.comboBox1);
             this.panel1.Controls.Add(this.btnSifirla);
@@ -176,7 +178,7 @@
             this.label1.ForeColor = System.Drawing.Color.Firebrick;
             this.label1.Location = new System.Drawing.Point(3, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(131, 20);
+            this.label1.Size = new System.Drawing.Size(158, 25);
             this.label1.TabIndex = 30;
             this.label1.Text = "Arama Filtreleri";
             // 
@@ -188,7 +190,7 @@
             "Pasif"});
             this.comboBox1.Location = new System.Drawing.Point(896, 33);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 26);
+            this.comboBox1.Size = new System.Drawing.Size(121, 30);
             this.comboBox1.TabIndex = 4;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -231,7 +233,7 @@
             this.datektarih.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.datektarih.Location = new System.Drawing.Point(92, 104);
             this.datektarih.Name = "datektarih";
-            this.datektarih.Size = new System.Drawing.Size(178, 24);
+            this.datektarih.Size = new System.Drawing.Size(178, 28);
             this.datektarih.TabIndex = 8;
             this.datektarih.ValueChanged += new System.EventHandler(this.datektarih_ValueChanged);
             // 
@@ -240,7 +242,7 @@
             this.dateEtarih.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateEtarih.Location = new System.Drawing.Point(361, 104);
             this.dateEtarih.Name = "dateEtarih";
-            this.dateEtarih.Size = new System.Drawing.Size(178, 24);
+            this.dateEtarih.Size = new System.Drawing.Size(178, 28);
             this.dateEtarih.TabIndex = 9;
             this.dateEtarih.ValueChanged += new System.EventHandler(this.dateEtarih_ValueChanged);
             // 
@@ -249,7 +251,7 @@
             this.dateDtarih.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateDtarih.Location = new System.Drawing.Point(639, 104);
             this.dateDtarih.Name = "dateDtarih";
-            this.dateDtarih.Size = new System.Drawing.Size(178, 24);
+            this.dateDtarih.Size = new System.Drawing.Size(178, 28);
             this.dateDtarih.TabIndex = 10;
             this.dateDtarih.ValueChanged += new System.EventHandler(this.dateDtarih_ValueChanged);
             // 
@@ -258,7 +260,7 @@
             this.txtCariTUR.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.txtCariTUR.Location = new System.Drawing.Point(639, 34);
             this.txtCariTUR.Name = "txtCariTUR";
-            this.txtCariTUR.Size = new System.Drawing.Size(178, 24);
+            this.txtCariTUR.Size = new System.Drawing.Size(178, 28);
             this.txtCariTUR.TabIndex = 3;
             this.txtCariTUR.TextChanged += new System.EventHandler(this.txtCariTUR_TextChanged);
             // 
@@ -267,7 +269,7 @@
             this.txtCariAD.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.txtCariAD.Location = new System.Drawing.Point(361, 34);
             this.txtCariAD.Name = "txtCariAD";
-            this.txtCariAD.Size = new System.Drawing.Size(178, 24);
+            this.txtCariAD.Size = new System.Drawing.Size(178, 28);
             this.txtCariAD.TabIndex = 2;
             this.txtCariAD.TextChanged += new System.EventHandler(this.txtCariAD_TextChanged);
             // 
@@ -277,7 +279,7 @@
             this.txtTelefon.Location = new System.Drawing.Point(639, 70);
             this.txtTelefon.MaxLength = 10;
             this.txtTelefon.Name = "txtTelefon";
-            this.txtTelefon.Size = new System.Drawing.Size(178, 24);
+            this.txtTelefon.Size = new System.Drawing.Size(178, 28);
             this.txtTelefon.TabIndex = 7;
             this.txtTelefon.TextChanged += new System.EventHandler(this.txtTelefon_TextChanged);
             // 
@@ -286,7 +288,7 @@
             this.txtYetkili.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.txtYetkili.Location = new System.Drawing.Point(361, 70);
             this.txtYetkili.Name = "txtYetkili";
-            this.txtYetkili.Size = new System.Drawing.Size(178, 24);
+            this.txtYetkili.Size = new System.Drawing.Size(178, 28);
             this.txtYetkili.TabIndex = 6;
             this.txtYetkili.TextChanged += new System.EventHandler(this.txtYetkili_TextChanged);
             // 
@@ -295,7 +297,7 @@
             this.txtSehir.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.txtSehir.Location = new System.Drawing.Point(92, 70);
             this.txtSehir.Name = "txtSehir";
-            this.txtSehir.Size = new System.Drawing.Size(178, 24);
+            this.txtSehir.Size = new System.Drawing.Size(178, 28);
             this.txtSehir.TabIndex = 5;
             this.txtSehir.TextChanged += new System.EventHandler(this.txtSehir_TextChanged);
             // 
@@ -304,7 +306,7 @@
             this.txtCariKOD.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.txtCariKOD.Location = new System.Drawing.Point(92, 34);
             this.txtCariKOD.Name = "txtCariKOD";
-            this.txtCariKOD.Size = new System.Drawing.Size(178, 24);
+            this.txtCariKOD.Size = new System.Drawing.Size(178, 28);
             this.txtCariKOD.TabIndex = 1;
             this.txtCariKOD.TextChanged += new System.EventHandler(this.txtCariKOD_TextChanged);
             // 
@@ -313,7 +315,7 @@
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(823, 37);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(53, 18);
+            this.label16.Size = new System.Drawing.Size(67, 24);
             this.label16.TabIndex = 10;
             this.label16.Text = "Durum";
             // 
@@ -322,7 +324,7 @@
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(276, 108);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(62, 18);
+            this.label15.Size = new System.Drawing.Size(79, 24);
             this.label15.TabIndex = 10;
             this.label15.Text = "Evlilik T.";
             // 
@@ -331,7 +333,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(545, 73);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(57, 18);
+            this.label6.Size = new System.Drawing.Size(74, 24);
             this.label6.TabIndex = 10;
             this.label6.Text = "Telefon";
             // 
@@ -340,7 +342,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(545, 38);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(69, 18);
+            this.label5.Size = new System.Drawing.Size(88, 24);
             this.label5.TabIndex = 11;
             this.label5.Text = "Cari Türü";
             // 
@@ -349,7 +351,7 @@
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(4, 108);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(57, 18);
+            this.label14.Size = new System.Drawing.Size(71, 24);
             this.label14.TabIndex = 13;
             this.label14.Text = "Kayıt T.";
             // 
@@ -358,7 +360,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(276, 38);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 18);
+            this.label4.Size = new System.Drawing.Size(72, 24);
             this.label4.TabIndex = 12;
             this.label4.Text = "Cari Ad";
             // 
@@ -367,7 +369,7 @@
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(545, 107);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(74, 18);
+            this.label13.Size = new System.Drawing.Size(94, 24);
             this.label13.TabIndex = 13;
             this.label13.Text = "Doğum T.";
             // 
@@ -376,7 +378,7 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(4, 73);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(42, 18);
+            this.label9.Size = new System.Drawing.Size(54, 24);
             this.label9.TabIndex = 13;
             this.label9.Text = "Şehir";
             // 
@@ -385,7 +387,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(276, 74);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 18);
+            this.label3.Size = new System.Drawing.Size(58, 24);
             this.label3.TabIndex = 13;
             this.label3.Text = "Yetkili";
             // 
@@ -394,17 +396,38 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(4, 38);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 18);
+            this.label2.Size = new System.Drawing.Size(82, 24);
             this.label2.TabIndex = 14;
             this.label2.Text = "Cari Kod";
             // 
+            // btnKapat
+            // 
+            this.btnKapat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnKapat.BackColor = System.Drawing.Color.Transparent;
+            this.btnKapat.BackgroundImage = global::Kobi_v1.Properties.Resources.Close_Window48;
+            this.btnKapat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnKapat.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnKapat.FlatAppearance.BorderSize = 0;
+            this.btnKapat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnKapat.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnKapat.ForeColor = System.Drawing.Color.Transparent;
+            this.btnKapat.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnKapat.Location = new System.Drawing.Point(1420, 3);
+            this.btnKapat.Name = "btnKapat";
+            this.btnKapat.Size = new System.Drawing.Size(37, 38);
+            this.btnKapat.TabIndex = 31;
+            this.btnKapat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnKapat.UseVisualStyleBackColor = false;
+            // 
             // FrmCariListele
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(208)))), ((int)(((byte)(161)))));
+            this.CancelButton = this.btnKapat;
             this.ClientSize = new System.Drawing.Size(1464, 742);
+            this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -459,5 +482,6 @@
         private System.Windows.Forms.ToolStripMenuItem cariEkleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cariBilgileriDüzeltToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cariSilToolStripMenuItem;
+        private System.Windows.Forms.Button btnKapat;
     }
 }

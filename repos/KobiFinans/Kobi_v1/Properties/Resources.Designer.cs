@@ -193,6 +193,16 @@ namespace Kobi_v1.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
+        internal static System.Drawing.Bitmap Close_Window48 {
+            get {
+                object obj = ResourceManager.GetObject("Close Window48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
         internal static System.Drawing.Bitmap Close24px {
             get {
                 object obj = ResourceManager.GetObject("Close24px", resourceCulture);
@@ -266,6 +276,26 @@ namespace Kobi_v1.Properties {
         internal static System.Drawing.Bitmap Find_User_Male1 {
             get {
                 object obj = ResourceManager.GetObject("Find User Male1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap Get_Cash {
+            get {
+                object obj = ResourceManager.GetObject("Get Cash", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap Get_Cash36 {
+            get {
+                object obj = ResourceManager.GetObject("Get Cash36", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -373,6 +403,36 @@ namespace Kobi_v1.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
+        internal static System.Drawing.Bitmap Money_Bag_Lira36 {
+            get {
+                object obj = ResourceManager.GetObject("Money Bag Lira36", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap Money_Bag_Lira48 {
+            get {
+                object obj = ResourceManager.GetObject("Money Bag Lira48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap Money_Bag_Lira64 {
+            get {
+                object obj = ResourceManager.GetObject("Money Bag Lira64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
         internal static System.Drawing.Bitmap Plus {
             get {
                 object obj = ResourceManager.GetObject("Plus", resourceCulture);
@@ -416,6 +476,16 @@ namespace Kobi_v1.Properties {
         internal static System.Drawing.Bitmap Restart {
             get {
                 object obj = ResourceManager.GetObject("Restart", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap Restart1 {
+            get {
+                object obj = ResourceManager.GetObject("Restart1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

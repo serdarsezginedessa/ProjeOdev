@@ -71,7 +71,7 @@ namespace Kobi_v1
                     }
                     else
                     {
-                        kmt = new SqlCommand("UPDATE Bankalar SET BankaAd=@BankaAd,BankaSube=@SubeAd, HesapNo=@HesapNo, Iban=@Iban WHERE ID=@Id", baglanti);
+                        kmt = new SqlCommand("UPDATE Bankalar SET BankaAd=@BankaAd,BankaSube=@SubeAd, HesapNo=@HesapNo, Iban=@Iban WHERE BankaID=@Id", baglanti);
                         kmt.Parameters.AddWithValue("@Id", txtID.Text);
                         kmt.Parameters.AddWithValue("@BankaAd", txtBankaAdi.Text);
                         kmt.Parameters.AddWithValue("@SubeAd", txtSubeAdi.Text);
@@ -109,7 +109,7 @@ namespace Kobi_v1
                     }
                     else
                     {
-                        kmt = new SqlCommand("DELETE FROM Bankalar WHERE ID=@Id", baglanti);
+                        kmt = new SqlCommand("DELETE FROM Bankalar WHERE BankaID=@Id", baglanti);
                         kmt.Parameters.AddWithValue("@Id", txtID.Text);
                         kmt.ExecuteNonQuery();
                         MessageBox.Show("Silme işlemi başarılı.");

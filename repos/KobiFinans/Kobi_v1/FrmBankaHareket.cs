@@ -48,9 +48,9 @@ namespace Kobi_v1
                                                     bh.Tutar, bh.Aciklama From 
                                                     Bankalar b
                                                     Inner Join
-                                                    BankaHareket bh
+                                                    BankaHareketleri bh
                                                     On
-                                                    b.ID=bh.BankaID
+                                                    b.BankaID=bh.BankaID
                                                                 ", baglanti);
                     SqlDataAdapter da = new SqlDataAdapter(kmt);
                     DataTable dt = new DataTable();

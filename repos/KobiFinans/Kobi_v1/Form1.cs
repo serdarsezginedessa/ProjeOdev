@@ -34,6 +34,7 @@ namespace Kobi_v1
                 if (baglanti.State == ConnectionState.Closed)
                 {
                     baglanti.Open();
+                    
                 }
             }
             catch (Exception ex)
@@ -113,6 +114,18 @@ namespace Kobi_v1
         {
             FrmSatis frmSatis = new FrmSatis();
             frmSatis.ShowDialog();
+        }
+
+        private void satışlarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmSatisHareketleri frmSat =new FrmSatisHareketleri();
+            frmSat.ShowDialog();
+        }
+
+        private void tahsilatToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmTahsilat frmTahsilat = new FrmTahsilat();
+            frmTahsilat.ShowDialog();
         }
     }
 }

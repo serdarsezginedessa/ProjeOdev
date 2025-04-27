@@ -16,7 +16,7 @@ namespace Kobi_v1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmTahsilat());
+            Application.Run(new Form1());
         }
     }
 }

@@ -27,8 +27,8 @@ namespace Kobi_v1
             try
             {
                 if (baglanti.State == ConnectionState.Closed) baglanti.Open();
-                SqlCommand kmt = new SqlCommand(@"SELECT id 'Kasa No', KasaAdi as 'Kasa Adı',Aciklama 'Açıklama',
-                                                                            Durum, Tarih  FROM Kasa", baglanti);
+                SqlCommand kmt = new SqlCommand(@"SELECT KasaID 'Kasa No', KasaAdi as 'Kasa Adı',Aciklama 'Açıklama',
+                                                                            Durum, Tarih  FROM Kasalar", baglanti);
                 SqlDataAdapter da = new SqlDataAdapter(kmt);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
@@ -55,7 +55,8 @@ namespace Kobi_v1
 
         private void btnBaslangic()
         {
-            btnEkle.Enabled = true;
+            btnYeni.Enabled = true;
+            btnEkle.Enabled = false;
             btnGüncelle.Enabled = false;
             btnSil.Enabled = false;
         }
@@ -116,7 +117,7 @@ namespace Kobi_v1
                 else
                 {
                     if (baglanti.State == ConnectionState.Closed) baglanti.Open();
-                    SqlCommand kmt = new SqlCommand(@"INSERT INTO Kasa (KasaAdi, Aciklama, Durum, Tarih) 
+                    SqlCommand kmt = new SqlCommand(@"INSERT INTO Kasalar (KasaAdi, Aciklama, Durum, Tarih) 
                                                         VALUES (@KasaAdi, @Aciklama, @Durum, @Tarih)", baglanti);
                     kmt.Parameters.AddWithValue("@KasaAdi", txtKasaAdi.Text);
                     kmt.Parameters.AddWithValue("@Aciklama", txtAciklama.Text);
@@ -146,7 +147,7 @@ namespace Kobi_v1
             {
                 if (baglanti.State == ConnectionState.Closed) baglanti.Open();
                 {
-                    SqlCommand kmt = new SqlCommand(@"UPDATE Kasa SET KasaAdi=@KasaAdi, Aciklama=@Aciklama, Durum=@Durum, Tarih=@Tarih WHERE id=@id", baglanti);
+                    SqlCommand kmt = new SqlCommand(@"UPDATE Kasalar SET KasaAdi=@KasaAdi, Aciklama=@Aciklama, Durum=@Durum, Tarih=@Tarih WHERE KasaID=@id", baglanti);
                     kmt.Parameters.AddWithValue("@KasaAdi", txtKasaAdi.Text);
                     kmt.Parameters.AddWithValue("@Aciklama", txtAciklama.Text);
                     kmt.Parameters.AddWithValue("@Durum", checkBox1.Checked);
@@ -185,7 +186,7 @@ namespace Kobi_v1
                         if (MessageBox.Show("Silmek istediğinize emin misiniz?", "Silme İşlemi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                         {
                             // Silme işlemi
-                            SqlCommand kmt = new SqlCommand(@"DELETE FROM Kasa WHERE id=@id", baglanti);
+                            SqlCommand kmt = new SqlCommand(@"DELETE FROM Kasalar WHERE KasaID=@id", baglanti);
                             kmt.Parameters.AddWithValue("@id", txtID.Text);
                             kmt.ExecuteNonQuery();
                             MessageBox.Show("Kasa Silindi");
@@ -210,6 +211,13 @@ namespace Kobi_v1
                 txtTemizle();
                 btnBaslangic();
             }
+        }
+
+        private void btnYeni_Click(object sender, EventArgs e)
+        {
+            btnBaslangic();
+            btnEkle.Enabled = true;
+            txtTemizle();
         }
     }
 }

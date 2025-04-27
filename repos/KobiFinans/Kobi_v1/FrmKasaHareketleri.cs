@@ -48,9 +48,9 @@ namespace Kobi_v1
                                                             kh.HareketTipi,kh.Aciklama,kh.Tutar
                                                             from KasaHareketleri kh
                                                             INNER JOIN
-                                                            Kasa k
+                                                            Kasalar k
                                                             ON
-                                                            kh.KasaID=k.id
+                                                            kh.KasaID=k.KasaID
                                                             INNER JOIN
                                                             Cari c
                                                             ON
