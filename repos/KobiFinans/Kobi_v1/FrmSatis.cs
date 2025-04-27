@@ -56,12 +56,13 @@ namespace Kobi_v1
             btnGuncelle.Enabled = false;
             btnKayit.Enabled = false;
             btnKapat.Enabled=true;
-            btnTahsilat.Enabled=false;
+            btnTahsilat.Enabled=true;
             txtGenelToplam.ReadOnly = true;
             txtKdvHaricTutar.ReadOnly = true;
             txtKdv.ReadOnly = true;
             txtToplamTutar.ReadOnly = true;
             
+
 
             /*if (txtFaturaNo.Text == null || txtFaturaNo.Text == "")
                 {
@@ -353,6 +354,16 @@ namespace Kobi_v1
                 baglanti.Close();
             }
         }
+
+        private void CariEklenmisMi()
+        {
+            if (string.IsNullOrEmpty(txtID.Text))
+            {
+                MessageBox.Show("Lütfen Önce Cari Ekleyiniz", "Cari Seçiniz", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            
+        }
          
         private void UrunleriTopluGuncelle()
         {
@@ -578,9 +589,7 @@ namespace Kobi_v1
             txtToplamTutar.Text = topTutar.ToString("N2");
             txtGenelToplam.Text = genelToplam.ToString("N2");
 
-            if (txtGenelToplam.Text != null|| txtGenelToplam.Text!="0,00"|| txtGenelToplam.Text!="")
-                btnTahsilat.Enabled = true;
-            else btnTahsilat.Enabled = false;
+            
 
         }//dataGridView1_CellValueChanged olayında kullanılıyor..
 
@@ -1277,7 +1286,7 @@ namespace Kobi_v1
             btniptal.Enabled =false;
             btnGuncelle.Enabled = true;
             btnKapat.Enabled = true;
-            btnTahsilat.Enabled = true;
+            
             //SatisKayit();
 
 
@@ -1285,7 +1294,7 @@ namespace Kobi_v1
         private void btnGuncelle_Click(object sender, EventArgs e)
         {
             UrunleriTopluGuncelle();
-            btnTahsilat.Enabled = true;
+            
         }
         private void btnSil_Click(object sender, EventArgs e)
         {
@@ -1297,7 +1306,7 @@ namespace Kobi_v1
             {
                 MessageBox.Show("Önce silmek istediğiniz faturayı seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            btnTahsilat.Enabled = false;
+            
             
             //SatisSil();
         }
@@ -1316,7 +1325,7 @@ namespace Kobi_v1
             btnKayit.Enabled = false;
             btnGuncelle.Enabled = false;
             btnSil.Enabled = false;
-            btnTahsilat.Enabled = false;
+           
             
 
 
@@ -1329,9 +1338,9 @@ namespace Kobi_v1
             comboBoxDurum.Text = "";
             comboBoxDurum.SelectedText = "Yeni";
             FaturaNo();
-            btnTahsilat.Enabled = false;
+            
 
-            //txtFaturaNo.Text = YeniFaturaNoGetir();
+            
 
         }
 
@@ -1359,7 +1368,7 @@ namespace Kobi_v1
             {
                 btniptal.PerformClick();
             }
-            btnTahsilat.Enabled = false;
+            
         }
         private void btnSil_KeyDown(object sender, KeyEventArgs e)
         {
@@ -1368,7 +1377,7 @@ namespace Kobi_v1
                 btnSil.PerformClick();
                 MessageBox.Show("Silme işlemi başarıyla gerçekleştirildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            btnTahsilat.Enabled = false;
+            
         }
 
 
@@ -1421,19 +1430,32 @@ namespace Kobi_v1
         {
             if(string.IsNullOrEmpty(txtID.Text) || string.IsNullOrEmpty(txtFaturaNo.Text))
             {
-                MessageBox.Show("Fatura No Okunamadı Lütfen Kontrol Edin", "Uyarı",MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Tahsilat Yapmak İçin Lütfen Önce Fatura Bilgilerini Giriniz", "Uyarı",MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             FrmTahsilat frmTahsilat =new FrmTahsilat();
 
             frmTahsilat._cariID=Convert.ToInt32(txtID.Text);
             frmTahsilat._faturaNo=Convert.ToInt32(txtFaturaNo.Text);
-            frmTahsilat._tutar=decimal.Parse(txtGenelToplam.Text);
+            if (decimal.TryParse(txtGenelToplam.Text, out var tutar))
+            {
+                
+                if(tutar==0m)
+                {
+                    MessageBox.Show("Faturada Tahsil Edilecek Tutar Yok", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("Genel Toplam değeri geçersiz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+             
+                
+            }
+            
+            frmTahsilat._tutar = tutar;
+             
             frmTahsilat._cariKod = lblCariKod.Text;
             
-
             frmTahsilat.ShowDialog();
-            //TahsilatYap();
+            
         }
 
         #endregion
@@ -1860,7 +1882,7 @@ namespace Kobi_v1
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            CariEklenmisMi();
         }
     }
 }

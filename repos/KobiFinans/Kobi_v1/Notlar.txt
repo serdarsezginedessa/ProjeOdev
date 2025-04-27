@@ -10,5 +10,11 @@ Ok.	4- Satış Formu Açtığında Ekrana tüm bilgiler yüklenecek (comboBox tx
 Ok.	5- Satış Ekranında Peşinat Yada Ödeme alanı oluşturulacak..// Bunu Yerine Tahsilat Butonu Eklendi..
 	6- Fatura tahsilat yapınca faturaya bağlı tahsilat ekliyoruz bunun için bir kontrol düşünülebilir.
 		Fatura tutarında fazla tahsilat olmaması için..
-	7- Herhangi bir belgeyi silmek mantıklı değil durum alanından durmunu değiştirip listelem ekranını ona göre ayarlamak daha mantıklı.
+		a- satış ekranında tahsilat yaptığımızda daha önceden bu fatura için tahsilat yapıldıysa kullanıcı bilgilendirilecek.
+		tamamı tahsil edildiyse tahsilat butonuna basılsığında fatura tutarının tamam tahsil edildi bilgisi
+		b- eğer kısmı tahsilat varsa genel toplamdan tahsilat yapılan tutarı çıkartıp kalan tutarı tahsilat ekranına atabilir..
+		c- ikisini aynı anda yapacak tarzda şöyle olur eğer fatura nolu tahsilat tutarı genel toplama eşit ise tamamı tahsil edildi uyarısı
+			tahsil edilen tutar daha büyükse kaln tutar tahsilat ekranına aktarılır..
 
+	7- Herhangi bir belgeyi silmek mantıklı değil durum alanından durmunu değiştirip listelem ekranını ona göre ayarlamak daha mantıklı.
+	
