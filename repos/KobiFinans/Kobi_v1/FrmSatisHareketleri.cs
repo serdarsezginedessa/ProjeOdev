@@ -16,10 +16,13 @@ namespace Kobi_v1
 {
     public partial class FrmSatisHareketleri : Form
     {
+        
         public FrmSatisHareketleri()
         {
             InitializeComponent();
+
             ListeleBugun();
+            
         }
         public Form CagrilanForm { get; set; }
         private static string connectionString=ConfigurationManager.ConnectionStrings["KobiFinans"].ConnectionString;

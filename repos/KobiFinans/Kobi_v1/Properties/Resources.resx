@@ -130,9 +130,6 @@
   <data name="Restart" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Restart.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Add36px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Add36px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Close Window48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Close Window48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -141,6 +138,9 @@
   </data>
   <data name="Restart1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Restart.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Save" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Save.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="DeleteUser" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\DeleteUser.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -151,8 +151,8 @@
   <data name="User Groups" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\User Groups.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Add1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Add1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Money Bag Lira64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Money Bag Lira64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Logout" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Logout.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -162,9 +162,6 @@
   </data>
   <data name="Plus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Plus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Add User Male" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Add User Male.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Cancel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Cancel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -187,6 +184,9 @@
   <data name="Logout1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Logout.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Bank Building1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Bank Building.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Filter" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Filter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -196,8 +196,8 @@
   <data name="Get Cash36" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Get Cash36.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Add" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Add User Male" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Add User Male.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Find User Male1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Find User Male.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -220,8 +220,8 @@
   <data name="Add File36px1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Add File36px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Money Bag Lira64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Money Bag Lira64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Add" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Bank Building" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Bank Building.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -238,14 +238,20 @@
   <data name="Money Bag Lira48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Money Bag Lira48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Save" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Save.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Money Bag Lira36" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Money Bag Lira36.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="editUser" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\editUser.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Group48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Group48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Binoculars144" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Binoculars144.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Add1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Add1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="clear36px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\clear36px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -256,8 +262,8 @@
   <data name="Search More36px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Search More36px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Bank Building1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Bank Building.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Add36px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Add36px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Close Pane3px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Close Pane3px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -265,7 +271,7 @@
   <data name="Find User Male" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Find User Male.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Money Bag Lira36" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Money Bag Lira36.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Search1400" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Search1400.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

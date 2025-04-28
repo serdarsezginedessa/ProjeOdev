@@ -26,6 +26,7 @@ namespace Kobi_v1
         public int _cariID { get; set; }
         public decimal _tutar {  get; set; }
         public string _cariKod { get; set; }
+        int _tahsilatNO;
         
 
 
@@ -100,13 +101,7 @@ else if (odemeYontemi == "Banka")
             dateTarih.Value = DateTime.Now;
         }
 
-        private void btnKaydet_Click(object sender, EventArgs e)
-        {
-            TahsilatveHareketKaydet();
-            BtnFromAcilis();
-            btnGuncelle.Enabled = true;
-            btnKaydet.Enabled = false;
-        }
+
 
 
         private void TahsilatveHareketKaydet()
@@ -140,7 +135,7 @@ else if (odemeYontemi == "Banka")
                     // 1. Tahsilat Kaydı
                     SqlCommand cmdTahsilat = new SqlCommand(@"
                                     INSERT INTO Tahsilatlar (FaturaNo, CariID, Tutar, Tarih, OdemeTuruID, KasaID, BankaID, Aciklama)
-                                    VALUES (@FaturaNo, @CariID, @Tutar, @Tarih, @OdemeTuruID, @KasaID, @BankaID, @Aciklama)", baglanti,transaction);
+                                    VALUES (@FaturaNo, @CariID, @Tutar, @Tarih, @OdemeTuruID, @KasaID, @BankaID, @Aciklama);SELECT SCOPE_IDENTITY();", baglanti,transaction);
 
                     cmdTahsilat.Parameters.AddWithValue("@FaturaNo", (object)_faturaNo ?? DBNull.Value); // boş olabilir
                     cmdTahsilat.Parameters.AddWithValue("@CariID", txtCariID.Text);
@@ -152,6 +147,13 @@ else if (odemeYontemi == "Banka")
                     cmdTahsilat.Parameters.AddWithValue("@Aciklama", txtAciklama.Text);
 
                     cmdTahsilat.ExecuteNonQuery();
+
+                    object result = cmdTahsilat.ExecuteScalar();
+                    if (result != null)
+                    {
+                        int tahsilatID = Convert.ToInt32(result);
+                        txtTahsilatNo.Text = tahsilatID.ToString();
+                    };
 
                     // 2. CariHareket Kaydı (Alacak olarak)
                     SqlCommand cmdHareket = new SqlCommand(@"
@@ -349,6 +351,25 @@ else if (odemeYontemi == "Banka")
 
         }
 
+        private void TahsilatSil()
+        {
+            try
+            {
+
+                if (baglanti.State == ConnectionState.Closed) baglanti.Open();
+
+                SqlCommand cmdSil = new SqlCommand("DELETE  FROM Tahsilatlar WHERE TahsilatID = @tahsilatID", baglanti);
+                cmdSil.Parameters.AddWithValue("@tahsilatID",Convert.ToInt32(txtTahsilatNo.Text));
+                cmdSil.ExecuteNonQuery();
+                MessageBox.Show("Kayıt Silme İşlemi Tamamlandı!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Tahsilat Kaydı Silinirken Bir Hata Oluştu"+ex.ToString());
+            }
+        }
+
+
 
         private void OdemeTurleriGetir()
         {
@@ -412,11 +433,11 @@ else if (odemeYontemi == "Banka")
 
         private void BtnFromAcilis()
         {
-            btnYeniKayit.Enabled = true;
+            /*btnYeniKayit.Enabled = true;
             btnGuncelle.Enabled = false;
             btnKapat.Enabled = true;
             btnKaydet.Enabled = false;
-            btnSil.Enabled = false;
+            btnSil.Enabled = false;*/
 
         }
         private void txtTutar_Leave(object sender, EventArgs e)
@@ -465,6 +486,13 @@ else if (odemeYontemi == "Banka")
             BtnFromAcilis();
             btnKaydet.Enabled = true;
         }
+        private void btnKaydet_Click(object sender, EventArgs e)
+        {
+            TahsilatveHareketKaydet();
+            BtnFromAcilis();
+            btnGuncelle.Enabled = true;
+            btnKaydet.Enabled = false;
+        }
 
         private void btnGuncelle_Click(object sender, EventArgs e)
         {
@@ -475,6 +503,13 @@ else if (odemeYontemi == "Banka")
 
         private void btnSil_Click(object sender, EventArgs e)
         {
+
+            DialogResult result = MessageBox.Show("Tahsilat Kaydını Silmek İsteğinize Emin Misiniz?", "Sime Onayı", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.OK)
+            {
+                TahsilatSil();
+            }
+
 
             BtnFromAcilis();
             Temizle();
@@ -510,5 +545,22 @@ else if (odemeYontemi == "Banka")
                 comboBoxNakit.SelectedIndex = -1;
             }
         }
+
+        private void btnTahsilatAra_Click(object sender, EventArgs e)
+        {
+            frmTahsilatHareketleri frmTahsilatHareketleri = new frmTahsilatHareketleri();
+            DialogResult sonuc = frmTahsilatHareketleri.ShowDialog();
+
+            if (sonuc == DialogResult.OK)
+            {
+                txtTahsilatNo.Text = frmTahsilatHareketleri.TahsilatIdGonder.ToString();
+            }
+            else
+            {
+                MessageBox.Show("Herhangi bir tahsilat seçilmedi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+
     }
 }

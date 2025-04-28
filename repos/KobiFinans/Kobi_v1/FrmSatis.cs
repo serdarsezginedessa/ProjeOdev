@@ -367,6 +367,10 @@ namespace Kobi_v1
          
         private void UrunleriTopluGuncelle()
         {
+            try
+            {
+
+            
             if (baglanti.State == ConnectionState.Closed) baglanti.Open();
             // Önce var olan kayıtları sil (bu fatura için)
             SqlCommand cmdSil = new SqlCommand("DELETE FROM SatisDetaylari WHERE FaturaID = @faturaNo", baglanti);
@@ -424,17 +428,23 @@ namespace Kobi_v1
                     cmdInsert.ExecuteNonQuery();
                 }
             }
+                MessageBox.Show("Fatura Bilgileri Güncellndi", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Hata", ex.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
-
+    
 
 
         private void FaturaSil(string faturaNo)
         {
-            if (string.IsNullOrEmpty(faturaNo))
+            /*if (string.IsNullOrEmpty(faturaNo))
             {
                 MessageBox.Show("Lütfen silmek için bir fatura seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
-            }
+            }*/
 
             DialogResult result = MessageBox.Show(
                 $"Fatura No: {faturaNo} olan faturayı silmek istediğinize emin misiniz?",
@@ -477,7 +487,13 @@ namespace Kobi_v1
                     catch (Exception ex)
                     {
                         transaction.Rollback();
-                        MessageBox.Show("Fatura silinirken bir hata oluştu:\n" + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Bu Faturayı Silemezsiniz Bağlı Tahsilat Kaydı Var!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                        //MessageBox.Show("Fatura silinirken bir hata oluştu:\n" + ex.ToString(), "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        baglanti.Close();
                     }
                 }
                 YeniKayitHazirla();

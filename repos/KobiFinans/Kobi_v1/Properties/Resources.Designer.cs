@@ -143,6 +143,16 @@ namespace Kobi_v1.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
+        internal static System.Drawing.Bitmap Binoculars144 {
+            get {
+                object obj = ResourceManager.GetObject("Binoculars144", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
         internal static System.Drawing.Bitmap Cancel {
             get {
                 object obj = ResourceManager.GetObject("Cancel", resourceCulture);
@@ -546,6 +556,16 @@ namespace Kobi_v1.Properties {
         internal static System.Drawing.Bitmap Search_More36px {
             get {
                 object obj = ResourceManager.GetObject("Search More36px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap Search1400 {
+            get {
+                object obj = ResourceManager.GetObject("Search1400", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
