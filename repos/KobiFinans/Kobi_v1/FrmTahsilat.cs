@@ -26,6 +26,7 @@ namespace Kobi_v1
         public int _cariID { get; set; }
         public decimal _tutar {  get; set; }
         public string _cariKod { get; set; }
+        public string _cariAd {  get; set; }
         int _tahsilatNO;
         
 
@@ -74,7 +75,6 @@ else if (odemeYontemi == "Banka")
             OdemeTurleriGetir();
             KasalariGetir();
             BankalariGetir();
-            BtnFromAcilis();
             if(_cariID != 0) 
                 txtCariID.Text=_cariID.ToString(); 
             if(_faturaNo != 0)
@@ -95,10 +95,12 @@ else if (odemeYontemi == "Banka")
             {
                 txtTutar.Text = "0,00";
             }
+            txtCariAd.Text=_cariAd;
+
             btnKaydet.Enabled = true;
             txtFaturaNo.Enabled = false;
             checkBox1FaturaAktif.Checked = false;
-            dateTarih.Value = DateTime.Now;
+            
         }
 
 
@@ -109,9 +111,9 @@ else if (odemeYontemi == "Banka")
             SqlTransaction transaction = null;
             try
             {
-                if (string.IsNullOrEmpty(txtTutar.Text.Trim()) || txtTutar.Text == "0,00")
+                if (string.IsNullOrEmpty(txtCariID.Text))
                 {
-                    MessageBox.Show("Tutar girmelisiniz.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Cari seçilmedi.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
@@ -121,17 +123,18 @@ else if (odemeYontemi == "Banka")
                     return;
                 }
 
-                if (string.IsNullOrEmpty(txtCariID.Text))
+                if (string.IsNullOrEmpty(txtTutar.Text.Trim()) || txtTutar.Text == "0,00")
                 {
-                    MessageBox.Show("Cari seçilmedi.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Tutar girmelisiniz.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
+
 
                 if (baglanti.State == ConnectionState.Closed) baglanti.Open();
                 
 
                     transaction = baglanti.BeginTransaction();
-
+                    int tahsilatID = 0;
                     // 1. Tahsilat Kaydı
                     SqlCommand cmdTahsilat = new SqlCommand(@"
                                     INSERT INTO Tahsilatlar (FaturaNo, CariID, Tutar, Tarih, OdemeTuruID, KasaID, BankaID, Aciklama)
@@ -146,33 +149,18 @@ else if (odemeYontemi == "Banka")
                     cmdTahsilat.Parameters.AddWithValue("@BankaID", (object)(comboBoxBanka.SelectedValue ?? DBNull.Value));
                     cmdTahsilat.Parameters.AddWithValue("@Aciklama", txtAciklama.Text);
 
-                    cmdTahsilat.ExecuteNonQuery();
+                    
 
                     object result = cmdTahsilat.ExecuteScalar();
                     if (result != null)
                     {
-                        int tahsilatID = Convert.ToInt32(result);
+                        tahsilatID = Convert.ToInt32(result);
                         txtTahsilatNo.Text = tahsilatID.ToString();
-                    };
+                    }
 
-                    // 2. CariHareket Kaydı (Alacak olarak)
-                    SqlCommand cmdHareket = new SqlCommand(@"
-                                                            INSERT INTO CariHareketleri (CariID, KasaID, BankaID, OdemeID, Tarih, Aciklama, Tutar, HareketTipi,TahsilatID)
-                                                            VALUES (@CariID, @KasaID, @BankaID, @OdemeID, @Tarih, @Aciklama, @Tutar, @HareketTipi,@TahsilatID)", baglanti,transaction);
+                   
 
-                    cmdHareket.Parameters.AddWithValue("@CariID", txtCariID.Text);
-                    cmdHareket.Parameters.AddWithValue("@KasaID", (object)(comboBoxNakit.SelectedValue ?? DBNull.Value));
-                    cmdHareket.Parameters.AddWithValue("@BankaID", (object)(comboBoxBanka.SelectedValue ?? DBNull.Value));
-                    cmdHareket.Parameters.AddWithValue("@OdemeID", comboOdemeTuru.SelectedValue);
-                    cmdHareket.Parameters.AddWithValue("@Tarih", dateTarih.Value);
-                    cmdHareket.Parameters.AddWithValue("@Aciklama", txtAciklama.Text);
-                    cmdHareket.Parameters.AddWithValue("@Tutar", Convert.ToDecimal(txtTutar.Text));
-                    cmdHareket.Parameters.AddWithValue("@HareketTipi", "Alacak");
-                    cmdHareket.Parameters.AddWithValue("@TahsilatID",Convert.ToInt32(txtTahsilatNo.Text));
-
-                    cmdHareket.ExecuteNonQuery();
-
-                // 3. Kasa Hareket Kaydı (Ödeme olduğu takdirde)
+                // 2. Kasa Hareket Kaydı (Ödeme olduğu takdirde)
                 if (comboBoxNakit.SelectedValue != null)
                 {
                     SqlCommand cmdKasaHareket = new SqlCommand(@"INSERT INTO KasaHareketleri (KasaID, CariID, Tarih, Aciklama, Tutar, HareketTipi, FaturaNo,TahsilatID)
@@ -190,7 +178,7 @@ else if (odemeYontemi == "Banka")
 
                     cmdKasaHareket.ExecuteNonQuery();
                 }
-                // 4. Banka Hareket Kaydı (Ödeme olduğu takdirde)
+                // 3. Banka Hareket Kaydı (Ödeme olduğu takdirde)
                 if (comboBoxBanka.SelectedValue != null)
                 {
                     SqlCommand cmdBankaHareket = new SqlCommand(@"INSERT INTO BankaHareketleri (BankaID, CariID, Tarih, Aciklama, Tutar, HareketTipi, Kaynak, FaturaNo,TahsilatID)
@@ -208,7 +196,24 @@ else if (odemeYontemi == "Banka")
 
                     cmdBankaHareket.ExecuteNonQuery();
                 }
-                    
+
+                // 4. CariHareket Kaydı (Alacak olarak)
+                    SqlCommand cmdHareket = new SqlCommand(@"
+                                                                INSERT INTO CariHareketleri (CariID, KasaID, BankaID, OdemeID, Tarih, Aciklama, Tutar, HareketTipi,TahsilatID)
+                                                                VALUES (@CariID, @KasaID, @BankaID, @OdemeID, @Tarih, @Aciklama, @Tutar, @HareketTipi,@TahsilatID)", baglanti, transaction);
+
+                    cmdHareket.Parameters.AddWithValue("@CariID", txtCariID.Text);
+                    cmdHareket.Parameters.AddWithValue("@KasaID", (object)(comboBoxNakit.SelectedValue ?? DBNull.Value));
+                    cmdHareket.Parameters.AddWithValue("@BankaID", (object)(comboBoxBanka.SelectedValue ?? DBNull.Value));
+                    cmdHareket.Parameters.AddWithValue("@OdemeID", comboOdemeTuru.SelectedValue);
+                    cmdHareket.Parameters.AddWithValue("@Tarih", dateTarih.Value);
+                    cmdHareket.Parameters.AddWithValue("@Aciklama", txtAciklama.Text);
+                    cmdHareket.Parameters.AddWithValue("@Tutar", Convert.ToDecimal(txtTutar.Text));
+                    cmdHareket.Parameters.AddWithValue("@HareketTipi", "Alacak");
+                    cmdHareket.Parameters.AddWithValue("@TahsilatID", Convert.ToInt32(tahsilatID));
+
+                    cmdHareket.ExecuteNonQuery();
+
                     transaction.Commit();
                     
                     MessageBox.Show("Tahsilat başarıyla kaydedildi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -221,7 +226,7 @@ else if (odemeYontemi == "Banka")
                     transaction.Rollback(); // Rollback işlemi yapılır
                 }
                 
-                MessageBox.Show("Hata: " + ex.ToString(), "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Hata: " + ex.GetBaseException(), "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -278,9 +283,9 @@ else if (odemeYontemi == "Banka")
                 cmdTahsilat.ExecuteNonQuery();
 
                 // 2. CariHareket UPDATE (Alacak olarak)
-                SqlCommand cmdHareket = new SqlCommand(@"UPDATE CariHareketleri SET (CariID=@CariID, KasaID=@KasaID, BankaID=@BankaID, OdemeID=@OdemeID
-                                                        ,Tarih=@Tarih,Aciklama=@Aciklama, Tutar@Tutar, HareketTipi=@HareketTipi
-                                                        WHERE HareketID=@HareketID", baglanti, transaction);
+                SqlCommand cmdHareket = new SqlCommand(@"UPDATE CariHareketleri SET CariID=@CariID, KasaID=@KasaID, BankaID=@BankaID, OdemeID=@OdemeID
+                                                        ,Tarih=@Tarih, Aciklama=@Aciklama, Tutar=@Tutar, HareketTipi=@HareketTipi
+                                                        WHERE TahsilatID=@TahsilatID", baglanti, transaction);
 
 
                 cmdHareket.Parameters.AddWithValue("@CariID", txtCariID.Text);
@@ -291,15 +296,16 @@ else if (odemeYontemi == "Banka")
                 cmdHareket.Parameters.AddWithValue("@Aciklama", txtAciklama.Text);
                 cmdHareket.Parameters.AddWithValue("@Tutar", Convert.ToDecimal(txtTutar.Text));
                 cmdHareket.Parameters.AddWithValue("@HareketTipi", "Alacak");
+                cmdHareket.Parameters.AddWithValue("@TahsilatID",txtTahsilatNo.Text);
 
                 cmdHareket.ExecuteNonQuery();
 
                 // 3. Kasa Hareket UPDATE (Ödeme olduğu takdirde)
                 if (comboBoxNakit.SelectedValue != null)
                 {
-                    SqlCommand cmdKasaHareket = new SqlCommand(@"UPDATE KasaHareketleri SET KasaID=@KasaID, CariID=@CariID, Tarih=@Tarih Aciklama=@Aciklama
+                    SqlCommand cmdKasaHareket = new SqlCommand(@"UPDATE KasaHareketleri SET KasaID=@KasaID, CariID=@CariID, Tarih=@Tarih, Aciklama=@Aciklama
                                                                 ,Tutar=@Tutar, HareketTipi=@HareketTipi, FaturaNo=@FaturaNo
-                                                                 WHERE HareketID=@HareketID", baglanti, transaction);
+                                                                 WHERE TahsilatID=@TahsilatID", baglanti, transaction);
 
                     cmdKasaHareket.Parameters.AddWithValue("@KasaID", comboBoxNakit.SelectedValue);
                     cmdKasaHareket.Parameters.AddWithValue("@CariID", txtCariID.Text);
@@ -308,15 +314,16 @@ else if (odemeYontemi == "Banka")
                     cmdKasaHareket.Parameters.AddWithValue("@Tutar", Convert.ToDecimal(txtTutar.Text));
                     cmdKasaHareket.Parameters.AddWithValue("@HareketTipi", "Tahsilat");
                     cmdKasaHareket.Parameters.AddWithValue("@FaturaNo", (object)_faturaNo ?? DBNull.Value);
+                    cmdKasaHareket.Parameters.AddWithValue("@TahsilatID", txtTahsilatNo.Text);
 
                     cmdKasaHareket.ExecuteNonQuery();
                 }
                 // 4. Banka Hareket UPDATE (Ödeme olduğu takdirde)
                 if (comboBoxBanka.SelectedValue != null)
                 {
-                    SqlCommand cmdBankaHareket = new SqlCommand(@"UPDATE BankaHareketleri SET (BankaID=@BankaID, CariID=@CariID, Tarih=@Tarih Aciklama=@Aciklama
+                    SqlCommand cmdBankaHareket = new SqlCommand(@"UPDATE BankaHareketleri SET BankaID=@BankaID, CariID=@CariID, Tarih=@Tarih, Aciklama=@Aciklama
                                                                 ,Tutar=@Tutar, HareketTipi=@HareketTipi, Kaynak=@Kaynak, FaturaNo=@FaturaNo
-                                                                WHERE ID=@ID", baglanti, transaction);
+                                                                WHERE TahsilatID=@TahsilatID", baglanti, transaction);
 
                     cmdBankaHareket.Parameters.AddWithValue("@BankaID", comboBoxBanka.SelectedValue);
                     cmdBankaHareket.Parameters.AddWithValue("@CariID", txtCariID.Text);
@@ -326,13 +333,14 @@ else if (odemeYontemi == "Banka")
                     cmdBankaHareket.Parameters.AddWithValue("@HareketTipi", "Tahsilat");
                     cmdBankaHareket.Parameters.AddWithValue("@Kaynak", "Tahsilat");
                     cmdBankaHareket.Parameters.AddWithValue("@FaturaNo", (object)_faturaNo ?? DBNull.Value);
+                    cmdBankaHareket.Parameters.AddWithValue("@TahsilatID", txtTahsilatNo.Text);
 
                     cmdBankaHareket.ExecuteNonQuery();
                 }
 
                 transaction.Commit();
 
-                MessageBox.Show("Tahsilat başarıyla kaydedildi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Tahsilat Başarıyla Güncellendi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
             catch (Exception ex)
@@ -353,20 +361,49 @@ else if (odemeYontemi == "Banka")
 
         private void TahsilatSil()
         {
+            SqlTransaction transaction = null;
             try
             {
 
                 if (baglanti.State == ConnectionState.Closed) baglanti.Open();
+                transaction = baglanti.BeginTransaction();
 
-                SqlCommand cmdSil = new SqlCommand("DELETE  FROM Tahsilatlar WHERE TahsilatID = @tahsilatID", baglanti);
+                SqlCommand cmdSil = new SqlCommand("DELETE  FROM Tahsilatlar WHERE TahsilatID = @tahsilatID", baglanti,transaction);
                 cmdSil.Parameters.AddWithValue("@tahsilatID",Convert.ToInt32(txtTahsilatNo.Text));
                 cmdSil.ExecuteNonQuery();
+
+                if (comboBoxNakit.SelectedValue != null)
+                {
+                    SqlCommand cmdKasaHareketSil = new SqlCommand("DELETE FROM KasaHareketleri WHERE TahsilatID = @tahsilatID", baglanti, transaction);
+                    cmdKasaHareketSil.Parameters.AddWithValue("@tahsilatID", Convert.ToInt32(txtTahsilatNo.Text));
+                    cmdKasaHareketSil.ExecuteNonQuery();
+                }
+
+                if (comboBoxBanka.SelectedValue != null)
+                {
+                    SqlCommand cmdBankaHareketSil = new SqlCommand("Delete from BanKaHareketleri where TahsilatID = @tahsilatID", baglanti, transaction);
+                    cmdBankaHareketSil.Parameters.AddWithValue("@tahsilatId", Convert.ToInt32(txtTahsilatNo.Text));
+                    cmdBankaHareketSil.ExecuteNonQuery();
+                }
+
+                //carihareketlerden siiniyor..
+                SqlCommand cmdCariHareketSil = new SqlCommand("Delete From CariHareketleri Where TahsilatID = @tahsilatID",baglanti, transaction);
+                cmdCariHareketSil.Parameters.AddWithValue("@tahsilatId", Convert.ToInt32(txtTahsilatNo.Text));
+                cmdCariHareketSil.ExecuteNonQuery();
+
+
+                transaction.Commit();
                 MessageBox.Show("Kayıt Silme İşlemi Tamamlandı!");
             }
             catch (Exception ex)
             {
+                if (transaction != null)
+                {
+                    transaction.Rollback(); // Rollback işlemi yapılır
+                }
                 MessageBox.Show("Tahsilat Kaydı Silinirken Bir Hata Oluştu"+ex.ToString());
             }
+            finally { baglanti.Close(); }
         }
 
 
@@ -399,6 +436,7 @@ else if (odemeYontemi == "Banka")
                 comboBoxNakit.DisplayMember = "KasaAdi";
                 comboBoxNakit.ValueMember = "KasaID";
                 comboBoxNakit.SelectedIndex = -1;
+                baglanti.Close();
             }
         }
         private void BankalariGetir()
@@ -423,6 +461,9 @@ else if (odemeYontemi == "Banka")
             txtCariID.Clear();
             txtTutar.Clear();
             txtAciklama.Clear();
+            txtTahsilatNo.Clear();
+            txtCariKod.Clear();
+            txtCariAd.Clear();
             comboOdemeTuru.SelectedIndex = -1;
             comboBoxNakit.SelectedIndex = -1;
             comboBoxBanka.SelectedIndex = -1;
@@ -483,21 +524,23 @@ else if (odemeYontemi == "Banka")
         private void btnYeniKayit_Click(object sender, EventArgs e)
         {
             Temizle();
-            BtnFromAcilis();
-            btnKaydet.Enabled = true;
+            
         }
         private void btnKaydet_Click(object sender, EventArgs e)
         {
             TahsilatveHareketKaydet();
-            BtnFromAcilis();
-            btnGuncelle.Enabled = true;
-            btnKaydet.Enabled = false;
+            if (this.Owner is Form1)
+            {
+                ((Form1)this.Owner).GelirGiderGet();
+            }
+
+
         }
 
         private void btnGuncelle_Click(object sender, EventArgs e)
         {
 
-            BtnFromAcilis();
+            TahsilatveHareketGuncelle();
             
         }
 
@@ -510,8 +553,6 @@ else if (odemeYontemi == "Banka")
                 TahsilatSil();
             }
 
-
-            BtnFromAcilis();
             Temizle();
         }
 
@@ -551,16 +592,40 @@ else if (odemeYontemi == "Banka")
             frmTahsilatHareketleri frmTahsilatHareketleri = new frmTahsilatHareketleri();
             DialogResult sonuc = frmTahsilatHareketleri.ShowDialog();
 
+            
             if (sonuc == DialogResult.OK)
             {
-                txtTahsilatNo.Text = frmTahsilatHareketleri.TahsilatIdGonder.ToString();
+                txtTahsilatNo.Text = frmTahsilatHareketleri.TahsilatIdGonder;
+                txtCariKod.Text=frmTahsilatHareketleri.CariKodGonder;
+                txtCariID.Text=frmTahsilatHareketleri.CariIdGonder;
+                txtCariAd.Text=frmTahsilatHareketleri.CariAdGonder;
+                txtFaturaNo.Text=frmTahsilatHareketleri.FaturaNoGonder;
+                txtTutar.Text=frmTahsilatHareketleri.TutarGonder;
+                
+                dateTarih.Text = Convert.ToDateTime(frmTahsilatHareketleri.TarihGonder).ToString();
+                comboOdemeTuru.Text = frmTahsilatHareketleri.OdemeTuruGoner;
+                comboBoxBanka.Text=frmTahsilatHareketleri.BankaIdGonder;
+                comboBoxNakit.Text = frmTahsilatHareketleri.KasaIdGonder;
+                txtAciklama.Text=frmTahsilatHareketleri.AciklamaGonder;
             }
             else
             {
-                MessageBox.Show("Herhangi bir tahsilat seçilmedi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
             }
         }
 
-
+        private void btnCariAra_Click(object sender, EventArgs e)
+        {
+            FrmCariListele frmCariListele = new FrmCariListele();
+            frmCariListele.CagrilanForm = this;
+            
+            frmCariListele.ShowDialog();
+        }
+        public void CariBilgileriYukle(string cariID, string cariKod, string cariAdi)
+        {
+            txtCariID.Text = cariID;
+            txtCariKod.Text = cariKod;
+            txtCariAd.Text = cariAdi;
+        }
     }
 }

@@ -375,7 +375,10 @@ namespace Kobi_v1
                     {
                         // Başarılı ekleme işlemi
                         MessageBox.Show("Cari Kart Sisteme Eklendi","Bilgilendirme",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                        //temizle();
+                        if (this.Owner is Form1)
+                        {
+                            ((Form1)this.Owner).userCountGet();
+                        }
                     }
                     else
                     {

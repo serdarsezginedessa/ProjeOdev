@@ -29,24 +29,108 @@ namespace Kobi_v1
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            llblKullanici.Text = FrmLogin.kullaniciAdi;
+            lblRol.Text=FrmLogin.rolOku;
+            userCountGet();
+            GelirGiderGet();
+            KasaOzetGrafik();
+
+
+
+        }
+
+        public void userCountGet()
+        {
             try
             {
-                if (baglanti.State == ConnectionState.Closed)
-                {
-                    baglanti.Open();
-                    
-                }
+                if (baglanti.State == ConnectionState.Closed) baglanti.Open();
+                SqlCommand cmd = new SqlCommand("select count (SUBSTRING(CariKod,1,3)) as 'Müşteri Sayısı' from cari where SUBSTRING(CariKod,1,3) LIKE 'MÜŞ%' ", baglanti);
+
+                cmd.ExecuteNonQuery();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                label2.Text = "Müşteri Sayısı: "+dt.Rows[0][0].ToString();
+
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Hata: " + "Veri Tabanı Bağlantı Hatası"+ex.Message);
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                if (baglanti.State == ConnectionState.Open) baglanti.Close();
+            }
+        }
+        public void GelirGiderGet()
+        {
+            try
+            {
+                if (baglanti.State == ConnectionState.Closed) baglanti.Open();
+
+                SqlCommand cmd = new SqlCommand(@"
+            SELECT 
+                SUM(CASE WHEN HareketTipi IN ('Tahsilat', 'Giriş') THEN Tutar ELSE 0 END) AS ToplamGelir,
+                SUM(CASE WHEN HareketTipi IN ('Tediye', 'Çıkış', 'Gider') THEN Tutar ELSE 0 END) AS ToplamGider
+            FROM KasaHareketleri", baglanti);
+
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    decimal toplamGelir = dr["ToplamGelir"] != DBNull.Value ? Convert.ToDecimal(dr["ToplamGelir"]) : 0;
+                    decimal toplamGider = dr["ToplamGider"] != DBNull.Value ? Convert.ToDecimal(dr["ToplamGider"]) : 0;
+                    decimal bakiye = toplamGelir - toplamGider;
+
+                    lblToplamGelir.Text = "Toplam Gelir: "+toplamGelir.ToString("C2");   // ₺ formatlı
+                    lblToplamGider.Text = "Toplam Gider: "+toplamGider.ToString("C2");
+                    lblKasaBakiyesi.Text = "Toplam Bakiye: "+bakiye.ToString("C2");
+
+                    // Renkli görsel destek
+                    lblKasaBakiyesi.ForeColor = bakiye >= 0 ? Color.Green : Color.Red;
+                }
+
+                dr.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Kasa özeti alınamadı: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
                 baglanti.Close();
             }
-            
         }
+
+        private void KasaOzetGrafik()
+        {
+            try
+            {
+                if (baglanti.State == ConnectionState.Closed) baglanti.Open();
+
+                SqlCommand cmd = new SqlCommand(@"
+            SELECT 
+                SUM(CASE WHEN HareketTipi IN ('Tahsilat', 'Giriş') THEN Tutar ELSE 0 END) AS ToplamGelir,
+                SUM(CASE WHEN HareketTipi IN ('Tediye', 'Çıkış', 'Gider') THEN Tutar ELSE 0 END) AS ToplamGider
+            FROM KasaHareketleri", baglanti);
+
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    decimal gelir = dr["ToplamGelir"] != DBNull.Value ? Convert.ToDecimal(dr["ToplamGelir"]) : 0;
+                    decimal gider = dr["ToplamGider"] != DBNull.Value ? Convert.ToDecimal(dr["ToplamGider"]) : 0;
+
+                    chartKasaOzet.Series.Clear();
+                    chartKasaOzet.Series.Add("Kasa");
+                    chartKasaOzet.Series["Kasa"].Points.AddXY("Gelir", gelir);
+                    chartKasaOzet.Series["Kasa"].Points.AddXY("Gider", gider);
+                }
+
+                dr.Close();
+            }
+            catch { }
+            finally { baglanti.Close(); }
+        }
+
 
         private void cariListeleriToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -63,6 +147,7 @@ namespace Kobi_v1
         private void cariOToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmCariEkle frmCariEkle = new FrmCariEkle();
+            frmCariEkle.Owner = this; // this = ana form
             frmCariEkle.ShowDialog();
         }
 
@@ -124,8 +209,35 @@ namespace Kobi_v1
 
         private void tahsilatToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmTahsilat frmTahsilat = new FrmTahsilat();
-            frmTahsilat.ShowDialog();
+            FrmTahsilat frm = new FrmTahsilat();
+            frm.Owner = this; // this = ana form
+            frm.ShowDialog();
+
+
+        }
+
+        private void giderToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            FrmGiderler frmGider = new FrmGiderler();
+            frmGider.Owner = this; // this = ana form
+            frmGider.ShowDialog();
+        }
+
+        private void giderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmGiderHareketleri frmGiderHareketleri = new FrmGiderHareketleri();
+            frmGiderHareketleri.ShowDialog();
+        }
+
+        private void tahsilaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmTahsilatHareketleri frmTahsilatHareketleri = new frmTahsilatHareketleri();
+            frmTahsilatHareketleri.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("calc");
         }
     }
 }

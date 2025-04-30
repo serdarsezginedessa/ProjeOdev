@@ -20,8 +20,11 @@ namespace Kobi_v1
         }
         static string connectionString=ConfigurationManager.ConnectionStrings["KobiFinans"].ConnectionString;
         SqlConnection baglanti = new SqlConnection(connectionString);
+
         string rol;
 
+        public static string kullaniciAdi { get; set; }
+        public static string rolOku {  get; set; }
         private void btnGiris_Click(object sender, EventArgs e)
         {
             if(baglanti.State == ConnectionState.Closed)baglanti.Open();
@@ -29,8 +32,11 @@ namespace Kobi_v1
             SqlCommand komut = new SqlCommand(sorgu, baglanti);
             komut.Parameters.AddWithValue("@KullaniciAdi",txtKullaniciAdi.Text);
             komut.Parameters.AddWithValue("@Sifre",txtSifre.Text);
-            
+
+            kullaniciAdi = txtKullaniciAdi.Text;
+
             var result = komut.ExecuteScalar();
+            rolOku=result.ToString();
             if(result != null)
             {
                 rol = result.ToString();
@@ -39,8 +45,10 @@ namespace Kobi_v1
                 else if (rol == "Kullanici")
                     MessageBox.Show("Kullanıcı Olarak Oturum Açtınız", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Hide();
-                FrmAnaMenu anaMenu = new FrmAnaMenu(rol);
-                anaMenu.ShowDialog();
+                /*FrmAnaMenu anaMenu = new FrmAnaMenu(rol);
+                anaMenu.ShowDialog();*/
+                Form1 frm1 = new Form1();
+                frm1.ShowDialog();
                 this.Close();
 
 }

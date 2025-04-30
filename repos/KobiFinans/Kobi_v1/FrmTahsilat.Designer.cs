@@ -40,8 +40,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtTahsilatNo = new System.Windows.Forms.TextBox();
             this.txtFaturaNo = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtCariID = new System.Windows.Forms.TextBox();
             this.lblNakit = new System.Windows.Forms.Label();
             this.lblBanka = new System.Windows.Forms.Label();
             this.comboBoxBanka = new System.Windows.Forms.ComboBox();
@@ -58,13 +56,18 @@
             this.btnYeniKayit = new System.Windows.Forms.Button();
             this.btnKaydet = new System.Windows.Forms.Button();
             this.btnGuncelle = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtCariAd = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtCariID = new System.Windows.Forms.TextBox();
+            this.btnCariAra = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // comboOdemeTuru
             // 
             this.comboOdemeTuru.FormattingEnabled = true;
-            this.comboOdemeTuru.Location = new System.Drawing.Point(406, 46);
+            this.comboOdemeTuru.Location = new System.Drawing.Point(406, 106);
             this.comboOdemeTuru.Name = "comboOdemeTuru";
             this.comboOdemeTuru.Size = new System.Drawing.Size(143, 30);
             this.comboOdemeTuru.TabIndex = 1;
@@ -73,16 +76,16 @@
             // 
             // txtAciklama
             // 
-            this.txtAciklama.Location = new System.Drawing.Point(16, 185);
+            this.txtAciklama.Location = new System.Drawing.Point(119, 176);
             this.txtAciklama.Multiline = true;
             this.txtAciklama.Name = "txtAciklama";
-            this.txtAciklama.Size = new System.Drawing.Size(212, 114);
+            this.txtAciklama.Size = new System.Drawing.Size(404, 125);
             this.txtAciklama.TabIndex = 3;
             // 
             // dateTarih
             // 
             this.dateTarih.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTarih.Location = new System.Drawing.Point(406, 5);
+            this.dateTarih.Location = new System.Drawing.Point(406, 62);
             this.dateTarih.Name = "dateTarih";
             this.dateTarih.Size = new System.Drawing.Size(143, 28);
             this.dateTarih.TabIndex = 4;
@@ -90,7 +93,7 @@
             // labelAciklama
             // 
             this.labelAciklama.AutoSize = true;
-            this.labelAciklama.Location = new System.Drawing.Point(12, 151);
+            this.labelAciklama.Location = new System.Drawing.Point(5, 209);
             this.labelAciklama.Name = "labelAciklama";
             this.labelAciklama.Size = new System.Drawing.Size(86, 24);
             this.labelAciklama.TabIndex = 0;
@@ -99,7 +102,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(4, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(109, 24);
             this.label1.TabIndex = 0;
@@ -109,7 +112,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label2.Location = new System.Drawing.Point(564, 189);
+            this.label2.Location = new System.Drawing.Point(565, 264);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(105, 39);
             this.label2.TabIndex = 0;
@@ -118,7 +121,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(276, 9);
+            this.label3.Location = new System.Drawing.Point(342, 67);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 24);
             this.label3.TabIndex = 0;
@@ -127,7 +130,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(276, 49);
+            this.label4.Location = new System.Drawing.Point(276, 109);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(124, 24);
             this.label4.TabIndex = 0;
@@ -136,7 +139,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 44);
+            this.label7.Location = new System.Drawing.Point(4, 44);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(98, 24);
             this.label7.TabIndex = 0;
@@ -145,40 +148,24 @@
             // txtTahsilatNo
             // 
             this.txtTahsilatNo.Enabled = false;
-            this.txtTahsilatNo.Location = new System.Drawing.Point(122, 6);
+            this.txtTahsilatNo.Location = new System.Drawing.Point(119, 6);
             this.txtTahsilatNo.Name = "txtTahsilatNo";
             this.txtTahsilatNo.ReadOnly = true;
-            this.txtTahsilatNo.Size = new System.Drawing.Size(106, 28);
+            this.txtTahsilatNo.Size = new System.Drawing.Size(109, 28);
             this.txtTahsilatNo.TabIndex = 2;
             // 
             // txtFaturaNo
             // 
-            this.txtFaturaNo.Location = new System.Drawing.Point(122, 40);
+            this.txtFaturaNo.Location = new System.Drawing.Point(119, 40);
             this.txtFaturaNo.Name = "txtFaturaNo";
             this.txtFaturaNo.ReadOnly = true;
-            this.txtFaturaNo.Size = new System.Drawing.Size(106, 28);
+            this.txtFaturaNo.Size = new System.Drawing.Size(109, 28);
             this.txtFaturaNo.TabIndex = 2;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 78);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(78, 24);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Cari No:";
-            // 
-            // txtCariID
-            // 
-            this.txtCariID.Location = new System.Drawing.Point(122, 74);
-            this.txtCariID.Name = "txtCariID";
-            this.txtCariID.Size = new System.Drawing.Size(106, 28);
-            this.txtCariID.TabIndex = 2;
             // 
             // lblNakit
             // 
             this.lblNakit.AutoSize = true;
-            this.lblNakit.Location = new System.Drawing.Point(253, 90);
+            this.lblNakit.Location = new System.Drawing.Point(591, 182);
             this.lblNakit.Name = "lblNakit";
             this.lblNakit.Size = new System.Drawing.Size(102, 24);
             this.lblNakit.TabIndex = 0;
@@ -187,7 +174,7 @@
             // lblBanka
             // 
             this.lblBanka.AutoSize = true;
-            this.lblBanka.Location = new System.Drawing.Point(411, 91);
+            this.lblBanka.Location = new System.Drawing.Point(734, 183);
             this.lblBanka.Name = "lblBanka";
             this.lblBanka.Size = new System.Drawing.Size(113, 24);
             this.lblBanka.TabIndex = 0;
@@ -196,7 +183,7 @@
             // comboBoxBanka
             // 
             this.comboBoxBanka.FormattingEnabled = true;
-            this.comboBoxBanka.Location = new System.Drawing.Point(406, 118);
+            this.comboBoxBanka.Location = new System.Drawing.Point(721, 210);
             this.comboBoxBanka.Name = "comboBoxBanka";
             this.comboBoxBanka.Size = new System.Drawing.Size(143, 30);
             this.comboBoxBanka.TabIndex = 1;
@@ -205,7 +192,7 @@
             // comboBoxNakit
             // 
             this.comboBoxNakit.FormattingEnabled = true;
-            this.comboBoxNakit.Location = new System.Drawing.Point(257, 117);
+            this.comboBoxNakit.Location = new System.Drawing.Point(572, 209);
             this.comboBoxNakit.Name = "comboBoxNakit";
             this.comboBoxNakit.Size = new System.Drawing.Size(143, 30);
             this.comboBoxNakit.TabIndex = 1;
@@ -214,7 +201,7 @@
             // txtTutar
             // 
             this.txtTutar.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtTutar.Location = new System.Drawing.Point(675, 187);
+            this.txtTutar.Location = new System.Drawing.Point(676, 262);
             this.txtTutar.Name = "txtTutar";
             this.txtTutar.Size = new System.Drawing.Size(168, 41);
             this.txtTutar.TabIndex = 25;
@@ -226,7 +213,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label6.Location = new System.Drawing.Point(849, 189);
+            this.label6.Location = new System.Drawing.Point(850, 262);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(36, 39);
             this.label6.TabIndex = 0;
@@ -259,7 +246,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 112);
+            this.label8.Location = new System.Drawing.Point(4, 112);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(87, 24);
             this.label8.TabIndex = 0;
@@ -268,10 +255,10 @@
             // txtCariKod
             // 
             this.txtCariKod.Enabled = false;
-            this.txtCariKod.Location = new System.Drawing.Point(122, 108);
+            this.txtCariKod.Location = new System.Drawing.Point(119, 108);
             this.txtCariKod.Name = "txtCariKod";
             this.txtCariKod.ReadOnly = true;
-            this.txtCariKod.Size = new System.Drawing.Size(106, 28);
+            this.txtCariKod.Size = new System.Drawing.Size(109, 28);
             this.txtCariKod.TabIndex = 2;
             // 
             // btnKapat
@@ -384,6 +371,58 @@
             this.btnGuncelle.UseVisualStyleBackColor = false;
             this.btnGuncelle.Click += new System.EventHandler(this.btnGuncelle_Click);
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(4, 146);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(77, 24);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Cari Ad:";
+            // 
+            // txtCariAd
+            // 
+            this.txtCariAd.Enabled = false;
+            this.txtCariAd.Location = new System.Drawing.Point(119, 142);
+            this.txtCariAd.Name = "txtCariAd";
+            this.txtCariAd.ReadOnly = true;
+            this.txtCariAd.Size = new System.Drawing.Size(278, 28);
+            this.txtCariAd.TabIndex = 2;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(4, 78);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(78, 24);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Cari No:";
+            // 
+            // txtCariID
+            // 
+            this.txtCariID.Location = new System.Drawing.Point(119, 74);
+            this.txtCariID.Name = "txtCariID";
+            this.txtCariID.Size = new System.Drawing.Size(109, 28);
+            this.txtCariID.TabIndex = 2;
+            // 
+            // btnCariAra
+            // 
+            this.btnCariAra.BackColor = System.Drawing.Color.Transparent;
+            this.btnCariAra.BackgroundImage = global::Kobi_v1.Properties.Resources.Search1400;
+            this.btnCariAra.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnCariAra.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCariAra.FlatAppearance.BorderSize = 0;
+            this.btnCariAra.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.btnCariAra.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(140)))), ((int)(((byte)(100)))));
+            this.btnCariAra.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCariAra.ForeColor = System.Drawing.Color.Transparent;
+            this.btnCariAra.Location = new System.Drawing.Point(234, 75);
+            this.btnCariAra.Name = "btnCariAra";
+            this.btnCariAra.Size = new System.Drawing.Size(36, 27);
+            this.btnCariAra.TabIndex = 28;
+            this.btnCariAra.UseVisualStyleBackColor = false;
+            this.btnCariAra.Click += new System.EventHandler(this.btnCariAra_Click);
+            // 
             // FrmTahsilat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
@@ -391,7 +430,8 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(208)))), ((int)(((byte)(161)))));
             this.CancelButton = this.btnKapat;
-            this.ClientSize = new System.Drawing.Size(898, 314);
+            this.ClientSize = new System.Drawing.Size(896, 315);
+            this.Controls.Add(this.btnCariAra);
             this.Controls.Add(this.btnTahsilatAra);
             this.Controls.Add(this.checkBox1FaturaAktif);
             this.Controls.Add(this.panel2);
@@ -399,6 +439,7 @@
             this.Controls.Add(this.dateTarih);
             this.Controls.Add(this.txtAciklama);
             this.Controls.Add(this.txtFaturaNo);
+            this.Controls.Add(this.txtCariAd);
             this.Controls.Add(this.txtCariKod);
             this.Controls.Add(this.txtCariID);
             this.Controls.Add(this.txtTahsilatNo);
@@ -410,6 +451,7 @@
             this.Controls.Add(this.lblBanka);
             this.Controls.Add(this.lblNakit);
             this.Controls.Add(this.label4);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label5);
@@ -446,8 +488,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtFaturaNo;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtCariID;
         private System.Windows.Forms.Label lblNakit;
         private System.Windows.Forms.Label lblBanka;
         private System.Windows.Forms.ComboBox comboBoxBanka;
@@ -464,5 +504,10 @@
         private System.Windows.Forms.TextBox txtCariKod;
         private System.Windows.Forms.Button btnTahsilatAra;
         private System.Windows.Forms.TextBox txtTahsilatNo;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtCariAd;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtCariID;
+        private System.Windows.Forms.Button btnCariAra;
     }
 }

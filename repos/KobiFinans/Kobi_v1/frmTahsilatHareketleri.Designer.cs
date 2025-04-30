@@ -38,7 +38,6 @@
             this.cariEkleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cariBilgileriDüzeltToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cariSilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.checkBoxTarihFiltresi = new System.Windows.Forms.CheckBox();
             this.txtFaturaNo = new System.Windows.Forms.TextBox();
             this.txtCariKOD = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -46,10 +45,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnTarihFiltrele = new System.Windows.Forms.Button();
+            this.btnSifirla = new System.Windows.Forms.Button();
             this.Date1 = new System.Windows.Forms.DateTimePicker();
             this.Date2 = new System.Windows.Forms.DateTimePicker();
+            this.txtTahsilatNo = new System.Windows.Forms.TextBox();
             this.txtCariAD = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -121,38 +122,28 @@
             this.cariSilToolStripMenuItem.Size = new System.Drawing.Size(206, 24);
             this.cariSilToolStripMenuItem.Text = "Cari Sil";
             // 
-            // checkBoxTarihFiltresi
-            // 
-            this.checkBoxTarihFiltresi.AutoSize = true;
-            this.checkBoxTarihFiltresi.Checked = true;
-            this.checkBoxTarihFiltresi.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxTarihFiltresi.Location = new System.Drawing.Point(587, 64);
-            this.checkBoxTarihFiltresi.Name = "checkBoxTarihFiltresi";
-            this.checkBoxTarihFiltresi.Size = new System.Drawing.Size(134, 28);
-            this.checkBoxTarihFiltresi.TabIndex = 31;
-            this.checkBoxTarihFiltresi.Text = "Tarih Filtresi";
-            this.checkBoxTarihFiltresi.UseVisualStyleBackColor = true;
-            // 
             // txtFaturaNo
             // 
             this.txtFaturaNo.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.txtFaturaNo.Location = new System.Drawing.Point(92, 64);
+            this.txtFaturaNo.Location = new System.Drawing.Point(97, 64);
             this.txtFaturaNo.Name = "txtFaturaNo";
             this.txtFaturaNo.Size = new System.Drawing.Size(178, 28);
             this.txtFaturaNo.TabIndex = 1;
+            this.txtFaturaNo.TextChanged += new System.EventHandler(this.txtFaturaNo_TextChanged);
             // 
             // txtCariKOD
             // 
             this.txtCariKOD.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.txtCariKOD.Location = new System.Drawing.Point(92, 34);
+            this.txtCariKOD.Location = new System.Drawing.Point(97, 34);
             this.txtCariKOD.Name = "txtCariKOD";
             this.txtCariKOD.Size = new System.Drawing.Size(178, 28);
             this.txtCariKOD.TabIndex = 1;
+            this.txtCariKOD.TextChanged += new System.EventHandler(this.txtCariKOD_TextChanged);
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(540, 38);
+            this.label14.Location = new System.Drawing.Point(621, 36);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(53, 24);
             this.label14.TabIndex = 13;
@@ -170,25 +161,26 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(276, 38);
+            this.label4.Location = new System.Drawing.Point(281, 38);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(92, 24);
+            this.label4.Size = new System.Drawing.Size(104, 24);
             this.label4.TabIndex = 12;
-            this.label4.Text = "Ad Soyad";
+            this.label4.Text = "Tahsilat No";
             // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.checkBoxTarihFiltresi);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.btnTarihFiltrele);
+            this.panel1.Controls.Add(this.btnSifirla);
             this.panel1.Controls.Add(this.Date1);
             this.panel1.Controls.Add(this.Date2);
+            this.panel1.Controls.Add(this.txtTahsilatNo);
             this.panel1.Controls.Add(this.txtCariAD);
             this.panel1.Controls.Add(this.txtFaturaNo);
             this.panel1.Controls.Add(this.txtCariKOD);
             this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -196,7 +188,7 @@
             this.panel1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1464, 108);
+            this.panel1.Size = new System.Drawing.Size(1464, 112);
             this.panel1.TabIndex = 4;
             // 
             // label1
@@ -210,43 +202,65 @@
             this.label1.TabIndex = 30;
             this.label1.Text = "Arama Filtreleri";
             // 
-            // btnTarihFiltrele
+            // btnSifirla
             // 
-            this.btnTarihFiltrele.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
-            this.btnTarihFiltrele.FlatAppearance.BorderSize = 0;
-            this.btnTarihFiltrele.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTarihFiltrele.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnTarihFiltrele.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnTarihFiltrele.Location = new System.Drawing.Point(823, 34);
-            this.btnTarihFiltrele.Name = "btnTarihFiltrele";
-            this.btnTarihFiltrele.Size = new System.Drawing.Size(141, 28);
-            this.btnTarihFiltrele.TabIndex = 11;
-            this.btnTarihFiltrele.Text = "Tarih Filtrele";
-            this.btnTarihFiltrele.UseVisualStyleBackColor = false;
+            this.btnSifirla.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
+            this.btnSifirla.FlatAppearance.BorderSize = 0;
+            this.btnSifirla.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSifirla.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnSifirla.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnSifirla.Location = new System.Drawing.Point(680, 67);
+            this.btnSifirla.Name = "btnSifirla";
+            this.btnSifirla.Size = new System.Drawing.Size(282, 36);
+            this.btnSifirla.TabIndex = 11;
+            this.btnSifirla.Text = "Sıfırla";
+            this.btnSifirla.UseVisualStyleBackColor = false;
+            this.btnSifirla.Click += new System.EventHandler(this.btnSifirla_Click);
             // 
             // Date1
             // 
             this.Date1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.Date1.Location = new System.Drawing.Point(587, 33);
+            this.Date1.Location = new System.Drawing.Point(680, 33);
             this.Date1.Name = "Date1";
-            this.Date1.Size = new System.Drawing.Size(112, 28);
+            this.Date1.Size = new System.Drawing.Size(137, 28);
             this.Date1.TabIndex = 8;
+            this.Date1.ValueChanged += new System.EventHandler(this.Date1_ValueChanged);
             // 
             // Date2
             // 
             this.Date2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.Date2.Location = new System.Drawing.Point(705, 33);
+            this.Date2.Location = new System.Drawing.Point(823, 33);
             this.Date2.Name = "Date2";
-            this.Date2.Size = new System.Drawing.Size(112, 28);
+            this.Date2.Size = new System.Drawing.Size(139, 28);
             this.Date2.TabIndex = 9;
+            this.Date2.ValueChanged += new System.EventHandler(this.Date2_ValueChanged);
+            // 
+            // txtTahsilatNo
+            // 
+            this.txtTahsilatNo.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.txtTahsilatNo.Location = new System.Drawing.Point(390, 35);
+            this.txtTahsilatNo.Name = "txtTahsilatNo";
+            this.txtTahsilatNo.Size = new System.Drawing.Size(178, 28);
+            this.txtTahsilatNo.TabIndex = 2;
+            this.txtTahsilatNo.TextChanged += new System.EventHandler(this.txtTahsilatNo_TextChanged);
             // 
             // txtCariAD
             // 
             this.txtCariAD.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.txtCariAD.Location = new System.Drawing.Point(353, 34);
+            this.txtCariAD.Location = new System.Drawing.Point(390, 69);
             this.txtCariAD.Name = "txtCariAD";
             this.txtCariAD.Size = new System.Drawing.Size(178, 28);
             this.txtCariAD.TabIndex = 2;
+            this.txtCariAD.TextChanged += new System.EventHandler(this.txtCariAD_TextChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(281, 67);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(92, 24);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Ad Soyad";
             // 
             // label2
             // 
@@ -268,7 +282,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmTahsilatHareketleri";
@@ -294,7 +308,6 @@
         private System.Windows.Forms.ToolStripMenuItem cariEkleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cariBilgileriDüzeltToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cariSilToolStripMenuItem;
-        private System.Windows.Forms.CheckBox checkBoxTarihFiltresi;
         private System.Windows.Forms.TextBox txtFaturaNo;
         private System.Windows.Forms.TextBox txtCariKOD;
         private System.Windows.Forms.Label label14;
@@ -302,10 +315,12 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnTarihFiltrele;
+        private System.Windows.Forms.Button btnSifirla;
         private System.Windows.Forms.DateTimePicker Date1;
         private System.Windows.Forms.DateTimePicker Date2;
         private System.Windows.Forms.TextBox txtCariAD;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtTahsilatNo;
+        private System.Windows.Forms.Label label5;
     }
 }

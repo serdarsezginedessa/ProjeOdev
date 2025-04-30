@@ -1451,8 +1451,10 @@ namespace Kobi_v1
             }
             FrmTahsilat frmTahsilat =new FrmTahsilat();
 
+            frmTahsilat._cariAd = txtCariAd.Text;
             frmTahsilat._cariID=Convert.ToInt32(txtID.Text);
             frmTahsilat._faturaNo=Convert.ToInt32(txtFaturaNo.Text);
+            frmTahsilat._cariKod = lblCariKod.Text;
             if (decimal.TryParse(txtGenelToplam.Text, out var tutar))
             {
                 
@@ -1463,12 +1465,10 @@ namespace Kobi_v1
                     return;
                 }
              
-                
             }
             
             frmTahsilat._tutar = tutar;
              
-            frmTahsilat._cariKod = lblCariKod.Text;
             
             frmTahsilat.ShowDialog();
             

@@ -437,6 +437,16 @@ namespace Kobi_v1
                     var hedefForm = CagrilanForm as FrmSatis;
                     hedefForm.CariBilgileriYukle(cariID, cariKod, cariAdi, cariTur, yetkili, telefon, ePosta,resim);
                 }
+                else if(CagrilanForm is FrmTahsilat)
+                {
+                    var hedefForm = CagrilanForm as FrmTahsilat;
+                    hedefForm.CariBilgileriYukle(cariID, cariKod, cariAdi);
+                }
+                else if(CagrilanForm is FrmGiderler)
+                {
+                    var hedefForm = CagrilanForm as FrmGiderler;
+                    hedefForm.CariBilgileriYukle(cariID, cariKod, cariAdi);
+                }
                 else
                 {
                     return;
