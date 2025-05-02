@@ -53,18 +53,34 @@ namespace Kobi_v1
 
         private void btnCikis_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
         }
         void ekle()
         {
             try
             {
+                if (string.IsNullOrEmpty(textBox1.Text.Trim()) && string.IsNullOrEmpty(textBox2.Text) && string.IsNullOrEmpty(txtEposta.Text) && string.IsNullOrEmpty(comboBox1.Text))
+                {
+                    MessageBox.Show("Lütfen Kullanıcı Adı, Şifre, Eposta ve Rol Seçiniz");
+                    textBox1.Focus();
+                    return;
+                }
+                
                 if (baglanti.State == ConnectionState.Closed) baglanti.Open();
-                string sorgu = "insert into Kullanici (KullaniciAdi, Sifre, Rol) values (@user,@pass,@rol)";
+                string sorgu = "insert into Kullanici (KullaniciAdi, Sifre, Eposta, Rol,Durum) values (@user,@pass,@eposta,@rol,@durum)";
                 SqlCommand kmt = new SqlCommand(sorgu, baglanti);
                 kmt.Parameters.AddWithValue("@user", textBox1.Text);
                 kmt.Parameters.AddWithValue("@pass", textBox2.Text);
+                kmt.Parameters.AddWithValue("@eposta", txtEposta.Text);
                 kmt.Parameters.AddWithValue("@rol", comboBox1.Text);
+                if(checkBoxAktif.Checked)
+                {
+                    kmt.Parameters.AddWithValue("@durum", 1);
+                }
+                else
+                {
+                    kmt.Parameters.AddWithValue("@durum", 0);
+                }
                 kmt.ExecuteNonQuery();
                 MessageBox.Show("Kullanıcı Eklendi", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 textBox1.Clear();
@@ -111,8 +127,13 @@ namespace Kobi_v1
         }
         private void btnEkle_Click(object sender, EventArgs e)
         {
-            
-            
+            ekle();
+
+        }
+
+        private void FrmKullaniciEkle_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -93,6 +93,7 @@
             this.btnGiderAra.Size = new System.Drawing.Size(36, 27);
             this.btnGiderAra.TabIndex = 54;
             this.btnGiderAra.UseVisualStyleBackColor = false;
+            this.btnGiderAra.Click += new System.EventHandler(this.btnGiderAra_Click);
             // 
             // btnSil
             // 
@@ -220,9 +221,11 @@
             // 
             // txtAciklama
             // 
+            this.txtAciklama.Enabled = false;
             this.txtAciklama.Location = new System.Drawing.Point(120, 148);
             this.txtAciklama.Multiline = true;
             this.txtAciklama.Name = "txtAciklama";
+            this.txtAciklama.ReadOnly = true;
             this.txtAciklama.Size = new System.Drawing.Size(404, 159);
             this.txtAciklama.TabIndex = 49;
             // 
@@ -246,8 +249,10 @@
             // 
             // txtCariID
             // 
+            this.txtCariID.Enabled = false;
             this.txtCariID.Location = new System.Drawing.Point(120, 46);
             this.txtCariID.Name = "txtCariID";
+            this.txtCariID.ReadOnly = true;
             this.txtCariID.Size = new System.Drawing.Size(149, 28);
             this.txtCariID.TabIndex = 45;
             // 

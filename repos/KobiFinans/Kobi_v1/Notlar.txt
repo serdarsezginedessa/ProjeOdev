@@ -17,4 +17,72 @@ Ok.	5- Satış Ekranında Peşinat Yada Ödeme alanı oluşturulacak..// Bunu Ye
 			tahsil edilen tutar daha büyükse kaln tutar tahsilat ekranına aktarılır..
 
 	7- Herhangi bir belgeyi silmek mantıklı değil durum alanından durmunu değiştirip listelem ekranını ona göre ayarlamak daha mantıklı.
-	
+	------------------------------------------------------
+
+
+	30.04.2025 --Şuanki durumunda tespitler--------
+
+	1- Cariler:
+		a- iki tarih arası listeleme
+		b- duruma göre listeleme combobox(Kodu yazılmamış yazılacak) 
+		c- Ekle-günceller sil butonu düzenle
+		d- tahsilat hareketleri ekranını baz al
+		e- ilk açıldığında  tüm carilerin listelenmesine gerek var mı.
+		f- şehir ve cari tür alanı combobox olabilir.
+		g- borç alacak durumları gösterilebilir.
+		h- kayıtın üztüne sağ tıkla tahsilat satış ödeme(gider) gibi işlevler eklenebilir.
+	2- Cari hareketler tablosu diğer hareket tabloları ile uyumlu hale getirilecek.
+	3- Cari ekleme ekranımız güzel görünüyor tüm fonksiyonlar çalışıyor.
+		a- şehir ve ülke alanları ayrı bir tablodan çekilebilir tüm şehirler eklenebilir.
+
+	4- Kasa ekranındaki tuşlar çok büyük diğer ekranlara uyumlu hale getir.
+		onun dışında işlevler çalışıyor..
+	5- Kasa hareketleri(Raporlar) ekranı hesaplamaları yap.
+		a- gelir-gider işlevi oluştur.
+		b- rapoları ayarla 
+		c- diğer kasalar için combox ile seçim yaptır.
+	6- Banka ekle ve listele ekranı kasa ile aynı ikisine son tasarıma göre şekillendir.
+		a- bakadan bankaya bankadan kasa aktarımlar ayarla
+		b- banka hareketleri rapor ekranı kasa ile aynı olacak.
+	7- Stoklar ekranında işlevler ayarlanmamış  tahsilatlar formu burayada uygulanacak.
+		a- combobox a uygun alanları ayarla
+		b- Stok Tanımlama Ekranı ekle çalışıyor diğer işlevler çalışmıyor ayarla. cari ekle ile aynı ekran (güzel)
+		c- Stok Kategori CRUD işlevleri faal Hale Getir bilgileri sqlden eklenmiş.
+		d- Kasa ve Banka Ekle Ekranlarınıda buna göre değiştir. Ekranı güzel işlevsel
+	8- Satış (Fatura) Ekranı : Genelde kayıt ekle düzel sil listele düzgün ama bazen hatlar veriyor kullanıcıyı
+		yönlendirerek yada bazı alanları şarta bağlayar hatalar atlanabilir.
+		a- Yeni Butonu basmadan cari cağırırsa sistem hata veriyor çünkü oradaki kuralları ihlal ediyor. (Bu özellik mutlaka düzeltilmeli yoksa hata kaçınılmaz.)
+		b- inser tuşu gridin seçiliyken ürün ekleme ekranına gidiyor ve seçilen ürünü ekliyor.
+		c- del tuşu seçilen satırı siliyor
+		d- yukarı aşağı oktuşu boş satır ekle sil işlevi görüyor.
+		e-- Düzelt tuşu fonksiyonundaki hata mesajı hatalı yazılmış düzelt.
+		f- adet hücresine rakam dışında bir karekter girilirse program patlıyor.
+		g- Her hücre için bu olayı kontrol altına almak lazım.
+		h- (DİKKAT) eğer fatura ürün eklemeden kayıt edilip kapatılırsa grid boş geliyor sadece insert tuşu boş satır ekliyor 
+		i- Sol bölüm yani cari resim ve info ekranı genişletilebiliyor bu özellik kitlenmeli
+		j- F11 tuşu eski kayıtları çağırıyor.
+		k- Diğer işlevlerede kısa yol ekle.
+		l- Tahsilat butonu ile tahsilat toplam tutar kadar yapıldıysa faturayı işaretlemek lazım durum fatura kesildiye ayarlanım kitlenebilir.
+		m- silme butonu durumu iptal çekip faturayı gizeyebilir.
+	9- Alış İşlevi eklenmedi Yapılacak belkide şimdilik tek form üzerinden gidilebilir faturayı etiketliyerek olabilir alış satış iade gibi.
+		Fatura türü tablusu gerekebilir.
+	10- Satışlar (hareketler) Ekranı güzel görünüyor.
+		a- kayıta çift tıklayınca kapanıyor else kısmına müdalae et kapanmasın. Belkide çift tıklam fatura ekranına gidip kaydı yükleyebilir.
+		b- sağ menü eklenebilir özellikleri düşün.(ekle Güncelle Sil iptal yazdırtahsilat makbuzu vb.)
+		c- tarih filitresi iyi değil düzelt. giderlerinki iyiydi hepsin onu baz al.
+		d- esc tuşuna işlev ata.
+		e- comboboxlarla filtreleme daha güzel olurdu.
+	11- Tahsilat
+		a- eski kayıt çağırınca cari no aktif oluyor olmasın.
+		b- CRUD işlevleri normal işlem çeşidine göe butonların aktifliğini ayarla.
+	12- Gider  Genel görünümü güzel.
+		a- İşlevler tamamlanacak
+	13- Giderler ekranı Çok iyi daha da gelştirilebilir diğer hareket tabloları için baz alınacak.
+
+	14- Menü düzenlenecek tüm işlevler uygun menulere taşınacak 
+	15- kullanıcı ekle ekranı ilk açılışta çıkacak.
+	16- ana ekran gelştirilecek.
+
+
+
+

@@ -39,8 +39,48 @@ namespace Kobi_v1
         
         string sorguSil = "DELETE FROM Cari WHERE CariID=@CariId";
         string sorgucarituru = "SELECT AD  FROM CariTuru";
-        
-        
+
+        string resimYolu = "";
+        string varsayilanresimyolu = Application.StartupPath + @"\\images\\default.jpg";
+        bool bayrak = false;
+        private void pictureBox1_DoubleClick(object sender, EventArgs e)
+        {
+
+
+            OpenFileDialog resimAc = new OpenFileDialog();
+            pictureBox1.Image = null;
+            resimAc.Filter = "Resim Dosyaları|*.jpg;*.JPG;*.jpeg;*.png;*.bmp|Tüm Dosyalar|*.*";
+            resimAc.Title = "Resim Seçiniz";
+            if (resimAc.ShowDialog() == DialogResult.OK)
+            {
+                pictureBox1.ImageLocation = resimAc.FileName;
+                string kaynak = resimAc.FileName;
+                string hedef = Application.StartupPath + @"\\images\\";
+                string yeniAd = Guid.NewGuid().ToString() + ".jpg";
+                File.Copy(kaynak, hedef + yeniAd, true);
+                resimYolu = @"\\images\\" + yeniAd;
+                
+
+            }
+            else
+            {
+                // Kullanıcı resim seçmezse varsayılan resmi ata
+                if (File.Exists(varsayilanresimyolu))
+                {
+                    pictureBox1.ImageLocation = varsayilanresimyolu;
+                    resimYolu = varsayilanresimyolu;
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Varsayılan resim bulunamadı!");
+                }
+            }
+            bayrak=true; // Resim değiştiğinde bayrağı true yap
+
+        }
+
+
         private void YeniKayitislemleri()
         {
             btnEkle.Enabled = true;
@@ -282,7 +322,8 @@ namespace Kobi_v1
                 string ulke = txtUlke.Text;
                 string vergiDairesi = txtVergiD.Text;
                 string vergiNo = txtVergiNo.Text;
-                if(dateDogum.CustomFormat != " ")
+                
+                if (dateDogum.CustomFormat != " ")
                 {
                     dtarih = dateDogum.Value;
                 }
@@ -361,6 +402,8 @@ namespace Kobi_v1
                     kmtEkle.Parameters.AddWithValue("@kaytarih", Convert.ToDateTime(kaytarih));
                     kmtEkle.Parameters.AddWithValue("@durum", Convert.ToInt32(durum));
                     kmtEkle.Parameters.AddWithValue("@aciklama", aciklama);
+
+
                     if (bayrak)
                     {
                         kmtEkle.Parameters.AddWithValue("@resim", resimYolu);
@@ -369,6 +412,7 @@ namespace Kobi_v1
                     {
                         kmtEkle.Parameters.AddWithValue("@resim", varsayilanresimyolu);
                     }
+
 
                     int result = kmtEkle.ExecuteNonQuery();
                     if (result > 0)
@@ -539,27 +583,7 @@ namespace Kobi_v1
             
 
         }
-        string resimYolu = "";
-        string varsayilanresimyolu = @"\\images\\default.png";
-        bool bayrak = false;
-        private void pictureBox1_DoubleClick(object sender, EventArgs e)
-        {
-            OpenFileDialog resimAc = new OpenFileDialog();
-            pictureBox1.Image = null;
-            resimAc.Filter = "Resim Dosyaları|*.jpg;*.JPG;*.jpeg;*.png;*.bmp|Tüm Dosyalar|*.*";
-            resimAc.Title = "Resim Seçiniz";
-            if (resimAc.ShowDialog() == DialogResult.OK)
-            {
-                pictureBox1.ImageLocation = resimAc.FileName;
-                string kaynak = resimAc.FileName;
-                string hedef = Application.StartupPath + @"\\images\\";
-                string yeniAd = Guid.NewGuid().ToString() + ".jpg";
-                File.Copy(kaynak, hedef + yeniAd, true);
-                resimYolu = @"\\images\\" + yeniAd;
-                bayrak = true;
-
-            }
-        }
+      
 
         public void CariBilgileriYukle( string cariID, string cariKod,string cariAdi, string cariTur, string yetkili, string telefon, string eposta, 
             string adres, string sehir,string ulke, string vergidairesi , string vergiNo, string dtarih, string etarih,string ktarih, string durum,string aciklama,string resim)

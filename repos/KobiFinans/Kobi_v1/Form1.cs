@@ -20,8 +20,8 @@ namespace Kobi_v1
         {
             InitializeComponent();
             clockManager = new ClockManager(lblTime);
-            
-            
+
+
         }
 
         private static readonly string connectionString = ConfigurationManager.ConnectionStrings["KobiFinans"].ConnectionString;
@@ -30,13 +30,10 @@ namespace Kobi_v1
         private void Form1_Load(object sender, EventArgs e)
         {
             llblKullanici.Text = FrmLogin.kullaniciAdi;
-            lblRol.Text=FrmLogin.rolOku;
+            lblRol.Text = FrmLogin.rolOku;
             userCountGet();
             GelirGiderGet();
             KasaOzetGrafik();
-
-
-
         }
 
         public void userCountGet()
@@ -50,7 +47,7 @@ namespace Kobi_v1
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
-                label2.Text = "Müşteri Sayısı: "+dt.Rows[0][0].ToString();
+                label2.Text = "Müşteri Sayısı: " + dt.Rows[0][0].ToString();
 
             }
             catch (Exception ex)
@@ -81,9 +78,9 @@ namespace Kobi_v1
                     decimal toplamGider = dr["ToplamGider"] != DBNull.Value ? Convert.ToDecimal(dr["ToplamGider"]) : 0;
                     decimal bakiye = toplamGelir - toplamGider;
 
-                    lblToplamGelir.Text = "Toplam Gelir: "+toplamGelir.ToString("C2");   // ₺ formatlı
-                    lblToplamGider.Text = "Toplam Gider: "+toplamGider.ToString("C2");
-                    lblKasaBakiyesi.Text = "Toplam Bakiye: "+bakiye.ToString("C2");
+                    lblToplamGelir.Text = "Toplam Gelir: " + toplamGelir.ToString("C2");   // ₺ formatlı
+                    lblToplamGider.Text = "Toplam Gider: " + toplamGider.ToString("C2");
+                    lblKasaBakiyesi.Text = "Toplam Bakiye: " + bakiye.ToString("C2");
 
                     // Renkli görsel destek
                     lblKasaBakiyesi.ForeColor = bakiye >= 0 ? Color.Green : Color.Red;
@@ -130,18 +127,16 @@ namespace Kobi_v1
             catch { }
             finally { baglanti.Close(); }
         }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("calc");
+        }
 
 
         private void cariListeleriToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmCariListele frmCariListele = new FrmCariListele();
             frmCariListele.ShowDialog();
-        }
-
-        private void cariHareketlerToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FrmCariHareketleri frmCariHareketleri = new FrmCariHareketleri();
-            frmCariHareketleri.ShowDialog();
         }
 
         private void cariOToolStripMenuItem_Click(object sender, EventArgs e)
@@ -159,11 +154,8 @@ namespace Kobi_v1
 
         private void kasaHareketleriToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmKasaHareketleri frmKasaHareketleri = new FrmKasaHareketleri();
-            frmKasaHareketleri.ShowDialog();
+            
         }
-
-
 
         private void bankaHareketleriToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -201,43 +193,114 @@ namespace Kobi_v1
             frmSatis.ShowDialog();
         }
 
-        private void satışlarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void satışlarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            FrmSatisHareketleri frmSat =new FrmSatisHareketleri();
+            FrmSatisHareketleri frmSat = new FrmSatisHareketleri();
             frmSat.ShowDialog();
         }
 
-        private void tahsilatToolStripMenuItem_Click(object sender, EventArgs e)
+        private void tahsilatlarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmTahsilatHareketleri frmTahsilatHareketleri = new frmTahsilatHareketleri();
+            frmTahsilatHareketleri.ShowDialog();
+        }
+
+        private void giderlerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmGiderHareketleri frmGiderHareketleri = new FrmGiderHareketleri();
+            frmGiderHareketleri.ShowDialog();
+        }
+
+        private void giderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void TahsilatToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmTahsilat frm = new FrmTahsilat();
             frm.Owner = this; // this = ana form
             frm.ShowDialog();
+        }
 
+        private void kasaRaporToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FrmKasaHareketleri frmKasaHareketleri = new FrmKasaHareketleri();
+            frmKasaHareketleri.ShowDialog();
+        }
+
+        private void bankaRaporToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FrmBankaHareket frmBankaHareket = new FrmBankaHareket();
+            frmBankaHareket.ShowDialog();
+        }
+
+        private void carilerListesiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCariHareketleri frmCariHareketleri = new FrmCariHareketleri();
+            frmCariHareketleri.ShowDialog();
+        }
+
+        private void tableLayoutPanel3_Paint(object sender, PaintEventArgs e)
+        {
 
         }
 
-        private void giderToolStripMenuItem2_Click(object sender, EventArgs e)
+        private void TahsilatToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            FrmTahsilat frmTahsit = new FrmTahsilat();
+            frmTahsit.Owner = this; // this = ana form
+            frmTahsit.ShowDialog();
+        }
+        
+private void giderToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             FrmGiderler frmGider = new FrmGiderler();
             frmGider.Owner = this; // this = ana form
             frmGider.ShowDialog();
         }
 
-        private void giderToolStripMenuItem_Click(object sender, EventArgs e)
+        private void cariKategoriToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmGiderHareketleri frmGiderHareketleri = new FrmGiderHareketleri();
-            frmGiderHareketleri.ShowDialog();
+            FrmCariTurEkle frmCariTurEkle = new FrmCariTurEkle();
+            frmCariTurEkle.ShowDialog();
         }
 
-        private void tahsilaToolStripMenuItem_Click(object sender, EventArgs e)
+        private void CariKategorileritoolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            frmTahsilatHareketleri frmTahsilatHareketleri = new frmTahsilatHareketleri();
-            frmTahsilatHareketleri.ShowDialog();
+            FrmCariTur frmCariTur = new FrmCariTur();
+            frmCariTur.Owner = this; // this = ana form
+            frmCariTur.ShowDialog();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnCikis_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("calc");
+            DialogResult result = MessageBox.Show("Çıkış yapmak istediğinize emin misiniz?", "Çıkış", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+            else
+            {
+                Environment.Exit(0);
+            }
+            
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Oturumu Kapatmak İstediğinize Emin misiniz?", "Çıkış", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+            else
+            {
+                
+                FrmLogin frmLogin = new FrmLogin();
+                frmLogin.Show();
+                
+            }
         }
     }
 }

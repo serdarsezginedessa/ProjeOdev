@@ -48,6 +48,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Data.Desktop.v24.2, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.v24.2, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Drawing.v24.2, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v24.2.Core, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Sparkline.v24.2.Core, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
       <HintPath>packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
     </Reference>
@@ -418,6 +423,28 @@
     <None Include="Resources\Bank Building.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Logout80.png" />
+    <None Include="Resources\Export80.png" />
+    <None Include="Resources\Close80.png" />
+    <None Include="Resources\Close Window80.png" />
+    <None Include="Resources\Calculator80.png" />
+    <None Include="Resources\Budget80.png" />
+    <None Include="Resources\Parcel Cost80.png" />
+    <None Include="Resources\Users80.png" />
+    <None Include="Resources\Money Yours80.png" />
+    <None Include="Resources\Total Salesa80.png" />
+    <None Include="Resources\Purchase Order80.png" />
+    <None Include="Resources\Diversity80.png" />
+    <None Include="Resources\Delivered Box80.png" />
+    <None Include="Resources\Merchant Account80.png" />
+    <None Include="Resources\Cash in Hand80.png" />
+    <None Include="Resources\Money Bag Lira80.png" />
+    <None Include="Resources\Male User80.png" />
+    <None Include="Resources\Cash Register80.png" />
+    <None Include="Resources\Card Wallet80.png" />
+    <None Include="Resources\Sell Stock80.png" />
+    <None Include="Resources\Receipt80.png" />
+    <None Include="Resources\Total Sales80.png" />
     <None Include="Resources\Search1400.png" />
     <None Include="Resources\Binoculars144.png" />
     <None Include="Resources\Money Bag Lira36.png" />
@@ -446,6 +473,9 @@
     <None Include="Resources\Add File36px.png" />
     <None Include="Resources\Add36px.png" />
     <Content Include="Notlar.txt" />
+    <None Include="Resources\Bank Cards80.png" />
+    <None Include="Resources\Bank Cardsb80.png" />
+    <None Include="Resources\Add User Group Woman Man80.png" />
     <Content Include="Resources\Bank.ico" />
     <None Include="Resources\Minus48px.png" />
     <None Include="Resources\Minus_64px.png" />

@@ -127,7 +127,7 @@ namespace Kobi_v1
                 FrmKullaniciGuncelle frmKullaniciGuncelle = new FrmKullaniciGuncelle();
                 frmKullaniciGuncelle.kad = kad;
                 frmKullaniciGuncelle.sifre = sifre;
-                frmKullaniciGuncelle.rol = rol;
+                //frmKullaniciGuncelle.rol = rol;
                 frmKullaniciGuncelle.buttonImage= Properties.Resources.editUser;
                 frmKullaniciGuncelle.Text = "Kullanıcı Güncelle";
                 frmKullaniciGuncelle.ShowDialog();

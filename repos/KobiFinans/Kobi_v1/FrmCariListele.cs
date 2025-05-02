@@ -421,7 +421,8 @@ namespace Kobi_v1
                 string kayitTarihi = row.Cells["c.KayitTarihi"].Value.ToString();
                 string durum = row.Cells["c.Durum"].Value.ToString();
                 string aciklama = row.Cells["c.Aciklama"].Value.ToString();
-                string resim = row.Cells["c.Resim"].Value.ToString();
+                string resim = row.Cells["c.Resim"].Value?.ToString() ?? "";
+                //string deger = dataGridView1.CurrentRow.Cells["KolonAdi"].Value?.ToString() ?? "Varsayılan Değer";
 
                 //Hangi Formdan Geldiysek veriyi o forma gönderiyoruz.
 

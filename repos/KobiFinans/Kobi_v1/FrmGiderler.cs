@@ -75,15 +75,24 @@ namespace Kobi_v1
             SqlTransaction transaction = null;
             try
             {
-                
+
                 if (string.IsNullOrEmpty(txtCariID.Text))
                 {
                     MessageBox.Show("Cari seçilmedi.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
+
                 if (string.IsNullOrEmpty(txtTutar.Text.Trim()) || txtTutar.Text == "0,00")
                 {
                     MessageBox.Show("Tutar girmelisiniz.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                
+               
+                if (string.IsNullOrEmpty(comboGiderTuru.Text) || string.IsNullOrEmpty(comboBoxNakit.Text))
+                {
+                    MessageBox.Show("Gider Türü ve Kasa Seçmelisiniz", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
@@ -174,7 +183,15 @@ namespace Kobi_v1
                     MessageBox.Show("Cari seçilmedi.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-
+                if(string.IsNullOrEmpty(txtGiderNo.Text))
+                {
+                    MessageBox.Show("Önce Güncellenecek Kayıt Seçmelisiniz", "Cari Seç", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                if(string.IsNullOrEmpty(comboGiderTuru.Text)||string.IsNullOrEmpty(comboBoxNakit.Text))
+                {
+                    MessageBox.Show("Gider Türü ve Kasa Seçmelisiniz", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 if (baglanti.State == ConnectionState.Closed) baglanti.Open();
 
                 transaction = baglanti.BeginTransaction();
@@ -290,12 +307,24 @@ namespace Kobi_v1
 
             frmCariListele.ShowDialog();
         }
-        public void CariBilgileriYukle(string cariID, string cariKod, string cariAdi)
+        public void CariBilgileriYukle(string cariID, string cariKod, string cariAdi)//Yeni Kayıt işleminde cari getirme fonsiyonu
         {
             txtCariID.Text = cariID;
             txtCariKod.Text = cariKod;
             txtCariAd.Text = cariAdi;
         }
+         public void GiderKayitGetir(DateTime tarih, string giderno, string carino, string gideradi, string carikod, string kasa, string aciklama, Decimal tutar, string giderturu) // //güncellem işlemi için gider getirme fonksiyonu FrmGiderHareketlir
+         {
+            txtGiderNo.Text = giderno;
+            txtCariID.Text = carino;
+            txtCariAd.Text = gideradi;
+            txtCariKod.Text = carikod;
+            txtAciklama.Text = aciklama;
+            dateTarih.Value = tarih;
+            comboGiderTuru.Text = giderturu;
+            comboBoxNakit.Text = kasa;
+            txtTutar.Text = tutar.ToString();
+         }
 
         private void txtTutar_Leave(object sender, EventArgs e)
         {
@@ -341,6 +370,18 @@ namespace Kobi_v1
         private void btnGuncelle_Click(object sender, EventArgs e)
         {
             guncelle();
+        }
+
+        private void btnGiderAra_Click(object sender, EventArgs e)
+        {
+            FrmGiderHareketleri frmGiderHareketleri = new FrmGiderHareketleri();
+            frmGiderHareketleri.CagrilanForm = this;
+            
+
+
+            frmGiderHareketleri.ShowDialog();
+            
+
         }
     }
 }

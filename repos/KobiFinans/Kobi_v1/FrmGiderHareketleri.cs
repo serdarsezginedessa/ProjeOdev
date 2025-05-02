@@ -14,6 +14,7 @@ namespace Kobi_v1
 {
     public partial class FrmGiderHareketleri : Form
     {
+        public Form CagrilanForm { get; set; }
         public FrmGiderHareketleri()
         {
             InitializeComponent();
@@ -26,15 +27,11 @@ namespace Kobi_v1
         {
             comboGiderTuru.SelectedIndexChanged += comboGiderTuru_SelectedIndexChanged;
             comboBoxNakit.SelectedIndexChanged += comboBoxNakit_SelectedIndexChanged;
-
-            
+ 
             KasalariGetir();
             GiderTuruGetir();
             BugunListele();
-            
-           
-            
-            
+          
         }
 
         private void GiderTuruGetir()
@@ -172,9 +169,9 @@ namespace Kobi_v1
                 if (baglanti.State == ConnectionState.Closed) baglanti.Open();
 
 
-                SqlCommand cmdBugun = new SqlCommand(@"select g.Tarih 'Tarih', g.GiderID as'Gider No',c.CariKod 'Cari Kod',ct.Ad 'Cari Türü'
-                                            ,c.CariAdi 'Ad Soyad', k.KasaAdi 'Kasa'
-                                            ,g.Aciklama 'Açıklama', g.Tutar, gt.Ad 'Gider Adı' from Gider g
+                SqlCommand cmdBugun = new SqlCommand(@"select g.Tarih 'Tarih', g.GiderID as'Gider No',c.CariID as 'Cari No', c.CariKod 'Cari Kod'
+                                            ,c.CariAdi 'Gider Adı', k.KasaAdi 'Kasa'
+                                            ,g.Aciklama 'Açıklama', g.Tutar, gt.Ad 'Gider Türü' from Gider g
                                               Left Join GiderTipi gt
                                               On g.Tipi= gt.ID
                                               Left Join Kasalar k
@@ -209,9 +206,9 @@ namespace Kobi_v1
                 if (baglanti.State == ConnectionState.Closed) baglanti.Open();
 
 
-                SqlCommand cmdBugun = new SqlCommand(@"select g.Tarih 'Tarih', g.GiderID as'Gider No',c.CariKod 'Cari Kod',ct.Ad 'Cari Türü'
-                                            ,c.CariAdi 'Ad Soyad', k.KasaAdi 'Kasa'
-                                            ,g.Aciklama 'Açıklama', g.Tutar, gt.Ad 'Gider Adı' from Gider g
+                SqlCommand cmdBugun = new SqlCommand(@"select g.Tarih 'Tarih', g.GiderID as'Gider No',c.CariID as 'Cari No', c.CariKod 'Cari Kod'
+                                            ,c.CariAdi 'Gider Adı', k.KasaAdi 'Kasa'
+                                            ,g.Aciklama 'Açıklama', g.Tutar, gt.Ad 'Gider Türü' from Gider g
                                               Left Join GiderTipi gt
                                               On g.Tipi= gt.ID
                                               Left Join Kasalar k
@@ -507,11 +504,6 @@ namespace Kobi_v1
                 baglanti.Close();
             }
         }
-        
-
-    
-        
-
 
         private void Date1_ValueChanged(object sender, EventArgs e)
         {
@@ -581,6 +573,33 @@ namespace Kobi_v1
         private void txtCariAD_TextChanged(object sender, EventArgs e)
         {
             AdsoyadListele();
+        }
+
+        private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                DateTime tarih = Convert.ToDateTime(row.Cells["Tarih"].Value);
+                string giderno = row.Cells["Gider No"].Value.ToString();
+                string carino = row.Cells["Cari No"].Value.ToString();
+                string gideradi = row.Cells["Gider Adı"].Value.ToString();
+                string carikod = row.Cells["Cari Kod"].Value.ToString();
+                string kasa = row.Cells["Kasa"].Value.ToString();
+                string aciklama = row.Cells["Açıklama"].Value.ToString();
+                decimal tutar = Convert.ToDecimal(row.Cells["Tutar"].Value);
+                string giderturu = row.Cells["Gider Türü"].Value.ToString();
+
+                if(CagrilanForm is FrmGiderler)
+                {
+                    var hedefForm = CagrilanForm as FrmGiderler;
+                    hedefForm.GiderKayitGetir(tarih, giderno, carino, gideradi, carikod, kasa, aciklama, tutar,giderturu);
+                    
+
+                }
+                this.Close();
+
+            }
         }
     }
 }

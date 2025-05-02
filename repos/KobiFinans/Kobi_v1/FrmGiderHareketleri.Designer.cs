@@ -52,11 +52,11 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.comboBoxNakit = new System.Windows.Forms.ComboBox();
-            this.comboGiderTuru = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.checkBoxTumKayitlar = new System.Windows.Forms.CheckBox();
+            this.comboGiderTuru = new System.Windows.Forms.ComboBox();
+            this.comboBoxNakit = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -239,6 +239,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(1464, 628);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.TabStop = false;
+            this.dataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentDoubleClick);
             // 
             // panel2
             // 
@@ -280,42 +281,6 @@
             this.panel1.Size = new System.Drawing.Size(1464, 112);
             this.panel1.TabIndex = 6;
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(584, 32);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(51, 24);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Kasa";
-            // 
-            // comboBoxNakit
-            // 
-            this.comboBoxNakit.FormattingEnabled = true;
-            this.comboBoxNakit.Location = new System.Drawing.Point(691, 25);
-            this.comboBoxNakit.Name = "comboBoxNakit";
-            this.comboBoxNakit.Size = new System.Drawing.Size(143, 30);
-            this.comboBoxNakit.TabIndex = 44;
-            this.comboBoxNakit.SelectedIndexChanged += new System.EventHandler(this.comboBoxNakit_SelectedIndexChanged);
-            // 
-            // comboGiderTuru
-            // 
-            this.comboGiderTuru.FormattingEnabled = true;
-            this.comboGiderTuru.Location = new System.Drawing.Point(691, 61);
-            this.comboGiderTuru.Name = "comboGiderTuru";
-            this.comboGiderTuru.Size = new System.Drawing.Size(143, 30);
-            this.comboGiderTuru.TabIndex = 44;
-            this.comboGiderTuru.SelectedIndexChanged += new System.EventHandler(this.comboGiderTuru_SelectedIndexChanged);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(584, 68);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(101, 24);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "Gider Türü";
-            // 
             // checkBoxTumKayitlar
             // 
             this.checkBoxTumKayitlar.AutoSize = true;
@@ -326,6 +291,42 @@
             this.checkBoxTumKayitlar.Text = "Tüm Kayıtlar";
             this.checkBoxTumKayitlar.UseVisualStyleBackColor = true;
             this.checkBoxTumKayitlar.CheckedChanged += new System.EventHandler(this.checkBoxTumKayitlar_CheckedChanged);
+            // 
+            // comboGiderTuru
+            // 
+            this.comboGiderTuru.FormattingEnabled = true;
+            this.comboGiderTuru.Location = new System.Drawing.Point(691, 61);
+            this.comboGiderTuru.Name = "comboGiderTuru";
+            this.comboGiderTuru.Size = new System.Drawing.Size(143, 30);
+            this.comboGiderTuru.TabIndex = 44;
+            this.comboGiderTuru.SelectedIndexChanged += new System.EventHandler(this.comboGiderTuru_SelectedIndexChanged);
+            // 
+            // comboBoxNakit
+            // 
+            this.comboBoxNakit.FormattingEnabled = true;
+            this.comboBoxNakit.Location = new System.Drawing.Point(691, 25);
+            this.comboBoxNakit.Name = "comboBoxNakit";
+            this.comboBoxNakit.Size = new System.Drawing.Size(143, 30);
+            this.comboBoxNakit.TabIndex = 44;
+            this.comboBoxNakit.SelectedIndexChanged += new System.EventHandler(this.comboBoxNakit_SelectedIndexChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(584, 68);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(101, 24);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "Gider Türü";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(584, 32);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(51, 24);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Kasa";
             // 
             // FrmGiderHareketleri
             // 

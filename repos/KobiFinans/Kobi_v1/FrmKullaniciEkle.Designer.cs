@@ -37,6 +37,10 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.btnCikis = new System.Windows.Forms.Button();
             this.btnEkle = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.checkBoxAktif = new System.Windows.Forms.CheckBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtEposta = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -51,7 +55,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 45);
+            this.label2.Location = new System.Drawing.Point(12, 77);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 24);
             this.label2.TabIndex = 0;
@@ -60,7 +64,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 81);
+            this.label3.Location = new System.Drawing.Point(12, 111);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(43, 24);
             this.label3.TabIndex = 0;
@@ -75,10 +79,10 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(137, 44);
+            this.textBox2.Location = new System.Drawing.Point(137, 78);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(178, 28);
-            this.textBox2.TabIndex = 2;
+            this.textBox2.TabIndex = 3;
             // 
             // comboBox1
             // 
@@ -86,20 +90,21 @@
             this.comboBox1.Items.AddRange(new object[] {
             "Admin",
             "Kullanici"});
-            this.comboBox1.Location = new System.Drawing.Point(137, 79);
+            this.comboBox1.Location = new System.Drawing.Point(137, 112);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(178, 30);
-            this.comboBox1.TabIndex = 3;
+            this.comboBox1.TabIndex = 4;
             // 
             // btnCikis
             // 
             this.btnCikis.BackColor = System.Drawing.Color.Transparent;
+            this.btnCikis.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCikis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCikis.Image = global::Kobi_v1.Properties.Resources.Close;
-            this.btnCikis.Location = new System.Drawing.Point(257, 115);
+            this.btnCikis.Location = new System.Drawing.Point(257, 170);
             this.btnCikis.Name = "btnCikis";
             this.btnCikis.Size = new System.Drawing.Size(58, 51);
-            this.btnCikis.TabIndex = 5;
+            this.btnCikis.TabIndex = 7;
             this.btnCikis.UseVisualStyleBackColor = false;
             this.btnCikis.Click += new System.EventHandler(this.btnCikis_Click);
             // 
@@ -108,29 +113,70 @@
             this.btnEkle.BackColor = System.Drawing.Color.Transparent;
             this.btnEkle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEkle.Image = global::Kobi_v1.Properties.Resources.Add_User_Male;
-            this.btnEkle.Location = new System.Drawing.Point(193, 115);
+            this.btnEkle.Location = new System.Drawing.Point(193, 170);
             this.btnEkle.Name = "btnEkle";
             this.btnEkle.Size = new System.Drawing.Size(58, 51);
-            this.btnEkle.TabIndex = 4;
+            this.btnEkle.TabIndex = 6;
             this.btnEkle.UseVisualStyleBackColor = false;
             this.btnEkle.Click += new System.EventHandler(this.btnEkle_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 145);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(44, 24);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Aktif";
+            // 
+            // checkBoxAktif
+            // 
+            this.checkBoxAktif.AutoSize = true;
+            this.checkBoxAktif.Checked = true;
+            this.checkBoxAktif.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxAktif.Location = new System.Drawing.Point(137, 148);
+            this.checkBoxAktif.Name = "checkBoxAktif";
+            this.checkBoxAktif.Size = new System.Drawing.Size(18, 17);
+            this.checkBoxAktif.TabIndex = 5;
+            this.checkBoxAktif.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 43);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(73, 24);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Eposta:";
+            // 
+            // txtEposta
+            // 
+            this.txtEposta.Location = new System.Drawing.Point(137, 44);
+            this.txtEposta.Name = "txtEposta";
+            this.txtEposta.Size = new System.Drawing.Size(178, 28);
+            this.txtEposta.TabIndex = 2;
             // 
             // FrmKullaniciEkle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(208)))), ((int)(((byte)(161)))));
-            this.ClientSize = new System.Drawing.Size(327, 193);
+            this.CancelButton = this.btnCikis;
+            this.ClientSize = new System.Drawing.Size(333, 233);
+            this.Controls.Add(this.checkBoxAktif);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.btnCikis);
             this.Controls.Add(this.btnEkle);
             this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtEposta);
             this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
@@ -138,6 +184,7 @@
             this.Name = "FrmKullaniciEkle";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Kullanıcı Ekle";
+            this.Load += new System.EventHandler(this.FrmKullaniciEkle_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -153,5 +200,9 @@
         private System.Windows.Forms.Button btnEkle;
         private System.Windows.Forms.Button btnCikis;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.CheckBox checkBoxAktif;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtEposta;
     }
 }
