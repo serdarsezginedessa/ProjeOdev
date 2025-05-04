@@ -123,6 +123,8 @@ else if (odemeYontemi == "Banka")
                     return;
                 }
 
+               
+
                 if (string.IsNullOrEmpty(txtTutar.Text.Trim()) || txtTutar.Text == "0,00")
                 {
                     MessageBox.Show("Tutar girmelisiniz.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -161,8 +163,9 @@ else if (odemeYontemi == "Banka")
                    
 
                 // 2. Kasa Hareket Kaydı (Ödeme olduğu takdirde)
-                if (comboBoxNakit.SelectedValue != null)
+                if (comboOdemeTuru.Text=="Nakit")
                 {
+                   
                     SqlCommand cmdKasaHareket = new SqlCommand(@"INSERT INTO KasaHareketleri (KasaID, CariID, Tarih, Aciklama, Tutar, HareketTipi, FaturaNo,TahsilatID)
                                                    VALUES (@KasaID, @CariID, @Tarih, @Aciklama, @Tutar, @HareketTipi, @FaturaNo,@TahsilatID)", baglanti, transaction);
 
@@ -179,8 +182,13 @@ else if (odemeYontemi == "Banka")
                     cmdKasaHareket.ExecuteNonQuery();
                 }
                 // 3. Banka Hareket Kaydı (Ödeme olduğu takdirde)
-                if (comboBoxBanka.SelectedValue != null)
+                if (comboOdemeTuru.Text == "Havale" || comboOdemeTuru.Text == "Kredi Kartı" || comboOdemeTuru.Text=="Çek")
                 {
+                    if (comboBoxBanka.SelectedIndex == -1)
+                    {
+                        MessageBox.Show("Banka seçmelisiniz.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
                     SqlCommand cmdBankaHareket = new SqlCommand(@"INSERT INTO BankaHareketleri (BankaID, CariID, Tarih, Aciklama, Tutar, HareketTipi, Kaynak, FaturaNo,TahsilatID)
                                                      VALUES (@BankaID, @CariID, @Tarih, @Aciklama, @Tutar, @HareketTipi, @Kaynak, @FaturaNo,@TahsilatID)", baglanti, transaction);
 
@@ -190,7 +198,7 @@ else if (odemeYontemi == "Banka")
                     cmdBankaHareket.Parameters.AddWithValue("@Aciklama", txtAciklama.Text);
                     cmdBankaHareket.Parameters.AddWithValue("@Tutar", Convert.ToDecimal(txtTutar.Text));
                     cmdBankaHareket.Parameters.AddWithValue("@HareketTipi", "Tahsilat");
-                    cmdBankaHareket.Parameters.AddWithValue("@Kaynak", "Tahsilat");
+                    cmdBankaHareket.Parameters.AddWithValue("@Kaynak", comboOdemeTuru.Text);
                     cmdBankaHareket.Parameters.AddWithValue("@FaturaNo", (object)_faturaNo ?? DBNull.Value);
                     cmdBankaHareket.Parameters.AddWithValue("@TahsilatID", Convert.ToInt32(txtTahsilatNo.Text));
 
@@ -271,7 +279,7 @@ else if (odemeYontemi == "Banka")
                                                         Where TahsilatID=@TahsilatID", baglanti, transaction);
 
                 cmdTahsilat.Parameters.AddWithValue("@TahsilatID",Convert.ToInt32(txtTahsilatNo.Text));
-                cmdTahsilat.Parameters.AddWithValue("@FaturaNo", (object)_faturaNo ?? DBNull.Value); // boş olabilir
+                cmdTahsilat.Parameters.AddWithValue("@FaturaNo", (object)txtFaturaNo.Text ?? DBNull.Value); // boş olabilir
                 cmdTahsilat.Parameters.AddWithValue("@CariID", txtCariID.Text);
                 cmdTahsilat.Parameters.AddWithValue("@Tutar", Convert.ToDecimal(txtTutar.Text));
                 cmdTahsilat.Parameters.AddWithValue("@Tarih", dateTarih.Value);
@@ -331,7 +339,7 @@ else if (odemeYontemi == "Banka")
                     cmdBankaHareket.Parameters.AddWithValue("@Aciklama", txtAciklama.Text);
                     cmdBankaHareket.Parameters.AddWithValue("@Tutar", Convert.ToDecimal(txtTutar.Text));
                     cmdBankaHareket.Parameters.AddWithValue("@HareketTipi", "Tahsilat");
-                    cmdBankaHareket.Parameters.AddWithValue("@Kaynak", "Tahsilat");
+                    cmdBankaHareket.Parameters.AddWithValue("@Kaynak", comboOdemeTuru.Text);
                     cmdBankaHareket.Parameters.AddWithValue("@FaturaNo", (object)_faturaNo ?? DBNull.Value);
                     cmdBankaHareket.Parameters.AddWithValue("@TahsilatID", txtTahsilatNo.Text);
 
@@ -561,10 +569,13 @@ else if (odemeYontemi == "Banka")
             if(checkBox1FaturaAktif.Checked)
             {
                 txtFaturaNo.Enabled=true;
+                txtFaturaNo.ReadOnly = false;
             }
             else
             {
                 txtFaturaNo.Enabled=false;
+                txtFaturaNo.ReadOnly = true;
+                txtFaturaNo.Clear();
             }
         }
 

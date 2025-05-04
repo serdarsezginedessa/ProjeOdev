@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
+using System.Data.Common.CommandTrees.ExpressionBuilder;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
@@ -18,34 +19,35 @@ namespace Kobi_v1
         {
             InitializeComponent();
         }
-        public string cariad
-        {
-            get { return label1.Text; }
-            set { label1.Text = value; }
-        }
-        public string adres
-
-        {
-            set { label2.Text = value; }
-        }
-        public string borc
-        {
-            set { label6.Text = value; }
-        }
-        public string alacak
-        {
-            set { label7.Text = value; }
-        }
-        public string telefon
-        {
-            set { label9.Text = value; }
-        }
+      
         static string connectionString = ConfigurationManager.ConnectionStrings["KobiFinans"].ConnectionString;
         SqlConnection baglanti = new SqlConnection(connectionString);
 
         private void FrmCariHareketleri_Load(object sender, EventArgs e)
         {
+            dtHeader();
+            listele();
             
+        }
+
+        private void dtHeader()
+        {
+            if (dataGridView1.Columns.Count == 0)
+            {
+
+                dataGridView1.Columns.Add("ch.HareketID","İşlem No");
+                dataGridView1.Columns.Add("c.CariAdi", "Cari Adı");
+                dataGridView1.Columns.Add("k.KasaAdi", "Kasa Adı");
+                dataGridView1.Columns.Add("b.BankaAD","Banka Adı");
+                dataGridView1.Columns.Add("o.OdemeAD","Ödeme Türü");
+                dataGridView1.Columns.Add("ch.Tarih","Tarih");
+                dataGridView1.Columns.Add("ch.Aciklama","Açıklama");
+                dataGridView1.Columns.Add("ch.Tutar","Tutar");
+                dataGridView1.Columns.Add("ch.HareketTipi","Hareket Tipi");
+                dataGridView1.Columns.Add("ch.TahsilatID","Tahsilat No");
+                dataGridView1.Columns.Add("ch.GiderID","Gider No");
+                
+            }
         }
         void listele()
         {
@@ -53,35 +55,34 @@ namespace Kobi_v1
             {
                 if (baglanti.State == ConnectionState.Closed) baglanti.Open();
                 string sorgu = @"SELECT
+                                ch.HareketID, c.CariAdi, k.KasaAdi, b.BankaAd, o.OdemeAD,
                                 ch.Tarih,
-	                            ch.HareketID,
-	                            ch.Aciklama,	
+                                ch.Aciklama,
+                                ch.Tutar,
                                 ch.HareketTipi,
-                                ch.Tutar
-                            FROM 
-                                cari AS c
-                            INNER JOIN 
-                                carihareketleri AS ch
-                            ON 
-                                c.CariID = ch.CariID
-                            WHERE 
-                                c.cariadi = @cariad";// -- Burada @ID, filtreleme için kullandığınız parametreyi temsil eder;
-                //string sorguhareket = "Select * From CariHareketleri";
-                SqlCommand kmt = new SqlCommand(sorgu, baglanti);
-                kmt.Parameters.AddWithValue("@cariad", label1.Text);
-                SqlDataAdapter da = new SqlDataAdapter(kmt);
-                //DataTable dt = new DataTable();
-                DataSet ds = new DataSet();
-                ds.Clear();
-                //dt.Clear();
-                da.Fill(ds);
-                dataGridView1.DataSource = ds.Tables[0];
-                dataGridView1.Columns[0].HeaderText = "Tarih";
-                dataGridView1.Columns[1].HeaderText = "Belge No";
-                dataGridView1.Columns[2].HeaderText = "Açıklama";
-                dataGridView1.Columns[3].HeaderText = "Bakiye";
-                dataGridView1.Columns[4].HeaderText = "İşlem Türü";
+	                            ch.TahsilatID,
+                                ch.GiderID
+                            FROM  carihareketleri AS ch
+                            LEFT JOIN cari AS c
+                            ON ch.CariID = c.CariID
+                            LEFT JOIN Kasalar AS k
+                            ON ch.KasaID = k.KasaID
+                            LEFT JOIN Bankalar AS b
+                            ON ch.BankaID = b.BankaID
+                            LEFT JOIN OdemeTuru AS o
+                            ON ch.OdemeID = o.OdemeID
+                            LEFT JOIN gider AS g
+                            ON ch.GiderID = g.GiderID";
 
+                SqlCommand kmt = new SqlCommand(sorgu, baglanti);
+                SqlDataAdapter da = new SqlDataAdapter(kmt);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dataGridView1.Rows.Clear();
+                foreach (DataRow row in dt.Rows)
+                {
+                    dataGridView1.Rows.Add(row.ItemArray);
+                }
 
             }
             catch (Exception ex)
@@ -92,20 +93,6 @@ namespace Kobi_v1
             {
                 baglanti.Close();
             }
-        }
-        private void btnBorcAlacak_Click(object sender, EventArgs e)
-        {
-            FrmCariIslemler frmCariislemler = new FrmCariIslemler();
-            frmCariislemler.cariad = label1.Text;
-            frmCariislemler.adres = label2.Text;
-            frmCariislemler.telefon = label9.Text;
-            frmCariislemler.ShowDialog();
-            listele();
-        }
-
-        private void FrmCariHareketleri_Load_1(object sender, EventArgs e)
-        {
-            listele();
         }
     }
 }

@@ -41,7 +41,7 @@ namespace Kobi_v1
         string sorgucarituru = "SELECT AD  FROM CariTuru";
 
         string resimYolu = "";
-        string varsayilanresimyolu = Application.StartupPath + @"\\images\\default.jpg";
+        string varsayilanresimyolu = @"\images\default.jpg";
         bool bayrak = false;
         private void pictureBox1_DoubleClick(object sender, EventArgs e)
         {
@@ -55,10 +55,10 @@ namespace Kobi_v1
             {
                 pictureBox1.ImageLocation = resimAc.FileName;
                 string kaynak = resimAc.FileName;
-                string hedef = Application.StartupPath + @"\\images\\";
+                string hedef = Application.StartupPath + @"\images\";
                 string yeniAd = Guid.NewGuid().ToString() + ".jpg";
                 File.Copy(kaynak, hedef + yeniAd, true);
-                resimYolu = @"\\images\\" + yeniAd;
+                resimYolu = @"\images\" + yeniAd;
                 
 
             }
@@ -651,7 +651,7 @@ namespace Kobi_v1
             if (string.IsNullOrEmpty(resim))
             {
                 
-                pictureBox1.ImageLocation = Application.StartupPath + varsayilanresimyolu;
+                pictureBox1.ImageLocation = varsayilanresimyolu;
             }
             else
             {

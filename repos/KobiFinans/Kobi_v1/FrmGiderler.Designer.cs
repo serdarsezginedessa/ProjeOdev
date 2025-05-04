@@ -56,6 +56,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btniptal = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -111,6 +112,7 @@
             this.btnSil.Text = "Sil";
             this.btnSil.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSil.UseVisualStyleBackColor = false;
+            this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
             // 
             // btnYeniKayit
             // 
@@ -123,11 +125,12 @@
             this.btnYeniKayit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnYeniKayit.Location = new System.Drawing.Point(7, 4);
             this.btnYeniKayit.Name = "btnYeniKayit";
-            this.btnYeniKayit.Size = new System.Drawing.Size(285, 42);
+            this.btnYeniKayit.Size = new System.Drawing.Size(141, 42);
             this.btnYeniKayit.TabIndex = 22;
             this.btnYeniKayit.Text = "Yeni (F8)";
             this.btnYeniKayit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnYeniKayit.UseVisualStyleBackColor = false;
+            this.btnYeniKayit.Click += new System.EventHandler(this.btnYeniKayit_Click);
             // 
             // btnKapat
             // 
@@ -189,6 +192,7 @@
             // 
             this.panel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.btniptal);
             this.panel2.Controls.Add(this.btnSil);
             this.panel2.Controls.Add(this.btnYeniKayit);
             this.panel2.Controls.Add(this.btnKapat);
@@ -373,6 +377,24 @@
             this.label1.TabIndex = 29;
             this.label1.Text = "Gider No:";
             // 
+            // btniptal
+            // 
+            this.btniptal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
+            this.btniptal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btniptal.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btniptal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btniptal.ForeColor = System.Drawing.Color.Transparent;
+            this.btniptal.Image = global::Kobi_v1.Properties.Resources.iptal;
+            this.btniptal.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btniptal.Location = new System.Drawing.Point(153, 4);
+            this.btniptal.Name = "btniptal";
+            this.btniptal.Size = new System.Drawing.Size(139, 42);
+            this.btniptal.TabIndex = 24;
+            this.btniptal.Text = "İptal";
+            this.btniptal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btniptal.UseVisualStyleBackColor = false;
+            this.btniptal.Click += new System.EventHandler(this.btniptal_Click);
+            // 
             // FrmGiderler
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -447,5 +469,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btniptal;
     }
 }

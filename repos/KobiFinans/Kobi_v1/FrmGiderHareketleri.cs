@@ -105,17 +105,18 @@ namespace Kobi_v1
         {
             if (baglanti.State == ConnectionState.Closed) baglanti.Open();
 
-            SqlDataAdapter adapter = new SqlDataAdapter(@"select g.Tarih 'Tarih', g.GiderID as'Gider No',c.CariKod 'Cari Kod',ct.Ad 'Cari Türü'
-                                            ,c.CariAdi 'Ad Soyad', k.KasaAdi 'Kasa'
-                                            ,g.Aciklama 'Açıklama', g.Tutar, gt.Ad 'Gider Adı' from Gider g
-                                              Left Join GiderTipi gt
-                                              On g.Tipi= gt.ID
-                                              Left Join Kasalar k
-                                              On g.KasaID=k.KasaID
-                                              Left Join Cari c
-                                              On g.CariID=c.CariID
-                                              Left Join CariTuru ct
-                                              On c.CariTuru=ct.ID", baglanti);
+            SqlDataAdapter adapter = new SqlDataAdapter(@"select g.Tarih 'Tarih', g.GiderID as'Gider No', gt.Ad 'Gider Türü'
+                                            ,c.CariID as 'Cari No', c.CariKod 'Cari Kod',c.CariAdi 'Cari Adı', ct.Ad 'Cari Türü'
+                                            ,k.KasaAdi 'Kasa'
+                                            ,g.Tutar, g.Aciklama 'Açıklama' from Gider g
+                                            Left Join GiderTipi gt
+                                            On g.Tipi= gt.ID
+                                            Left Join Kasalar k
+                                            On g.KasaID=k.KasaID
+                                            Left Join Cari c
+                                            On g.CariID=c.CariID
+                                            Left Join CariTuru ct
+                                            On c.CariTuru=ct.ID", baglanti);
             DataTable dt = new DataTable();
             adapter.Fill(dt);
             dataGridView1.DataSource = dt;
@@ -128,9 +129,10 @@ namespace Kobi_v1
                 if (baglanti.State == ConnectionState.Closed) baglanti.Open();
 
 
-                SqlCommand cmdTarihler = new SqlCommand(@"select g.Tarih, g.GiderID as'Gider No',c.CariKod 'Cari Kod',ct.Ad 'Cari Türü'
-                                            ,c.CariAdi 'Ad Soyad', k.KasaAdi 'Kasa'
-                                            ,g.Aciklama 'Açıklama', g.Tutar, gt.Ad 'Gider Adı' from Gider g
+                SqlCommand cmdTarihler = new SqlCommand(@"select g.Tarih 'Tarih', g.GiderID as'Gider No', gt.Ad 'Gider Türü'
+                                            ,c.CariID as 'Cari No', c.CariKod 'Cari Kod',c.CariAdi 'Cari Adı', ct.Ad 'Cari Türü'
+                                            ,k.KasaAdi 'Kasa'
+                                            ,g.Tutar, g.Aciklama 'Açıklama' from Gider g
                                               Left Join GiderTipi gt
                                               On g.Tipi= gt.ID
                                               Left Join Kasalar k
@@ -169,9 +171,10 @@ namespace Kobi_v1
                 if (baglanti.State == ConnectionState.Closed) baglanti.Open();
 
 
-                SqlCommand cmdBugun = new SqlCommand(@"select g.Tarih 'Tarih', g.GiderID as'Gider No',c.CariID as 'Cari No', c.CariKod 'Cari Kod'
-                                            ,c.CariAdi 'Gider Adı', k.KasaAdi 'Kasa'
-                                            ,g.Aciklama 'Açıklama', g.Tutar, gt.Ad 'Gider Türü' from Gider g
+                SqlCommand cmdBugun = new SqlCommand(@"select g.Tarih 'Tarih', g.GiderID as'Gider No', gt.Ad 'Gider Türü'
+                                            ,c.CariID as 'Cari No', c.CariKod 'Cari Kod',c.CariAdi 'Cari Adı', ct.Ad 'Cari Türü'
+                                            ,k.KasaAdi 'Kasa'
+                                            ,g.Tutar, g.Aciklama 'Açıklama' from Gider g
                                               Left Join GiderTipi gt
                                               On g.Tipi= gt.ID
                                               Left Join Kasalar k
@@ -206,9 +209,10 @@ namespace Kobi_v1
                 if (baglanti.State == ConnectionState.Closed) baglanti.Open();
 
 
-                SqlCommand cmdBugun = new SqlCommand(@"select g.Tarih 'Tarih', g.GiderID as'Gider No',c.CariID as 'Cari No', c.CariKod 'Cari Kod'
-                                            ,c.CariAdi 'Gider Adı', k.KasaAdi 'Kasa'
-                                            ,g.Aciklama 'Açıklama', g.Tutar, gt.Ad 'Gider Türü' from Gider g
+                SqlCommand cmdBugun = new SqlCommand(@"select g.Tarih 'Tarih', g.GiderID as'Gider No', gt.Ad 'Gider Türü'
+                                            ,c.CariID as 'Cari No', c.CariKod 'Cari Kod',c.CariAdi 'Cari Adı', ct.Ad 'Cari Türü'
+                                            ,k.KasaAdi 'Kasa'
+                                            ,g.Tutar, g.Aciklama 'Açıklama' from Gider g
                                               Left Join GiderTipi gt
                                               On g.Tipi= gt.ID
                                               Left Join Kasalar k
@@ -252,10 +256,10 @@ namespace Kobi_v1
                     {
                         giderID = Convert.ToInt32(drv["ID"]);
                         // Filtrele
-                        cmd = new SqlCommand(@"SELECT g.Tarih 'Tarih', g.GiderID as 'Gider No', c.CariKod 'Cari Kod', ct.Ad 'Cari Türü',
-                                          c.CariAdi 'Ad Soyad', k.KasaAdi 'Kasa', g.Aciklama 'Açıklama',
-                                          g.Tutar, gt.Ad 'Gider Adı'
-                                   FROM Gider g
+                        cmd = new SqlCommand(@"select g.Tarih 'Tarih', g.GiderID as'Gider No', gt.Ad 'Gider Türü'
+                                            ,c.CariID as 'Cari No', c.CariKod 'Cari Kod',c.CariAdi 'Cari Adı', ct.Ad 'Cari Türü'
+                                            ,k.KasaAdi 'Kasa'
+                                            ,g.Tutar, g.Aciklama 'Açıklama' from Gider g
                                    LEFT JOIN GiderTipi gt ON g.Tipi = gt.ID
                                    LEFT JOIN Kasalar k ON g.KasaID = k.KasaID
                                    LEFT JOIN Cari c ON g.CariID = c.CariID
@@ -276,10 +280,10 @@ namespace Kobi_v1
 
 
 
-                    cmd = new SqlCommand(@"SELECT g.Tarih 'Tarih', g.GiderID as 'Gider No', c.CariKod 'Cari Kod', ct.Ad 'Cari Türü',
-                                                  c.CariAdi 'Ad Soyad', k.KasaAdi 'Kasa', g.Aciklama 'Açıklama',
-                                                  g.Tutar, gt.Ad 'Gider Adı'
-                                           FROM Gider g
+                    cmd = new SqlCommand(@"select g.Tarih 'Tarih', g.GiderID as'Gider No', gt.Ad 'Gider Türü'
+                                            ,c.CariID as 'Cari No', c.CariKod 'Cari Kod',c.CariAdi 'Cari Adı', ct.Ad 'Cari Türü'
+                                            ,k.KasaAdi 'Kasa'
+                                            ,g.Tutar, g.Aciklama 'Açıklama' from Gider g
                                            LEFT JOIN GiderTipi gt ON g.Tipi = gt.ID
                                            LEFT JOIN Kasalar k ON g.KasaID = k.KasaID
                                            LEFT JOIN Cari c ON g.CariID = c.CariID
@@ -338,10 +342,10 @@ namespace Kobi_v1
                     {
                         kasaID = Convert.ToInt32(drv["KasaID"]);
                         // Filtrele
-                        cmd = new SqlCommand(@"SELECT g.Tarih 'Tarih', g.GiderID as 'Gider No', c.CariKod 'Cari Kod', ct.Ad 'Cari Türü',
-                                          c.CariAdi 'Ad Soyad', k.KasaAdi 'Kasa', g.Aciklama 'Açıklama',
-                                          g.Tutar, gt.Ad 'Gider Adı'
-                                   FROM Gider g
+                        cmd = new SqlCommand(@"select g.Tarih 'Tarih', g.GiderID as'Gider No', gt.Ad 'Gider Türü'
+                                            ,c.CariID as 'Cari No', c.CariKod 'Cari Kod',c.CariAdi 'Cari Adı', ct.Ad 'Cari Türü'
+                                            ,k.KasaAdi 'Kasa'
+                                            ,g.Tutar, g.Aciklama 'Açıklama' from Gider g
                                    LEFT JOIN GiderTipi gt ON g.Tipi = gt.ID
                                    LEFT JOIN Kasalar k ON g.KasaID = k.KasaID
                                    LEFT JOIN Cari c ON g.CariID = c.CariID
@@ -363,10 +367,10 @@ namespace Kobi_v1
 
 
 
-                    cmd = new SqlCommand(@"SELECT g.Tarih 'Tarih', g.GiderID as 'Gider No', c.CariKod 'Cari Kod', ct.Ad 'Cari Türü',
-                                                  c.CariAdi 'Ad Soyad', k.KasaAdi 'Kasa', g.Aciklama 'Açıklama',
-                                                  g.Tutar, gt.Ad 'Gider Adı'
-                                           FROM Gider g
+                    cmd = new SqlCommand(@"select g.Tarih 'Tarih', g.GiderID as'Gider No', gt.Ad 'Gider Türü'
+                                            ,c.CariID as 'Cari No', c.CariKod 'Cari Kod',c.CariAdi 'Cari Adı', ct.Ad 'Cari Türü'
+                                            ,k.KasaAdi 'Kasa'
+                                            ,g.Tutar, g.Aciklama 'Açıklama' from Gider g
                                            LEFT JOIN GiderTipi gt ON g.Tipi = gt.ID
                                            LEFT JOIN Kasalar k ON g.KasaID = k.KasaID
                                            LEFT JOIN Cari c ON g.CariID = c.CariID
@@ -397,9 +401,10 @@ namespace Kobi_v1
                 if (baglanti.State == ConnectionState.Closed) baglanti.Open();
 
 
-                SqlCommand cmdBugun = new SqlCommand(@"select g.Tarih 'Tarih', g.GiderID as'Gider No',c.CariKod 'Cari Kod',ct.Ad 'Cari Türü'
-                                            ,c.CariAdi 'Ad Soyad', k.KasaAdi 'Kasa'
-                                            ,g.Aciklama 'Açıklama', g.Tutar, gt.Ad 'Gider Adı' from Gider g
+                SqlCommand cmdBugun = new SqlCommand(@"select g.Tarih 'Tarih', g.GiderID as'Gider No', gt.Ad 'Gider Türü'
+                                            ,c.CariID as 'Cari No', c.CariKod 'Cari Kod',c.CariAdi 'Cari Adı', ct.Ad 'Cari Türü'
+                                            ,k.KasaAdi 'Kasa'
+                                            ,g.Tutar, g.Aciklama 'Açıklama' from Gider g
                                               Left Join GiderTipi gt
                                               On g.Tipi= gt.ID
                                               Left Join Kasalar k
@@ -435,9 +440,10 @@ namespace Kobi_v1
                 if (baglanti.State == ConnectionState.Closed) baglanti.Open();
 
 
-                SqlCommand cmdBugun = new SqlCommand(@"select g.Tarih 'Tarih', g.GiderID as'Gider No',c.CariKod 'Cari Kod',ct.Ad 'Cari Türü'
-                                            ,c.CariAdi 'Ad Soyad', k.KasaAdi 'Kasa'
-                                            ,g.Aciklama 'Açıklama', g.Tutar, gt.Ad 'Gider Adı' from Gider g
+                SqlCommand cmdBugun = new SqlCommand(@"select g.Tarih 'Tarih', g.GiderID as'Gider No', gt.Ad 'Gider Türü'
+                                            ,c.CariID as 'Cari No', c.CariKod 'Cari Kod',c.CariAdi 'Cari Adı', ct.Ad 'Cari Türü'
+                                            ,k.KasaAdi 'Kasa'
+                                            ,g.Tutar, g.Aciklama 'Açıklama' from Gider g
                                               Left Join GiderTipi gt
                                               On g.Tipi= gt.ID
                                               Left Join Kasalar k
@@ -473,9 +479,10 @@ namespace Kobi_v1
                 if (baglanti.State == ConnectionState.Closed) baglanti.Open();
 
 
-                SqlCommand cmdBugun = new SqlCommand(@"select g.Tarih 'Tarih', g.GiderID as'Gider No',c.CariKod 'Cari Kod',ct.Ad 'Cari Türü'
-                                            ,c.CariAdi 'Ad Soyad', k.KasaAdi 'Kasa'
-                                            ,g.Aciklama 'Açıklama', g.Tutar, gt.Ad 'Gider Adı' from Gider g
+                SqlCommand cmdBugun = new SqlCommand(@"select g.Tarih 'Tarih', g.GiderID as'Gider No', gt.Ad 'Gider Türü'
+                                            ,c.CariID as 'Cari No', c.CariKod 'Cari Kod',c.CariAdi 'Cari Adı', ct.Ad 'Cari Türü'
+                                            ,k.KasaAdi 'Kasa'
+                                            ,g.Tutar, g.Aciklama 'Açıklama' from Gider g
                                               Left Join GiderTipi gt
                                               On g.Tipi= gt.ID
                                               Left Join Kasalar k
@@ -583,7 +590,7 @@ namespace Kobi_v1
                 DateTime tarih = Convert.ToDateTime(row.Cells["Tarih"].Value);
                 string giderno = row.Cells["Gider No"].Value.ToString();
                 string carino = row.Cells["Cari No"].Value.ToString();
-                string gideradi = row.Cells["Gider Adı"].Value.ToString();
+                string gideradi = row.Cells["Cari Adı"].Value.ToString();
                 string carikod = row.Cells["Cari Kod"].Value.ToString();
                 string kasa = row.Cells["Kasa"].Value.ToString();
                 string aciklama = row.Cells["Açıklama"].Value.ToString();

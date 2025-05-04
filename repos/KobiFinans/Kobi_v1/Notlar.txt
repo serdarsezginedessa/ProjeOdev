@@ -17,6 +17,7 @@ Ok.	5- Satış Ekranında Peşinat Yada Ödeme alanı oluşturulacak..// Bunu Ye
 			tahsil edilen tutar daha büyükse kaln tutar tahsilat ekranına aktarılır..
 
 	7- Herhangi bir belgeyi silmek mantıklı değil durum alanından durmunu değiştirip listelem ekranını ona göre ayarlamak daha mantıklı.
+	8- Tahsilat ekranında FaturaNo seçme işlevi faturaya istinaden tahsilat için..
 	------------------------------------------------------
 
 

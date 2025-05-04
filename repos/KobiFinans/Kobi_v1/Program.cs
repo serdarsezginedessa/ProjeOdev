@@ -21,19 +21,20 @@ namespace Kobi_v1
             SqlConnection baglanti = new SqlConnection(connectionString);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
             if (baglanti.State == System.Data.ConnectionState.Closed) baglanti.Open();
             SqlCommand cmd = new SqlCommand("Select KullaniciID from Kullanici", baglanti);
             object count = cmd.ExecuteScalar();
-            if(count!=null)
+            if(count!=null)//Kayıtlı Kullanıcı varsa
             {
                 Application.Run(new FrmLogin());
             }
-            else
+            else //Kayıtlı Kullanıcı yoksa
             {
                 Application.Run(new FrmKullaniciEkle());
             }
-            
-            
+            baglanti.Close();
+
         }
     }
 }

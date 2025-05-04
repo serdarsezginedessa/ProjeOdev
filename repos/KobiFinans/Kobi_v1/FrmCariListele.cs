@@ -69,7 +69,8 @@ namespace Kobi_v1
                 c.EvlilikTarihi,
                 c.KayitTarihi,
                 c.Durum,
-                c.Aciklama
+                c.Aciklama,
+                c.resim
 		        From cari as c
 		        INNER JOIN
 		        CariTuru as ct
@@ -93,7 +94,8 @@ namespace Kobi_v1
                 c.EvlilikTarihi,
                 c.KayitTarihi,
                 c.Durum,
-                c.Aciklama
+                c.Aciklama,
+                c.Resim
 		        From cari as c
 		        INNER JOIN
 		        CariTuru as ct
@@ -117,7 +119,8 @@ namespace Kobi_v1
                 c.EvlilikTarihi,
                 c.KayitTarihi,
                 c.Durum,
-                c.Aciklama
+                c.Aciklama,
+                c.Resim
 		        From cari as c
 		        INNER JOIN
 		        CariTuru as ct
@@ -141,7 +144,8 @@ namespace Kobi_v1
                 c.EvlilikTarihi,
                 c.KayitTarihi,
                 c.Durum,
-                c.Aciklama
+                c.Aciklama,
+                c.Resim
                 From cari as c
                 INNER JOIN
                 CariTuru as ct
@@ -166,7 +170,8 @@ namespace Kobi_v1
                                     c.EvlilikTarihi,
                                     c.KayitTarihi,
                                     c.Durum,
-                                    c.Aciklama
+                                    c.Aciklama,
+                                    c.Resim
 		                            From cari as c
 		                            INNER JOIN
 		                            CariTuru as ct
@@ -190,7 +195,8 @@ namespace Kobi_v1
                                     c.EvlilikTarihi,
                                     c.KayitTarihi,
                                     c.Durum,
-                                    c.Aciklama
+                                    c.Aciklama,
+                                    c.Resim
                                     From cari as c
                                     INNER JOIN
                                     CariTuru as ct
@@ -214,7 +220,8 @@ namespace Kobi_v1
                                     c.EvlilikTarihi,
                                     c.KayitTarihi,
                                     c.Durum,
-                                    c.Aciklama
+                                    c.Aciklama,
+                                    c.Resim
                                     From cari as c
                                     INNER JOIN
                                     CariTuru as ct
@@ -238,7 +245,8 @@ namespace Kobi_v1
                                     c.EvlilikTarihi,
                                     c.KayitTarihi,
                                     c.Durum,
-                                    c.Aciklama
+                                    c.Aciklama,
+                                    c.Resim
                                     From cari as c
                                     INNER JOIN
                                     CariTuru as ct
@@ -262,7 +270,8 @@ namespace Kobi_v1
                                     c.EvlilikTarihi,
                                     c.KayitTarihi,
                                     c.Durum,
-                                    c.Aciklama
+                                    c.Aciklama,
+                                    c.Resim
                                     From cari as c
                                     INNER JOIN
                                     CariTuru as ct
@@ -470,8 +479,9 @@ namespace Kobi_v1
                     SqlDataAdapter da = new SqlDataAdapter(kmtCariTur);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
-
+                    
                     dataGridView1.Rows.Clear(); // Mevcut satırları temizleyin Manuel Eklediğim Başlıklar Bozulmuyor..
+                    
                     foreach (DataRow row in dt.Rows)
                     {
                         dataGridView1.Rows.Add(row.ItemArray); // Satırlar ekleniyor..
@@ -480,7 +490,8 @@ namespace Kobi_v1
                 }
                 else
                 {
-                    SqlCommand kmtCariTur = new SqlCommand(sorguInnerJoin, baglanti);
+                    listele();
+                    /*SqlCommand kmtCariTur = new SqlCommand(sorguInnerJoin, baglanti);
                     SqlDataAdapter da = new SqlDataAdapter(kmtCariTur);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
@@ -490,7 +501,7 @@ namespace Kobi_v1
                     {
                         dataGridView1.Rows.Add(row.ItemArray); // Satırlar ekleniyor..
                     }
-                    baglanti.Close();
+                    baglanti.Close();*/
                 }
                 
             }
