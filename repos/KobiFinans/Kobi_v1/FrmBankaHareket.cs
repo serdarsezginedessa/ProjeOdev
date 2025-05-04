@@ -155,8 +155,10 @@ namespace Kobi_v1
                                                     Inner Join Cari c
                                                     On
                                                     c.CariID=bh.CariID
+
                                                     WHERE bh.Tarih >= @tarih AND bh.Tarih < DATEADD(DAY, 1, @tarih)", baglanti);
-                    kmt.Parameters.AddWithValue("@Tarih", DateTime.Now.Date);
+
+                    kmt.Parameters.AddWithValue("@tarih", DateTime.Now.Date);
                     SqlDataAdapter da = new SqlDataAdapter(kmt);
                     DataTable dt = new DataTable();
                     da.Fill(dt);

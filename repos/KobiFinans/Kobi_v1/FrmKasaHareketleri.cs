@@ -88,7 +88,7 @@ namespace Kobi_v1
                                                             kh.CariID=c.CariID
                                 WHERE kh.Tarih >= @tarih AND kh.Tarih < DATEADD(DAY, 1, @tarih)";
             SqlCommand cmd = new SqlCommand(sorgu, baglanti);
-            cmd.Parameters.AddWithValue("@tarih", DateTime.Now);
+            cmd.Parameters.AddWithValue("@tarih", Date1.Value.Date);
 
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();

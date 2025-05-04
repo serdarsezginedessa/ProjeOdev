@@ -119,6 +119,8 @@ namespace Kobi_v1
 
                 object result = cmd.ExecuteScalar();
 
+
+                //2- Cari Hareket Ekleniyor BankaId ye dikkat forignkey değer istiyor ama null gidecek. Gider kayıtlarını sadece kasadan yaptık
                 if (result != null)
                 {
                     giderId = Convert.ToInt32(result);
@@ -139,6 +141,8 @@ namespace Kobi_v1
                 cmdCariHareket.Parameters.AddWithValue("@giderId", giderId);
 
                 cmdCariHareket.ExecuteNonQuery();
+
+                //3- Kasa Hareket Ekleniyor
 
                 SqlCommand cmdKasaHareket = new SqlCommand(@"Insert into KasaHareketleri (KasaID,CariID,Tutar,Tarih,Aciklama,HareketTipi,GiderId) Values 
                                                             (@kasaId,@cariId,@tutar, @tarih, @aciklama, @tip, @giderId)", baglanti, transaction);
