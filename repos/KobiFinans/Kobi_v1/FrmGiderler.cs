@@ -178,6 +178,8 @@ namespace Kobi_v1
                 txtGiderNo.Text = "";
                 txtCariID.Focus();
                 btnKaydet.Enabled = false;
+                Form1 frm = (Form1)this.Owner;
+                frm.GelirGiderGet();
 
 
 
@@ -278,7 +280,8 @@ namespace Kobi_v1
 
                 MessageBox.Show("Gider Başarıyla güncellendi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-
+                Form1 frm = (Form1)this.Owner;
+                frm.GelirGiderGet();
 
             }
             catch (Exception ex)
@@ -320,7 +323,8 @@ namespace Kobi_v1
                 cmdSilKasa.ExecuteNonQuery();
                 MessageBox.Show("Gider Başarıyla Silindi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-
+                Form1 frm = (Form1)this.Owner;
+                frm.GelirGiderGet();
 
                 transaction.Commit();
             }

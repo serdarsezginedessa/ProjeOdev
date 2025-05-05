@@ -33,24 +33,6 @@
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.lblTime = new System.Windows.Forms.Label();
-            this.llblKullanici = new System.Windows.Forms.Label();
-            this.lblRol = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.lblToplamGelir = new System.Windows.Forms.Label();
-            this.lblToplamGider = new System.Windows.Forms.Label();
-            this.lblKasaBakiyesi = new System.Windows.Forms.Label();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.chartKasaOzet = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.btnCikis = new System.Windows.Forms.Button();
-            this.btnLogout = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.cariToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cariListeleriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cariOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -77,6 +59,24 @@
             this.bankaRaporToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.carilerHareketleriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.StokHareketleriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblTime = new System.Windows.Forms.Label();
+            this.llblKullanici = new System.Windows.Forms.Label();
+            this.lblRol = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnCikis = new System.Windows.Forms.Button();
+            this.btnLogout = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblToplamGelir = new System.Windows.Forms.Label();
+            this.lblToplamGider = new System.Windows.Forms.Label();
+            this.lblKasaBakiyesi = new System.Windows.Forms.Label();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.chartKasaOzet = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -106,281 +106,6 @@
             this.menuStrip1.Stretch = false;
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // lblTime
-            // 
-            this.lblTime.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblTime.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblTime.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.lblTime.Font = new System.Drawing.Font("Arial Rounded MT Bold", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(182)))), ((int)(((byte)(149)))));
-            this.lblTime.Location = new System.Drawing.Point(3, 72);
-            this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(219, 72);
-            this.lblTime.TabIndex = 2;
-            this.lblTime.Text = "20:20:20";
-            // 
-            // llblKullanici
-            // 
-            this.llblKullanici.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.llblKullanici.AutoSize = true;
-            this.llblKullanici.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.llblKullanici.ForeColor = System.Drawing.Color.Olive;
-            this.llblKullanici.Location = new System.Drawing.Point(99, 6);
-            this.llblKullanici.Name = "llblKullanici";
-            this.llblKullanici.Size = new System.Drawing.Size(60, 24);
-            this.llblKullanici.TabIndex = 3;
-            this.llblKullanici.Text = "label1";
-            // 
-            // lblRol
-            // 
-            this.lblRol.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblRol.AutoSize = true;
-            this.lblRol.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblRol.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(26)))), ((int)(((byte)(54)))));
-            this.lblRol.Location = new System.Drawing.Point(99, 41);
-            this.lblRol.Name = "lblRol";
-            this.lblRol.Size = new System.Drawing.Size(60, 24);
-            this.lblRol.TabIndex = 3;
-            this.lblRol.Text = "label1";
-            // 
-            // panel1
-            // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.lblRol);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.llblKullanici);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(219, 66);
-            this.panel1.TabIndex = 4;
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(26)))), ((int)(((byte)(54)))));
-            this.label4.Location = new System.Drawing.Point(43, 41);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(38, 24);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Rol";
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label3.ForeColor = System.Drawing.Color.Olive;
-            this.label3.Location = new System.Drawing.Point(13, 6);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 24);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Kullanıcı";
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.btnCikis, 0, 7);
-            this.tableLayoutPanel1.Controls.Add(this.btnLogout, 0, 6);
-            this.tableLayoutPanel1.Controls.Add(this.button2, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.lblTime, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 3);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(975, 48);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 8;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.56281F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.56281F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.56281F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.56281F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.56281F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.56281F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.56281F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.0603F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(225, 575);
-            this.tableLayoutPanel1.TabIndex = 5;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label2.ForeColor = System.Drawing.Color.IndianRed;
-            this.label2.Location = new System.Drawing.Point(3, 216);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(219, 26);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "label2";
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.AutoSize = true;
-            this.tableLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutPanel2.ColumnCount = 4;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.58974F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.35897F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.69231F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.18013F));
-            this.tableLayoutPanel2.Controls.Add(this.lblToplamGelir, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.lblToplamGider, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.lblKasaBakiyesi, 2, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 575);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 48F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 48F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 48F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(975, 48);
-            this.tableLayoutPanel2.TabIndex = 6;
-            // 
-            // lblToplamGelir
-            // 
-            this.lblToplamGelir.AutoSize = true;
-            this.lblToplamGelir.Location = new System.Drawing.Point(3, 0);
-            this.lblToplamGelir.Name = "lblToplamGelir";
-            this.lblToplamGelir.Size = new System.Drawing.Size(0, 24);
-            this.lblToplamGelir.TabIndex = 0;
-            // 
-            // lblToplamGider
-            // 
-            this.lblToplamGider.AutoSize = true;
-            this.lblToplamGider.Location = new System.Drawing.Point(155, 0);
-            this.lblToplamGider.Name = "lblToplamGider";
-            this.lblToplamGider.Size = new System.Drawing.Size(0, 24);
-            this.lblToplamGider.TabIndex = 0;
-            // 
-            // lblKasaBakiyesi
-            // 
-            this.lblKasaBakiyesi.AutoSize = true;
-            this.lblKasaBakiyesi.Location = new System.Drawing.Point(334, 0);
-            this.lblKasaBakiyesi.Name = "lblKasaBakiyesi";
-            this.lblKasaBakiyesi.Size = new System.Drawing.Size(0, 24);
-            this.lblKasaBakiyesi.TabIndex = 1;
-            // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.5641F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65.4359F));
-            this.tableLayoutPanel3.Controls.Add(this.chartKasaOzet, 0, 1);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 48);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 2;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55.04587F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 44.95413F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(975, 527);
-            this.tableLayoutPanel3.TabIndex = 7;
-            this.tableLayoutPanel3.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel3_Paint);
-            // 
-            // chartKasaOzet
-            // 
-            this.chartKasaOzet.BackColor = System.Drawing.Color.IndianRed;
-            this.chartKasaOzet.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.DiagonalLeft;
-            this.chartKasaOzet.BorderlineColor = System.Drawing.Color.Black;
-            this.chartKasaOzet.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.DashDot;
-            chartArea1.Name = "ChartArea1";
-            this.chartKasaOzet.ChartAreas.Add(chartArea1);
-            this.chartKasaOzet.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.Name = "Legend1";
-            this.chartKasaOzet.Legends.Add(legend1);
-            this.chartKasaOzet.Location = new System.Drawing.Point(3, 293);
-            this.chartKasaOzet.Name = "chartKasaOzet";
-            this.chartKasaOzet.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
-            this.chartKasaOzet.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chartKasaOzet.Series.Add(series1);
-            this.chartKasaOzet.Size = new System.Drawing.Size(330, 231);
-            this.chartKasaOzet.SuppressExceptions = true;
-            this.chartKasaOzet.TabIndex = 0;
-            this.chartKasaOzet.Text = "chart1";
-            // 
-            // btnCikis
-            // 
-            this.btnCikis.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnCikis.BackColor = System.Drawing.Color.Transparent;
-            this.btnCikis.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnCikis.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnCikis.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
-            this.btnCikis.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnCikis.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.btnCikis.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnCikis.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnCikis.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCikis.Image = global::Kobi_v1.Properties.Resources.Export80;
-            this.btnCikis.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCikis.Location = new System.Drawing.Point(3, 507);
-            this.btnCikis.Name = "btnCikis";
-            this.btnCikis.Size = new System.Drawing.Size(219, 65);
-            this.btnCikis.TabIndex = 6;
-            this.btnCikis.Text = "            Çıkış";
-            this.btnCikis.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCikis.UseVisualStyleBackColor = false;
-            this.btnCikis.Click += new System.EventHandler(this.btnCikis_Click);
-            // 
-            // btnLogout
-            // 
-            this.btnLogout.AutoSize = true;
-            this.btnLogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(182)))), ((int)(((byte)(149)))));
-            this.btnLogout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnLogout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnLogout.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
-            this.btnLogout.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnLogout.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnLogout.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnLogout.Image = global::Kobi_v1.Properties.Resources.Logout80;
-            this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogout.Location = new System.Drawing.Point(3, 435);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(219, 66);
-            this.btnLogout.TabIndex = 5;
-            this.btnLogout.Text = "Oturum Kapat";
-            this.btnLogout.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnLogout.UseVisualStyleBackColor = false;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
-            // 
-            // button2
-            // 
-            this.button2.AutoSize = true;
-            this.button2.BackColor = System.Drawing.SystemColors.Highlight;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Image = global::Kobi_v1.Properties.Resources.Calculator80;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(3, 363);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(219, 66);
-            this.button2.TabIndex = 0;
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // label1
-            // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Image = global::Kobi_v1.Properties.Resources.User_Groups1;
-            this.label1.Location = new System.Drawing.Point(3, 144);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(219, 72);
-            this.label1.TabIndex = 0;
             // 
             // cariToolStripMenuItem
             // 
@@ -621,6 +346,282 @@
             this.StokHareketleriToolStripMenuItem.Name = "StokHareketleriToolStripMenuItem";
             this.StokHareketleriToolStripMenuItem.Size = new System.Drawing.Size(238, 46);
             this.StokHareketleriToolStripMenuItem.Text = "Stok Hareketleri";
+            // 
+            // lblTime
+            // 
+            this.lblTime.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblTime.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblTime.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.lblTime.Font = new System.Drawing.Font("Arial Rounded MT Bold", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(182)))), ((int)(((byte)(149)))));
+            this.lblTime.Location = new System.Drawing.Point(3, 72);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(219, 72);
+            this.lblTime.TabIndex = 2;
+            this.lblTime.Text = "20:20:20";
+            // 
+            // llblKullanici
+            // 
+            this.llblKullanici.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.llblKullanici.AutoSize = true;
+            this.llblKullanici.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.llblKullanici.ForeColor = System.Drawing.Color.Olive;
+            this.llblKullanici.Location = new System.Drawing.Point(99, 6);
+            this.llblKullanici.Name = "llblKullanici";
+            this.llblKullanici.Size = new System.Drawing.Size(60, 24);
+            this.llblKullanici.TabIndex = 3;
+            this.llblKullanici.Text = "label1";
+            // 
+            // lblRol
+            // 
+            this.lblRol.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblRol.AutoSize = true;
+            this.lblRol.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblRol.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(26)))), ((int)(((byte)(54)))));
+            this.lblRol.Location = new System.Drawing.Point(99, 41);
+            this.lblRol.Name = "lblRol";
+            this.lblRol.Size = new System.Drawing.Size(60, 24);
+            this.lblRol.TabIndex = 3;
+            this.lblRol.Text = "label1";
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.lblRol);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.llblKullanici);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(219, 66);
+            this.panel1.TabIndex = 4;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(26)))), ((int)(((byte)(54)))));
+            this.label4.Location = new System.Drawing.Point(43, 41);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(38, 24);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Rol";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label3.ForeColor = System.Drawing.Color.Olive;
+            this.label3.Location = new System.Drawing.Point(13, 6);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(80, 24);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Kullanıcı";
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.btnCikis, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(this.btnLogout, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.button2, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.lblTime, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 3);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(975, 48);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 8;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.56281F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.56281F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.56281F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.56281F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.56281F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.56281F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.56281F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.0603F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(225, 575);
+            this.tableLayoutPanel1.TabIndex = 5;
+            // 
+            // btnCikis
+            // 
+            this.btnCikis.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnCikis.BackColor = System.Drawing.Color.Transparent;
+            this.btnCikis.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnCikis.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnCikis.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.btnCikis.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnCikis.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btnCikis.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCikis.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnCikis.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnCikis.Image = global::Kobi_v1.Properties.Resources.Export80;
+            this.btnCikis.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCikis.Location = new System.Drawing.Point(3, 507);
+            this.btnCikis.Name = "btnCikis";
+            this.btnCikis.Size = new System.Drawing.Size(219, 65);
+            this.btnCikis.TabIndex = 6;
+            this.btnCikis.Text = "            Çıkış";
+            this.btnCikis.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCikis.UseVisualStyleBackColor = false;
+            this.btnCikis.Click += new System.EventHandler(this.btnCikis_Click);
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.AutoSize = true;
+            this.btnLogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(182)))), ((int)(((byte)(149)))));
+            this.btnLogout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnLogout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnLogout.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.btnLogout.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnLogout.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnLogout.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnLogout.Image = global::Kobi_v1.Properties.Resources.Logout80;
+            this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLogout.Location = new System.Drawing.Point(3, 435);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(219, 66);
+            this.btnLogout.TabIndex = 5;
+            this.btnLogout.Text = "Oturum Kapat";
+            this.btnLogout.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLogout.UseVisualStyleBackColor = false;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
+            // button2
+            // 
+            this.button2.AutoSize = true;
+            this.button2.BackColor = System.Drawing.SystemColors.Highlight;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button2.Image = global::Kobi_v1.Properties.Resources.Calculator80;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(3, 363);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(219, 66);
+            this.button2.TabIndex = 0;
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // label1
+            // 
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label1.Image = global::Kobi_v1.Properties.Resources.User_Groups1;
+            this.label1.Location = new System.Drawing.Point(3, 144);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(219, 72);
+            this.label1.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label2.ForeColor = System.Drawing.Color.IndianRed;
+            this.label2.Location = new System.Drawing.Point(3, 216);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(219, 26);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "label2";
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.AutoSize = true;
+            this.tableLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tableLayoutPanel2.ColumnCount = 4;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.58974F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.35897F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.69231F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.18013F));
+            this.tableLayoutPanel2.Controls.Add(this.lblToplamGelir, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.lblToplamGider, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.lblKasaBakiyesi, 2, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 575);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 48F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 48F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 48F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(975, 48);
+            this.tableLayoutPanel2.TabIndex = 6;
+            // 
+            // lblToplamGelir
+            // 
+            this.lblToplamGelir.AutoSize = true;
+            this.lblToplamGelir.Location = new System.Drawing.Point(3, 0);
+            this.lblToplamGelir.Name = "lblToplamGelir";
+            this.lblToplamGelir.Size = new System.Drawing.Size(0, 24);
+            this.lblToplamGelir.TabIndex = 0;
+            // 
+            // lblToplamGider
+            // 
+            this.lblToplamGider.AutoSize = true;
+            this.lblToplamGider.Location = new System.Drawing.Point(155, 0);
+            this.lblToplamGider.Name = "lblToplamGider";
+            this.lblToplamGider.Size = new System.Drawing.Size(0, 24);
+            this.lblToplamGider.TabIndex = 0;
+            // 
+            // lblKasaBakiyesi
+            // 
+            this.lblKasaBakiyesi.AutoSize = true;
+            this.lblKasaBakiyesi.Location = new System.Drawing.Point(334, 0);
+            this.lblKasaBakiyesi.Name = "lblKasaBakiyesi";
+            this.lblKasaBakiyesi.Size = new System.Drawing.Size(0, 24);
+            this.lblKasaBakiyesi.TabIndex = 1;
+            this.lblKasaBakiyesi.TextChanged += new System.EventHandler(this.lblKasaBakiyesi_TextChanged_1);
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.5641F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65.4359F));
+            this.tableLayoutPanel3.Controls.Add(this.chartKasaOzet, 0, 1);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 48);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 2;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55.04587F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 44.95413F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(975, 527);
+            this.tableLayoutPanel3.TabIndex = 7;
+            this.tableLayoutPanel3.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel3_Paint);
+            // 
+            // chartKasaOzet
+            // 
+            this.chartKasaOzet.BackColor = System.Drawing.Color.IndianRed;
+            this.chartKasaOzet.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.DiagonalLeft;
+            this.chartKasaOzet.BorderlineColor = System.Drawing.Color.Black;
+            this.chartKasaOzet.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.DashDot;
+            chartArea1.Name = "ChartArea1";
+            this.chartKasaOzet.ChartAreas.Add(chartArea1);
+            this.chartKasaOzet.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend1.Name = "Legend1";
+            this.chartKasaOzet.Legends.Add(legend1);
+            this.chartKasaOzet.Location = new System.Drawing.Point(3, 293);
+            this.chartKasaOzet.Name = "chartKasaOzet";
+            this.chartKasaOzet.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
+            this.chartKasaOzet.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartKasaOzet.Series.Add(series1);
+            this.chartKasaOzet.Size = new System.Drawing.Size(330, 231);
+            this.chartKasaOzet.SuppressExceptions = true;
+            this.chartKasaOzet.TabIndex = 0;
+            this.chartKasaOzet.Text = "chart1";
             // 
             // Form1
             // 

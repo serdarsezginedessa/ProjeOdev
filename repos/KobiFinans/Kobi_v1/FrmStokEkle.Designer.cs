@@ -91,6 +91,7 @@
             this.btnKategoriEkle.Size = new System.Drawing.Size(41, 38);
             this.btnKategoriEkle.TabIndex = 28;
             this.btnKategoriEkle.UseVisualStyleBackColor = false;
+            this.btnKategoriEkle.Click += new System.EventHandler(this.btnKategoriEkle_Click);
             // 
             // combxKategori
             // 
@@ -130,6 +131,7 @@
             this.btnSil.Text = "Sil";
             this.btnSil.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSil.UseVisualStyleBackColor = false;
+            this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
             // 
             // btnKayit
             // 
@@ -165,6 +167,7 @@
             this.btnEkle.Text = "Yeni";
             this.btnEkle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEkle.UseVisualStyleBackColor = false;
+            this.btnEkle.Click += new System.EventHandler(this.btnEkle_Click);
             // 
             // btniptal
             // 
@@ -182,6 +185,7 @@
             this.btniptal.Text = "İptal";
             this.btniptal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btniptal.UseVisualStyleBackColor = false;
+            this.btniptal.Click += new System.EventHandler(this.btniptal_Click);
             // 
             // btnKapat
             // 
@@ -218,6 +222,7 @@
             this.btnGuncelle.Text = "Düzelt";
             this.btnGuncelle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGuncelle.UseVisualStyleBackColor = false;
+            this.btnGuncelle.Click += new System.EventHandler(this.btnGuncelle_Click);
             // 
             // chcDurum
             // 
@@ -464,6 +469,7 @@
             this.btnUrunAra.TabIndex = 28;
             this.btnUrunAra.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnUrunAra.UseVisualStyleBackColor = false;
+            this.btnUrunAra.Click += new System.EventHandler(this.btnUrunAra_Click);
             // 
             // combxKdv
             // 

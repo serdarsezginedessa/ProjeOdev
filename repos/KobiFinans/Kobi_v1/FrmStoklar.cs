@@ -21,6 +21,7 @@ namespace Kobi_v1
         }
         private static string connectionString = ConfigurationManager.ConnectionStrings["KobiFinans"].ConnectionString;
         SqlConnection baglanti = new SqlConnection(connectionString);
+
         public Form CagrilanForm { get; set; }
         public int SeciliSatir { get; set; }
 
@@ -123,9 +124,23 @@ KategoriID";
                 // Ürün bilgilerini al
                 string urunNo = secilenSatir.Cells["ur.UrunID"].Value?.ToString();         // Ürün ID (opsiyonel)
                 string urunKodu = secilenSatir.Cells["ur.UrunKodu"].Value?.ToString();
+                string barkod = secilenSatir.Cells["ur.Barkod"].Value?.ToString();
                 string urunAdi = secilenSatir.Cells["ur.UrunAdi"].Value?.ToString();
+                string kategori = secilenSatir.Cells["uk.KategoriID"].Value?.ToString();
+                string marka = secilenSatir.Cells["ur.Marka"].Value?.ToString();
+                string model = secilenSatir.Cells["ur.Model"].Value?.ToString();
+                string alisFiyati = secilenSatir.Cells["ur.AlisFiyati"].Value?.ToString();
                 string urunFiyat = secilenSatir.Cells["ur.SatisFiyati"].Value?.ToString();
                 string urunKdv = secilenSatir.Cells["ur.Kdv"].Value?.ToString();
+                string stokMiktari = secilenSatir.Cells["ur.StokMiktari"].Value?.ToString();
+                string aciklama = secilenSatir.Cells["ur.Aciklama"].Value?.ToString();
+                string resim = secilenSatir.Cells["ur.Resim"].Value?.ToString();
+                string durum = secilenSatir.Cells["ur.Durum"].Value?.ToString();
+                string kayitTarihi = secilenSatir.Cells["ur.KayitTarihi"].Value?.ToString();
+                string birim = secilenSatir.Cells["ur.Birim"].Value?.ToString();
+
+
+
 
                 // Ürünü çağıran forma aktar
                 if (this.CagrilanForm is FrmSatis satisFormu)
@@ -133,6 +148,11 @@ KategoriID";
                     int satirIndex = Convert.ToInt32(this.Tag); // hangi satıra ürün eklenecek
 
                     satisFormu.StokBilgileriYukle(urunNo, urunKodu, urunAdi, urunFiyat, urunKdv, satirIndex);
+                }
+                if(this.CagrilanForm is FrmStokEkle stokEkleFormu)
+                {
+                    
+                    stokEkleFormu.StokBilgileriYukle(urunNo, urunKodu,barkod, urunAdi,kategori,marka,model,alisFiyati, urunFiyat, urunKdv,stokMiktari,aciklama,resim,durum,kayitTarihi,birim);
                 }
 
                 this.Close();

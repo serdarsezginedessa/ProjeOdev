@@ -34,6 +34,14 @@ namespace Kobi_v1
             userCountGet();
             GelirGiderGet();
             KasaOzetGrafik();
+
+            lblKasaBakiyesi.TextChanged += lblKasaBakiyesi_TextChanged_1;
+        }
+
+        private void lblKasaBakiyesi_TextChanged_1(object sender, EventArgs e)
+        {KasaOzetGrafik();
+            
+
         }
 
         public void userCountGet()
@@ -67,9 +75,10 @@ namespace Kobi_v1
 
                 SqlCommand cmd = new SqlCommand(@"
             SELECT 
-                SUM(CASE WHEN HareketTipi IN ('Tahsilat', 'Giriş') THEN Tutar ELSE 0 END) AS ToplamGelir,
-                SUM(CASE WHEN HareketTipi IN ('Tediye', 'Çıkış', 'Gider') THEN Tutar ELSE 0 END) AS ToplamGider
-            FROM KasaHareketleri", baglanti);
+                SUM(CASE WHEN HareketTipi IN ('Tahsilat') THEN Tutar ELSE 0 END) AS ToplamGelir,
+                SUM(CASE WHEN HareketTipi IN ('Gider') THEN Tutar ELSE 0 END) AS ToplamGider
+            FROM KasaHareketleri
+            WHERE CAST(Tarih AS DATE) = CAST(GETDATE() AS DATE)", baglanti);
 
                 SqlDataReader dr = cmd.ExecuteReader();
                 if (dr.Read())
@@ -102,6 +111,7 @@ namespace Kobi_v1
         {
             try
             {
+                
                 if (baglanti.State == ConnectionState.Closed) baglanti.Open();
 
                 SqlCommand cmd = new SqlCommand(@"
@@ -219,7 +229,7 @@ namespace Kobi_v1
         private void TahsilatToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmTahsilat frm = new FrmTahsilat();
-            frm.Owner = this; // this = ana form
+            frm.ParetForm = this; // this = ana form
             frm.ShowDialog();
         }
 
@@ -302,5 +312,7 @@ private void giderToolStripMenuItem_Click_1(object sender, EventArgs e)
                 
             }
         }
+
+
     }
 }

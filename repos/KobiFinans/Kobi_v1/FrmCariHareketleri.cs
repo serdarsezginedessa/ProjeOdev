@@ -94,6 +94,32 @@ namespace Kobi_v1
             }
         }
 
+        private void HesaplaGelirGider()
+        {
+            decimal toplamGelir = 0;
+            decimal toplamGider = 0;
+
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (row.IsNewRow) continue; // Yeni satırı atla
+
+                string hareketTipi = row.Cells["ch.HareketTipi"].Value?.ToString();
+                decimal tutar;
+
+                if (decimal.TryParse(row.Cells["ch.Tutar"].Value?.ToString(), out tutar))
+                {
+                    if (hareketTipi == "Alacak")
+                        toplamGelir += tutar;
+                    else if (hareketTipi == "Borç")
+                        toplamGider += tutar;
+                }
+            }
+
+            txtGelirTop.Text = toplamGelir.ToString("N2");
+            txtGiderTop.Text = toplamGider.ToString("N2");
+            txtGenelTop.Text = (toplamGelir - toplamGider).ToString("N2");
+        }
+
         private void BugunRapor()
         {
             try
@@ -141,6 +167,7 @@ namespace Kobi_v1
             {
                 baglanti.Close();
             }
+            HesaplaGelirGider();
         }
 
         private void TumRapor()
@@ -186,6 +213,7 @@ namespace Kobi_v1
             {
                 baglanti.Close();
             }
+            HesaplaGelirGider();
         }
         private void IkiTarihArasiRapor()
         {
@@ -232,7 +260,11 @@ namespace Kobi_v1
             {
                 baglanti.Close();
             }
+            HesaplaGelirGider();
         }
+
+
+
 
 
 
@@ -285,6 +317,7 @@ namespace Kobi_v1
             {
                 baglanti.Close();
             }
+            HesaplaGelirGider();
         }
 
         private void comboBanka_SelectedIndexChanged(object sender, EventArgs e)
@@ -339,6 +372,7 @@ namespace Kobi_v1
             {
                 baglanti.Close();
             }
+            HesaplaGelirGider();
         }
 
         private void btnSifirla_Click(object sender, EventArgs e)
@@ -411,6 +445,7 @@ namespace Kobi_v1
             {
                 baglanti.Close();
             }
+            HesaplaGelirGider();
         }
 
         private void txtCariAD_TextChanged(object sender, EventArgs e)
@@ -458,6 +493,7 @@ namespace Kobi_v1
             {
                 baglanti.Close();
             }
+            HesaplaGelirGider();
         }
 
         private void Date1_ValueChanged(object sender, EventArgs e)

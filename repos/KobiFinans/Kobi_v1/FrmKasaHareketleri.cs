@@ -15,9 +15,11 @@ namespace Kobi_v1
 {
     public partial class FrmKasaHareketleri : Form
     {
+        private KasaHareketleriRepository _repository;
         public FrmKasaHareketleri()
         {
             InitializeComponent();
+            _repository = new KasaHareketleriRepository(ConfigurationManager.ConnectionStrings["KobiFinans"].ConnectionString);
             KasalariYukle();
             HareketTipleriYukle();
 
@@ -26,9 +28,7 @@ namespace Kobi_v1
         {
             dtHeader();
             BugunRapor();
-            gelirToplam();
-            giderToplam();
-            toplamBakiye();
+            
         }
         static string connectionString = ConfigurationManager.ConnectionStrings["KobiFinans"].ConnectionString;
         SqlConnection baglanti = new SqlConnection(connectionString);
@@ -71,10 +71,12 @@ namespace Kobi_v1
             {
                 dataGridView1.Rows.Add(row.ItemArray);
             }
+            baglanti.Close();
+            HesaplaGelirGider();
         }
         private void BugunRapor()
         {
-            if (baglanti.State == ConnectionState.Closed) baglanti.Open();
+          /*  if (baglanti.State == ConnectionState.Closed) baglanti.Open();
             string sorgu = @"Select kh.HareketID, c.CariAdi, k.kasaadi,kh.Tarih, 
                                                             kh.HareketTipi,kh.Aciklama,kh.Tutar
                                                             from KasaHareketleri kh
@@ -92,16 +94,20 @@ namespace Kobi_v1
 
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
-            da.Fill(dt);
+            da.Fill(dt);*/
+
+            var dt = _repository.GetBugunRapor(Date1.Value.Date);
+
             dataGridView1.Rows.Clear();
             foreach (DataRow row in dt.Rows)
             {
                 dataGridView1.Rows.Add(row.ItemArray);
             }
+            HesaplaGelirGider();
 
         }
 
-        private void gelirToplam()
+/*        private void gelirToplam()
         {
             if (baglanti.State == ConnectionState.Closed) baglanti.Open();
             string sorgu = "Select Sum(Tutar) From KasaHareketleri where HareketTipi='Gelir' OR HareketTipi='Tahsilat'";
@@ -109,11 +115,42 @@ namespace Kobi_v1
             txtGelirTop.Text = kmt.ExecuteScalar().ToString();
             baglanti.Close();
         }
+
+        private void gelirToplam1()
+        {
+            if (baglanti.State == ConnectionState.Closed) baglanti.Open();
+            string sorgu = @"SELECT SUM(Tutar) 
+                            FROM KasaHareketleri 
+                            WHERE (HareketTipi = 'Gelir' OR HareketTipi = 'Tahsilat') 
+                            AND CAST(Tarih AS DATE) BETWEEN @tarih1 AND @tarih2";
+            SqlCommand kmt = new SqlCommand(sorgu, baglanti);
+            kmt.Parameters.AddWithValue("@tarih1", Date1.Value.Date);
+            kmt.Parameters.AddWithValue("@tarih2", Date2.Value.Date);
+            txtGelirTop.Text = kmt.ExecuteScalar().ToString();
+            baglanti.Close();
+        }
+
+
         private void giderToplam()
         {
             if (baglanti.State == ConnectionState.Closed) baglanti.Open();
             string sorgu = "Select Sum(Tutar) From KasaHareketleri where HareketTipi='Gider'";
             SqlCommand kmt = new SqlCommand(sorgu, baglanti);
+            txtGiderTop.Text = kmt.ExecuteScalar().ToString();
+            baglanti.Close();
+        }
+
+        private void giderToplam2()
+        {
+            if (baglanti.State == ConnectionState.Closed) baglanti.Open();
+            string sorgu = @"SELECT SUM(Tutar) 
+                                FROM KasaHareketleri 
+                                WHERE HareketTipi = 'Gider' 
+                                AND CAST(Tarih AS DATE) BETWEEN @tarih1 AND @tarih2";
+
+            SqlCommand kmt = new SqlCommand(sorgu, baglanti);
+            kmt.Parameters.AddWithValue("@tarih1", Date1.Value.Date);
+            kmt.Parameters.AddWithValue("@tarih2", Date2.Value.Date);
             txtGiderTop.Text = kmt.ExecuteScalar().ToString();
             baglanti.Close();
         }
@@ -129,7 +166,7 @@ namespace Kobi_v1
 
             }
 
-        }
+        }*/
 
         private void KasalariYukle()
         {
@@ -146,17 +183,18 @@ namespace Kobi_v1
         }
         private void HareketTipleriYukle()
         {
-            if (baglanti.State == ConnectionState.Closed) baglanti.Open();
-            SqlCommand kmt = new SqlCommand("Select HareketTipi from KasaHareketleri", baglanti);
-            SqlDataReader dr = kmt.ExecuteReader();
-            while (dr.Read())
+            var hareketTipleri = new List<string>
             {
-                comboGiderTuru.Items.Add(dr["HareketTipi"].ToString());
-            }
+                "Gelir",
+                "Gider",
+                "Tahsilat"
+            };
+            comboGiderTuru.DataSource = null; // Önce mevcut veri kaynağını temizle
+            comboGiderTuru.DataSource = hareketTipleri;
 
 
             comboGiderTuru.SelectedIndex = -1;
-            baglanti.Close();
+            
         }
         private void IkiTarihArasiRapor()
         {
@@ -172,10 +210,11 @@ namespace Kobi_v1
                                                             Cari c
                                                             ON
                                                             kh.CariID=c.CariID
-                                WHERE kh.Tarih >= @tarih1 AND kh.Tarih < DATEADD(DAY, 1, @tarih2)";
+                                WHERE kh.Tarih >= @tarih1 AND kh.Tarih <= DATEADD(SECOND, -1, DATEADD(DAY, 1, @tarih2))
+";
             SqlCommand cmd = new SqlCommand(sorgu, baglanti);
-            cmd.Parameters.AddWithValue("@tarih1", Date1.Value);
-            cmd.Parameters.AddWithValue("@tarih2", Date2.Value);
+            cmd.Parameters.AddWithValue("@tarih1", Date1.Value.Date);
+            cmd.Parameters.AddWithValue("@tarih2", Date2.Value.Date);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -184,7 +223,39 @@ namespace Kobi_v1
             {
                 dataGridView1.Rows.Add(row.ItemArray);
             }
+            if (baglanti.State == ConnectionState.Open) baglanti.Close();
+            HesaplaGelirGider();
         }
+
+
+
+        private void HesaplaGelirGider()
+        {
+            decimal toplamGelir = 0;
+            decimal toplamGider = 0;
+
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (row.IsNewRow) continue; // Yeni satırı atla
+
+                string hareketTipi = row.Cells["kh.HareketTipi"].Value?.ToString();
+                decimal tutar;
+
+                if (decimal.TryParse(row.Cells["kh.Tutar"].Value?.ToString(), out tutar))
+                {
+                    if (hareketTipi == "Gelir" || hareketTipi == "Tahsilat")
+                        toplamGelir += tutar;
+                    else if (hareketTipi == "Gider")
+                        toplamGider += tutar;
+                }
+            }
+
+            txtGelirTop.Text = toplamGelir.ToString("N2");
+            txtGiderTop.Text = toplamGider.ToString("N2");
+            txtGenelTop.Text = (toplamGelir - toplamGider).ToString("N2");
+        }
+
+
 
 
         private void txtCariAD_TextChanged(object sender, EventArgs e)
@@ -212,6 +283,7 @@ namespace Kobi_v1
                 dataGridView1.Rows.Add(row.ItemArray);
             }
             baglanti.Close();
+            HesaplaGelirGider();
         }
 
         private void txtislemNo_TextChanged(object sender, EventArgs e)
@@ -239,6 +311,7 @@ namespace Kobi_v1
                 dataGridView1.Rows.Add(row.ItemArray);
             }
             baglanti.Close();
+           HesaplaGelirGider();
         }
 
         private void comboBoxKasa_SelectedIndexChanged(object sender, EventArgs e)
@@ -294,6 +367,8 @@ namespace Kobi_v1
                     dataGridView1.Rows.Add(row.ItemArray);
                 }
                 baglanti.Close();
+                HesaplaGelirGider();
+
             }
         }
 
@@ -331,6 +406,7 @@ namespace Kobi_v1
             }
 
             baglanti.Close();
+            HesaplaGelirGider();
 
         }
 
@@ -343,6 +419,7 @@ namespace Kobi_v1
                 comboGiderTuru.SelectedIndex = -1;
                 txtislemNo.Clear();
                 txtCariAD.Clear();
+                HesaplaGelirGider();
             }
             else
             {
@@ -351,6 +428,7 @@ namespace Kobi_v1
                 comboGiderTuru.SelectedIndex = -1;
                 txtislemNo.Clear();
                 txtCariAD.Clear();
+             
             }
         }
 
@@ -364,17 +442,20 @@ namespace Kobi_v1
             checkBoxTumKayitlar.Checked = false;
             Date1.Value = DateTime.Now;
             Date2.Value = DateTime.Now;
+            HesaplaGelirGider();
 
         }
 
         private void Date1_ValueChanged(object sender, EventArgs e)
         {
             IkiTarihArasiRapor();
+            HesaplaGelirGider();
         }
 
         private void Date2_ValueChanged(object sender, EventArgs e)
         {
             IkiTarihArasiRapor();
+            HesaplaGelirGider();
         }
     }
 }
