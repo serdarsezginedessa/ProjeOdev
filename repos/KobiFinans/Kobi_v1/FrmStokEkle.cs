@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,11 +26,11 @@ namespace Kobi_v1
         private void btnKapat_Click(object sender, EventArgs e)
         {
             this.Close();
-            
+
         }
         private void BtnLoad()
         {
-            btnEkle.Enabled = true;
+            btnYeni.Enabled = true;
             btniptal.Enabled = false;
             btnGuncelle.Enabled = false;
             btnSil.Enabled = false;
@@ -55,21 +56,71 @@ namespace Kobi_v1
                         {
                             ((CheckBox)item2).Checked = false;
                         }
+                        else if (item2 is DateTimePicker)
+                        {
+                            ((DateTimePicker)item2).Value = DateTime.Now;
+                        }
+
+                        else if (item2 is PictureBox)
+                        {
+                            ((PictureBox)item2).Image = null;
+                        }
+
                     }
                 }
             }
         }
 
+        
         private void FrmStokEkle_Load(object sender, EventArgs e)
         {
-            
+
             UrunKategoriYukle();
             BirimYukle();
             BtnLoad();
             txtUrunID.Enabled = false; // UrunID textbox'ını devre dışı bırak
         }
-        public void StokBilgileriYukle(string urunno,string urunkodu,string barkod, string urunadi, string kategori,string marka,string model,string alisfiyati,
-            string satisfiyati,string kdv,string miktar, string aciklama, string resim,string durum,string tarih,string birim)
+
+        string resimYolu = "";
+        string varsayilanresimyolu = @"\\images\\default.jpg";
+        bool bayrak = false;
+
+        private void pictureBox1_DoubleClick(object sender, EventArgs e)
+        {
+
+            OpenFileDialog resimAc = new OpenFileDialog();
+            pictureBox1.Image = null;
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            resimAc.Filter = "Resim Dosyaları|*.jpg;*.JPG;*.jpeg;*.png;*.bmp|Tüm Dosyalar|*.*";
+            resimAc.Title = "Resim Seçiniz";
+            if (resimAc.ShowDialog() == DialogResult.OK)
+            {
+                pictureBox1.ImageLocation = resimAc.FileName;
+                string kaynak = resimAc.FileName;
+                string hedef = Application.StartupPath + @"\\images\\";
+                string yeniAd = Guid.NewGuid().ToString() + ".jpg";
+                File.Copy(kaynak, hedef + yeniAd, true);
+                resimYolu = @"\\images\\" + yeniAd;
+            }
+            else
+            {
+                // Kullanıcı resim seçmezse varsayılan resmi ata
+                if (File.Exists(varsayilanresimyolu))
+                {
+                    pictureBox1.ImageLocation = varsayilanresimyolu;
+                    resimYolu = varsayilanresimyolu;
+                }
+                else
+                {
+                    MessageBox.Show("Varsayılan resim bulunamadı!");
+                }
+            }
+            bayrak = true; // Resim değiştiğinde bayrağı true yap
+
+        }
+
+        public void StokBilgileriYukle(string urunno, string urunkodu, string barkod, string urunadi, string kategori, string marka, string model, string alisfiyati,
+            string satisfiyati, string kdv, string miktar, string aciklama, string resim, string durum, string tarih, string birim)
         {
             txtUrunID.Text = urunno;
             txtUrunKod.Text = urunkodu;
@@ -83,8 +134,17 @@ namespace Kobi_v1
             combxKdv.Text = kdv;
             txtStokAdeti.Text = miktar;
             txtAciklama.Text = aciklama;
-            pictureBox1.Text = resim;
+
+
             
+
+
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.ImageLocation = resim;
+                      
+
+
+
             if (durum == "Aktif")
             {
                 chcDurum.Checked = true;
@@ -96,16 +156,17 @@ namespace Kobi_v1
             dateKayit.Text = tarih;
             combxBirim.Text = birim;
 
+
         }
 
         private void UrunEkle()
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(txtUrunKod.Text)|| string.IsNullOrWhiteSpace(txtUrunAd.Text) || string.IsNullOrWhiteSpace(txtSatisFiyati.Text) || string.IsNullOrWhiteSpace(combxKategori.Text) || string.IsNullOrWhiteSpace(combxKdv.Text))
+                if (string.IsNullOrWhiteSpace(txtUrunKod.Text) || string.IsNullOrWhiteSpace(txtUrunAd.Text) || string.IsNullOrWhiteSpace(txtSatisFiyati.Text) || string.IsNullOrWhiteSpace(combxKategori.Text) || string.IsNullOrWhiteSpace(combxKdv.Text))
                 {
                     MessageBox.Show("Lütfen tüm alanları doldurun.", "Eksik Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    
+
                 }
                 else
                 {
@@ -131,11 +192,23 @@ namespace Kobi_v1
                     cmd.Parameters.AddWithValue("@kdv", combxKdv.Text);
                     cmd.Parameters.AddWithValue("@stokmiktari", txtStokAdeti.Text);
                     cmd.Parameters.AddWithValue("@aciklama", txtAciklama.Text);
-                    cmd.Parameters.AddWithValue("@resim", pictureBox1.Text);
-                    if (chcDurum.Checked)
-                        cmd.Parameters.AddWithValue("@durum", 1);
+
+                    if (bayrak)
+                    {
+                        cmd.Parameters.AddWithValue("@resim", resimYolu);
+                    }
                     else
-                        cmd.Parameters.AddWithValue("@durum", 0);
+                    {
+                        pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                        cmd.Parameters.AddWithValue("@resim", varsayilanresimyolu);
+                    }
+
+
+                    if (chcDurum.Checked)
+                        cmd.Parameters.AddWithValue("@durum", "True");
+                    else
+                        cmd.Parameters.AddWithValue("@durum", "False");
+
                     cmd.Parameters.AddWithValue("@ktarih", dateKayit.Value);
                     cmd.Parameters.AddWithValue("@birim", combxBirim.Text);
 
@@ -143,13 +216,13 @@ namespace Kobi_v1
                     MessageBox.Show("Kayıt Başarılı", "Kayıt Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     BtnLoad();
                 }
-                
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Hata" + ex.ToString());
             }
-            finally { if(baglan.State==ConnectionState.Open) baglan.Close(); }
+            finally { if (baglan.State == ConnectionState.Open) baglan.Close(); }
         }
         private void UrunGuncelle()
         {
@@ -177,7 +250,20 @@ namespace Kobi_v1
                     cmd.Parameters.AddWithValue("@kdv", combxKdv.Text);
                     cmd.Parameters.AddWithValue("@stokmiktari", txtStokAdeti.Text);
                     cmd.Parameters.AddWithValue("@aciklama", txtAciklama.Text);
-                    cmd.Parameters.AddWithValue("@resim", pictureBox1.Text);
+
+
+                    if (bayrak)
+                    {
+                        pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                        cmd.Parameters.AddWithValue("@resim", resimYolu);
+                    }
+                    else
+                    {
+                        pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                        cmd.Parameters.AddWithValue("@resim", Application.StartupPath + pictureBox1.ImageLocation);
+                    }
+
+
                     if (chcDurum.Checked)
                         cmd.Parameters.AddWithValue("@durum", 1);
                     else
@@ -187,6 +273,7 @@ namespace Kobi_v1
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Güncelleme Başarılı", "Güncelleme Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     BtnLoad();
+
 
 
                 }
@@ -279,23 +366,10 @@ namespace Kobi_v1
             }
         }
 
+
         private void btnKayit_Click(object sender, EventArgs e)
         {
             UrunEkle();
-            
-        }
-
-        private void btnEkle_Click(object sender, EventArgs e)
-        {
-            BtnLoad();
-            btnEkle.Enabled = false;            
-            btniptal.Enabled = true;
-            btnGuncelle.Enabled = false;
-            btnSil.Enabled = false;
-            btnKayit.Enabled = true;
-            btnKapat.Enabled = true;
-            btnUrunAra.Enabled = false;
-            
 
         }
 
@@ -319,6 +393,7 @@ namespace Kobi_v1
 
         private void btnUrunAra_Click(object sender, EventArgs e)
         {
+
             FrmStoklar stoklar = new FrmStoklar();
             stoklar.CagrilanForm = this;
             stoklar.ShowDialog();
@@ -327,12 +402,26 @@ namespace Kobi_v1
             btnSil.Enabled = true;
             btniptal.Enabled = true;
             btnUrunAra.Enabled = true;
+            
         }
 
         private void btnKategoriEkle_Click(object sender, EventArgs e)
         {
             FrmStokKategori frmStokKategori = new FrmStokKategori();
             frmStokKategori.ShowDialog();
+        }
+
+
+        private void btnYeni_Click(object sender, EventArgs e)
+        {
+            BtnLoad();
+            btnYeni.Enabled = false;
+            btniptal.Enabled = true;
+            btnGuncelle.Enabled = false;
+            btnSil.Enabled = false;
+            btnKayit.Enabled = true;
+            btnKapat.Enabled = true;
+            btnUrunAra.Enabled = false;
         }
     }
 }

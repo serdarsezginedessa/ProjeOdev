@@ -35,10 +35,10 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnSil = new System.Windows.Forms.Button();
             this.btnEkle = new System.Windows.Forms.Button();
+            this.btnGuncelle = new System.Windows.Forms.Button();
+            this.btnKapat = new System.Windows.Forms.Button();
             this.btnYeni = new System.Windows.Forms.Button();
             this.btniptal = new System.Windows.Forms.Button();
-            this.btnKapat = new System.Windows.Forms.Button();
-            this.btnGuncelle = new System.Windows.Forms.Button();
             this.comboBoxDurum = new System.Windows.Forms.ComboBox();
             this.txtStKategoriAciklama = new System.Windows.Forms.TextBox();
             this.txtStkategoriAd = new System.Windows.Forms.TextBox();
@@ -113,6 +113,7 @@
             this.btnSil.Text = "Sil";
             this.btnSil.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSil.UseVisualStyleBackColor = false;
+            this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
             // 
             // btnEkle
             // 
@@ -130,40 +131,25 @@
             this.btnEkle.Text = "Ekle";
             this.btnEkle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEkle.UseVisualStyleBackColor = false;
+            this.btnEkle.Click += new System.EventHandler(this.btnEkle_Click);
             // 
-            // btnYeni
+            // btnGuncelle
             // 
-            this.btnYeni.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
-            this.btnYeni.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnYeni.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnYeni.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnYeni.ForeColor = System.Drawing.Color.Transparent;
-            this.btnYeni.Image = global::Kobi_v1.Properties.Resources.clear36px;
-            this.btnYeni.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnYeni.Location = new System.Drawing.Point(3, 3);
-            this.btnYeni.Name = "btnYeni";
-            this.btnYeni.Size = new System.Drawing.Size(107, 44);
-            this.btnYeni.TabIndex = 22;
-            this.btnYeni.Text = "Yeni";
-            this.btnYeni.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnYeni.UseVisualStyleBackColor = false;
-            // 
-            // btniptal
-            // 
-            this.btniptal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
-            this.btniptal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btniptal.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btniptal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btniptal.ForeColor = System.Drawing.Color.Transparent;
-            this.btniptal.Image = global::Kobi_v1.Properties.Resources.iptal;
-            this.btniptal.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btniptal.Location = new System.Drawing.Point(116, 3);
-            this.btniptal.Name = "btniptal";
-            this.btniptal.Size = new System.Drawing.Size(107, 44);
-            this.btniptal.TabIndex = 22;
-            this.btniptal.Text = "İptal";
-            this.btniptal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btniptal.UseVisualStyleBackColor = false;
+            this.btnGuncelle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
+            this.btnGuncelle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnGuncelle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnGuncelle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnGuncelle.ForeColor = System.Drawing.Color.Transparent;
+            this.btnGuncelle.Image = global::Kobi_v1.Properties.Resources.Edit36px;
+            this.btnGuncelle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGuncelle.Location = new System.Drawing.Point(116, 53);
+            this.btnGuncelle.Name = "btnGuncelle";
+            this.btnGuncelle.Size = new System.Drawing.Size(107, 44);
+            this.btnGuncelle.TabIndex = 22;
+            this.btnGuncelle.Text = "Düzelt";
+            this.btnGuncelle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGuncelle.UseVisualStyleBackColor = false;
+            this.btnGuncelle.Click += new System.EventHandler(this.btnGuncelle_Click);
             // 
             // btnKapat
             // 
@@ -183,22 +169,41 @@
             this.btnKapat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnKapat.UseVisualStyleBackColor = false;
             // 
-            // btnGuncelle
+            // btnYeni
             // 
-            this.btnGuncelle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
-            this.btnGuncelle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnGuncelle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnGuncelle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnGuncelle.ForeColor = System.Drawing.Color.Transparent;
-            this.btnGuncelle.Image = global::Kobi_v1.Properties.Resources.Edit36px;
-            this.btnGuncelle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuncelle.Location = new System.Drawing.Point(116, 53);
-            this.btnGuncelle.Name = "btnGuncelle";
-            this.btnGuncelle.Size = new System.Drawing.Size(107, 44);
-            this.btnGuncelle.TabIndex = 22;
-            this.btnGuncelle.Text = "Düzelt";
-            this.btnGuncelle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGuncelle.UseVisualStyleBackColor = false;
+            this.btnYeni.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
+            this.btnYeni.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnYeni.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnYeni.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnYeni.ForeColor = System.Drawing.Color.Transparent;
+            this.btnYeni.Image = global::Kobi_v1.Properties.Resources.clear36px;
+            this.btnYeni.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnYeni.Location = new System.Drawing.Point(3, 3);
+            this.btnYeni.Name = "btnYeni";
+            this.btnYeni.Size = new System.Drawing.Size(107, 44);
+            this.btnYeni.TabIndex = 22;
+            this.btnYeni.Text = "Yeni";
+            this.btnYeni.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnYeni.UseVisualStyleBackColor = false;
+            this.btnYeni.Click += new System.EventHandler(this.btnYeni_Click);
+            // 
+            // btniptal
+            // 
+            this.btniptal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
+            this.btniptal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btniptal.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btniptal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btniptal.ForeColor = System.Drawing.Color.Transparent;
+            this.btniptal.Image = global::Kobi_v1.Properties.Resources.iptal;
+            this.btniptal.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btniptal.Location = new System.Drawing.Point(116, 3);
+            this.btniptal.Name = "btniptal";
+            this.btniptal.Size = new System.Drawing.Size(107, 44);
+            this.btniptal.TabIndex = 22;
+            this.btniptal.Text = "İptal";
+            this.btniptal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btniptal.UseVisualStyleBackColor = false;
+            this.btniptal.Click += new System.EventHandler(this.btniptal_Click);
             // 
             // comboBoxDurum
             // 
@@ -209,7 +214,7 @@
             this.comboBoxDurum.Location = new System.Drawing.Point(132, 115);
             this.comboBoxDurum.Name = "comboBoxDurum";
             this.comboBoxDurum.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.comboBoxDurum.Size = new System.Drawing.Size(123, 30);
+            this.comboBoxDurum.Size = new System.Drawing.Size(123, 26);
             this.comboBoxDurum.TabIndex = 11;
             this.comboBoxDurum.Text = "Seçiniz";
             // 
@@ -217,21 +222,21 @@
             // 
             this.txtStKategoriAciklama.Location = new System.Drawing.Point(132, 79);
             this.txtStKategoriAciklama.Name = "txtStKategoriAciklama";
-            this.txtStKategoriAciklama.Size = new System.Drawing.Size(123, 28);
+            this.txtStKategoriAciklama.Size = new System.Drawing.Size(123, 24);
             this.txtStKategoriAciklama.TabIndex = 8;
             // 
             // txtStkategoriAd
             // 
             this.txtStkategoriAd.Location = new System.Drawing.Point(132, 43);
             this.txtStkategoriAd.Name = "txtStkategoriAd";
-            this.txtStkategoriAd.Size = new System.Drawing.Size(123, 28);
+            this.txtStkategoriAd.Size = new System.Drawing.Size(123, 24);
             this.txtStkategoriAd.TabIndex = 8;
             // 
             // txtstKategoriNo
             // 
             this.txtstKategoriNo.Location = new System.Drawing.Point(132, 7);
             this.txtstKategoriNo.Name = "txtstKategoriNo";
-            this.txtstKategoriNo.Size = new System.Drawing.Size(123, 28);
+            this.txtstKategoriNo.Size = new System.Drawing.Size(123, 24);
             this.txtstKategoriNo.TabIndex = 8;
             // 
             // label4
@@ -239,7 +244,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(12, 120);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(72, 24);
+            this.label4.Size = new System.Drawing.Size(57, 18);
             this.label4.TabIndex = 7;
             this.label4.Text = "Durum:";
             // 
@@ -248,7 +253,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(12, 83);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(91, 24);
+            this.label3.Size = new System.Drawing.Size(72, 18);
             this.label3.TabIndex = 7;
             this.label3.Text = "Açıklama:";
             // 
@@ -257,7 +262,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 46);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(117, 24);
+            this.label2.Size = new System.Drawing.Size(91, 18);
             this.label2.TabIndex = 7;
             this.label2.Text = "Kategori Adı:";
             // 
@@ -266,7 +271,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 24);
+            this.label1.Size = new System.Drawing.Size(91, 18);
             this.label1.TabIndex = 7;
             this.label1.Text = "Kategori No:";
             // 
@@ -297,7 +302,7 @@
             // 
             // FrmStokKategori
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(208)))), ((int)(((byte)(161)))));

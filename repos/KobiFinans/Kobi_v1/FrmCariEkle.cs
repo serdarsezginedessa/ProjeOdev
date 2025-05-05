@@ -36,7 +36,7 @@ namespace Kobi_v1
                                 Adres=@adres, Sehir=@sehir, Ulke=@ulke, VergiDairesi=@vergiDairesi, VergiNo=@vergiNo, DogumTarihi=@dtarih, 
                                 EvlilikTarihi=@evltarih, KayitTarihi=@kaytarih, Durum=@durum, Aciklama=@aciklama,Resim=@resim  
                                 WHERE CariID=@CariId";
-        
+
         string sorguSil = "DELETE FROM Cari WHERE CariID=@CariId";
         string sorgucarituru = "SELECT AD  FROM CariTuru";
 
@@ -59,7 +59,7 @@ namespace Kobi_v1
                 string yeniAd = Guid.NewGuid().ToString() + ".jpg";
                 File.Copy(kaynak, hedef + yeniAd, true);
                 resimYolu = @"\images\" + yeniAd;
-                
+
 
             }
             else
@@ -69,14 +69,14 @@ namespace Kobi_v1
                 {
                     pictureBox1.ImageLocation = varsayilanresimyolu;
                     resimYolu = varsayilanresimyolu;
-                    
+
                 }
                 else
                 {
                     MessageBox.Show("Varsayılan resim bulunamadı!");
                 }
             }
-            bayrak=true; // Resim değiştiğinde bayrağı true yap
+            bayrak = true; // Resim değiştiğinde bayrağı true yap
 
         }
 
@@ -116,7 +116,7 @@ namespace Kobi_v1
             }
             finally
             {
-                
+
                 baglanti.Close();
                 combTur.SelectedIndex = 0; // ilk değer 'Seçiniz' olacak
             }
@@ -154,11 +154,11 @@ namespace Kobi_v1
             txtUlke.Text = "";
             txtVergiD.Text = "";
             txtVergiNo.Text = "";
-            dateDogum.Format=DateTimePickerFormat.Custom;
+            dateDogum.Format = DateTimePickerFormat.Custom;
             dateDogum.CustomFormat = " ";
             dateEvlilik.Format = DateTimePickerFormat.Custom;
             dateEvlilik.CustomFormat = " ";
-            dateKayit.Value=DateTime.Now;
+            dateKayit.Value = DateTime.Now;
             chcDurum.Checked = false;
             txtAciklama.Text = "";
             pictureBox1.Image = null;
@@ -181,7 +181,7 @@ namespace Kobi_v1
             chcDurum.Enabled = true;
             checboxdTarih.Enabled = true;
             checboxeTarih.Enabled = true;
-            
+
             txtAciklama.Enabled = true;
         }
         private void textDisable()
@@ -215,7 +215,7 @@ namespace Kobi_v1
             dateDogum.CustomFormat = " ";*/
             TextleriTemizle();
             textDisable();
-            
+
             btnDisable();
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
 
@@ -300,11 +300,11 @@ namespace Kobi_v1
 
         private void btnEkle_Click(object sender, EventArgs e)
         {
-            
+
             try
             {
-               
-                
+
+
                 if (string.IsNullOrEmpty(txtAd.Text))
                 {
                     MessageBox.Show("Lütfen Bos Alanları Doldurunuz", "Doldurulmamış Alan Mesajı", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -312,8 +312,8 @@ namespace Kobi_v1
                 }
                 DateTime? dtarih = null;
                 DateTime? evltarih = null;
-                string cariAdi= txtAd.Text;
-                string cariTur=combTur.SelectedItem.ToString();
+                string cariAdi = txtAd.Text;
+                string cariTur = combTur.SelectedItem.ToString();
                 string yetkili = txtYetkili.Text;
                 string telefon = txtTel.Text;
                 string eposta = txtEposta.Text;
@@ -322,23 +322,23 @@ namespace Kobi_v1
                 string ulke = txtUlke.Text;
                 string vergiDairesi = txtVergiD.Text;
                 string vergiNo = txtVergiNo.Text;
-                
+
                 if (dateDogum.CustomFormat != " ")
                 {
                     dtarih = dateDogum.Value;
                 }
-                
-                if(dateEvlilik.CustomFormat != " ")
+
+                if (dateEvlilik.CustomFormat != " ")
                 {
                     evltarih = dateEvlilik.Value;
                 }
-                string kaytarih=dateKayit.Value.ToString();
+                string kaytarih = dateKayit.Value.ToString();
                 bool durum = chcDurum.Checked;
                 string aciklama = txtAciklama.Text;
 
                 //Otomatik cari kod üretecek
-                string carikod=txtKod.Text;
-                if(chcDurum.Checked)
+                string carikod = txtKod.Text;
+                if (chcDurum.Checked)
                 {
                     durum = true;
                 }
@@ -365,7 +365,7 @@ namespace Kobi_v1
                     int cariTuruID = (int)kmtTurID.ExecuteScalar();
 
                     //Cari Ekleme
-                    
+
 
                     SqlCommand kmtEkle = new SqlCommand(sorguEkle, baglanti);
                     // Parametreleri ekle
@@ -381,8 +381,8 @@ namespace Kobi_v1
                     kmtEkle.Parameters.AddWithValue("@vergiDairesi", vergiDairesi);
                     kmtEkle.Parameters.AddWithValue("@VergiNo", vergiNo);
 
-                    
-                    if(dtarih != null)
+
+                    if (dtarih != null)
                     {
                         kmtEkle.Parameters.AddWithValue("@dtarih", dtarih.Value);
                     }
@@ -418,7 +418,7 @@ namespace Kobi_v1
                     if (result > 0)
                     {
                         // Başarılı ekleme işlemi
-                        MessageBox.Show("Cari Kart Sisteme Eklendi","Bilgilendirme",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                        MessageBox.Show("Cari Kart Sisteme Eklendi", "Bilgilendirme", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         if (this.Owner is Form1)
                         {
                             ((Form1)this.Owner).userCountGet();
@@ -427,12 +427,12 @@ namespace Kobi_v1
                     else
                     {
                         // Başarısız ekleme işlemi
-                        MessageBox.Show("Cari Eklenemedi","Hata",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                        MessageBox.Show("Cari Eklenemedi", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    
+
                 }
 
-             }
+            }
             catch (Exception ex)
             {
                 MessageBox.Show("Hata: " + ex);
@@ -449,7 +449,7 @@ namespace Kobi_v1
         }
         private void btnGuncelle_Click(object sender, EventArgs e)
         {
-            
+
             if (string.IsNullOrWhiteSpace(txtID.Text))
             {
                 MessageBox.Show("Lütfen Güncellenecek Cari Seçiniz");
@@ -471,11 +471,11 @@ namespace Kobi_v1
                 kmtGuncelle.Parameters.AddWithValue("@vergiDairesi", txtVergiD.Text);
                 kmtGuncelle.Parameters.AddWithValue("@VergiNo", txtVergiNo.Text);
 
-                
-                if(checboxeTarih.Checked)
+
+                if (checboxeTarih.Checked)
                 {
                     kmtGuncelle.Parameters.AddWithValue("@evltarih", Convert.ToDateTime(dateEvlilik.Value));
-                    
+
                 }
                 else
                     kmtGuncelle.Parameters.AddWithValue("@evltarih", DBNull.Value);
@@ -483,25 +483,28 @@ namespace Kobi_v1
                 if (checboxdTarih.Checked)
                 {
                     kmtGuncelle.Parameters.AddWithValue("@dtarih", Convert.ToDateTime(dateDogum.Value));
-                    
+
                 }
                 else
                 {
                     kmtGuncelle.Parameters.AddWithValue("@dtarih", DBNull.Value);
                 }
-                    
+
                 kmtGuncelle.Parameters.AddWithValue("@kaytarih", Convert.ToDateTime(dateKayit.Value));
 
                 kmtGuncelle.Parameters.AddWithValue("@durum", Convert.ToInt32(chcDurum.Checked));
                 kmtGuncelle.Parameters.AddWithValue("@aciklama", txtAciklama.Text);
                 if (bayrak)
                 {
+                    pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
                     kmtGuncelle.Parameters.AddWithValue("@resim", resimYolu);
                 }
                 else
                 {
-                    kmtGuncelle.Parameters.AddWithValue("@resim", varsayilanresimyolu);
+                    pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                    kmtGuncelle.Parameters.AddWithValue("@resim", pictureBox1.ImageLocation);
                 }
+
                 int result = kmtGuncelle.ExecuteNonQuery();
                 if (result > 0)
                 {
@@ -580,13 +583,13 @@ namespace Kobi_v1
             frmCariListele.ShowDialog();
             textEnable();
             combTur.Enabled = false;
-            
+
 
         }
-      
 
-        public void CariBilgileriYukle( string cariID, string cariKod,string cariAdi, string cariTur, string yetkili, string telefon, string eposta, 
-            string adres, string sehir,string ulke, string vergidairesi , string vergiNo, string dtarih, string etarih,string ktarih, string durum,string aciklama,string resim)
+
+        public void CariBilgileriYukle(string cariID, string cariKod, string cariAdi, string cariTur, string yetkili, string telefon, string eposta,
+            string adres, string sehir, string ulke, string vergidairesi, string vergiNo, string dtarih, string etarih, string ktarih, string durum, string aciklama, string resim)
         {
             cariTurListele();
             txtID.Text = cariID;
@@ -604,13 +607,13 @@ namespace Kobi_v1
             txtVergiD.Text = vergidairesi;
             txtVergiNo.Text = vergiNo;
 
-            if(string.IsNullOrEmpty(dtarih)) //CarilisteleFormundan gelen doğum tarihi boş dolu kontrolü
+            if (string.IsNullOrEmpty(dtarih)) //CarilisteleFormundan gelen doğum tarihi boş dolu kontrolü
             {
                 checboxdTarih.Checked = false;
                 dateDogum.Enabled = false;
-                dateDogum.Format=DateTimePickerFormat.Custom;
+                dateDogum.Format = DateTimePickerFormat.Custom;
                 dateDogum.CustomFormat = " ";
-                
+
             }
             else
             {
@@ -618,7 +621,7 @@ namespace Kobi_v1
                 dateDogum.Enabled = true;
                 dateDogum.CustomFormat = "dd.MM.yyyy";
                 dateDogum.Value = Convert.ToDateTime(dtarih);
-                
+
             }
 
             if (string.IsNullOrEmpty(etarih)) //CarilisteleFormundan gelen evlilik tarihi boş dolu kontrolü
@@ -627,7 +630,7 @@ namespace Kobi_v1
                 checboxeTarih.Checked = false;
                 dateEvlilik.Format = DateTimePickerFormat.Custom;
                 dateEvlilik.CustomFormat = " ";
-                
+
             }
             else
             {
@@ -635,10 +638,10 @@ namespace Kobi_v1
                 dateEvlilik.Enabled = true;
                 dateEvlilik.CustomFormat = "dd.MM.yyyy";
                 dateEvlilik.Value = Convert.ToDateTime(etarih);
-                
+
             }
             dateKayit.Value = Convert.ToDateTime(ktarih);
-            if (durum=="True")
+            if (durum == "True")
             {
                 chcDurum.Checked = true;
             }
@@ -650,27 +653,26 @@ namespace Kobi_v1
 
             if (string.IsNullOrEmpty(resim))
             {
-                
+                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
                 pictureBox1.ImageLocation = varsayilanresimyolu;
             }
             else
             {
+                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
                 pictureBox1.ImageLocation = Application.StartupPath + resim;
             }
-            
-            
-
-
-
             btnEkle.Enabled = false;
             btnGuncelle.Enabled = true;
             btnSil.Enabled = true;
             btniptal.Enabled = true;
 
-
         }
 
-        
+
+
+
+
+
 
         private void checboxdTarih_CheckedChanged(object sender, EventArgs e)
         {
@@ -681,7 +683,7 @@ namespace Kobi_v1
             }
             else
             {
-                
+
                 dateDogum.Enabled = false;
                 dateDogum.CustomFormat = " ";
 
@@ -694,7 +696,7 @@ namespace Kobi_v1
             {
                 dateEvlilik.Enabled = true;
                 dateEvlilik.CustomFormat = "dd.MM.yyyy";
-                
+
 
             }
             else
@@ -726,7 +728,8 @@ namespace Kobi_v1
         {
 
         }
-        
     }
+        
+    
 }
 
