@@ -169,5 +169,15 @@ KategoriID";
 
         public DataGridViewRow SecilenUrun { get; private set; } // Seçilen ürünü tutar
 
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                // Seçilen satırı al
+                SecilenUrun = dataGridView1.Rows[e.RowIndex];
+                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                pictureBox1.ImageLocation =Application.StartupPath+ SecilenUrun.Cells["ur.Resim"].Value?.ToString();
+            }
+        }
     }
 }

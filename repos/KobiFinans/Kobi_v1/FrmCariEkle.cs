@@ -41,8 +41,9 @@ namespace Kobi_v1
         string sorgucarituru = "SELECT AD  FROM CariTuru";
 
         string resimYolu = "";
-        string varsayilanresimyolu = @"\images\default.jpg";
+        string varsayilanresimyolu = @"\images\default.png";
         bool bayrak = false;
+
         private void pictureBox1_DoubleClick(object sender, EventArgs e)
         {
 

@@ -34,6 +34,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSatis));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.lblEposta = new System.Windows.Forms.Label();
             this.lblYetkili = new System.Windows.Forms.Label();
@@ -43,16 +44,25 @@
             this.lblCariKod = new System.Windows.Forms.Label();
             this.LblMusteri = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnTahsilat = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnSil = new System.Windows.Forms.Button();
+            this.btnKayit = new System.Windows.Forms.Button();
+            this.btnYeniKayit = new System.Windows.Forms.Button();
+            this.btniptal = new System.Windows.Forms.Button();
+            this.btnKapat = new System.Windows.Forms.Button();
+            this.btnGuncelle = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
+            this.btnAra = new System.Windows.Forms.Button();
             this.dateTimeTarih = new System.Windows.Forms.DateTimePicker();
             this.dateKayit = new System.Windows.Forms.DateTimePicker();
             this.comboBoxDurum = new System.Windows.Forms.ComboBox();
+            this.txtGenelToplam = new System.Windows.Forms.TextBox();
             this.txtKdv = new System.Windows.Forms.TextBox();
             this.txtKdvHaricTutar = new System.Windows.Forms.TextBox();
             this.txtToplamTutar = new System.Windows.Forms.TextBox();
@@ -61,6 +71,7 @@
             this.txtSatisNo = new System.Windows.Forms.TextBox();
             this.txtID = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -68,27 +79,16 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.faturaAraF11ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtGenelToplam = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnTahsilat = new System.Windows.Forms.Button();
-            this.btnSil = new System.Windows.Forms.Button();
-            this.btnKayit = new System.Windows.Forms.Button();
-            this.btnYeniKayit = new System.Windows.Forms.Button();
-            this.btniptal = new System.Windows.Forms.Button();
-            this.btnKapat = new System.Windows.Forms.Button();
-            this.btnGuncelle = new System.Windows.Forms.Button();
-            this.btnAra = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -117,6 +117,19 @@
             this.splitContainer1.Size = new System.Drawing.Size(1233, 758);
             this.splitContainer1.SplitterDistance = 257;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::Kobi_v1.Properties.Resources.Male_User96;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox1.ErrorImage = global::Kobi_v1.Properties.Resources.Close;
+            this.pictureBox1.InitialImage = global::Kobi_v1.Properties.Resources.Product;
+            this.pictureBox1.Location = new System.Drawing.Point(48, 11);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(132, 132);
+            this.pictureBox1.TabIndex = 33;
+            this.pictureBox1.TabStop = false;
             // 
             // label4
             // 
@@ -260,6 +273,23 @@
             this.panel1.Size = new System.Drawing.Size(968, 754);
             this.panel1.TabIndex = 13;
             // 
+            // btnTahsilat
+            // 
+            this.btnTahsilat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
+            this.btnTahsilat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnTahsilat.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnTahsilat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnTahsilat.ForeColor = System.Drawing.Color.Transparent;
+            this.btnTahsilat.Image = global::Kobi_v1.Properties.Resources.Money_Bag_Lira64;
+            this.btnTahsilat.Location = new System.Drawing.Point(584, 584);
+            this.btnTahsilat.Name = "btnTahsilat";
+            this.btnTahsilat.Size = new System.Drawing.Size(115, 123);
+            this.btnTahsilat.TabIndex = 32;
+            this.btnTahsilat.Text = "Tahsilat";
+            this.btnTahsilat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnTahsilat.UseVisualStyleBackColor = false;
+            this.btnTahsilat.Click += new System.EventHandler(this.btnTahsilat_Click);
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -310,292 +340,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(304, 148);
             this.panel2.TabIndex = 25;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(443, 98);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(73, 24);
-            this.label17.TabIndex = 13;
-            this.label17.Text = "Sevk T.";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(445, 55);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(71, 24);
-            this.label14.TabIndex = 13;
-            this.label14.Text = "Kayıt T.";
-            // 
-            // dateTimeTarih
-            // 
-            this.dateTimeTarih.CalendarMonthBackground = System.Drawing.Color.Linen;
-            this.dateTimeTarih.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimeTarih.Location = new System.Drawing.Point(522, 94);
-            this.dateTimeTarih.Name = "dateTimeTarih";
-            this.dateTimeTarih.Size = new System.Drawing.Size(136, 28);
-            this.dateTimeTarih.TabIndex = 19;
-            // 
-            // dateKayit
-            // 
-            this.dateKayit.CalendarMonthBackground = System.Drawing.Color.Linen;
-            this.dateKayit.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateKayit.Location = new System.Drawing.Point(522, 55);
-            this.dateKayit.Name = "dateKayit";
-            this.dateKayit.Size = new System.Drawing.Size(136, 28);
-            this.dateKayit.TabIndex = 19;
-            // 
-            // comboBoxDurum
-            // 
-            this.comboBoxDurum.BackColor = System.Drawing.Color.Linen;
-            this.comboBoxDurum.FormattingEnabled = true;
-            this.comboBoxDurum.Items.AddRange(new object[] {
-            "Yeni",
-            "İşlemde",
-            "İptal",
-            "Borçlu Teslim",
-            "Teslim",
-            "Sevk Edildi",
-            "Fatura Kesildi"});
-            this.comboBoxDurum.Location = new System.Drawing.Point(522, 11);
-            this.comboBoxDurum.Name = "comboBoxDurum";
-            this.comboBoxDurum.Size = new System.Drawing.Size(136, 30);
-            this.comboBoxDurum.TabIndex = 27;
-            this.comboBoxDurum.Text = "Seçiniz";
-            this.comboBoxDurum.SelectedIndexChanged += new System.EventHandler(this.comboBoxDurum_SelectedIndexChanged);
-            // 
-            // txtKdv
-            // 
-            this.txtKdv.BackColor = System.Drawing.Color.Linen;
-            this.txtKdv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtKdv.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtKdv.Location = new System.Drawing.Point(850, 613);
-            this.txtKdv.Name = "txtKdv";
-            this.txtKdv.Size = new System.Drawing.Size(110, 28);
-            this.txtKdv.TabIndex = 16;
-            // 
-            // txtKdvHaricTutar
-            // 
-            this.txtKdvHaricTutar.BackColor = System.Drawing.Color.Linen;
-            this.txtKdvHaricTutar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtKdvHaricTutar.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtKdvHaricTutar.Location = new System.Drawing.Point(850, 580);
-            this.txtKdvHaricTutar.Name = "txtKdvHaricTutar";
-            this.txtKdvHaricTutar.Size = new System.Drawing.Size(110, 28);
-            this.txtKdvHaricTutar.TabIndex = 16;
-            // 
-            // txtToplamTutar
-            // 
-            this.txtToplamTutar.BackColor = System.Drawing.Color.Linen;
-            this.txtToplamTutar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtToplamTutar.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtToplamTutar.Location = new System.Drawing.Point(850, 646);
-            this.txtToplamTutar.Name = "txtToplamTutar";
-            this.txtToplamTutar.Size = new System.Drawing.Size(110, 28);
-            this.txtToplamTutar.TabIndex = 16;
-            // 
-            // txtCariAd
-            // 
-            this.txtCariAd.BackColor = System.Drawing.Color.Linen;
-            this.txtCariAd.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtCariAd.Location = new System.Drawing.Point(159, 84);
-            this.txtCariAd.Name = "txtCariAd";
-            this.txtCariAd.Size = new System.Drawing.Size(178, 28);
-            this.txtCariAd.TabIndex = 16;
-            // 
-            // txtFaturaNo
-            // 
-            this.txtFaturaNo.BackColor = System.Drawing.Color.Linen;
-            this.txtFaturaNo.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtFaturaNo.Location = new System.Drawing.Point(159, 122);
-            this.txtFaturaNo.Name = "txtFaturaNo";
-            this.txtFaturaNo.Size = new System.Drawing.Size(178, 28);
-            this.txtFaturaNo.TabIndex = 9;
-            // 
-            // txtSatisNo
-            // 
-            this.txtSatisNo.BackColor = System.Drawing.Color.Linen;
-            this.txtSatisNo.Enabled = false;
-            this.txtSatisNo.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtSatisNo.Location = new System.Drawing.Point(159, 8);
-            this.txtSatisNo.Name = "txtSatisNo";
-            this.txtSatisNo.ReadOnly = true;
-            this.txtSatisNo.Size = new System.Drawing.Size(178, 28);
-            this.txtSatisNo.TabIndex = 9;
-            // 
-            // txtID
-            // 
-            this.txtID.BackColor = System.Drawing.Color.Linen;
-            this.txtID.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtID.Location = new System.Drawing.Point(159, 46);
-            this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(178, 28);
-            this.txtID.TabIndex = 9;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(443, 14);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(67, 24);
-            this.label16.TabIndex = 10;
-            this.label16.Text = "Durum";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(705, 584);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(139, 24);
-            this.label10.TabIndex = 11;
-            this.label10.Text = "Kdv Hariç Tutar";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(733, 617);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(111, 24);
-            this.label8.TabIndex = 11;
-            this.label8.Text = "Toplam Kdv";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(722, 648);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(122, 24);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "Toplam Tutar";
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.dataGridView1);
-            this.panel3.Location = new System.Drawing.Point(0, 159);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(965, 407);
-            this.panel3.TabIndex = 30;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RosyBrown;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.GridColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
-            this.dataGridView1.RowTemplate.DefaultCellStyle.NullValue = null;
-            this.dataGridView1.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.DodgerBlue;
-            this.dataGridView1.Size = new System.Drawing.Size(965, 407);
-            this.dataGridView1.TabIndex = 2;
-            this.dataGridView1.TabStop = false;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
-            this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
-            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
-            this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown);
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.faturaAraF11ToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 721);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(968, 33);
-            this.menuStrip1.TabIndex = 31;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // faturaAraF11ToolStripMenuItem
-            // 
-            this.faturaAraF11ToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.faturaAraF11ToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.faturaAraF11ToolStripMenuItem.Name = "faturaAraF11ToolStripMenuItem";
-            this.faturaAraF11ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F11;
-            this.faturaAraF11ToolStripMenuItem.Size = new System.Drawing.Size(169, 29);
-            this.faturaAraF11ToolStripMenuItem.Text = "Fatura Ara (F11)";
-            this.faturaAraF11ToolStripMenuItem.Click += new System.EventHandler(this.faturaAraF11ToolStripMenuItem_Click);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(736, 683);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(109, 24);
-            this.label9.TabIndex = 11;
-            this.label9.Text = "Genel Tutar";
-            // 
-            // txtGenelToplam
-            // 
-            this.txtGenelToplam.BackColor = System.Drawing.Color.Linen;
-            this.txtGenelToplam.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtGenelToplam.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtGenelToplam.Location = new System.Drawing.Point(850, 680);
-            this.txtGenelToplam.Name = "txtGenelToplam";
-            this.txtGenelToplam.Size = new System.Drawing.Size(110, 28);
-            this.txtGenelToplam.TabIndex = 16;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::Kobi_v1.Properties.Resources.Male_User96;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox1.ErrorImage = global::Kobi_v1.Properties.Resources.Close;
-            this.pictureBox1.InitialImage = global::Kobi_v1.Properties.Resources.Product;
-            this.pictureBox1.Location = new System.Drawing.Point(48, 11);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(132, 132);
-            this.pictureBox1.TabIndex = 33;
-            this.pictureBox1.TabStop = false;
-            // 
-            // btnTahsilat
-            // 
-            this.btnTahsilat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
-            this.btnTahsilat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnTahsilat.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnTahsilat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnTahsilat.ForeColor = System.Drawing.Color.Transparent;
-            this.btnTahsilat.Image = global::Kobi_v1.Properties.Resources.Money_Bag_Lira64;
-            this.btnTahsilat.Location = new System.Drawing.Point(584, 584);
-            this.btnTahsilat.Name = "btnTahsilat";
-            this.btnTahsilat.Size = new System.Drawing.Size(115, 123);
-            this.btnTahsilat.TabIndex = 32;
-            this.btnTahsilat.Text = "Tahsilat";
-            this.btnTahsilat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnTahsilat.UseVisualStyleBackColor = false;
-            this.btnTahsilat.Click += new System.EventHandler(this.btnTahsilat_Click);
             // 
             // btnSil
             // 
@@ -710,6 +454,24 @@
             this.btnGuncelle.UseVisualStyleBackColor = false;
             this.btnGuncelle.Click += new System.EventHandler(this.btnGuncelle_Click);
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(443, 98);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(73, 24);
+            this.label17.TabIndex = 13;
+            this.label17.Text = "Sevk T.";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(445, 55);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(71, 24);
+            this.label14.TabIndex = 13;
+            this.label14.Text = "Kayıt T.";
+            // 
             // btnAra
             // 
             this.btnAra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
@@ -727,6 +489,245 @@
             this.btnAra.UseVisualStyleBackColor = false;
             this.btnAra.Click += new System.EventHandler(this.btnAra_Click);
             this.btnAra.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnAra_KeyDown);
+            // 
+            // dateTimeTarih
+            // 
+            this.dateTimeTarih.CalendarMonthBackground = System.Drawing.Color.Linen;
+            this.dateTimeTarih.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimeTarih.Location = new System.Drawing.Point(522, 94);
+            this.dateTimeTarih.Name = "dateTimeTarih";
+            this.dateTimeTarih.Size = new System.Drawing.Size(136, 28);
+            this.dateTimeTarih.TabIndex = 19;
+            // 
+            // dateKayit
+            // 
+            this.dateKayit.CalendarMonthBackground = System.Drawing.Color.Linen;
+            this.dateKayit.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateKayit.Location = new System.Drawing.Point(522, 55);
+            this.dateKayit.Name = "dateKayit";
+            this.dateKayit.Size = new System.Drawing.Size(136, 28);
+            this.dateKayit.TabIndex = 19;
+            // 
+            // comboBoxDurum
+            // 
+            this.comboBoxDurum.BackColor = System.Drawing.Color.Linen;
+            this.comboBoxDurum.FormattingEnabled = true;
+            this.comboBoxDurum.Items.AddRange(new object[] {
+            "Yeni",
+            "İşlemde",
+            "İptal",
+            "Borçlu Teslim",
+            "Teslim",
+            "Sevk Edildi",
+            "Fatura Kesildi",
+            "Tahsilat Yapıldı"});
+            this.comboBoxDurum.Location = new System.Drawing.Point(522, 11);
+            this.comboBoxDurum.Name = "comboBoxDurum";
+            this.comboBoxDurum.Size = new System.Drawing.Size(136, 30);
+            this.comboBoxDurum.TabIndex = 27;
+            this.comboBoxDurum.Text = "Seçiniz";
+            this.comboBoxDurum.SelectedIndexChanged += new System.EventHandler(this.comboBoxDurum_SelectedIndexChanged);
+            // 
+            // txtGenelToplam
+            // 
+            this.txtGenelToplam.BackColor = System.Drawing.Color.Linen;
+            this.txtGenelToplam.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtGenelToplam.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtGenelToplam.Location = new System.Drawing.Point(850, 680);
+            this.txtGenelToplam.Name = "txtGenelToplam";
+            this.txtGenelToplam.Size = new System.Drawing.Size(110, 28);
+            this.txtGenelToplam.TabIndex = 16;
+            // 
+            // txtKdv
+            // 
+            this.txtKdv.BackColor = System.Drawing.Color.Linen;
+            this.txtKdv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtKdv.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtKdv.Location = new System.Drawing.Point(850, 613);
+            this.txtKdv.Name = "txtKdv";
+            this.txtKdv.Size = new System.Drawing.Size(110, 28);
+            this.txtKdv.TabIndex = 16;
+            // 
+            // txtKdvHaricTutar
+            // 
+            this.txtKdvHaricTutar.BackColor = System.Drawing.Color.Linen;
+            this.txtKdvHaricTutar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtKdvHaricTutar.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtKdvHaricTutar.Location = new System.Drawing.Point(850, 580);
+            this.txtKdvHaricTutar.Name = "txtKdvHaricTutar";
+            this.txtKdvHaricTutar.Size = new System.Drawing.Size(110, 28);
+            this.txtKdvHaricTutar.TabIndex = 16;
+            // 
+            // txtToplamTutar
+            // 
+            this.txtToplamTutar.BackColor = System.Drawing.Color.Linen;
+            this.txtToplamTutar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtToplamTutar.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtToplamTutar.Location = new System.Drawing.Point(850, 646);
+            this.txtToplamTutar.Name = "txtToplamTutar";
+            this.txtToplamTutar.Size = new System.Drawing.Size(110, 28);
+            this.txtToplamTutar.TabIndex = 16;
+            // 
+            // txtCariAd
+            // 
+            this.txtCariAd.BackColor = System.Drawing.Color.Linen;
+            this.txtCariAd.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtCariAd.Location = new System.Drawing.Point(159, 84);
+            this.txtCariAd.Name = "txtCariAd";
+            this.txtCariAd.Size = new System.Drawing.Size(178, 28);
+            this.txtCariAd.TabIndex = 16;
+            // 
+            // txtFaturaNo
+            // 
+            this.txtFaturaNo.BackColor = System.Drawing.Color.Linen;
+            this.txtFaturaNo.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtFaturaNo.Location = new System.Drawing.Point(159, 122);
+            this.txtFaturaNo.Name = "txtFaturaNo";
+            this.txtFaturaNo.Size = new System.Drawing.Size(178, 28);
+            this.txtFaturaNo.TabIndex = 9;
+            // 
+            // txtSatisNo
+            // 
+            this.txtSatisNo.BackColor = System.Drawing.Color.Linen;
+            this.txtSatisNo.Enabled = false;
+            this.txtSatisNo.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtSatisNo.Location = new System.Drawing.Point(159, 8);
+            this.txtSatisNo.Name = "txtSatisNo";
+            this.txtSatisNo.ReadOnly = true;
+            this.txtSatisNo.Size = new System.Drawing.Size(178, 28);
+            this.txtSatisNo.TabIndex = 9;
+            // 
+            // txtID
+            // 
+            this.txtID.BackColor = System.Drawing.Color.Linen;
+            this.txtID.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtID.Location = new System.Drawing.Point(159, 46);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(178, 28);
+            this.txtID.TabIndex = 9;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(443, 14);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(67, 24);
+            this.label16.TabIndex = 10;
+            this.label16.Text = "Durum";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(736, 683);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(109, 24);
+            this.label9.TabIndex = 11;
+            this.label9.Text = "Genel Tutar";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(705, 584);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(139, 24);
+            this.label10.TabIndex = 11;
+            this.label10.Text = "Kdv Hariç Tutar";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(733, 617);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(111, 24);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "Toplam Kdv";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(722, 648);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(122, 24);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Toplam Tutar";
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.dataGridView1);
+            this.panel3.Location = new System.Drawing.Point(0, 159);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(965, 407);
+            this.panel3.TabIndex = 30;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RosyBrown;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.EnableHeadersVisualStyles = false;
+            this.dataGridView1.GridColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.MultiSelect = false;
+            this.dataGridView1.Name = "dataGridView1";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+            this.dataGridView1.RowTemplate.DefaultCellStyle.NullValue = null;
+            this.dataGridView1.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.DodgerBlue;
+            this.dataGridView1.Size = new System.Drawing.Size(965, 407);
+            this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.TabStop = false;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
+            this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
+            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
+            this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.faturaAraF11ToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 721);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(968, 33);
+            this.menuStrip1.TabIndex = 31;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // faturaAraF11ToolStripMenuItem
+            // 
+            this.faturaAraF11ToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.faturaAraF11ToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.faturaAraF11ToolStripMenuItem.Name = "faturaAraF11ToolStripMenuItem";
+            this.faturaAraF11ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F11;
+            this.faturaAraF11ToolStripMenuItem.Size = new System.Drawing.Size(169, 29);
+            this.faturaAraF11ToolStripMenuItem.Text = "Fatura Ara (F11)";
+            this.faturaAraF11ToolStripMenuItem.Click += new System.EventHandler(this.faturaAraF11ToolStripMenuItem_Click);
             // 
             // FrmSatis
             // 
@@ -754,6 +755,7 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -761,7 +763,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

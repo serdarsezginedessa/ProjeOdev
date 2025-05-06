@@ -47,15 +47,16 @@
             this.txtTutar = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btniptal = new System.Windows.Forms.Button();
+            this.btnSil = new System.Windows.Forms.Button();
+            this.btnYeniKayit = new System.Windows.Forms.Button();
+            this.btnKapat = new System.Windows.Forms.Button();
+            this.btnKaydet = new System.Windows.Forms.Button();
+            this.btnGuncelle = new System.Windows.Forms.Button();
             this.checkBox1FaturaAktif = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtCariKod = new System.Windows.Forms.TextBox();
-            this.btnKapat = new System.Windows.Forms.Button();
             this.btnTahsilatAra = new System.Windows.Forms.Button();
-            this.btnSil = new System.Windows.Forms.Button();
-            this.btnYeniKayit = new System.Windows.Forms.Button();
-            this.btnKaydet = new System.Windows.Forms.Button();
-            this.btnGuncelle = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.txtCariAd = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -223,6 +224,7 @@
             // 
             this.panel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.btniptal);
             this.panel2.Controls.Add(this.btnSil);
             this.panel2.Controls.Add(this.btnYeniKayit);
             this.panel2.Controls.Add(this.btnKapat);
@@ -233,69 +235,23 @@
             this.panel2.Size = new System.Drawing.Size(304, 148);
             this.panel2.TabIndex = 26;
             // 
-            // checkBox1FaturaAktif
+            // btniptal
             // 
-            this.checkBox1FaturaAktif.AutoSize = true;
-            this.checkBox1FaturaAktif.Location = new System.Drawing.Point(235, 46);
-            this.checkBox1FaturaAktif.Name = "checkBox1FaturaAktif";
-            this.checkBox1FaturaAktif.Size = new System.Drawing.Size(18, 17);
-            this.checkBox1FaturaAktif.TabIndex = 27;
-            this.checkBox1FaturaAktif.UseVisualStyleBackColor = true;
-            this.checkBox1FaturaAktif.CheckedChanged += new System.EventHandler(this.checkBox1FaturaAktif_CheckedChanged);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(4, 112);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(87, 24);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "Cari Kod:";
-            // 
-            // txtCariKod
-            // 
-            this.txtCariKod.Enabled = false;
-            this.txtCariKod.Location = new System.Drawing.Point(119, 108);
-            this.txtCariKod.Name = "txtCariKod";
-            this.txtCariKod.ReadOnly = true;
-            this.txtCariKod.Size = new System.Drawing.Size(109, 28);
-            this.txtCariKod.TabIndex = 2;
-            // 
-            // btnKapat
-            // 
-            this.btnKapat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
-            this.btnKapat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnKapat.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnKapat.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnKapat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnKapat.ForeColor = System.Drawing.Color.Transparent;
-            this.btnKapat.Image = global::Kobi_v1.Properties.Resources.Close_Pane3px;
-            this.btnKapat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnKapat.Location = new System.Drawing.Point(148, 94);
-            this.btnKapat.Name = "btnKapat";
-            this.btnKapat.Size = new System.Drawing.Size(144, 42);
-            this.btnKapat.TabIndex = 22;
-            this.btnKapat.Text = "Kapat";
-            this.btnKapat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnKapat.UseVisualStyleBackColor = false;
-            // 
-            // btnTahsilatAra
-            // 
-            this.btnTahsilatAra.BackColor = System.Drawing.Color.Transparent;
-            this.btnTahsilatAra.BackgroundImage = global::Kobi_v1.Properties.Resources.Search1400;
-            this.btnTahsilatAra.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnTahsilatAra.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnTahsilatAra.FlatAppearance.BorderSize = 0;
-            this.btnTahsilatAra.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.btnTahsilatAra.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(140)))), ((int)(((byte)(100)))));
-            this.btnTahsilatAra.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnTahsilatAra.ForeColor = System.Drawing.Color.Transparent;
-            this.btnTahsilatAra.Location = new System.Drawing.Point(234, 6);
-            this.btnTahsilatAra.Name = "btnTahsilatAra";
-            this.btnTahsilatAra.Size = new System.Drawing.Size(36, 27);
-            this.btnTahsilatAra.TabIndex = 28;
-            this.btnTahsilatAra.UseVisualStyleBackColor = false;
-            this.btnTahsilatAra.Click += new System.EventHandler(this.btnTahsilatAra_Click);
+            this.btniptal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
+            this.btniptal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btniptal.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btniptal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btniptal.ForeColor = System.Drawing.Color.Transparent;
+            this.btniptal.Image = global::Kobi_v1.Properties.Resources.iptal;
+            this.btniptal.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btniptal.Location = new System.Drawing.Point(148, 4);
+            this.btniptal.Name = "btniptal";
+            this.btniptal.Size = new System.Drawing.Size(144, 42);
+            this.btniptal.TabIndex = 25;
+            this.btniptal.Text = "İptal";
+            this.btniptal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btniptal.UseVisualStyleBackColor = false;
+            this.btniptal.Click += new System.EventHandler(this.btniptal_Click);
             // 
             // btnSil
             // 
@@ -326,12 +282,30 @@
             this.btnYeniKayit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnYeniKayit.Location = new System.Drawing.Point(7, 4);
             this.btnYeniKayit.Name = "btnYeniKayit";
-            this.btnYeniKayit.Size = new System.Drawing.Size(285, 42);
+            this.btnYeniKayit.Size = new System.Drawing.Size(135, 42);
             this.btnYeniKayit.TabIndex = 22;
             this.btnYeniKayit.Text = "Yeni (F8)";
             this.btnYeniKayit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnYeniKayit.UseVisualStyleBackColor = false;
             this.btnYeniKayit.Click += new System.EventHandler(this.btnYeniKayit_Click);
+            // 
+            // btnKapat
+            // 
+            this.btnKapat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
+            this.btnKapat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnKapat.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnKapat.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnKapat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnKapat.ForeColor = System.Drawing.Color.Transparent;
+            this.btnKapat.Image = global::Kobi_v1.Properties.Resources.Close_Pane3px;
+            this.btnKapat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnKapat.Location = new System.Drawing.Point(148, 94);
+            this.btnKapat.Name = "btnKapat";
+            this.btnKapat.Size = new System.Drawing.Size(144, 42);
+            this.btnKapat.TabIndex = 22;
+            this.btnKapat.Text = "Kapat";
+            this.btnKapat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnKapat.UseVisualStyleBackColor = false;
             // 
             // btnKaydet
             // 
@@ -370,6 +344,52 @@
             this.btnGuncelle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGuncelle.UseVisualStyleBackColor = false;
             this.btnGuncelle.Click += new System.EventHandler(this.btnGuncelle_Click);
+            // 
+            // checkBox1FaturaAktif
+            // 
+            this.checkBox1FaturaAktif.AutoSize = true;
+            this.checkBox1FaturaAktif.Location = new System.Drawing.Point(235, 46);
+            this.checkBox1FaturaAktif.Name = "checkBox1FaturaAktif";
+            this.checkBox1FaturaAktif.Size = new System.Drawing.Size(18, 17);
+            this.checkBox1FaturaAktif.TabIndex = 27;
+            this.checkBox1FaturaAktif.UseVisualStyleBackColor = true;
+            this.checkBox1FaturaAktif.CheckedChanged += new System.EventHandler(this.checkBox1FaturaAktif_CheckedChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(4, 112);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(87, 24);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Cari Kod:";
+            // 
+            // txtCariKod
+            // 
+            this.txtCariKod.Enabled = false;
+            this.txtCariKod.Location = new System.Drawing.Point(119, 108);
+            this.txtCariKod.Name = "txtCariKod";
+            this.txtCariKod.ReadOnly = true;
+            this.txtCariKod.Size = new System.Drawing.Size(109, 28);
+            this.txtCariKod.TabIndex = 2;
+            // 
+            // btnTahsilatAra
+            // 
+            this.btnTahsilatAra.BackColor = System.Drawing.Color.Transparent;
+            this.btnTahsilatAra.BackgroundImage = global::Kobi_v1.Properties.Resources.Search1400;
+            this.btnTahsilatAra.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnTahsilatAra.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTahsilatAra.FlatAppearance.BorderSize = 0;
+            this.btnTahsilatAra.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.btnTahsilatAra.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(140)))), ((int)(((byte)(100)))));
+            this.btnTahsilatAra.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnTahsilatAra.ForeColor = System.Drawing.Color.Transparent;
+            this.btnTahsilatAra.Location = new System.Drawing.Point(234, 6);
+            this.btnTahsilatAra.Name = "btnTahsilatAra";
+            this.btnTahsilatAra.Size = new System.Drawing.Size(36, 27);
+            this.btnTahsilatAra.TabIndex = 28;
+            this.btnTahsilatAra.UseVisualStyleBackColor = false;
+            this.btnTahsilatAra.Click += new System.EventHandler(this.btnTahsilatAra_Click);
             // 
             // label9
             // 
@@ -509,5 +529,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtCariID;
         private System.Windows.Forms.Button btnCariAra;
+        private System.Windows.Forms.Button btniptal;
     }
 }

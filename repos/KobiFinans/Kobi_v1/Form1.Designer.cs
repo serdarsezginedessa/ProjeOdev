@@ -31,6 +31,7 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.cariToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -595,33 +596,50 @@
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55.04587F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 44.95413F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(975, 527);
             this.tableLayoutPanel3.TabIndex = 7;
             this.tableLayoutPanel3.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel3_Paint);
             // 
             // chartKasaOzet
             // 
-            this.chartKasaOzet.BackColor = System.Drawing.Color.IndianRed;
-            this.chartKasaOzet.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.DiagonalLeft;
-            this.chartKasaOzet.BorderlineColor = System.Drawing.Color.Black;
-            this.chartKasaOzet.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.DashDot;
+            this.chartKasaOzet.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.chartKasaOzet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(208)))), ((int)(((byte)(161)))));
+            chartArea1.Area3DStyle.LightStyle = System.Windows.Forms.DataVisualization.Charting.LightStyle.None;
+            chartArea1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            chartArea1.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.TopBottom;
+            chartArea1.BackHatchStyle = System.Windows.Forms.DataVisualization.Charting.ChartHatchStyle.BackwardDiagonal;
+            chartArea1.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            chartArea1.BorderWidth = 3;
+            chartArea1.IsSameFontSizeForAllAxes = true;
             chartArea1.Name = "ChartArea1";
             this.chartKasaOzet.ChartAreas.Add(chartArea1);
-            this.chartKasaOzet.Dock = System.Windows.Forms.DockStyle.Fill;
             legend1.Name = "Legend1";
+            legend1.TableStyle = System.Windows.Forms.DataVisualization.Charting.LegendTableStyle.Tall;
             this.chartKasaOzet.Legends.Add(legend1);
             this.chartKasaOzet.Location = new System.Drawing.Point(3, 293);
             this.chartKasaOzet.Name = "chartKasaOzet";
-            this.chartKasaOzet.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
-            this.chartKasaOzet.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.chartKasaOzet.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             series1.ChartArea = "ChartArea1";
+            series1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            series1.IsXValueIndexed = true;
             series1.Legend = "Legend1";
+            series1.MarkerSize = 2;
             series1.Name = "Series1";
+            series1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
+            series1.ShadowOffset = 3;
             this.chartKasaOzet.Series.Add(series1);
             this.chartKasaOzet.Size = new System.Drawing.Size(330, 231);
-            this.chartKasaOzet.SuppressExceptions = true;
             this.chartKasaOzet.TabIndex = 0;
             this.chartKasaOzet.Text = "chart1";
+            title1.Alignment = System.Drawing.ContentAlignment.MiddleLeft;
+            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            title1.Name = "Title1";
+            title1.Text = "Günlük Gelir/Gider";
+            title1.TextStyle = System.Windows.Forms.DataVisualization.Charting.TextStyle.Shadow;
+            this.chartKasaOzet.Titles.Add(title1);
             // 
             // Form1
             // 
@@ -689,7 +707,6 @@
         private System.Windows.Forms.Label lblToplamGider;
         private System.Windows.Forms.Label lblKasaBakiyesi;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartKasaOzet;
         private System.Windows.Forms.ToolStripMenuItem raporlarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem satışlarToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem tahsilatlarToolStripMenuItem;
@@ -704,6 +721,7 @@
         private System.Windows.Forms.ToolStripMenuItem CariKategorileritoolStripMenuItem1;
         private System.Windows.Forms.Button btnCikis;
         private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartKasaOzet;
     }
 }
 

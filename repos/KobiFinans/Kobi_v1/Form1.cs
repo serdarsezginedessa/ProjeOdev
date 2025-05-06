@@ -107,35 +107,29 @@ namespace Kobi_v1
             }
         }
 
-        private void KasaOzetGrafik()
+        public void KasaOzetGrafik()
         {
             try
             {
-                
-                if (baglanti.State == ConnectionState.Closed) baglanti.Open();
+                // Label'dan gelir ve gider değerlerini al
+                string gelirText = lblToplamGelir.Text.Replace("Toplam Gelir: ", "").Replace("₺", "").Trim();
+                string giderText = lblToplamGider.Text.Replace("Toplam Gider: ", "").Replace("₺", "").Trim();
 
-                SqlCommand cmd = new SqlCommand(@"
-            SELECT 
-                SUM(CASE WHEN HareketTipi IN ('Tahsilat', 'Giriş') THEN Tutar ELSE 0 END) AS ToplamGelir,
-                SUM(CASE WHEN HareketTipi IN ('Tediye', 'Çıkış', 'Gider') THEN Tutar ELSE 0 END) AS ToplamGider
-            FROM KasaHareketleri", baglanti);
+                // String değerleri decimal'e dönüştür
+                decimal gelir = decimal.TryParse(gelirText, out decimal parsedGelir) ? parsedGelir : 0;
+                decimal gider = decimal.TryParse(giderText, out decimal parsedGider) ? parsedGider : 0;
 
-                SqlDataReader dr = cmd.ExecuteReader();
-                if (dr.Read())
-                {
-                    decimal gelir = dr["ToplamGelir"] != DBNull.Value ? Convert.ToDecimal(dr["ToplamGelir"]) : 0;
-                    decimal gider = dr["ToplamGider"] != DBNull.Value ? Convert.ToDecimal(dr["ToplamGider"]) : 0;
-
-                    chartKasaOzet.Series.Clear();
-                    chartKasaOzet.Series.Add("Kasa");
-                    chartKasaOzet.Series["Kasa"].Points.AddXY("Gelir", gelir);
-                    chartKasaOzet.Series["Kasa"].Points.AddXY("Gider", gider);
-                }
-
-                dr.Close();
+                // Chart'a değerleri ekle
+                chartKasaOzet.Series.Clear(); // Önceki verileri temizle
+                chartKasaOzet.Series.Add("Kasa");
+                chartKasaOzet.Series["Kasa"].Points.AddXY("Gelir", gelir);
+                chartKasaOzet.Series["Kasa"].Points.AddXY("Gider", gider);
             }
-            catch { }
-            finally { baglanti.Close(); }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hata: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
         private void button2_Click(object sender, EventArgs e)
         {

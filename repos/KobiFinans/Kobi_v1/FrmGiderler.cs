@@ -180,6 +180,7 @@ namespace Kobi_v1
                 btnKaydet.Enabled = false;
                 Form1 frm = (Form1)this.Owner;
                 frm.GelirGiderGet();
+                
 
 
 
@@ -282,6 +283,7 @@ namespace Kobi_v1
 
                 Form1 frm = (Form1)this.Owner;
                 frm.GelirGiderGet();
+                
 
             }
             catch (Exception ex)
@@ -325,6 +327,7 @@ namespace Kobi_v1
 
                 Form1 frm = (Form1)this.Owner;
                 frm.GelirGiderGet();
+                
 
                 transaction.Commit();
             }

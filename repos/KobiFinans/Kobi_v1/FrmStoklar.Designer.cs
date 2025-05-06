@@ -63,10 +63,12 @@
             this.cariEkleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cariBilgileriDüzeltToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cariSilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -148,6 +150,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.comboBox1);
@@ -204,12 +207,11 @@
             this.btnEkle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnEkle.ForeColor = System.Drawing.Color.Transparent;
             this.btnEkle.Image = global::Kobi_v1.Properties.Resources.Edit36px;
-            this.btnEkle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEkle.Location = new System.Drawing.Point(1023, 33);
+            this.btnEkle.Location = new System.Drawing.Point(827, 84);
             this.btnEkle.Name = "btnEkle";
-            this.btnEkle.Size = new System.Drawing.Size(227, 48);
+            this.btnEkle.Size = new System.Drawing.Size(190, 48);
             this.btnEkle.TabIndex = 21;
-            this.btnEkle.Text = "Ekle-Güncelle-Sil";
+            this.btnEkle.Text = "Ürün Ekle";
             this.btnEkle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEkle.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEkle.UseVisualStyleBackColor = false;
@@ -371,6 +373,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(1464, 545);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.TabStop = false;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // contextMenuStrip1
@@ -401,6 +404,15 @@
             this.cariSilToolStripMenuItem.Size = new System.Drawing.Size(206, 24);
             this.cariSilToolStripMenuItem.Text = "Cari Sil";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox1.Location = new System.Drawing.Point(1041, 33);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(162, 140);
+            this.pictureBox1.TabIndex = 31;
+            this.pictureBox1.TabStop = false;
+            // 
             // FrmStoklar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
@@ -428,6 +440,7 @@
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -465,5 +478,6 @@
         private System.Windows.Forms.ToolStripMenuItem cariBilgileriDüzeltToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cariSilToolStripMenuItem;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

@@ -30,6 +30,8 @@ namespace Kobi_v1
         public string _cariAd { get; set; }
         public Form1 ParetForm { get; set; } // Ana form referansı
         int _tahsilatNO;
+        public bool tahsilatBayrak = false;
+        Form1 form1 = Application.OpenForms.OfType<Form1>().FirstOrDefault();
 
 
 
@@ -38,45 +40,12 @@ namespace Kobi_v1
 
 
 
-
-        string sqlKasaHareket = @"INSERT INTO KasaHareketleri
-                                        (KasaID, CariID, Tarih, Tutar, Aciklama, HareketTipi)
-                                         VALUES
-                                        (@kasaID, @cariID, @tarih, @tutar, @aciklama, 'Tahsilat')";
-
-        string sqlBankaHareket = @"INSERT INTO BankaHareketler
-                                        (BankaID, CariID, Tarih, Tutar, Aciklama, HareketTipi, Kaynak)
-                                        VALUES
-                                        (@bankaID, @cariID, @tarih, @tutar, @aciklama, 'Banka Tahsilat', 'Satış Ekranı')";
-
-
-        /*  if (odemeYontemi == "Kasa")
-  {
-      SqlCommand cmd = new SqlCommand("INSERT INTO KasaHareketleri (KasaID, CariID, Tarih, Tutar, Aciklama, HareketTipi) VALUES (@kasaID, @cariID, @tarih, @tutar, @aciklama, 'Tahsilat')", baglanti);
-          cmd.Parameters.AddWithValue("@kasaID", kasaID);
-      cmd.Parameters.AddWithValue("@cariID", cariID);
-      cmd.Parameters.AddWithValue("@tarih", DateTime.Now);
-      cmd.Parameters.AddWithValue("@tutar", tutar);
-      cmd.Parameters.AddWithValue("@aciklama", "Satış ödemesi");
-      cmd.ExecuteNonQuery();
-  }
-  else if (odemeYontemi == "Banka")
-  {
-      SqlCommand cmd = new SqlCommand("INSERT INTO BankaHareketler (BankaID, CariID, Tarih, Tutar, Aciklama, HareketTipi, Kaynak) VALUES (@bankaID, @cariID, @tarih, @tutar, @aciklama, 'Banka Tahsilat', 'Satış Ekranı')", baglanti);
-      cmd.Parameters.AddWithValue("@bankaID", bankaID);
-      cmd.Parameters.AddWithValue("@cariID", cariID);
-      cmd.Parameters.AddWithValue("@tarih", DateTime.Now);
-      cmd.Parameters.AddWithValue("@tutar", tutar);
-      cmd.Parameters.AddWithValue("@aciklama", "Satış ödemesi");
-      cmd.ExecuteNonQuery();
-  }
-        */
-
         private void FrmTahsilat_Load(object sender, EventArgs e)
         {
             OdemeTurleriGetir();
             KasalariGetir();
             BankalariGetir();
+            BtnLoad();
             if (_cariID != 0)
                 txtCariID.Text = _cariID.ToString();
             if (_faturaNo != 0)
@@ -99,10 +68,8 @@ namespace Kobi_v1
                 txtTutar.Text = "0,00";
             }
             txtCariAd.Text = _cariAd;
+            
 
-            btnKaydet.Enabled = true;
-            txtFaturaNo.Enabled = false;
-            checkBox1FaturaAktif.Checked = false;
 
         }
         Form1 frm = Application.OpenForms.OfType<Form1>().FirstOrDefault();
@@ -110,7 +77,7 @@ namespace Kobi_v1
 
 
 
-        private void TahsilatveHareketKaydet()
+        public void TahsilatveHareketKaydet()
         {
             SqlTransaction transaction = null;
             try
@@ -163,6 +130,8 @@ namespace Kobi_v1
                     tahsilatID = Convert.ToInt32(result);
                     txtTahsilatNo.Text = tahsilatID.ToString();
                 }
+                
+                
 
 
 
@@ -229,15 +198,13 @@ namespace Kobi_v1
                 transaction.Commit();
 
                 MessageBox.Show("Tahsilat başarıyla kaydedildi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 
-                if (frm != null)
-                {
-                    frm.GelirGiderGet(); // Form1'deki fonksiyonu çağır
-                }
-                else
-                {
-                    MessageBox.Show("Form1 açık değil.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                form1.GelirGiderGet();
+
+                
+                txtTutar.Text = "0,00";
+                tahsilatBayrak = true;
             }
             catch (Exception ex)
             {
@@ -361,7 +328,7 @@ namespace Kobi_v1
                 transaction.Commit();
 
                 MessageBox.Show("Tahsilat Başarıyla Güncellendi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ParetForm.GelirGiderGet();
+                form1.GelirGiderGet();
             }
             catch (Exception ex)
             {
@@ -414,7 +381,8 @@ namespace Kobi_v1
 
                 transaction.Commit();
                 MessageBox.Show("Kayıt Silme İşlemi Tamamlandı!");
-                ParetForm.GelirGiderGet();
+                form1.GelirGiderGet();
+
             }
             catch (Exception ex)
             {
@@ -424,7 +392,7 @@ namespace Kobi_v1
                 }
                 MessageBox.Show("Tahsilat Kaydı Silinirken Bir Hata Oluştu" + ex.ToString());
             }
-            finally { baglanti.Close(); }
+            finally { baglanti.Close();  }
         }
 
 
@@ -476,32 +444,159 @@ namespace Kobi_v1
             }
         }
 
-        private void Temizle()
+        private void BtnLoad()
         {
-            txtFaturaNo.Clear();
-            txtCariID.Clear();
-            txtTutar.Clear();
-            txtAciklama.Clear();
-            txtTahsilatNo.Clear();
-            txtCariKod.Clear();
-            txtCariAd.Clear();
-            comboOdemeTuru.SelectedIndex = -1;
-            comboBoxNakit.SelectedIndex = -1;
-            comboBoxBanka.SelectedIndex = -1;
+            if (this.Owner is Form1)
+            {
+                foreach (Control item in this.Controls)
+                {
+                    if (item is TextBox)
+                    {
+                        item.Text = string.Empty;
+                        item.Enabled = false;
+                    }
+                    if (item is ComboBox)
+                    {
+                        item.Text = string.Empty;
+                        item.Enabled = false;
+                    }
+                    if (item is CheckBox)
+                    {
+                        checkBox1FaturaAktif.Checked = false;
+                        item.Enabled = false;
+                    }
+                    if (item is DateTimePicker)
+                    {
+                        dateTarih.Value = DateTime.Now;
+                        item.Enabled = false;
+                    }
+                    if (item is Button)
+                    {
+                        item.Enabled = false;
+                        btnTahsilatAra.Enabled = true;
+
+                    }
+
+                }
+                foreach (Panel item2 in this.Controls.OfType<Panel>())
+                {
+                    foreach (Control item3 in item2.Controls)
+                    {
+                        if (item3 is Button)
+                        {
+                            item3.Enabled = false;
+                            btnYeniKayit.Enabled = true;
+                            btnKapat.Enabled = true;
+
+                        }
+                    }
+                }
+            }
+            else
+            {
+                foreach (Control item in this.Controls)
+                {
+                    if (item is TextBox)
+                    {
+
+                        item.Enabled = false;
+                        txtAciklama.Enabled = true;
+                        txtTutar.Enabled = true;
+
+                    }
+                    if (item is ComboBox)
+                    {
+
+                        item.Enabled = true;
+                    }
+                    if (item is CheckBox)
+                    {
+                        checkBox1FaturaAktif.Checked = false;
+                        item.Enabled = false;
+                    }
+                    if (item is DateTimePicker)
+                    {
+                        dateTarih.Value = DateTime.Now;
+                        item.Enabled = false;
+                    }
+                    if (item is Button)
+                    {
+                        item.Enabled = false;
+                    }
+                }
+                foreach (Panel item2 in this.Controls.OfType<Panel>())
+                {
+                    foreach (Control item3 in item2.Controls)
+                    {
+                        if (item3 is Button)
+                        {
+                            item3.Enabled = false;
+                            btnKaydet.Enabled = true;
+                            btnKapat.Enabled = true;
+                        }
+                    }
+                }
+
+            }
+        }
+
+        private void BtnYeni()
+        {
+            
+
+            foreach (Control item in this.Controls)
+            {
+                if (item is TextBox)
+                {
+                    item.Text = string.Empty;
+                    txtAciklama.Enabled=true;
+                    txtTutar.Enabled = true;
+                }
+                if (item is ComboBox)
+                {
+                    item.Text = string.Empty;
+                    item.Enabled = true;
+
+                }
+                if (item is CheckBox)
+                {
+                    checkBox1FaturaAktif.Checked = false;
+                    item.Enabled = true;
+                }
+                if (item is DateTimePicker)
+                {
+                    dateTarih.Value = DateTime.Now;
+                    item.Enabled = true;
+                }
+                if (item is Button)
+                {
+                    btnCariAra.Enabled = true;
+                    btnTahsilatAra.Enabled = false;
+                }
+
+            }
+            foreach(Panel item in this.Controls.OfType<Panel>())
+            {
+                foreach (Control item2 in item.Controls)
+                {
+                    if(item2 is Button)
+                    {
+                        item2.Enabled = false;
+                        btnKaydet.Enabled = true;
+                        btniptal.Enabled = true;
+                        btnKapat.Enabled = true;
+                        btnCariAra.Enabled = true;
+                    }
+                }
+            }
+            btnCariAra.Enabled = true;
+            btnTahsilatAra.Enabled = false;
+
             dateTarih.Value = DateTime.Now;
+            txtTutar.Text = "0,00";
         }
 
 
-
-        private void BtnFromAcilis()
-        {
-            /*btnYeniKayit.Enabled = true;
-            btnGuncelle.Enabled = false;
-            btnKapat.Enabled = true;
-            btnKaydet.Enabled = false;
-            btnSil.Enabled = false;*/
-
-        }
         private void txtTutar_Leave(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtTutar.Text))
@@ -537,14 +632,11 @@ namespace Kobi_v1
             }
         }
 
-        private void btnTemizle_Click(object sender, EventArgs e)
-        {
-            Temizle();
-        }
+
 
         private void btnYeniKayit_Click(object sender, EventArgs e)
         {
-            Temizle();
+            BtnYeni();
 
         }
         private void btnKaydet_Click(object sender, EventArgs e)
@@ -554,6 +646,10 @@ namespace Kobi_v1
             {
                 ((Form1)this.Owner).GelirGiderGet();
             }
+            
+           
+            BtnLoad();
+
 
 
         }
@@ -562,6 +658,9 @@ namespace Kobi_v1
         {
 
             TahsilatveHareketGuncelle();
+            
+
+            BtnLoad();
 
         }
 
@@ -573,9 +672,75 @@ namespace Kobi_v1
             {
                 TahsilatSil();
             }
+                        
+            BtnLoad();
 
-            Temizle();
         }
+        private void btniptal_Click(object sender, EventArgs e)
+        {
+            BtnLoad();
+        }
+
+        private void btnTahsilatAra_Click(object sender, EventArgs e)
+        {
+            frmTahsilatHareketleri frmTahsilatHareketleri = new frmTahsilatHareketleri();
+            DialogResult sonuc = frmTahsilatHareketleri.ShowDialog();
+
+
+            if (sonuc == DialogResult.OK)
+            {
+                txtTahsilatNo.Text = frmTahsilatHareketleri.TahsilatIdGonder;
+                txtCariKod.Text = frmTahsilatHareketleri.CariKodGonder;
+                txtCariID.Text = frmTahsilatHareketleri.CariIdGonder;
+                txtCariAd.Text = frmTahsilatHareketleri.CariAdGonder;
+                txtFaturaNo.Text = frmTahsilatHareketleri.FaturaNoGonder;
+                txtTutar.Text = frmTahsilatHareketleri.TutarGonder;
+
+                dateTarih.Text = Convert.ToDateTime(frmTahsilatHareketleri.TarihGonder).ToString();
+                comboOdemeTuru.Text = frmTahsilatHareketleri.OdemeTuruGoner;
+                comboBoxBanka.Text = frmTahsilatHareketleri.BankaIdGonder;
+                comboBoxNakit.Text = frmTahsilatHareketleri.KasaIdGonder;
+                txtAciklama.Text = frmTahsilatHareketleri.AciklamaGonder;
+            }
+            else
+            {
+
+            }
+            btnGuncelle.Enabled = true;
+            btnSil.Enabled = true;
+            btnKapat.Enabled = true;
+            btniptal.Enabled = true;
+            foreach (Control item in this.Controls)
+            {
+                if (item is TextBox)
+                {
+                    txtAciklama.Enabled = true;
+                    txtTutar.Enabled = true;
+
+                }
+                if (item is ComboBox)
+                {
+                    item.Enabled = true;
+                }
+                if (item is CheckBox)
+                {
+                    item.Enabled = true;
+                }
+                if (item is DateTimePicker)
+                {
+                    item.Enabled = true;
+                }
+            }
+        }
+
+        private void btnCariAra_Click(object sender, EventArgs e)
+        {
+            FrmCariListele frmCariListele = new FrmCariListele();
+            frmCariListele.CagrilanForm = this;
+
+            frmCariListele.ShowDialog();
+        }
+
 
         private void checkBox1FaturaAktif_CheckedChanged(object sender, EventArgs e)
         {
@@ -611,45 +776,16 @@ namespace Kobi_v1
             }
         }
 
-        private void btnTahsilatAra_Click(object sender, EventArgs e)
-        {
-            frmTahsilatHareketleri frmTahsilatHareketleri = new frmTahsilatHareketleri();
-            DialogResult sonuc = frmTahsilatHareketleri.ShowDialog();
 
 
-            if (sonuc == DialogResult.OK)
-            {
-                txtTahsilatNo.Text = frmTahsilatHareketleri.TahsilatIdGonder;
-                txtCariKod.Text = frmTahsilatHareketleri.CariKodGonder;
-                txtCariID.Text = frmTahsilatHareketleri.CariIdGonder;
-                txtCariAd.Text = frmTahsilatHareketleri.CariAdGonder;
-                txtFaturaNo.Text = frmTahsilatHareketleri.FaturaNoGonder;
-                txtTutar.Text = frmTahsilatHareketleri.TutarGonder;
 
-                dateTarih.Text = Convert.ToDateTime(frmTahsilatHareketleri.TarihGonder).ToString();
-                comboOdemeTuru.Text = frmTahsilatHareketleri.OdemeTuruGoner;
-                comboBoxBanka.Text = frmTahsilatHareketleri.BankaIdGonder;
-                comboBoxNakit.Text = frmTahsilatHareketleri.KasaIdGonder;
-                txtAciklama.Text = frmTahsilatHareketleri.AciklamaGonder;
-            }
-            else
-            {
-
-            }
-        }
-
-        private void btnCariAra_Click(object sender, EventArgs e)
-        {
-            FrmCariListele frmCariListele = new FrmCariListele();
-            frmCariListele.CagrilanForm = this;
-
-            frmCariListele.ShowDialog();
-        }
         public void CariBilgileriYukle(string cariID, string cariKod, string cariAdi)
         {
             txtCariID.Text = cariID;
             txtCariKod.Text = cariKod;
             txtCariAd.Text = cariAdi;
         }
+
+
     }
 }

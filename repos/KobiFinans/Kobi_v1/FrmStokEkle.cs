@@ -82,7 +82,7 @@ namespace Kobi_v1
         }
 
         string resimYolu = "";
-        string varsayilanresimyolu = @"\\images\\default.jpg";
+        string varsayilanresimyolu = @"\images\default.jpg";
         bool bayrak = false;
 
         private void pictureBox1_DoubleClick(object sender, EventArgs e)
@@ -97,10 +97,10 @@ namespace Kobi_v1
             {
                 pictureBox1.ImageLocation = resimAc.FileName;
                 string kaynak = resimAc.FileName;
-                string hedef = Application.StartupPath + @"\\images\\";
+                string hedef = Application.StartupPath + @"\images\";
                 string yeniAd = Guid.NewGuid().ToString() + ".jpg";
                 File.Copy(kaynak, hedef + yeniAd, true);
-                resimYolu = @"\\images\\" + yeniAd;
+                resimYolu = @"\images\" + yeniAd;
             }
             else
             {
@@ -134,13 +134,11 @@ namespace Kobi_v1
             combxKdv.Text = kdv;
             txtStokAdeti.Text = miktar;
             txtAciklama.Text = aciklama;
-
-
             
-
+            pictureBox1.BackgroundImage = null;
 
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.ImageLocation = resim;
+            pictureBox1.ImageLocation = Application.StartupPath+resim;
                       
 
 
@@ -251,16 +249,21 @@ namespace Kobi_v1
                     cmd.Parameters.AddWithValue("@stokmiktari", txtStokAdeti.Text);
                     cmd.Parameters.AddWithValue("@aciklama", txtAciklama.Text);
 
-
-                    if (bayrak)
+                    // Resim yolunu kontrol et
+                    if (bayrak) // Yeni resim eklenmişse
                     {
-                        pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
                         cmd.Parameters.AddWithValue("@resim", resimYolu);
+                    }
+                    else if (!string.IsNullOrEmpty(pictureBox1.ImageLocation)) // Mevcut resim varsa
+                    {
+                        // Mevcut resim yolunu kaydet
+                        string mevcutResimYolu = pictureBox1.ImageLocation.Replace(Application.StartupPath, "");
+                        cmd.Parameters.AddWithValue("@resim", mevcutResimYolu);
                     }
                     else
                     {
-                        pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-                        cmd.Parameters.AddWithValue("@resim", Application.StartupPath + pictureBox1.ImageLocation);
+                        // Varsayılan resim yolunu kullan
+                        cmd.Parameters.AddWithValue("@resim", varsayilanresimyolu);
                     }
 
 

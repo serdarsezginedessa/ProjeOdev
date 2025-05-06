@@ -465,6 +465,18 @@ namespace Kobi_v1
             }
         }
 
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex >= 0)
+            {
+                DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
+
+                string resim =  row.Cells["c.Resim"].Value?.ToString() ?? "";
+                pictureBox1.ImageLocation = Application.StartupPath + resim;
+            }
+            
+        }
+
 
 
         private void txtCariTUR_TextChanged(object sender, EventArgs e)

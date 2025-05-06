@@ -440,12 +440,7 @@ namespace Kobi_v1
 
         private void FaturaSil(string faturaNo)
         {
-            /*if (string.IsNullOrEmpty(faturaNo))
-            {
-                MessageBox.Show("Lütfen silmek için bir fatura seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }*/
-
+            
             DialogResult result = MessageBox.Show(
                 $"Fatura No: {faturaNo} olan faturayı silmek istediğinize emin misiniz?",
                 "Fatura Silme Onayı",
@@ -1314,6 +1309,11 @@ namespace Kobi_v1
         }
         private void btnSil_Click(object sender, EventArgs e)
         {
+            if(comboBoxDurum.Text == "Tahsilat Yapıldı")
+            {
+                MessageBox.Show("Tahsilatı Yapılmış Fatura Silinemez", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             if (!string.IsNullOrEmpty(txtFaturaNo.Text))
             {
                 FaturaSil(txtFaturaNo.Text);
@@ -1449,6 +1449,11 @@ namespace Kobi_v1
                 MessageBox.Show("Tahsilat Yapmak İçin Lütfen Önce Fatura Bilgilerini Giriniz", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            if (comboBoxDurum.Text == "Tahsilat Yapıldı")
+            {
+                MessageBox.Show("Tahsilat Yapıldı. Tekrar Tahsilat Yapılamaz.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             FrmTahsilat frmTahsilat = new FrmTahsilat();
 
             frmTahsilat._cariAd = txtCariAd.Text;
@@ -1468,10 +1473,26 @@ namespace Kobi_v1
             }
 
             frmTahsilat._tutar = tutar;
-
-
             frmTahsilat.ShowDialog();
+            if (frmTahsilat.tahsilatBayrak)
+            {
 
+                comboBoxDurum.Text = "Tahsilat Yapıldı";
+
+            }
+            else
+            {
+                // Kullanıcı formu kapattıysa veya iptal ettiyse
+                // Burada herhangi bir işlem yapmaya gerek yok
+            }
+           
+           
+            
+
+            
+            
+
+           
         }
 
         #endregion
@@ -1539,7 +1560,18 @@ namespace Kobi_v1
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
-
+            if(comboBoxDurum.Text == "Tahsilat Yapıldı")
+            {
+                
+                if(DialogResult.Yes == MessageBox.Show("Tahsilat Yapılmış Fatura Drumu Değiştirmek İstiyor musunuz ", "Bilgi", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                {
+                    comboBoxDurum.Text = "Yeni";
+                }
+                else
+                {
+                    return;
+                }
+            }
             if (!UrunEklenmisMi() && txtSatisNo.Text == "") // Ürün yoksa
             {
 
