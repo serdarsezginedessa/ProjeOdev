@@ -101,9 +101,10 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.MdiWindowListItem = this.kasaToolStripMenuItem;
             this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.menuStrip1.ShowItemToolTips = true;
-            this.menuStrip1.Size = new System.Drawing.Size(1200, 48);
+            this.menuStrip1.Size = new System.Drawing.Size(960, 48);
             this.menuStrip1.Stretch = false;
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
@@ -118,7 +119,7 @@
             this.cariToolStripMenuItem.Image = global::Kobi_v1.Properties.Resources.Users801;
             this.cariToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.cariToolStripMenuItem.Name = "cariToolStripMenuItem";
-            this.cariToolStripMenuItem.Size = new System.Drawing.Size(54, 44);
+            this.cariToolStripMenuItem.Size = new System.Drawing.Size(52, 44);
             this.cariToolStripMenuItem.Text = "Cari";
             this.cariToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
             this.cariToolStripMenuItem.ToolTipText = "Cari İşlemleri";
@@ -127,7 +128,7 @@
             // 
             this.cariListeleriToolStripMenuItem.Image = global::Kobi_v1.Properties.Resources.Group481;
             this.cariListeleriToolStripMenuItem.Name = "cariListeleriToolStripMenuItem";
-            this.cariListeleriToolStripMenuItem.Size = new System.Drawing.Size(220, 46);
+            this.cariListeleriToolStripMenuItem.Size = new System.Drawing.Size(182, 46);
             this.cariListeleriToolStripMenuItem.Text = "Cariler";
             this.cariListeleriToolStripMenuItem.Click += new System.EventHandler(this.cariListeleriToolStripMenuItem_Click);
             // 
@@ -135,7 +136,7 @@
             // 
             this.cariOToolStripMenuItem.Image = global::Kobi_v1.Properties.Resources.Add_User_Group_Woman_Man80;
             this.cariOToolStripMenuItem.Name = "cariOToolStripMenuItem";
-            this.cariOToolStripMenuItem.Size = new System.Drawing.Size(220, 46);
+            this.cariOToolStripMenuItem.Size = new System.Drawing.Size(182, 46);
             this.cariOToolStripMenuItem.Text = "Cari Ekle";
             this.cariOToolStripMenuItem.Click += new System.EventHandler(this.cariOToolStripMenuItem_Click);
             // 
@@ -143,7 +144,7 @@
             // 
             this.CariKategorileritoolStripMenuItem1.Image = global::Kobi_v1.Properties.Resources.Diversity80;
             this.CariKategorileritoolStripMenuItem1.Name = "CariKategorileritoolStripMenuItem1";
-            this.CariKategorileritoolStripMenuItem1.Size = new System.Drawing.Size(220, 46);
+            this.CariKategorileritoolStripMenuItem1.Size = new System.Drawing.Size(182, 46);
             this.CariKategorileritoolStripMenuItem1.Text = "Cari Kategorileri";
             this.CariKategorileritoolStripMenuItem1.Click += new System.EventHandler(this.CariKategorileritoolStripMenuItem1_Click);
             // 
@@ -155,14 +156,14 @@
             this.stokKategorileriToolStripMenuItem});
             this.stokToolStripMenuItem.Image = global::Kobi_v1.Properties.Resources.Sell_Stock80;
             this.stokToolStripMenuItem.Name = "stokToolStripMenuItem";
-            this.stokToolStripMenuItem.Size = new System.Drawing.Size(54, 44);
+            this.stokToolStripMenuItem.Size = new System.Drawing.Size(52, 44);
             this.stokToolStripMenuItem.ToolTipText = "Stok İşlemleri";
             // 
             // stoklarToolStripMenuItem
             // 
             this.stoklarToolStripMenuItem.Image = global::Kobi_v1.Properties.Resources.Product96px1;
             this.stoklarToolStripMenuItem.Name = "stoklarToolStripMenuItem";
-            this.stoklarToolStripMenuItem.Size = new System.Drawing.Size(238, 46);
+            this.stoklarToolStripMenuItem.Size = new System.Drawing.Size(198, 46);
             this.stoklarToolStripMenuItem.Text = "Stoklar";
             this.stoklarToolStripMenuItem.Click += new System.EventHandler(this.stoklarToolStripMenuItem_Click);
             // 
@@ -170,7 +171,7 @@
             // 
             this.stokTanımlamalarıToolStripMenuItem.Image = global::Kobi_v1.Properties.Resources.Delivered_Box80;
             this.stokTanımlamalarıToolStripMenuItem.Name = "stokTanımlamalarıToolStripMenuItem";
-            this.stokTanımlamalarıToolStripMenuItem.Size = new System.Drawing.Size(238, 46);
+            this.stokTanımlamalarıToolStripMenuItem.Size = new System.Drawing.Size(198, 46);
             this.stokTanımlamalarıToolStripMenuItem.Text = "Stok Tanımlamaları";
             this.stokTanımlamalarıToolStripMenuItem.Click += new System.EventHandler(this.stokTanımlamalarıToolStripMenuItem_Click);
             // 
@@ -178,7 +179,7 @@
             // 
             this.stokKategorileriToolStripMenuItem.Image = global::Kobi_v1.Properties.Resources.Diversity80;
             this.stokKategorileriToolStripMenuItem.Name = "stokKategorileriToolStripMenuItem";
-            this.stokKategorileriToolStripMenuItem.Size = new System.Drawing.Size(238, 46);
+            this.stokKategorileriToolStripMenuItem.Size = new System.Drawing.Size(198, 46);
             this.stokKategorileriToolStripMenuItem.Text = "Stok Kategorileri";
             this.stokKategorileriToolStripMenuItem.Click += new System.EventHandler(this.stokKategorileriToolStripMenuItem_Click);
             // 
@@ -188,14 +189,14 @@
             this.satışToolStripMenuItem});
             this.FaturaToolStripMenuItem.Image = global::Kobi_v1.Properties.Resources.Receipt80;
             this.FaturaToolStripMenuItem.Name = "FaturaToolStripMenuItem";
-            this.FaturaToolStripMenuItem.Size = new System.Drawing.Size(54, 44);
+            this.FaturaToolStripMenuItem.Size = new System.Drawing.Size(52, 44);
             this.FaturaToolStripMenuItem.ToolTipText = "Fatura İşlemleri";
             // 
             // satışToolStripMenuItem
             // 
             this.satışToolStripMenuItem.Image = global::Kobi_v1.Properties.Resources.Purchase_Order80;
             this.satışToolStripMenuItem.Name = "satışToolStripMenuItem";
-            this.satışToolStripMenuItem.Size = new System.Drawing.Size(143, 46);
+            this.satışToolStripMenuItem.Size = new System.Drawing.Size(122, 46);
             this.satışToolStripMenuItem.Text = "Satış";
             this.satışToolStripMenuItem.Click += new System.EventHandler(this.satışToolStripMenuItem_Click);
             // 
@@ -207,7 +208,7 @@
             this.giderToolStripMenuItem});
             this.gelirGiderToolStripMenuItem.Image = global::Kobi_v1.Properties.Resources.Budget80;
             this.gelirGiderToolStripMenuItem.Name = "gelirGiderToolStripMenuItem";
-            this.gelirGiderToolStripMenuItem.Size = new System.Drawing.Size(54, 44);
+            this.gelirGiderToolStripMenuItem.Size = new System.Drawing.Size(52, 44);
             this.gelirGiderToolStripMenuItem.Text = "Gelir Gider";
             this.gelirGiderToolStripMenuItem.ToolTipText = "Gelir Gider İşlemleri";
             // 
@@ -215,7 +216,7 @@
             // 
             this.TahsilatToolStripMenuItem.Image = global::Kobi_v1.Properties.Resources.Money_Bag_Lira80;
             this.TahsilatToolStripMenuItem.Name = "TahsilatToolStripMenuItem";
-            this.TahsilatToolStripMenuItem.Size = new System.Drawing.Size(161, 46);
+            this.TahsilatToolStripMenuItem.Size = new System.Drawing.Size(137, 46);
             this.TahsilatToolStripMenuItem.Text = "Tahsilat";
             this.TahsilatToolStripMenuItem.Click += new System.EventHandler(this.TahsilatToolStripMenuItem_Click_1);
             // 
@@ -223,7 +224,7 @@
             // 
             this.giderToolStripMenuItem.Image = global::Kobi_v1.Properties.Resources.Cash_in_Hand80;
             this.giderToolStripMenuItem.Name = "giderToolStripMenuItem";
-            this.giderToolStripMenuItem.Size = new System.Drawing.Size(161, 46);
+            this.giderToolStripMenuItem.Size = new System.Drawing.Size(137, 46);
             this.giderToolStripMenuItem.Text = "Gider";
             this.giderToolStripMenuItem.Click += new System.EventHandler(this.giderToolStripMenuItem_Click_1);
             // 
@@ -235,7 +236,7 @@
             this.kasaToolStripMenuItem.Image = global::Kobi_v1.Properties.Resources.Cash_Register80;
             this.kasaToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.kasaToolStripMenuItem.Name = "kasaToolStripMenuItem";
-            this.kasaToolStripMenuItem.Size = new System.Drawing.Size(54, 44);
+            this.kasaToolStripMenuItem.Size = new System.Drawing.Size(52, 44);
             this.kasaToolStripMenuItem.Text = "Kasa";
             this.kasaToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.kasaToolStripMenuItem.ToolTipText = "Kasa İşlemleri";
@@ -244,7 +245,7 @@
             // 
             this.kasaListesiToolStripMenuItem.Image = global::Kobi_v1.Properties.Resources.kasa1;
             this.kasaListesiToolStripMenuItem.Name = "kasaListesiToolStripMenuItem";
-            this.kasaListesiToolStripMenuItem.Size = new System.Drawing.Size(160, 46);
+            this.kasaListesiToolStripMenuItem.Size = new System.Drawing.Size(135, 46);
             this.kasaListesiToolStripMenuItem.Text = "Kasalar";
             this.kasaListesiToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.kasaListesiToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -257,7 +258,7 @@
             this.bankaHareketleriToolStripMenuItem});
             this.bankaToolStripMenuItem.Image = global::Kobi_v1.Properties.Resources.Card_Wallet80;
             this.bankaToolStripMenuItem.Name = "bankaToolStripMenuItem";
-            this.bankaToolStripMenuItem.Size = new System.Drawing.Size(54, 44);
+            this.bankaToolStripMenuItem.Size = new System.Drawing.Size(52, 44);
             this.bankaToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
             this.bankaToolStripMenuItem.ToolTipText = "Banka İşlemleri";
             // 
@@ -265,14 +266,14 @@
             // 
             this.bankalarToolStripMenuItem.Image = global::Kobi_v1.Properties.Resources.Merchant_Account80;
             this.bankalarToolStripMenuItem.Name = "bankalarToolStripMenuItem";
-            this.bankalarToolStripMenuItem.Size = new System.Drawing.Size(229, 46);
+            this.bankalarToolStripMenuItem.Size = new System.Drawing.Size(190, 46);
             this.bankalarToolStripMenuItem.Text = "Bankalar";
             this.bankalarToolStripMenuItem.Click += new System.EventHandler(this.bankalarToolStripMenuItem_Click);
             // 
             // bankaHareketleriToolStripMenuItem
             // 
             this.bankaHareketleriToolStripMenuItem.Name = "bankaHareketleriToolStripMenuItem";
-            this.bankaHareketleriToolStripMenuItem.Size = new System.Drawing.Size(229, 46);
+            this.bankaHareketleriToolStripMenuItem.Size = new System.Drawing.Size(190, 46);
             this.bankaHareketleriToolStripMenuItem.Text = "Banka Hareketleri";
             this.bankaHareketleriToolStripMenuItem.Visible = false;
             this.bankaHareketleriToolStripMenuItem.Click += new System.EventHandler(this.bankaHareketleriToolStripMenuItem_Click);
@@ -289,7 +290,7 @@
             this.StokHareketleriToolStripMenuItem});
             this.raporlarToolStripMenuItem.Image = global::Kobi_v1.Properties.Resources.Total_Sales80;
             this.raporlarToolStripMenuItem.Name = "raporlarToolStripMenuItem";
-            this.raporlarToolStripMenuItem.Size = new System.Drawing.Size(54, 44);
+            this.raporlarToolStripMenuItem.Size = new System.Drawing.Size(52, 44);
             this.raporlarToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
             this.raporlarToolStripMenuItem.ToolTipText = "Raporlar";
             // 
@@ -297,7 +298,7 @@
             // 
             this.satışlarToolStripMenuItem1.Image = global::Kobi_v1.Properties.Resources.Purchase_Order80;
             this.satışlarToolStripMenuItem1.Name = "satışlarToolStripMenuItem1";
-            this.satışlarToolStripMenuItem1.Size = new System.Drawing.Size(238, 46);
+            this.satışlarToolStripMenuItem1.Size = new System.Drawing.Size(197, 46);
             this.satışlarToolStripMenuItem1.Text = "Satış Hareketleri";
             this.satışlarToolStripMenuItem1.Click += new System.EventHandler(this.satışlarToolStripMenuItem1_Click);
             // 
@@ -305,7 +306,7 @@
             // 
             this.tahsilatlarToolStripMenuItem.Image = global::Kobi_v1.Properties.Resources.Money_Bag_Lira80;
             this.tahsilatlarToolStripMenuItem.Name = "tahsilatlarToolStripMenuItem";
-            this.tahsilatlarToolStripMenuItem.Size = new System.Drawing.Size(238, 46);
+            this.tahsilatlarToolStripMenuItem.Size = new System.Drawing.Size(197, 46);
             this.tahsilatlarToolStripMenuItem.Text = "Tahsilat Hareketleri";
             this.tahsilatlarToolStripMenuItem.Click += new System.EventHandler(this.tahsilatlarToolStripMenuItem_Click);
             // 
@@ -313,7 +314,7 @@
             // 
             this.giderlerToolStripMenuItem.Image = global::Kobi_v1.Properties.Resources.Cash_in_Hand80;
             this.giderlerToolStripMenuItem.Name = "giderlerToolStripMenuItem";
-            this.giderlerToolStripMenuItem.Size = new System.Drawing.Size(238, 46);
+            this.giderlerToolStripMenuItem.Size = new System.Drawing.Size(197, 46);
             this.giderlerToolStripMenuItem.Text = "Gider Hareketleri";
             this.giderlerToolStripMenuItem.Click += new System.EventHandler(this.giderlerToolStripMenuItem_Click);
             // 
@@ -321,7 +322,7 @@
             // 
             this.kasaRaporToolStripMenuItem1.Image = global::Kobi_v1.Properties.Resources.Total_Salesa80;
             this.kasaRaporToolStripMenuItem1.Name = "kasaRaporToolStripMenuItem1";
-            this.kasaRaporToolStripMenuItem1.Size = new System.Drawing.Size(238, 46);
+            this.kasaRaporToolStripMenuItem1.Size = new System.Drawing.Size(197, 46);
             this.kasaRaporToolStripMenuItem1.Text = "Kasa Hareketleri";
             this.kasaRaporToolStripMenuItem1.Click += new System.EventHandler(this.kasaRaporToolStripMenuItem1_Click);
             // 
@@ -329,7 +330,7 @@
             // 
             this.bankaRaporToolStripMenuItem1.Image = global::Kobi_v1.Properties.Resources.Money_Yours80;
             this.bankaRaporToolStripMenuItem1.Name = "bankaRaporToolStripMenuItem1";
-            this.bankaRaporToolStripMenuItem1.Size = new System.Drawing.Size(238, 46);
+            this.bankaRaporToolStripMenuItem1.Size = new System.Drawing.Size(197, 46);
             this.bankaRaporToolStripMenuItem1.Text = "Banka Hareketleri";
             this.bankaRaporToolStripMenuItem1.Click += new System.EventHandler(this.bankaRaporToolStripMenuItem1_Click);
             // 
@@ -337,7 +338,7 @@
             // 
             this.carilerHareketleriToolStripMenuItem.Image = global::Kobi_v1.Properties.Resources.Users80;
             this.carilerHareketleriToolStripMenuItem.Name = "carilerHareketleriToolStripMenuItem";
-            this.carilerHareketleriToolStripMenuItem.Size = new System.Drawing.Size(238, 46);
+            this.carilerHareketleriToolStripMenuItem.Size = new System.Drawing.Size(197, 46);
             this.carilerHareketleriToolStripMenuItem.Text = "Cari Hareketleri";
             this.carilerHareketleriToolStripMenuItem.Click += new System.EventHandler(this.carilerListesiToolStripMenuItem_Click);
             // 
@@ -345,7 +346,7 @@
             // 
             this.StokHareketleriToolStripMenuItem.Image = global::Kobi_v1.Properties.Resources.Parcel_Cost80;
             this.StokHareketleriToolStripMenuItem.Name = "StokHareketleriToolStripMenuItem";
-            this.StokHareketleriToolStripMenuItem.Size = new System.Drawing.Size(238, 46);
+            this.StokHareketleriToolStripMenuItem.Size = new System.Drawing.Size(197, 46);
             this.StokHareketleriToolStripMenuItem.Text = "Stok Hareketleri";
             // 
             // lblTime
@@ -355,9 +356,10 @@
             this.lblTime.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.lblTime.Font = new System.Drawing.Font("Arial Rounded MT Bold", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(182)))), ((int)(((byte)(149)))));
-            this.lblTime.Location = new System.Drawing.Point(3, 72);
+            this.lblTime.Location = new System.Drawing.Point(2, 56);
+            this.lblTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(219, 72);
+            this.lblTime.Size = new System.Drawing.Size(176, 56);
             this.lblTime.TabIndex = 2;
             this.lblTime.Text = "20:20:20";
             // 
@@ -367,9 +369,10 @@
             this.llblKullanici.AutoSize = true;
             this.llblKullanici.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.llblKullanici.ForeColor = System.Drawing.Color.Olive;
-            this.llblKullanici.Location = new System.Drawing.Point(99, 6);
+            this.llblKullanici.Location = new System.Drawing.Point(79, 5);
+            this.llblKullanici.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.llblKullanici.Name = "llblKullanici";
-            this.llblKullanici.Size = new System.Drawing.Size(60, 24);
+            this.llblKullanici.Size = new System.Drawing.Size(46, 18);
             this.llblKullanici.TabIndex = 3;
             this.llblKullanici.Text = "label1";
             // 
@@ -379,9 +382,10 @@
             this.lblRol.AutoSize = true;
             this.lblRol.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lblRol.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(26)))), ((int)(((byte)(54)))));
-            this.lblRol.Location = new System.Drawing.Point(99, 41);
+            this.lblRol.Location = new System.Drawing.Point(79, 33);
+            this.lblRol.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRol.Name = "lblRol";
-            this.lblRol.Size = new System.Drawing.Size(60, 24);
+            this.lblRol.Size = new System.Drawing.Size(46, 18);
             this.lblRol.TabIndex = 3;
             this.lblRol.Text = "label1";
             // 
@@ -393,9 +397,10 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.llblKullanici);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Location = new System.Drawing.Point(2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(219, 66);
+            this.panel1.Size = new System.Drawing.Size(176, 52);
             this.panel1.TabIndex = 4;
             // 
             // label4
@@ -404,9 +409,10 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(26)))), ((int)(((byte)(54)))));
-            this.label4.Location = new System.Drawing.Point(43, 41);
+            this.label4.Location = new System.Drawing.Point(34, 33);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(38, 24);
+            this.label4.Size = new System.Drawing.Size(31, 18);
             this.label4.TabIndex = 3;
             this.label4.Text = "Rol";
             // 
@@ -416,9 +422,10 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label3.ForeColor = System.Drawing.Color.Olive;
-            this.label3.Location = new System.Drawing.Point(13, 6);
+            this.label3.Location = new System.Drawing.Point(10, 5);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 24);
+            this.label3.Size = new System.Drawing.Size(62, 18);
             this.label3.TabIndex = 3;
             this.label3.Text = "Kullanıcı";
             // 
@@ -435,7 +442,8 @@
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(975, 48);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(780, 48);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 8;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.56281F));
@@ -446,7 +454,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.56281F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.56281F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.0603F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(225, 575);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(180, 450);
             this.tableLayoutPanel1.TabIndex = 5;
             // 
             // btnCikis
@@ -463,9 +471,10 @@
             this.btnCikis.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnCikis.Image = global::Kobi_v1.Properties.Resources.Export80;
             this.btnCikis.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCikis.Location = new System.Drawing.Point(3, 507);
+            this.btnCikis.Location = new System.Drawing.Point(2, 394);
+            this.btnCikis.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCikis.Name = "btnCikis";
-            this.btnCikis.Size = new System.Drawing.Size(219, 65);
+            this.btnCikis.Size = new System.Drawing.Size(176, 54);
             this.btnCikis.TabIndex = 6;
             this.btnCikis.Text = "            Çıkış";
             this.btnCikis.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -485,9 +494,10 @@
             this.btnLogout.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnLogout.Image = global::Kobi_v1.Properties.Resources.Logout80;
             this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogout.Location = new System.Drawing.Point(3, 435);
+            this.btnLogout.Location = new System.Drawing.Point(2, 338);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(219, 66);
+            this.btnLogout.Size = new System.Drawing.Size(176, 52);
             this.btnLogout.TabIndex = 5;
             this.btnLogout.Text = "Oturum Kapat";
             this.btnLogout.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -507,9 +517,10 @@
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button2.Image = global::Kobi_v1.Properties.Resources.Calculator80;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(3, 363);
+            this.button2.Location = new System.Drawing.Point(2, 282);
+            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(219, 66);
+            this.button2.Size = new System.Drawing.Size(176, 52);
             this.button2.TabIndex = 0;
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button2.UseVisualStyleBackColor = false;
@@ -520,9 +531,10 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label1.Image = global::Kobi_v1.Properties.Resources.User_Groups1;
-            this.label1.Location = new System.Drawing.Point(3, 144);
+            this.label1.Location = new System.Drawing.Point(2, 112);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(219, 72);
+            this.label1.Size = new System.Drawing.Size(176, 56);
             this.label1.TabIndex = 0;
             // 
             // label2
@@ -531,9 +543,10 @@
             this.label2.Dock = System.Windows.Forms.DockStyle.Top;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label2.ForeColor = System.Drawing.Color.IndianRed;
-            this.label2.Location = new System.Drawing.Point(3, 216);
+            this.label2.Location = new System.Drawing.Point(2, 168);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(219, 26);
+            this.label2.Size = new System.Drawing.Size(176, 22);
             this.label2.TabIndex = 1;
             this.label2.Text = "label2";
             // 
@@ -550,37 +563,41 @@
             this.tableLayoutPanel2.Controls.Add(this.lblToplamGider, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.lblKasaBakiyesi, 2, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 575);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 460);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 48F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 48F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 48F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(975, 48);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(780, 38);
             this.tableLayoutPanel2.TabIndex = 6;
             // 
             // lblToplamGelir
             // 
             this.lblToplamGelir.AutoSize = true;
-            this.lblToplamGelir.Location = new System.Drawing.Point(3, 0);
+            this.lblToplamGelir.Location = new System.Drawing.Point(2, 0);
+            this.lblToplamGelir.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblToplamGelir.Name = "lblToplamGelir";
-            this.lblToplamGelir.Size = new System.Drawing.Size(0, 24);
+            this.lblToplamGelir.Size = new System.Drawing.Size(0, 18);
             this.lblToplamGelir.TabIndex = 0;
             // 
             // lblToplamGider
             // 
             this.lblToplamGider.AutoSize = true;
-            this.lblToplamGider.Location = new System.Drawing.Point(155, 0);
+            this.lblToplamGider.Location = new System.Drawing.Point(123, 0);
+            this.lblToplamGider.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblToplamGider.Name = "lblToplamGider";
-            this.lblToplamGider.Size = new System.Drawing.Size(0, 24);
+            this.lblToplamGider.Size = new System.Drawing.Size(0, 18);
             this.lblToplamGider.TabIndex = 0;
             // 
             // lblKasaBakiyesi
             // 
             this.lblKasaBakiyesi.AutoSize = true;
-            this.lblKasaBakiyesi.Location = new System.Drawing.Point(334, 0);
+            this.lblKasaBakiyesi.Location = new System.Drawing.Point(266, 0);
+            this.lblKasaBakiyesi.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblKasaBakiyesi.Name = "lblKasaBakiyesi";
-            this.lblKasaBakiyesi.Size = new System.Drawing.Size(0, 24);
+            this.lblKasaBakiyesi.Size = new System.Drawing.Size(0, 18);
             this.lblKasaBakiyesi.TabIndex = 1;
             this.lblKasaBakiyesi.TextChanged += new System.EventHandler(this.lblKasaBakiyesi_TextChanged_1);
             // 
@@ -592,61 +609,42 @@
             this.tableLayoutPanel3.Controls.Add(this.chartKasaOzet, 0, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 48);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55.04587F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 44.95413F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(975, 527);
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(780, 412);
             this.tableLayoutPanel3.TabIndex = 7;
             this.tableLayoutPanel3.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel3_Paint);
             // 
             // chartKasaOzet
             // 
-            this.chartKasaOzet.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.chartKasaOzet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(208)))), ((int)(((byte)(161)))));
-            chartArea1.Area3DStyle.LightStyle = System.Windows.Forms.DataVisualization.Charting.LightStyle.None;
-            chartArea1.BackColor = System.Drawing.SystemColors.ScrollBar;
-            chartArea1.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.TopBottom;
-            chartArea1.BackHatchStyle = System.Windows.Forms.DataVisualization.Charting.ChartHatchStyle.BackwardDiagonal;
-            chartArea1.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            chartArea1.BorderWidth = 3;
-            chartArea1.IsSameFontSizeForAllAxes = true;
             chartArea1.Name = "ChartArea1";
             this.chartKasaOzet.ChartAreas.Add(chartArea1);
+            this.chartKasaOzet.Dock = System.Windows.Forms.DockStyle.Fill;
             legend1.Name = "Legend1";
-            legend1.TableStyle = System.Windows.Forms.DataVisualization.Charting.LegendTableStyle.Tall;
             this.chartKasaOzet.Legends.Add(legend1);
-            this.chartKasaOzet.Location = new System.Drawing.Point(3, 293);
+            this.chartKasaOzet.Location = new System.Drawing.Point(3, 229);
             this.chartKasaOzet.Name = "chartKasaOzet";
-            this.chartKasaOzet.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
+            this.chartKasaOzet.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SemiTransparent;
             series1.ChartArea = "ChartArea1";
-            series1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            series1.IsXValueIndexed = true;
             series1.Legend = "Legend1";
-            series1.MarkerSize = 2;
             series1.Name = "Series1";
-            series1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
-            series1.ShadowOffset = 3;
             this.chartKasaOzet.Series.Add(series1);
-            this.chartKasaOzet.Size = new System.Drawing.Size(330, 231);
+            this.chartKasaOzet.Size = new System.Drawing.Size(263, 180);
             this.chartKasaOzet.TabIndex = 0;
             this.chartKasaOzet.Text = "chart1";
-            title1.Alignment = System.Drawing.ContentAlignment.MiddleLeft;
-            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             title1.Name = "Title1";
-            title1.Text = "Günlük Gelir/Gider";
-            title1.TextStyle = System.Windows.Forms.DataVisualization.Charting.TextStyle.Shadow;
             this.chartKasaOzet.Titles.Add(title1);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(208)))), ((int)(((byte)(161)))));
-            this.ClientSize = new System.Drawing.Size(1200, 623);
+            this.ClientSize = new System.Drawing.Size(960, 498);
             this.Controls.Add(this.tableLayoutPanel3);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -654,7 +652,6 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Kobi Finans";
