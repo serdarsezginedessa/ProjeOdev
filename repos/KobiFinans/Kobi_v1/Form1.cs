@@ -130,7 +130,7 @@ namespace Kobi_v1
                 MessageBox.Show("Hata: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-        }
+        }//grafik hesaplaması
         private void button2_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("calc");
