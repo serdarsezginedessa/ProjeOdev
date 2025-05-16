@@ -72,7 +72,29 @@ namespace Kobi_v1
                     dataGridView1.Rows.Clear(); // Mevcut satırları temizleyin Manuel Eklediğim Başlıklar Bozulmuyor..
                     foreach (DataRow row in dt.Rows)
                     {
-                        dataGridView1.Rows.Add(row.ItemArray); // Satırlar ekleniyor..
+                        object[] values = new object[dt.Columns.Count];
+
+                        for (int i = 0; i < dt.Columns.Count; i++)
+                        {
+                            if (row[i] == DBNull.Value)
+                            {
+                                values[i] = ""; // Boş değerler için boş string
+                            }
+                            else if (row[i] is DateTime tarih)
+                            {
+                                values[i] = tarih.ToString("yyyy-MM-dd"); // Tarihi biçimli stringe çevir
+                            }
+                            else if (row[i] is bool durum)
+                            {
+                                values[i] = durum ? "Aktif" : "Pasif"; // Durum kolonu için okunabilir değer
+                            }
+                            else
+                            {
+                                values[i] = row[i];
+                            }
+                        }
+
+                        dataGridView1.Rows.Add(values); // Satırı DataGridView'e ekle
                     }
                 }
             }
@@ -455,6 +477,14 @@ namespace Kobi_v1
         {
             IkiTarihArasiRapor();
             HesaplaGelirGider();
+        }
+
+        private void FrmBankaHareket_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode==Keys.Escape)
+            {
+                this.Close();
+            }
         }
     }
 }

@@ -69,5 +69,13 @@ namespace Kobi_v1
                 this.Hide();
             }
         }
+
+        private void FrmCariTurEkle_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
     }
 }

@@ -35,7 +35,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSatis));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.lblEposta = new System.Windows.Forms.Label();
             this.lblYetkili = new System.Windows.Forms.Label();
             this.lblTelefon = new System.Windows.Forms.Label();
@@ -95,6 +94,7 @@
             // 
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.IsSplitterFixed = true;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
             // 
@@ -102,7 +102,6 @@
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(182)))), ((int)(((byte)(149)))));
             this.splitContainer1.Panel1.Controls.Add(this.pictureBox1);
-            this.splitContainer1.Panel1.Controls.Add(this.label4);
             this.splitContainer1.Panel1.Controls.Add(this.lblEposta);
             this.splitContainer1.Panel1.Controls.Add(this.lblYetkili);
             this.splitContainer1.Panel1.Controls.Add(this.lblTelefon);
@@ -115,7 +114,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.panel1);
             this.splitContainer1.Size = new System.Drawing.Size(1233, 758);
-            this.splitContainer1.SplitterDistance = 257;
+            this.splitContainer1.SplitterDistance = 249;
             this.splitContainer1.TabIndex = 0;
             // 
             // pictureBox1
@@ -130,15 +129,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(132, 132);
             this.pictureBox1.TabIndex = 33;
             this.pictureBox1.TabStop = false;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(252, 25);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(84, 24);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Ürün Adı";
             // 
             // lblEposta
             // 
@@ -270,7 +260,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(968, 754);
+            this.panel1.Size = new System.Drawing.Size(976, 754);
             this.panel1.TabIndex = 13;
             // 
             // btnTahsilat
@@ -715,7 +705,7 @@
             this.faturaAraF11ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 721);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(968, 33);
+            this.menuStrip1.Size = new System.Drawing.Size(976, 33);
             this.menuStrip1.TabIndex = 31;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -750,8 +740,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Satış İşlemi";
             this.Load += new System.EventHandler(this.FrmSatis_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmSatis_KeyDown);
             this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
@@ -779,7 +769,6 @@
         private System.Windows.Forms.Button btnGuncelle;
         private System.Windows.Forms.DateTimePicker dateKayit;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;

@@ -633,7 +633,7 @@ namespace Kobi_v1
             dateKayit.Enabled = true;
 
             // ComboBox seçimleri
-            comboBoxDurum.SelectedText = "Yeni";
+            comboBoxDurum.SelectedIndex = 0;
 
             comboBoxDurum.Enabled = true;
 
@@ -1365,16 +1365,13 @@ namespace Kobi_v1
             if (e.KeyCode == Keys.F8)
             {
                 btnYeniKayit.PerformClick();
-                // btnAra_Click(e.KeyValue , e);
+                
 
             }
         }
         private void btnKayit_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.F2)
-            {
-                btnKayit.PerformClick();
-            }
+            
 
         }
 
@@ -1444,7 +1441,13 @@ namespace Kobi_v1
         }
         private void btnTahsilat_Click(object sender, EventArgs e)
         {
+
             if (string.IsNullOrEmpty(txtID.Text) || string.IsNullOrEmpty(txtFaturaNo.Text))
+            {
+                MessageBox.Show("Tahsilat Yapmak İçin Lütfen Önce Fatura Bilgilerini Giriniz", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if(txtGenelToplam.Text == "0" || txtGenelToplam.Text == "")
             {
                 MessageBox.Show("Tahsilat Yapmak İçin Lütfen Önce Fatura Bilgilerini Giriniz", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -1563,7 +1566,7 @@ namespace Kobi_v1
             if(comboBoxDurum.Text == "Tahsilat Yapıldı")
             {
                 
-                if(DialogResult.Yes == MessageBox.Show("Tahsilat Yapılmış Fatura Drumu Değiştirmek İstiyor musunuz ", "Bilgi", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                if(DialogResult.Yes == MessageBox.Show("Tahsilat Yapılmış Fatura Durumu Değiştirmek İstiyor musunuz ", "Bilgi", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
                 {
                     comboBoxDurum.Text = "Yeni";
                 }
@@ -1689,7 +1692,7 @@ namespace Kobi_v1
 
         private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Delete && dataGridView1.SelectedRows.Count > 0)
+            if (e.KeyCode == Keys.Delete && dataGridView1.SelectedRows.Count > -1)
             {
                 if (MessageBox.Show("Silmek istediğinize emin misiniz?", "Sil", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
@@ -1754,28 +1757,43 @@ namespace Kobi_v1
 
             if (e.KeyCode == Keys.Down)
             {
+                if (dataGridView1 == null || dataGridView1.Rows.Count == 0)
+                {
+                    // Hiç satır yoksa, yeni satır ekle
+                    dataGridView1.Rows.Add();
+                    return;
+                }
+
+                if (dataGridView1.CurrentRow == null)
+                {
+                    // Her ihtimale karşı boşsa yine satır ekle
+                    dataGridView1.Rows.Add();
+                    return;
+                }
+
                 // Şu anki satır son satır mı?
                 if (dataGridView1.CurrentRow.Index == dataGridView1.Rows.Count - 1)
                 {
                     bool isRowEmpty = true;
 
-                    // Şu anki satırdaki tüm hücreleri kontrol et
+                    // Satırdaki tüm hücreleri kontrol et
                     foreach (DataGridViewCell cell in dataGridView1.CurrentRow.Cells)
                     {
                         if (cell.Value != null && cell.Value.ToString().Trim() != "")
                         {
                             isRowEmpty = false;
-                            break; // Satırda veri var, boş değil
+                            break;
                         }
                     }
 
-                    // Eğer son satır doluysa, yeni satır ekle
+                    // Son satır boş değilse, yeni satır ekle
                     if (!isRowEmpty)
                     {
                         dataGridView1.Rows.Add();
                     }
                 }
             }
+
 
 
 
@@ -1931,6 +1949,15 @@ namespace Kobi_v1
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             CariEklenmisMi();
+        }
+
+        private void FrmSatis_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F2)
+            {
+                btnKayit.Focus();
+                btnKayit.PerformClick();
+            }
         }
     }
 }

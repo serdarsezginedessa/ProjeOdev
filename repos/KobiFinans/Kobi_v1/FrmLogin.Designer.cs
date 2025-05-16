@@ -29,19 +29,20 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
             this.btnGiris = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.txtSifre = new System.Windows.Forms.TextBox();
             this.btn_iptal = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtKullaniciAdi = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblHak = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnKayit = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtKullaniciAdi = new System.Windows.Forms.TextBox();
-            this.txtSifre = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lblHak = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -62,6 +63,17 @@
             this.btnGiris.Text = "Giriş";
             this.btnGiris.UseVisualStyleBackColor = false;
             this.btnGiris.Click += new System.EventHandler(this.btnGiris_Click);
+            // 
+            // txtSifre
+            // 
+            this.txtSifre.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtSifre.Location = new System.Drawing.Point(107, 145);
+            this.txtSifre.Name = "txtSifre";
+            this.txtSifre.PasswordChar = '*';
+            this.txtSifre.Size = new System.Drawing.Size(195, 28);
+            this.txtSifre.TabIndex = 6;
+            this.toolTip1.SetToolTip(this.txtSifre, "Şifre Girin");
+            this.txtSifre.UseSystemPasswordChar = true;
             // 
             // btn_iptal
             // 
@@ -101,6 +113,41 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(401, 196);
             this.tableLayoutPanel1.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Location = new System.Drawing.Point(3, 142);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(98, 36);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Şifre:";
+            // 
+            // txtKullaniciAdi
+            // 
+            this.txtKullaniciAdi.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtKullaniciAdi.Location = new System.Drawing.Point(107, 110);
+            this.txtKullaniciAdi.Name = "txtKullaniciAdi";
+            this.txtKullaniciAdi.Size = new System.Drawing.Size(195, 28);
+            this.txtKullaniciAdi.TabIndex = 4;
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(3, 107);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(98, 31);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Kullanıcı Adı:";
+            // 
+            // lblHak
+            // 
+            this.lblHak.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblHak.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblHak.ForeColor = System.Drawing.Color.Brown;
+            this.lblHak.Location = new System.Drawing.Point(308, 0);
+            this.lblHak.Name = "lblHak";
+            this.lblHak.Size = new System.Drawing.Size(90, 107);
+            this.lblHak.TabIndex = 7;
             // 
             // tableLayoutPanel2
             // 
@@ -159,52 +206,6 @@
             this.label3.Text = "Şİfremi Unuttum";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
-            // label1
-            // 
-            this.label1.Location = new System.Drawing.Point(3, 107);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 31);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Kullanıcı Adı:";
-            // 
-            // txtKullaniciAdi
-            // 
-            this.txtKullaniciAdi.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtKullaniciAdi.Location = new System.Drawing.Point(107, 110);
-            this.txtKullaniciAdi.Name = "txtKullaniciAdi";
-            this.txtKullaniciAdi.Size = new System.Drawing.Size(195, 28);
-            this.txtKullaniciAdi.TabIndex = 4;
-            // 
-            // txtSifre
-            // 
-            this.txtSifre.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtSifre.Location = new System.Drawing.Point(107, 145);
-            this.txtSifre.Name = "txtSifre";
-            this.txtSifre.PasswordChar = '*';
-            this.txtSifre.Size = new System.Drawing.Size(195, 28);
-            this.txtSifre.TabIndex = 6;
-            this.toolTip1.SetToolTip(this.txtSifre, "Şifre Girin");
-            this.txtSifre.UseSystemPasswordChar = true;
-            // 
-            // label2
-            // 
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(3, 142);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(98, 36);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Şifre:";
-            // 
-            // lblHak
-            // 
-            this.lblHak.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblHak.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblHak.ForeColor = System.Drawing.Color.Brown;
-            this.lblHak.Location = new System.Drawing.Point(308, 0);
-            this.lblHak.Name = "lblHak";
-            this.lblHak.Size = new System.Drawing.Size(90, 107);
-            this.lblHak.TabIndex = 7;
-            // 
             // FrmLogin
             // 
             this.AcceptButton = this.btnGiris;
@@ -219,6 +220,7 @@
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;

@@ -553,8 +553,8 @@ namespace Kobi_v1
             txtCariKOD.Clear();
             txtCariTur.Clear();
             txtGiderNo.Clear();
-            comboGiderTuru.SelectedIndex = 0;
-            comboBoxNakit.SelectedIndex = 0;
+            comboGiderTuru.Text = "";
+            comboBoxNakit.Text = "";
             checkBoxTumKayitlar.Checked = false;
             Date1.Value = DateTime.Now;
             Date2.Value = DateTime.Now;
@@ -606,6 +606,14 @@ namespace Kobi_v1
                 }
                 this.Close();
 
+            }
+        }
+
+        private void FrmGiderHareketleri_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
             }
         }
     }

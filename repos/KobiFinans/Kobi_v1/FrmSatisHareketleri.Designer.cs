@@ -43,14 +43,15 @@
             this.cariBilgileriDüzeltToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cariSilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSifirla = new System.Windows.Forms.Button();
+            this.checkBoxTarihFiltresi = new System.Windows.Forms.CheckBox();
+            this.txtFaturaNo = new System.Windows.Forms.TextBox();
             this.txtCariKOD = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtFaturaNo = new System.Windows.Forms.TextBox();
-            this.checkBoxTarihFiltresi = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -64,7 +65,7 @@
             this.label1.ForeColor = System.Drawing.Color.Firebrick;
             this.label1.Location = new System.Drawing.Point(3, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(131, 20);
+            this.label1.Size = new System.Drawing.Size(158, 25);
             this.label1.TabIndex = 30;
             this.label1.Text = "Arama Filtreleri";
             // 
@@ -88,7 +89,7 @@
             this.Date1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.Date1.Location = new System.Drawing.Point(587, 33);
             this.Date1.Name = "Date1";
-            this.Date1.Size = new System.Drawing.Size(112, 24);
+            this.Date1.Size = new System.Drawing.Size(112, 28);
             this.Date1.TabIndex = 8;
             // 
             // Date2
@@ -96,7 +97,7 @@
             this.Date2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.Date2.Location = new System.Drawing.Point(705, 33);
             this.Date2.Name = "Date2";
-            this.Date2.Size = new System.Drawing.Size(112, 24);
+            this.Date2.Size = new System.Drawing.Size(112, 28);
             this.Date2.TabIndex = 9;
             // 
             // txtCariAD
@@ -104,7 +105,7 @@
             this.txtCariAD.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.txtCariAD.Location = new System.Drawing.Point(353, 34);
             this.txtCariAD.Name = "txtCariAD";
-            this.txtCariAD.Size = new System.Drawing.Size(178, 24);
+            this.txtCariAD.Size = new System.Drawing.Size(178, 28);
             this.txtCariAD.TabIndex = 2;
             this.txtCariAD.TextChanged += new System.EventHandler(this.txtCariAD_TextChanged);
             // 
@@ -141,29 +142,30 @@
             this.cariBilgileriDüzeltToolStripMenuItem,
             this.cariSilToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(174, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(207, 76);
             // 
             // cariEkleToolStripMenuItem
             // 
             this.cariEkleToolStripMenuItem.Name = "cariEkleToolStripMenuItem";
-            this.cariEkleToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.cariEkleToolStripMenuItem.Size = new System.Drawing.Size(206, 24);
             this.cariEkleToolStripMenuItem.Text = "Cari Ekle";
             // 
             // cariBilgileriDüzeltToolStripMenuItem
             // 
             this.cariBilgileriDüzeltToolStripMenuItem.Name = "cariBilgileriDüzeltToolStripMenuItem";
-            this.cariBilgileriDüzeltToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.cariBilgileriDüzeltToolStripMenuItem.Size = new System.Drawing.Size(206, 24);
             this.cariBilgileriDüzeltToolStripMenuItem.Text = "Cari Bilgileri Düzelt";
             // 
             // cariSilToolStripMenuItem
             // 
             this.cariSilToolStripMenuItem.Name = "cariSilToolStripMenuItem";
-            this.cariSilToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.cariSilToolStripMenuItem.Size = new System.Drawing.Size(206, 24);
             this.cariSilToolStripMenuItem.Text = "Cari Sil";
             // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.btnSifirla);
             this.panel1.Controls.Add(this.checkBoxTarihFiltresi);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.btnTarihFiltrele);
@@ -184,12 +186,49 @@
             this.panel1.Size = new System.Drawing.Size(1464, 108);
             this.panel1.TabIndex = 2;
             // 
+            // btnSifirla
+            // 
+            this.btnSifirla.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(83)))), ((int)(((byte)(91)))));
+            this.btnSifirla.FlatAppearance.BorderSize = 0;
+            this.btnSifirla.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSifirla.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnSifirla.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnSifirla.Location = new System.Drawing.Point(823, 59);
+            this.btnSifirla.Name = "btnSifirla";
+            this.btnSifirla.Size = new System.Drawing.Size(141, 36);
+            this.btnSifirla.TabIndex = 32;
+            this.btnSifirla.Text = "Sıfırla";
+            this.btnSifirla.UseVisualStyleBackColor = false;
+            this.btnSifirla.Click += new System.EventHandler(this.btnSifirla_Click);
+            // 
+            // checkBoxTarihFiltresi
+            // 
+            this.checkBoxTarihFiltresi.AutoSize = true;
+            this.checkBoxTarihFiltresi.Checked = true;
+            this.checkBoxTarihFiltresi.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxTarihFiltresi.Location = new System.Drawing.Point(587, 64);
+            this.checkBoxTarihFiltresi.Name = "checkBoxTarihFiltresi";
+            this.checkBoxTarihFiltresi.Size = new System.Drawing.Size(134, 28);
+            this.checkBoxTarihFiltresi.TabIndex = 31;
+            this.checkBoxTarihFiltresi.Text = "Tarih Filtresi";
+            this.checkBoxTarihFiltresi.UseVisualStyleBackColor = true;
+            this.checkBoxTarihFiltresi.CheckedChanged += new System.EventHandler(this.checkBoxTarihFiltresi_CheckedChanged);
+            // 
+            // txtFaturaNo
+            // 
+            this.txtFaturaNo.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.txtFaturaNo.Location = new System.Drawing.Point(92, 64);
+            this.txtFaturaNo.Name = "txtFaturaNo";
+            this.txtFaturaNo.Size = new System.Drawing.Size(178, 28);
+            this.txtFaturaNo.TabIndex = 1;
+            this.txtFaturaNo.TextChanged += new System.EventHandler(this.txtFaturaNo_TextChanged);
+            // 
             // txtCariKOD
             // 
             this.txtCariKOD.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.txtCariKOD.Location = new System.Drawing.Point(92, 34);
             this.txtCariKOD.Name = "txtCariKOD";
-            this.txtCariKOD.Size = new System.Drawing.Size(178, 24);
+            this.txtCariKOD.Size = new System.Drawing.Size(178, 28);
             this.txtCariKOD.TabIndex = 1;
             this.txtCariKOD.TextChanged += new System.EventHandler(this.txtCariKOD_TextChanged);
             // 
@@ -198,16 +237,25 @@
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(540, 38);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(41, 18);
+            this.label14.Size = new System.Drawing.Size(53, 24);
             this.label14.TabIndex = 13;
             this.label14.Text = "Tarih";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(4, 68);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(93, 24);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Fatura No";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(276, 38);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(71, 18);
+            this.label4.Size = new System.Drawing.Size(92, 24);
             this.label4.TabIndex = 12;
             this.label4.Text = "Ad Soyad";
             // 
@@ -216,7 +264,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(4, 38);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 18);
+            this.label2.Size = new System.Drawing.Size(82, 24);
             this.label2.TabIndex = 14;
             this.label2.Text = "Cari Kod";
             // 
@@ -231,39 +279,9 @@
             this.panel2.Size = new System.Drawing.Size(1464, 628);
             this.panel2.TabIndex = 3;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(4, 68);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(74, 18);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "Fatura No";
-            // 
-            // txtFaturaNo
-            // 
-            this.txtFaturaNo.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.txtFaturaNo.Location = new System.Drawing.Point(92, 64);
-            this.txtFaturaNo.Name = "txtFaturaNo";
-            this.txtFaturaNo.Size = new System.Drawing.Size(178, 24);
-            this.txtFaturaNo.TabIndex = 1;
-            this.txtFaturaNo.TextChanged += new System.EventHandler(this.txtFaturaNo_TextChanged);
-            // 
-            // checkBoxTarihFiltresi
-            // 
-            this.checkBoxTarihFiltresi.AutoSize = true;
-            this.checkBoxTarihFiltresi.Checked = true;
-            this.checkBoxTarihFiltresi.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxTarihFiltresi.Location = new System.Drawing.Point(587, 64);
-            this.checkBoxTarihFiltresi.Name = "checkBoxTarihFiltresi";
-            this.checkBoxTarihFiltresi.Size = new System.Drawing.Size(107, 22);
-            this.checkBoxTarihFiltresi.TabIndex = 31;
-            this.checkBoxTarihFiltresi.Text = "Tarih Filtresi";
-            this.checkBoxTarihFiltresi.UseVisualStyleBackColor = true;
-            // 
             // FrmSatisHareketleri
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(208)))), ((int)(((byte)(161)))));
             this.ClientSize = new System.Drawing.Size(1464, 742);
@@ -272,6 +290,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -279,6 +298,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Satışlar";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmSatisHareketleri_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
@@ -309,5 +329,6 @@
         private System.Windows.Forms.TextBox txtFaturaNo;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox checkBoxTarihFiltresi;
+        private System.Windows.Forms.Button btnSifirla;
     }
 }

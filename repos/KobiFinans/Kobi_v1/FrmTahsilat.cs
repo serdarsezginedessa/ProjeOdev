@@ -637,6 +637,7 @@ namespace Kobi_v1
         private void btnYeniKayit_Click(object sender, EventArgs e)
         {
             BtnYeni();
+            btnCariAra.PerformClick();
 
         }
         private void btnKaydet_Click(object sender, EventArgs e)

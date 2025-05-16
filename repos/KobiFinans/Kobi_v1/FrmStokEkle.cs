@@ -82,12 +82,16 @@ namespace Kobi_v1
         }
 
         string resimYolu = "";
-        string varsayilanresimyolu = @"\images\default.jpg";
+        string varsayilanresimyolu = @"\images\default1.png";
         bool bayrak = false;
 
         private void pictureBox1_DoubleClick(object sender, EventArgs e)
         {
-
+            if(string.IsNullOrEmpty(txtUrunKod.Text) || string.IsNullOrEmpty(txtUrunAd.Text) || string.IsNullOrEmpty(txtSatisFiyati.Text) || string.IsNullOrEmpty(combxKategori.Text) || string.IsNullOrEmpty(combxKdv.Text))
+            {
+                MessageBox.Show("Lütfen önce ürün Bigilerini girin.");
+                return;
+            }
             OpenFileDialog resimAc = new OpenFileDialog();
             pictureBox1.Image = null;
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -412,6 +416,7 @@ namespace Kobi_v1
         {
             FrmStokKategori frmStokKategori = new FrmStokKategori();
             frmStokKategori.ShowDialog();
+            UrunKategoriYukle();
         }
 
 

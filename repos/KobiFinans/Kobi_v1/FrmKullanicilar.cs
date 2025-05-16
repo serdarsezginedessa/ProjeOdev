@@ -20,11 +20,12 @@ namespace Kobi_v1
         }
         static string connectionString = ConfigurationManager.ConnectionStrings["KobiFinans"].ConnectionString;
         SqlConnection baglanti = new SqlConnection(connectionString);
-        public int kullaniciID
-        { 
-            get { return Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value); }
+
+       /* public string kullaniciID
+        {
+            get { return kullaniciID; }
             set { kullaniciID = value; }
-        }
+        }*/
 
         private void KullaniciListele()
         {
@@ -39,7 +40,8 @@ namespace Kobi_v1
                 dataGridView1.Columns[0].HeaderText = "ID";
                 dataGridView1.Columns[1].HeaderText = "Kullanıcı Adı";
                 dataGridView1.Columns[2].HeaderText = "Şifre";
-                dataGridView1.Columns[3].HeaderText = "Rol";
+                dataGridView1.Columns[3].HeaderText = "Eposta";
+                dataGridView1.Columns[4].HeaderText = "Rol";
                 //dataGridView1.DefaultCellStyle.BackColor = Color.Coral;
                 //dataGridView1.DefaultCellStyle.ForeColor = Color.WhiteSmoke; 
             }
@@ -121,15 +123,35 @@ namespace Kobi_v1
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (dataGridView1.CurrentRow != null){
+                string kullaniciID = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+
                 string kad = dataGridView1.CurrentRow.Cells[1].Value.ToString();
                 string sifre = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-                string rol = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                string eposta = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                string rol = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+
+                string durum = dataGridView1.CurrentRow.Cells[5].Value.ToString();
+                if (durum == "True")
+                {
+                    durum = "Aktif";
+                }
+                else
+                {
+                    durum = "Pasif";
+                }
+                //MessageBox.Show(kullaniciID+kad+ sifre+ eposta+ rol+ durum); test için kullanıldı
+                // Kullanıcı bilgilerini güncellemek için FrmKullaniciGuncelle formunu açıyorum
+
                 FrmKullaniciGuncelle frmKullaniciGuncelle = new FrmKullaniciGuncelle();
+
+                //Bilgileri güncelle formuna gönderiyorum
+                frmKullaniciGuncelle.KullaniciID = kullaniciID;                
                 frmKullaniciGuncelle.kad = kad;
                 frmKullaniciGuncelle.sifre = sifre;
-                //frmKullaniciGuncelle.rol = rol;
-                frmKullaniciGuncelle.buttonImage= Properties.Resources.editUser;
-                frmKullaniciGuncelle.Text = "Kullanıcı Güncelle";
+                frmKullaniciGuncelle.eposta = eposta;
+                frmKullaniciGuncelle.durum = durum;
+                frmKullaniciGuncelle.rol = rol;
+                                
                 frmKullaniciGuncelle.ShowDialog();
                 KullaniciListele();
 

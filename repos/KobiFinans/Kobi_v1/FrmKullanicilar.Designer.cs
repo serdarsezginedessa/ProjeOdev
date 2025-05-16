@@ -43,14 +43,14 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 78);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(467, 395);
+            this.dataGridView1.Size = new System.Drawing.Size(620, 395);
             this.dataGridView1.TabIndex = 1;
             // 
             // btnUpdate
@@ -61,7 +61,7 @@
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.btnUpdate.ForeColor = System.Drawing.Color.Transparent;
             this.btnUpdate.Image = global::Kobi_v1.Properties.Resources.editUser;
-            this.btnUpdate.Location = new System.Drawing.Point(207, 480);
+            this.btnUpdate.Location = new System.Drawing.Point(209, 423);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(4);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(59, 51);
@@ -78,7 +78,7 @@
             this.btndelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.btndelete.ForeColor = System.Drawing.Color.Transparent;
             this.btndelete.Image = global::Kobi_v1.Properties.Resources.DeleteUser;
-            this.btndelete.Location = new System.Drawing.Point(140, 480);
+            this.btndelete.Location = new System.Drawing.Point(142, 423);
             this.btndelete.Margin = new System.Windows.Forms.Padding(4);
             this.btndelete.Name = "btndelete";
             this.btndelete.Size = new System.Drawing.Size(59, 51);
@@ -97,7 +97,7 @@
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.btnAdd.ForeColor = System.Drawing.Color.Transparent;
             this.btnAdd.Image = global::Kobi_v1.Properties.Resources.Add_User_Male;
-            this.btnAdd.Location = new System.Drawing.Point(71, 480);
+            this.btnAdd.Location = new System.Drawing.Point(73, 423);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(4);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(61, 51);
@@ -110,12 +110,13 @@
             // 
             this.button1.BackColor = System.Drawing.Color.Transparent;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.button1.Image = global::Kobi_v1.Properties.Resources.Close;
-            this.button1.Location = new System.Drawing.Point(13, 480);
+            this.button1.Location = new System.Drawing.Point(15, 423);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(50, 51);
@@ -129,15 +130,17 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(208)))), ((int)(((byte)(161)))));
-            this.ClientSize = new System.Drawing.Size(491, 562);
+            this.CancelButton = this.button1;
+            this.ClientSize = new System.Drawing.Size(644, 483);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btndelete);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.button1);
             this.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmKullanicilar";

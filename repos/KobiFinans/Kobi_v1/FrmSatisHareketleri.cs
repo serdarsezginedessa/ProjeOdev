@@ -315,12 +315,48 @@ namespace Kobi_v1
                 {
                     var hedefForm =  CagrilanForm as FrmSatis;
                     hedefForm.SatisBigileriYukle(satir,satisId,faturaTarihi, faturaNo, cariKod, cariAd/*,kdvMatrahi,kdvTutari,tutar,genelToplam,tahsilat*/);
-                    
-                    
+
+                    this.Close();
+                }
+                else
+                {
+                    return;
                 }
 
             }
-            this.Close();
+            
+        }
+
+        private void checkBoxTarihFiltresi_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkBoxTarihFiltresi.Checked != true)
+            {
+                ListeleTumKayitlar();
+            }
+            else
+            {
+                ListeleFaturaTarihhAraligi();
+            }
+
+        }
+
+        private void btnSifirla_Click(object sender, EventArgs e)
+        {
+            txtCariAD.Clear();
+            txtCariKOD.Clear();
+            txtFaturaNo.Clear();
+            Date1.Value = DateTime.Now;
+            Date2.Value = DateTime.Now;
+            checkBoxTarihFiltresi.Checked = true;
+            ListeleBugun();
+        }
+
+        private void FrmSatisHareketleri_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
         }
     }
 }

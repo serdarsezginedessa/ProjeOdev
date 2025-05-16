@@ -448,5 +448,13 @@ Where c.CariKod LIKE @cariKod";
             BugunListele();
             
         }
+
+        private void frmTahsilatHareketleri_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
     }
 }

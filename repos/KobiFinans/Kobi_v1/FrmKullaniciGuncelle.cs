@@ -17,9 +17,22 @@ namespace Kobi_v1
         public FrmKullaniciGuncelle()
         {
             InitializeComponent();
+            ComboBoxDoldur();
         }
         static string connectionString = ConfigurationManager.ConnectionStrings["KobiFinans"].ConnectionString;
         SqlConnection baglanti = new SqlConnection(connectionString);
+
+        public string KullaniciID
+        {
+            get {  return txtkid.Text; }
+            set { txtkid.Text = value; }
+
+        }
+        public string eposta
+        {
+            get { return txtEposta.Text; }
+            set { txtEposta.Text = value; }
+        }
         public string kad
         {
             get { return txtKad.Text; }
@@ -31,19 +44,36 @@ namespace Kobi_v1
             get { return txtYeniSifre.Text; }
             set { txtYeniSifre.Text = value; }
         }
-
-
-        public string buttonText
+        public string rol
         {
-            get { return btnGuncelle.Text; }
-            set { btnGuncelle.Text = value; }
+            get { return comboKullaniciTuru.Text; }
+            set { comboKullaniciTuru.Text = value; }
         }
-        public object buttonImage
+        public string durum
         {
-            get { return btnGuncelle.Image; }
-            set { btnGuncelle.Image = (Image)value; }
+            get { return comboDurum.Text; }
+            set { comboDurum.Text = value; }
         }
 
+        public void ComboBoxDoldur()
+        {
+            try
+            {
+                comboDurum.Items.Add("Aktif");
+                comboDurum.Items.Add("Pasif");
+                comboKullaniciTuru.Items.Add("Admin");
+                comboKullaniciTuru.Items.Add("Kullanıcı");
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+        }
         private void btnCikis_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -59,6 +89,24 @@ namespace Kobi_v1
                     txtKad.Focus();
                     return;
                 }
+                /*else
+                {
+                    txtKad.Text = txtKad.Text.Trim();
+                    if(baglanti.State == ConnectionState.Closed) baglanti.Open();
+                    string sorgu = "SELECT COUNT(*) FROM Kullanici WHERE KullaniciAdi = @kadi";
+                    SqlCommand cmd = new SqlCommand(sorgu, baglanti);
+                    cmd.Parameters.AddWithValue("@kadi", txtKad.Text);
+
+                    int kullaniciSayisi = (int)cmd.ExecuteScalar();
+
+                    if (kullaniciSayisi == 0)
+                    {
+                        MessageBox.Show("Kullanıcı sistemde yok.");
+                        return;
+                    }
+
+
+                }*/
                 if (string.IsNullOrEmpty(txtEposta.Text.Trim()))
                 {
                     MessageBox.Show("Lütfen Epostayı Giriniz");
@@ -67,57 +115,41 @@ namespace Kobi_v1
                 }
                 if (string.IsNullOrEmpty(txtYeniSifre.Text.Trim()))
                 {
-                    MessageBox.Show("Lütfen Yeni Şifreyi Giriniz");
+                    MessageBox.Show("Lütfen Şifreyi Giriniz");
                     txtYeniSifre.Focus();
                     return;
                 }
-                if (string.IsNullOrEmpty(txtYeniSifreTekrar.Text.Trim()))
-                {
-                    MessageBox.Show("Lütfen Yeni Şifreyi Tekrar Giriniz");
-                    txtYeniSifreTekrar.Focus();
-                    return;
-                }
-                if (txtYeniSifre.Text != txtYeniSifreTekrar.Text)
-                {
-                    MessageBox.Show("Şifreler Uyuşmuyor Lütfen Kontrol Edin", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtYeniSifre.Clear();
-                    txtYeniSifreTekrar.Clear();
-                    txtYeniSifre.Focus();
 
-                }
+               
 
                 if (baglanti.State == ConnectionState.Closed) baglanti.Open();
-                string sorgu = "Select * from Kullanici where Eposta=@Eposta";
-                SqlCommand komut = new SqlCommand(sorgu, baglanti);
-                komut.Parameters.AddWithValue("@Eposta", txtEposta.Text);
-                SqlDataReader dr = komut.ExecuteReader();
-                if (dr.Read())
-                    if (dr["Eposta"].ToString() != txtEposta.Text && dr["KullaniciID"].ToString()!=txtKad.Text)
-                    {
-                        MessageBox.Show(" Kullanıcı Adı ve Eposta Uyuşmuyor.. Tekrar Deneyiniz. ", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        
-                        txtEposta.Focus();
-                        
-                    }
-                dr.Close();
-
-
-
                 
-                    if (baglanti.State == ConnectionState.Closed) baglanti.Open();
-                    string updateSorgu = "Update Kullanici set Sifre=@Sifre  where Eposta=@eposta";
-                    SqlCommand kmt = new SqlCommand(updateSorgu, baglanti);
-                   
-                    kmt.Parameters.AddWithValue("@Sifre", txtYeniSifre.Text);
-                    kmt.Parameters.AddWithValue("@eposta", txtEposta.Text);
+                
+                string updateSorgu = "Update Kullanici set KullaniciAdi = @KullaniciAdi, Sifre=@Sifre, Eposta=@eposta, Rol=@rol, Durum=@durum  where KullaniciID = @id";
+                SqlCommand kmt = new SqlCommand(updateSorgu, baglanti);
+                kmt.Parameters.AddWithValue("@id", Convert.ToInt32(KullaniciID));
+                kmt.Parameters.AddWithValue("@KullaniciAdi", txtKad.Text);
+                kmt.Parameters.AddWithValue("@Sifre", txtYeniSifre.Text);
+                kmt.Parameters.AddWithValue("@eposta", txtEposta.Text);
+                kmt.Parameters.AddWithValue("@rol", comboKullaniciTuru.Text);
+                if (comboDurum.Text == "Aktif")
+                {
+                    kmt.Parameters.AddWithValue("@durum", 1);
+                }
+                else
+                {
+                    kmt.Parameters.AddWithValue("@durum", 0);
+                }
+                
 
-                    kmt.ExecuteNonQuery();
-                    MessageBox.Show("Şİfreniz Değiştirildi", "Şifre Değişti", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
+                kmt.ExecuteNonQuery();
+                
+                MessageBox.Show("Kullanıcı Bilgileri Güncellendi", "Güncelleme", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Kullanıcı Güncellenirken Hata Oluştu","Güncelleme Hatası"+ex.Message);
             }
             finally
             {

@@ -457,5 +457,13 @@ namespace Kobi_v1
             IkiTarihArasiRapor();
             HesaplaGelirGider();
         }
+
+        private void FrmKasaHareketleri_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
     }
 }

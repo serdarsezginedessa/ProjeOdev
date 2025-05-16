@@ -280,5 +280,13 @@ namespace Kobi_v1
             textClear();
             load();
         }
+
+        private void FrmCariTur_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
     }
 }

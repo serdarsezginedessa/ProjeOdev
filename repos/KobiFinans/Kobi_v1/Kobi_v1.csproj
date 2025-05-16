@@ -204,6 +204,12 @@
     <Compile Include="FrmKullanicilar.Designer.cs">
       <DependentUpon>FrmKullanicilar.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmKullaniciSifreUnuttum.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmKullaniciSifreUnuttum.Designer.cs">
+      <DependentUpon>FrmKullaniciSifreUnuttum.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -320,6 +326,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmKullanicilar.resx">
       <DependentUpon>FrmKullanicilar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmKullaniciSifreUnuttum.resx">
+      <DependentUpon>FrmKullaniciSifreUnuttum.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>

@@ -297,7 +297,7 @@ namespace Kobi_v1
                             ON ch.GiderID = g.GiderID";
                 
                
-                sorgu += " WHERE ch.HareketTipi = '" + comboHareketTipi.SelectedText + "'";
+                sorgu += " WHERE ch.HareketTipi = '" + comboHareketTipi.Text + "'";
                 
                 SqlCommand kmt = new SqlCommand(sorgu, baglanti);
                 SqlDataAdapter da = new SqlDataAdapter(kmt);
@@ -504,6 +504,14 @@ namespace Kobi_v1
         private void Date2_ValueChanged(object sender, EventArgs e)
         {
             IkiTarihArasiRapor();
+        }
+
+        private void FrmCariHareketleri_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode==Keys.Escape)
+            {
+                this.Close();
+            }
         }
     }
 }

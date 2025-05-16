@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Kobi_v1
 {
@@ -24,6 +25,9 @@ namespace Kobi_v1
 
         }
 
+
+        
+
         private static readonly string connectionString = ConfigurationManager.ConnectionStrings["KobiFinans"].ConnectionString;
         SqlConnection baglanti = new SqlConnection(connectionString);
 
@@ -31,16 +35,27 @@ namespace Kobi_v1
         {
             llblKullanici.Text = FrmLogin.kullaniciAdi;
             lblRol.Text = FrmLogin.rolOku;
+            if(FrmLogin.rolOku != "Admin")
+            {
+                raporlarToolStripMenuItem.Enabled = false;
+                bankaToolStripMenuItem.Enabled = false;
+                kasaToolStripMenuItem.Enabled = false;
+                kullanıcılarToolStripMenuItem.Enabled = false;
+            }
+            
             userCountGet();
             GelirGiderGet();
             KasaOzetGrafik();
+            //KasaOzetGrafikPie();
 
             lblKasaBakiyesi.TextChanged += lblKasaBakiyesi_TextChanged_1;
         }
 
         private void lblKasaBakiyesi_TextChanged_1(object sender, EventArgs e)
-        {KasaOzetGrafik();
-            
+        {
+            KasaOzetGrafik();
+            //KasaOzetGrafikPie();
+
 
         }
 
@@ -124,6 +139,16 @@ namespace Kobi_v1
                 chartKasaOzet.Series.Add("Kasa");
                 chartKasaOzet.Series["Kasa"].Points.AddXY("Gelir", gelir);
                 chartKasaOzet.Series["Kasa"].Points.AddXY("Gider", gider);
+
+                // Y ekseni aralığını otomatik ayarla
+                if(gelir !=0 || gider!=0)
+                {
+                    chartKasaOzet.ChartAreas[0].AxisY.Minimum = 0;
+                    chartKasaOzet.ChartAreas[0].AxisY.Maximum = (double)Math.Max(gelir, gider) * 1.3; // %20 pay bırak
+                    chartKasaOzet.ChartAreas[0].AxisY.IntervalAutoMode = IntervalAutoMode.VariableCount;
+                    chartKasaOzet.ChartAreas[0].RecalculateAxesScale(); // Ekseni yeniden hesapla
+                }
+                
             }
             catch (Exception ex)
             {
@@ -131,6 +156,62 @@ namespace Kobi_v1
             }
 
         }//grafik hesaplaması
+
+
+/*        public void KasaOzetGrafikPie()
+        {
+            try
+            {
+                // Label'dan gelir ve gider değerlerini al
+                string gelirText = lblToplamGelir.Text.Replace("Toplam Gelir: ", "").Replace("₺", "").Trim();
+                string giderText = lblToplamGider.Text.Replace("Toplam Gider: ", "").Replace("₺", "").Trim();
+
+                // String değerleri decimal'e dönüştür
+                decimal gelir = decimal.TryParse(gelirText, out decimal parsedGelir) ? parsedGelir : 0;
+                decimal gider = decimal.TryParse(giderText, out decimal parsedGider) ? parsedGider : 0;
+
+                // Toplam hesapla (yüzde oran için)
+                decimal toplam = gelir + gider;
+                if (toplam == 0) toplam = 1; // Sıfıra bölme hatasını önlemek için
+
+                // Series ayarları
+                chartKasaOzetPie.Series.Clear();
+                chartKasaOzetPie.Series.Add("Kasa");
+                var seri = chartKasaOzetPie.Series["Kasa"];
+                seri.ChartType = SeriesChartType.Pie;
+
+                // Verileri ekle
+                seri.Points.AddXY("Gelir", (double)gelir);
+                seri.Points.AddXY("Gider", (double)gider);
+
+                // Dilimleri renklendir ve etiketleri yaz
+                foreach (DataPoint point in seri.Points)
+                {
+                    // Renk ataması
+                    if (point.AxisLabel == "Gelir")
+                        point.Color = Color.Green;
+                    else if (point.AxisLabel == "Gider")
+                        point.Color = Color.Red;
+
+                    // Yüzde ve değer etiketleri
+                    double value = point.YValues[0];
+                    point.Label = $"{point.AxisLabel}: {value:C0}";
+                    point.LabelForeColor = Color.Black;
+                }
+
+                // Görünürlük ayarları
+                seri.IsValueShownAsLabel = true;
+                chartKasaOzetPie.ChartAreas[0].Area3DStyle.Enable3D = true;
+                if (chartKasaOzetPie.Legends.Count > 0)
+                    chartKasaOzetPie.Legends[0].Enabled = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hata: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+*/
+
         private void button2_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("calc");
@@ -158,7 +239,7 @@ namespace Kobi_v1
 
         private void kasaHareketleriToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void bankaHareketleriToolStripMenuItem_Click(object sender, EventArgs e)
@@ -217,7 +298,7 @@ namespace Kobi_v1
 
         private void giderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void TahsilatToolStripMenuItem_Click(object sender, EventArgs e)
@@ -256,8 +337,8 @@ namespace Kobi_v1
             frmTahsit.Owner = this; // this = ana form
             frmTahsit.ShowDialog();
         }
-        
-private void giderToolStripMenuItem_Click_1(object sender, EventArgs e)
+
+        private void giderToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             FrmGiderler frmGider = new FrmGiderler();
             frmGider.Owner = this; // this = ana form
@@ -288,7 +369,7 @@ private void giderToolStripMenuItem_Click_1(object sender, EventArgs e)
             {
                 Environment.Exit(0);
             }
-            
+
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
@@ -300,12 +381,19 @@ private void giderToolStripMenuItem_Click_1(object sender, EventArgs e)
             }
             else
             {
-                
-                FrmLogin frmLogin = new FrmLogin();
-                frmLogin.Show();
-                
+
+                Application.Restart();
+
             }
         }
+
+        private void kullanıcılarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FrmKullanicilar frmKullanicilar = new FrmKullanicilar();
+            frmKullanicilar.ShowDialog();
+        }
+
+
 
 
     }

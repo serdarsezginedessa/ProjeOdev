@@ -86,6 +86,7 @@ namespace Kobi_v1
                 textBox1.Clear();
                 textBox2.Clear();
                 comboBox1.Text = "";
+                txtEposta.Clear();
             }
             catch (Exception ex)
             {
@@ -96,12 +97,12 @@ namespace Kobi_v1
                 baglanti.Close();
             }
         }
-        public void guncelle()
+/*        public void guncelle()
         {
             try
             {
                 FrmKullanicilar frmKullanicilar = new FrmKullanicilar();
-                int id = frmKullanicilar.kullaniciID;
+                string id = frmKullanicilar.kullaniciID;
                 if (baglanti.State == ConnectionState.Closed) baglanti.Open();
                 string sorgu = "update Kullanici set KullaniciAdi=@user, Sifre=@pass, Rol=@rol where KullaniciID=@Id";
                 SqlCommand kmt = new SqlCommand(sorgu, baglanti);
@@ -125,7 +126,7 @@ namespace Kobi_v1
                 baglanti.Close();
             }
         }
-        private void btnEkle_Click(object sender, EventArgs e)
+*/        private void btnEkle_Click(object sender, EventArgs e)
         {
             ekle();
 

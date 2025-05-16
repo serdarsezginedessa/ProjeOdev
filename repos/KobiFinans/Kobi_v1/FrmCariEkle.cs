@@ -46,7 +46,11 @@ namespace Kobi_v1
 
         private void pictureBox1_DoubleClick(object sender, EventArgs e)
         {
-
+            if(string.IsNullOrEmpty(txtID.Text)|| string.IsNullOrEmpty(txtAd.Text) || string.IsNullOrEmpty(txtKod.Text))
+            {
+                MessageBox.Show("Lütfen Önce Bilgileri giriniz");
+                return;
+            }
 
             OpenFileDialog resimAc = new OpenFileDialog();
             pictureBox1.Image = null;
@@ -91,6 +95,7 @@ namespace Kobi_v1
             btnTurEkle.Enabled = true;
             btniptal.Enabled = true;
             chcDurum.Text = "Aktif";
+            pictureBox1.Enabled = true;
 
         }
         private void cariTurListele()
@@ -206,6 +211,7 @@ namespace Kobi_v1
             checboxeTarih.Enabled = false;
             checboxdTarih.Enabled = false;
             txtAciklama.Enabled = false;
+            pictureBox1.Enabled = false;
         }
 
         private void FrmCariEkle_Load(object sender, EventArgs e)

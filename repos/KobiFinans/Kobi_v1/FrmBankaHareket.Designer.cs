@@ -53,8 +53,8 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
             this.comboOdemeTuru = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -301,15 +301,6 @@
             this.panel3.Size = new System.Drawing.Size(1464, 116);
             this.panel3.TabIndex = 14;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(281, 70);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(119, 24);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "Ödeme Türü";
-            // 
             // comboOdemeTuru
             // 
             this.comboOdemeTuru.FormattingEnabled = true;
@@ -318,6 +309,15 @@
             this.comboOdemeTuru.Size = new System.Drawing.Size(121, 30);
             this.comboOdemeTuru.TabIndex = 44;
             this.comboOdemeTuru.SelectedIndexChanged += new System.EventHandler(this.comboOdemeTuru_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(281, 70);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(119, 24);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Ödeme Türü";
             // 
             // FrmBankaHareket
             // 
@@ -331,6 +331,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -340,6 +341,7 @@
             this.Text = "Banka Raporları";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmBankaHareket_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmBankaHareket_KeyDown);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
