@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuestPDF.Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -17,6 +18,7 @@ namespace Kobi_v1
 
         static void Main()
         {
+            QuestPDF.Settings.License = LicenseType.Community;
             string connectionString = ConfigurationManager.ConnectionStrings["KobiFinans"].ConnectionString;
             SqlConnection baglanti = new SqlConnection(connectionString);
             Application.EnableVisualStyles();

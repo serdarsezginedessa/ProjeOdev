@@ -55,6 +55,12 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnPdf = new System.Windows.Forms.Button();
+            this.BtnExcel = new System.Windows.Forms.Button();
+            this.BtnYazdir = new System.Windows.Forms.Button();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -163,6 +169,9 @@
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel3.Controls.Add(this.btnPdf);
+            this.panel3.Controls.Add(this.BtnExcel);
+            this.panel3.Controls.Add(this.BtnYazdir);
             this.panel3.Controls.Add(this.checkBoxTumKayitlar);
             this.panel3.Controls.Add(this.comboGiderTuru);
             this.panel3.Controls.Add(this.comboBoxKasa);
@@ -321,6 +330,60 @@
             this.label4.TabIndex = 12;
             this.label4.Text = "İşlem No";
             // 
+            // btnPdf
+            // 
+            this.btnPdf.BackgroundImage = global::Kobi_v1.Properties.Resources.PDF96;
+            this.btnPdf.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnPdf.FlatAppearance.BorderSize = 0;
+            this.btnPdf.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPdf.Location = new System.Drawing.Point(1240, 51);
+            this.btnPdf.Name = "btnPdf";
+            this.btnPdf.Size = new System.Drawing.Size(60, 49);
+            this.btnPdf.TabIndex = 46;
+            this.btnPdf.UseVisualStyleBackColor = true;
+            this.btnPdf.Click += new System.EventHandler(this.btnPdf_Click);
+            // 
+            // BtnExcel
+            // 
+            this.BtnExcel.BackgroundImage = global::Kobi_v1.Properties.Resources.Microsoft_Excel_2019_96;
+            this.BtnExcel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BtnExcel.FlatAppearance.BorderSize = 0;
+            this.BtnExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnExcel.Location = new System.Drawing.Point(1179, 51);
+            this.BtnExcel.Name = "BtnExcel";
+            this.BtnExcel.Size = new System.Drawing.Size(60, 49);
+            this.BtnExcel.TabIndex = 46;
+            this.BtnExcel.UseVisualStyleBackColor = true;
+            this.BtnExcel.Click += new System.EventHandler(this.BtnExcel_Click);
+            // 
+            // BtnYazdir
+            // 
+            this.BtnYazdir.BackgroundImage = global::Kobi_v1.Properties.Resources.Print1;
+            this.BtnYazdir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BtnYazdir.FlatAppearance.BorderSize = 0;
+            this.BtnYazdir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnYazdir.Location = new System.Drawing.Point(1118, 51);
+            this.BtnYazdir.Name = "BtnYazdir";
+            this.BtnYazdir.Size = new System.Drawing.Size(60, 49);
+            this.BtnYazdir.TabIndex = 46;
+            this.BtnYazdir.UseVisualStyleBackColor = true;
+            this.BtnYazdir.Click += new System.EventHandler(this.BtnYazdir_Click);
+            // 
+            // printDialog1
+            // 
+            this.printDialog1.UseEXDialog = true;
+            // 
+            // printPreviewDialog1
+            // 
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Text = "Baskı önizleme";
+            this.printPreviewDialog1.Visible = false;
+            // 
             // FrmKasaHareketleri
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
@@ -379,5 +442,11 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button BtnYazdir;
+        private System.Windows.Forms.Button BtnExcel;
+        private System.Windows.Forms.Button btnPdf;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.PrintDialog printDialog1;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
     }
 }
