@@ -613,12 +613,12 @@ namespace Kobi_v1
                     string vergiDairesi = row.Cells["VergiDairesi"].Value.ToString();
                     string vergiNo = row.Cells["VergiNo"].Value.ToString();
 
-                    object dogumTarihiOBJ = row.Cells["DogumTarihi"].Value;
-                    string dogumTarihi = (dogumTarihiOBJ == DBNull.Value) ? "" : Convert.ToDateTime(dogumTarihiOBJ).ToString();
+                    string dogumTarihi = row.Cells["DogumTarihi"].Value.ToString();
+                    //string dogumTarihi = (dogumTarihiOBJ == DBNull.Value) ? "" : Convert.ToDateTime(dogumTarihiOBJ).ToString();
 
 
-                    object evlilikTarihiOBJ = row.Cells["EvlilikTarihi"].Value;
-                    string evlilikTarihi = (evlilikTarihiOBJ == DBNull.Value) ? "" : Convert.ToDateTime(evlilikTarihiOBJ).ToString();
+                    string evlilikTarihi = row.Cells["EvlilikTarihi"].Value.ToString();
+                    //string evlilikTarihi = (evlilikTarihiOBJ == DBNull.Value) ? "" : Convert.ToDateTime(evlilikTarihiOBJ).ToString();
 
 
 
