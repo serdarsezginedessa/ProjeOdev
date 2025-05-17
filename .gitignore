@@ -362,3 +362,4 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /repos/KobiFinans/KobiFinansSetup/KobiFinansSetup.vdproj
+/repos/KobiFinans/Setup1/Setup1.vdproj
